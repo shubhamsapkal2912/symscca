@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit IV - Recurrent Neural Networks (RNNs) | Deep Learning</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Deep Learning</a> <span class="separator">/</span> <span class="current">Unit IV - Recurrent Neural Networks (RNNs)</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJCT301 &bull; Unit IV &bull; 14 Hrs</span>
+      <h1 class="hero-title">Unit IV - Recurrent Neural Networks (RNNs)</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">14 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>4.1</strong> Introduction to Recurrent Neural Networks</li><li><strong>4.2</strong> Types of Recurrent Neural Networks</li><li><strong>4.3</strong> Recurrent Neural Networks Architecture</li><li><strong>4.4</strong> Examples of sequential data: Text, time-series, and speech</li><li><strong>4.5</strong> Working of RNNs</li><li><strong>4.6</strong> Training Process in Recurrent Neural Networks</li><li><strong>4.7</strong> Vanishing Gradients</li><li><strong>4.8</strong> Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU)</li><li><strong>4.9</strong> Encoder-Decoder Model</li><li><strong>4.10</strong> Applications of RNNs (e.g., text generation, language translation)</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">4.1 - 4.4 Sequential Data &amp; RNN Architecture</h3>
+          <div class="topic-body">
+            <p>Standard feedforward neural networks assume all inputs and outputs are independent of each other. However, sequential data (e.g., sentences, audio streams, financial time-series, DNA sequences) possesses strong <strong>temporal / sequential dependencies</strong> where previous elements dictate the context of current elements.</p>
+                    <p><strong>RNN Hidden State & Mathematical Formulation:</strong></p>
+                    <p>At each time step $t$, an RNN maintains an internal memory called the <strong>hidden state ($\mathbf{h}_t$)</strong> computed from current input $\mathbf{x}_t$ and previous hidden state $\mathbf{h}_{t-1}$:</p>
+                    $$\mathbf{h}_t = \tanh(\mathbf{W}_{hh} \mathbf{h}_{t-1} + \mathbf{W}_{xh} \mathbf{x}_t + \mathbf{b}_h)$$
+                    $$\hat{\mathbf{y}}_t = \text{Softmax}(\mathbf{W}_{hy} \mathbf{h}_t + \mathbf{b}_y)$$
+                    <p><strong>Types of RNN Sequences:</strong></p>
+                    <ul>
+                      <li><strong>One-to-One:</strong> Standard feedforward classification (non-sequential).</li>
+                      <li><strong>One-to-Many:</strong> Image Captioning (single image input $\rightarrow$ sequence of words).</li>
+                      <li><strong>Many-to-One:</strong> Sentiment Analysis / Text Classification (sequence of words $\rightarrow$ single sentiment class).</li>
+                      <li><strong>Many-to-Many (Synced):</strong> Video Frame Classification / Named Entity Recognition (NER).</li>
+                      <li><strong>Many-to-Many (Async / Seq2Seq):</strong> Machine Translation / Speech-to-Text (Encoder-Decoder model).</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">4.5 - 4.7 Training via BPTT and the Vanishing / Exploding Gradient Problem</h3>
+          <div class="topic-body">
+            <p><strong>Backpropagation Through Time (BPTT):</strong> To train an RNN, the recurrent loop is "unfolded" across all time steps $T$. The total loss is the sum of losses at each time step: $\mathcal{L} = \sum_{t=1}^T \mathcal{L}_t$. Gradients are accumulated across all unfolded time steps:</p>
+                    $$\frac{\partial \mathcal{L}}{\partial \mathbf{W}_{hh}} = \sum_{t=1}^T \sum_{k=1}^t \frac{\partial \mathcal{L}_t}{\partial \mathbf{h}_t} \frac{\partial \mathbf{h}_t}{\partial \mathbf{h}_k} \frac{\partial \mathbf{h}_k}{\partial \mathbf{W}_{hh}}$$
+                    <p><strong>Vanishing / Exploding Gradients:</strong></p>
+                    <p>The Jacobian term $\frac{\partial \mathbf{h}_t}{\partial \mathbf{h}_k} = \prod_{j=k+1}^t \frac{\partial \mathbf{h}_j}{\partial \mathbf{h}_{j-1}}$ involves multiplying weight matrix $\mathbf{W}_{hh}$ repeated $t-k$ times. If the largest eigenvalue of $\mathbf{W}_{hh} < 1$, gradients decay exponentially to zero (vanishing gradients), rendering standard RNNs incapable of learning long-term dependencies (>10 time steps). If eigenvalue $> 1$, gradients explode to infinity (mitigated by <em>Gradient Clipping</em>).</p>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">4.8 &amp; 4.9 Long Short-Term Memory (LSTM), GRU, and Encoder-Decoder Architecture</h3>
+          <div class="topic-body">
+            <p><strong>LSTM (Hochreiter & Schmidhuber, 1997):</strong> Solves vanishing gradients using a linear <strong>Cell State ($\mathbf{C}_t$)</strong> regulated by 3 multiplicative gates:</p>
+                    <ul>
+                      <li><strong>Forget Gate ($\mathbf{f}_t$):</strong> Decides what information to discard from cell state: $\mathbf{f}_t = \sigma(\mathbf{W}_f [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_f)$.</li>
+                      <li><strong>Input Gate ($\mathbf{i}_t, \tilde{\mathbf{C}}_t$):</strong> Decides what new information to store: $\mathbf{i}_t = \sigma(\mathbf{W}_i [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_i)$, $\tilde{\mathbf{C}}_t = \tanh(\mathbf{W}_c [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_c)$.</li>
+                      <li><strong>Cell State Update ($\mathbf{C}_t$):</strong> $\mathbf{C}_t = \mathbf{f}_t \odot \mathbf{C}_{t-1} + \mathbf{i}_t \odot \tilde{\mathbf{C}}_t$ (Constant error carousel allows gradients to flow linearly without decay).</li>
+                      <li><strong>Output Gate ($\mathbf{o}_t, \mathbf{h}_t$):</strong> $\mathbf{o}_t = \sigma(\mathbf{W}_o [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_o)$ and $\mathbf{h}_t = \mathbf{o}_t \odot \tanh(\mathbf{C}_t)$.</li>
+                    </ul>
+                    <p><strong>Gated Recurrent Unit (GRU):</strong> Merges cell state and hidden state, using only 2 gates: <em>Reset Gate</em> and <em>Update Gate</em>, offering faster training with fewer parameters.</p>
+                    <p><strong>Encoder-Decoder (Seq2Seq):</strong> An Encoder RNN compresses an input sequence into a fixed-length <em>Context Vector</em>, which a Decoder RNN unrolls into the target language sequence.</p>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Hidden State</div>
+          <div class="revision-card-body">A recurrent vector capturing memory of past sequence inputs up to the current time step.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Backpropagation Through Time (BPTT)</div>
+          <div class="revision-card-body">The optimization algorithm that unrolls an RNN across temporal time steps to compute cumulative gradients.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Constant Error Carousel (CEC)</div>
+          <div class="revision-card-body">The additive linear cell state update path in LSTM that prevents vanishing gradients over long sequences.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Seq2Seq Model</div>
+          <div class="revision-card-body">An architecture comprising an Encoder network that creates a latent thought vector and a Decoder network generating target sequences.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the architectural design, mathematical working, and gate equations of Long Short-Term Memory (LSTM) networks in detail.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">LSTM</span><span class="qa-tag">Core Architecture</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Core Problem Addressed by LSTM:</span>
+              <span>Standard RNNs fail to preserve dependencies over long sequences due to exponential gradient decay during backpropagation through time.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Dual State Architecture:</span>
+              <span>LSTMs maintain two distinct recurrent states: the Cell State ($C_t$, long-term highway) and the Hidden State ($h_t$, short-term working memory).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Forget Gate Equation &amp; Role:</span>
+              <span>Calculates $f_t = \sigma(W_f [h_{t-1}, x_t] + b_f)$ using Sigmoid; outputs near 0 discard past information, while outputs near 1 retain it.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Input Gate Equation &amp; Candidate Memory:</span>
+              <span>Calculates $i_t = \sigma(W_i [h_{t-1}, x_t] + b_i)$ to scale candidate vector $\tilde{C}_t = \tanh(W_c [h_{t-1}, x_t] + b_c)$ of prospective new information.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Linear Cell State Update:</span>
+              <span>Cell state updates via additive operation: $C_t = f_t \odot C_{t-1} + i_t \odot \tilde{C}_t$, providing a linear gradient superhighway.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Output Gate Equation &amp; Hidden State Calculation:</span>
+              <span>Calculates $o_t = \sigma(W_o [h_{t-1}, x_t] + b_o)$ and filters squashed cell state: $h_t = o_t \odot \tanh(C_t)$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Resolution of Vanishing Gradient:</span>
+              <span>Because $\frac{\partial C_t}{\partial C_{t-1}} = f_t$, when forget gate is active ($f_t \approx 1$), gradient flows over hundreds of time steps without decaying.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Multiplicative Gating Mechanism:</span>
+              <span>Element-wise multiplication ($\odot$) controls information passage dynamically based on current context.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Parameter Complexity:</span>
+              <span>Each LSTM cell contains 4 distinct weight matrix sets ($W_f, W_i, W_c, W_o$), requiring $4 \times (d_h(d_h + d_x) + d_h)$ parameters.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Applications &amp; Industry Relevance:</span>
+              <span>Powers industrial speech recognition, multi-lingual machine translation, financial forecasting, and musical generation.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain the training process of Recurrent Neural Networks using Backpropagation Through Time (BPTT) and why the Vanishing Gradient problem occurs.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">BPTT &amp; Vanishing Gradients</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Temporal Unfolding Concept:</span>
+              <span>An RNN is conceptually unrolled into a feedforward graph of $T$ sequential stages, sharing identical weight matrices ($W_{xh}, W_{hh}, W_{hy}$) across all steps.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Forward Sequence Propagation:</span>
+              <span>At each time step $t$, $h_t = \tanh(W_{hh} h_{t-1} + W_{xh} x_t + b_h)$ and $\hat{y}_t = \text{Softmax}(W_{hy} h_t + b_y)$ are evaluated sequentially.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Total Sequence Loss Aggregation:</span>
+              <span>Global loss is the cumulative sum of step-wise cross-entropy errors: $L_{total} = \sum_{t=1}^T L_t(\hat{y}_t, y_t)$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Chain Rule Across Time Steps:</span>
+              <span>Computing $\frac{\partial L}{\partial W_{hh}}$ requires summing partial derivatives across all historical time steps $k \le t$: $\frac{\partial L_t}{\partial W_{hh}} = \sum_{k=1}^t \frac{\partial L_t}{\partial h_t} \frac{\partial h_t}{\partial h_k} \frac{\partial h_k}{\partial W_{hh}}$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Temporal Jacobian Product Chain:</span>
+              <span>The term $\frac{\partial h_t}{\partial h_k} = \prod_{j=k+1}^t \frac{\partial h_j}{\partial h_{j-1}} = \prod_{j=k+1}^t W_{hh}^T \text{diag}(1 - \tanh^2(z_j))$ involves repeated matrix multiplications.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Mathematical Origin of Vanishing Gradients:</span>
+              <span>Since $\tanh'(z) \le 1$ and if the spectral radius of $W_{hh} < 1$, the continuous product approaches zero exponentially fast as $t - k > 10$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Consequence on Long-Term Dependencies:</span>
+              <span>Early historical inputs receive virtually zero error gradient, making the network blind to contextual relationships in distant past tokens.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Exploding Gradient Phenomenon:</span>
+              <span>Conversely, if spectral radius of $W_{hh} > 1$, gradient magnitudes grow exponentially, causing NaN weights and catastrophic training divergence.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Gradient Clipping Solution:</span>
+              <span>Exploding gradients are effectively neutralized by thresholding gradient norm: $g \leftarrow g \cdot \frac{\text{threshold}}{\|g\|}$ if $\|g\| > \text{threshold}$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Architectural Solutions (LSTM / GRU):</span>
+              <span>Vanishing gradient is definitively resolved by switching from standard RNN units to gated cells (LSTM/GRU) with linear cell states.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Describe the Sequence-to-Sequence (Seq2Seq) Encoder-Decoder architecture, its working mechanism, and its application in Neural Machine Translation.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Seq2Seq &amp; Applications</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Seq2Seq Architectural Motivation:</span>
+              <span>Standard RNNs require input and output sequences to have identical lengths; Seq2Seq maps variable-length input sequences to variable-length output sequences.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Encoder Sub-Network Function:</span>
+              <span>The Encoder RNN processes input tokens $x_1, x_2, \dots, x_{T_x}$ sequentially, updating its hidden state at each time step until reaching the end-of-sentence (<EOS>) token.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Context Vector (Thought Vector):</span>
+              <span>The final hidden state of the Encoder $h_{T_x}$ summarizes the semantic meaning of the entire source sentence into a single fixed-size embedding vector.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Decoder Initialization:</span>
+              <span>The Context Vector is passed as the initial hidden state $s_0$ to the Decoder RNN network.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Autoregressive Decoding Process:</span>
+              <span>The Decoder generates target tokens sequentially: at step $t$, it predicts output word $y_t$ given previous output $y_{t-1}$ and current hidden state $s_t$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Teacher Forcing Technique:</span>
+              <span>During training, ground truth target tokens are fed as inputs to the Decoder at the next step rather than model predictions, stabilizing and accelerating convergence.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Inference Beam Search:</span>
+              <span>During testing/inference, Beam Search explores the top $K$ most probable sequence hypotheses simultaneously rather than greedy token selection.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Information Bottleneck Limitation:</span>
+              <span>Compressing long sentences (e.g., >30 words) into a single fixed-length context vector causes information loss and poor translation quality for long passages.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Attention Mechanism Enhancement:</span>
+              <span>Attention allows the Decoder to dynamically look back and take a weighted average of all intermediate Encoder hidden states at each decoding step.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Industrial NLP Use Cases:</span>
+              <span>Powers Google Translate, automated code generation, text summarization, and speech-to-text transcription systems.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Standard RNN vs LSTM vs Gated Recurrent Unit (GRU)</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Standard RNN</th><th>LSTM (Long Short-Term Memory)</th><th>GRU (Gated Recurrent Unit)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Internal States</td><td>Single Hidden State ($h_t$).</td><td>Dual States: Cell State ($C_t$) & Hidden State ($h_t$).</td><td>Single Hidden State ($h_t$).</td></tr><tr><td>Gating Mechanism</td><td>No gates; only simple tanh non-linearity.</td><td>3 Gates: Forget Gate, Input Gate, Output Gate.</td><td>2 Gates: Reset Gate and Update Gate.</td></tr><tr><td>Cell State Update</td><td>Overwrites hidden state via non-linear tanh matrix product.</td><td>Linear additive cell state update ($f_t C_{t-1} + i_t \tilde{C}_t$).</td><td>Linearly interpolates previous state using update gate $z_t$.</td></tr><tr><td>Vanishing Gradient</td><td>Severely suffers from vanishing/exploding gradients.</td><td>Effectively eliminates vanishing gradients via linear cell state.</td><td>Eliminates vanishing gradients with simpler architecture.</td></tr><tr><td>Parameter Count</td><td>Lowest parameter count ($1\times$ baseline).</td><td>High parameter count ($4\times$ baseline parameters).</td><td>Moderate parameter count ($3\times$ baseline, ~25% fewer than LSTM).</td></tr><tr><td>Training Speed</td><td>Fastest per epoch but fails to learn long sequences.</td><td>Slower per epoch due to 4 gate matrix computations.</td><td>Faster to train than LSTM due to fewer gate operations.</td></tr><tr><td>Memory Capacity</td><td>Fails on sequences longer than ~10 steps.</td><td>Maintains dependencies across hundreds of time steps.</td><td>Maintains long-term dependencies comparable to LSTM.</td></tr><tr><td>Overfitting Risk</td><td>Low parameter capacity but high training instability.</td><td>Higher risk of overfitting on smaller datasets.</td><td>Slightly lower overfitting risk on smaller datasets compared to LSTM.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Feedforward Neural Network vs Recurrent Neural Network</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Feedforward Neural Network (FNN)</th><th>Recurrent Neural Network (RNN)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Data Assumption</td><td>Assumes all input samples are independent and identically distributed (i.i.d.).</td><td>Assumes sequential/temporal dependency between consecutive time steps.</td></tr><tr><td>Memory / Feedback Loops</td><td>No internal memory; signals move strictly forward in one direction.</td><td>Contains cyclic recurrent feedback loops that store past memory.</td></tr><tr><td>Input/Output Dimensions</td><td>Requires fixed-dimension input vectors and produces fixed outputs.</td><td>Handles variable-length input sequences and variable-length output sequences.</td></tr><tr><td>Weight Sharing Over Time</td><td>Weights are layer-specific and not shared across temporal sequences.</td><td>The same weight matrices ($W_{hh}, W_{xh}, W_{hy}$) are reused at every time step.</td></tr><tr><td>Training Algorithm</td><td>Standard Backpropagation with Gradient Descent.</td><td>Backpropagation Through Time (BPTT) with temporal unfolding.</td></tr><tr><td>Temporal Order Sensitivity</td><td>Indifferent to order; shuffling input features does not affect MLP learning.</td><td>Critically sensitive to sequence order; shuffling tokens alters semantic meaning.</td></tr><tr><td>Computation Execution</td><td>Can process entire batch in a single parallel feedforward matrix pass.</td><td>Inherently sequential; time step $t$ strictly depends on result of $t-1$.</td></tr><tr><td>Primary Domains</td><td>Tabular classification, static pattern recognition, regression.</td><td>Natural language processing, time series forecasting, speech recognition, music synthesis.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>RNNs maintain internal hidden state $h_t = 	anh(W_{hh} h_{t-1} + W_{xh} x_t + b)$ to process sequential dependencies.</li><li style='margin-bottom:0.6rem;'>Backpropagation Through Time (BPTT) unrolls the network across time steps $T$ to compute gradients.</li><li style='margin-bottom:0.6rem;'>Vanishing gradients in standard RNNs occur due to repeated multiplication of weight matrices across time steps.</li><li style='margin-bottom:0.6rem;'>LSTM uses Forget ($f_t$), Input ($i_t$), and Output ($o_t$) gates with a linear Cell State ($C_t$) to preserve long-term memory.</li><li style='margin-bottom:0.6rem;'>GRU simplifies LSTM by combining cell and hidden states using Update and Reset gates.</li><li style='margin-bottom:0.6rem;'>Seq2Seq Encoder-Decoder models transform variable-length input sequences into variable-length output sequences.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20III%20-%20Convolutional%20Neural%20Networks/main.html" class="unit-nav-btn">&larr; Previous: Unit III</a></div>
+      <div><a href="../Unit%20V%20-%20Deep%20Learning%20Applications%2C%20Platforms%20and%20Software%20Libraries/main.html" class="unit-nav-btn">Next: Unit V &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

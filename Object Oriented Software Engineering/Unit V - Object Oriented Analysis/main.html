@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit V - Object Oriented Analysis | Object Oriented Software Engineering</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Object Oriented Software Engineering</a> <span class="separator">/</span> <span class="current">Unit V - Object Oriented Analysis</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJCT303 &bull; Unit V &bull; 4 Hrs</span>
+      <h1 class="hero-title">Unit V - Object Oriented Analysis</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">4 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>5.1</strong> Iterative Development</li><li><strong>5.2</strong> Unified process &amp; UP Phases</li><li><strong>5.2.1</strong> Inception</li><li><strong>5.2.2</strong> Elaboration</li><li><strong>5.2.3</strong> Construction</li><li><strong>5.2.4</strong> Transition</li><li><strong>5.3</strong> Understanding requirements (FURPS+)</li><li><strong>5.4</strong> UP Disciplines</li><li><strong>5.5</strong> Agile UP</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">5.1 &amp; 5.2 Unified Process (UP) Lifecycle &amp; The 4 Phases</h3>
+          <div class="topic-body">
+            <p><strong>The Unified Process (UP / RUP):</strong> An iterative, incremental, use-case driven, architecture-centric, and risk-managed software engineering framework created by the Three Amigos (Ivar Jacobson, Grady Booch, James Rumbaugh).</p>
+                    <p><strong>The Four Sequential UP Phases:</strong></p>
+                    <ul>
+                      <li><strong>1. Inception Phase:</strong> Establish business case, project scope, feasibility, initial cost/schedule estimates, identify primary actors, and document ~10% of critical use cases. <em>Milestone: Lifecycle Objectives (LCO).</em></li>
+                      <li><strong>2. Elaboration Phase:</strong> Mitigate high-priority architectural risks, establish the baseline executable architecture, solidify core requirements (~80% of use cases), and create domain model. <em>Milestone: Lifecycle Architecture (LCA).</em></li>
+                      <li><strong>3. Construction Phase:</strong> Iterative coding, testing, and component development to build the remaining features and produce the complete software product. <em>Milestone: Initial Operational Capability (IOC).</em></li>
+                      <li><strong>4. Transition Phase:</strong> Deploy the system into the operational user environment, conduct beta testing, user training, bug fixing, and rollout. <em>Milestone: Product Release (PR).</em></li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">5.3 Understanding Requirements: The FURPS+ Model</h3>
+          <div class="topic-body">
+            <p>The <strong>FURPS+</strong> model (Robert Grady / Hewlett-Packard) categorizes software requirements:</p>
+                    <ul>
+                      <li><strong>F - Functionality:</strong> Feature capabilities, security, business workflows, mathematical calculations.</li>
+                      <li><strong>U - Usability:</strong> Human factors, UI aesthetics, ease of learning, documentation, accessibility.</li>
+                      <li><strong>R - Reliability:</strong> Mean Time Between Failures (MTBF), failure frequency, recoverability, predictability.</li>
+                      <li><strong>P - Performance:</strong> Execution speed, latency, response time, resource utilization, throughput (TPS).</li>
+                      <li><strong>S - Supportability:</strong> Maintainability, testability, extensibility, configurability, localization.</li>
+                      <li><strong>+ (Plus Constraints):</strong> Design constraints, Implementation constraints (Java stack), Interface constraints (REST APIs), Physical constraints (embedded memory limits).</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">5.4 &amp; 5.5 UP Disciplines and Agile Unified Process (AUP)</h3>
+          <div class="topic-body">
+            <p><strong>Core UP Disciplines (Workflows across phases):</strong></p>
+                    <ul>
+                      <li><em>Engineering Disciplines:</em> Business Modeling, Requirements, Analysis & Design, Implementation, Test, Deployment.</li>
+                      <li><em>Supporting Disciplines:</em> Configuration & Change Management, Project Management, Environment.</li>
+                    </ul>
+                    <p><strong>Agile Unified Process (AUP):</strong> A simplified, lightweight version of the Rational Unified Process developed by Scott Ambler. Retains the 4 phases and architecture-centric focus of UP while adopting agile practices (Test-Driven Development - TDD, Agile Modeling, short iterations, lightweight documentation).</p>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Unified Process (UP)</div>
+          <div class="revision-card-body">An iterative and incremental software engineering process framework that is use-case driven and architecture-centric.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Elaboration Phase</div>
+          <div class="revision-card-body">The most critical UP phase where architectural risks are resolved and executable baseline architecture is established.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">FURPS+</div>
+          <div class="revision-card-body">A comprehensive requirements classification framework covering Functional, Usability, Reliability, Performance, Supportability, plus constraints.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Agile UP (AUP)</div>
+          <div class="revision-card-body">A streamlined, lightweight adaptation of UP applying agile techniques (TDD, agile modeling) while maintaining UP phase milestones.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the 4 sequential phases of the Unified Process (Inception, Elaboration, Construction, Transition) with their goals, activities, and milestone criteria.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Unified Process Phases</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Core Philosophy of Unified Process:</span>
+              <span>UP organizes software engineering into 4 chronological phases containing iterative mini-projects, driven by use cases and centered on mitigating technical risks.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Phase 1: Inception Purpose:</span>
+              <span>Establish project viability, business rationale, return on investment (ROI), high-level project boundaries, and determine whether the project warrants funding.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Inception Key Activities &amp; Deliverables:</span>
+              <span>Draft business case, identify primary actors, define ~10% of high-level use cases, outline rough cost/schedule estimates, and construct feasibility risk matrix.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Inception Milestone: Lifecycle Objectives (LCO):</span>
+              <span>Stakeholders evaluate project scope and business case to approve capital funding before committing major engineering resources.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Phase 2: Elaboration Purpose:</span>
+              <span>Mitigate primary architectural risks, validate requirements, and construct an executable baseline architecture through early prototyping.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Elaboration Activities &amp; Deliverables:</span>
+              <span>Detail ~80% of use cases, construct Domain Model, design database schema, build executable architectural prototype, and refine cost estimates.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Elaboration Milestone: Lifecycle Architecture (LCA):</span>
+              <span>Verifies that core architectural risks are resolved and baseline architecture is proven stable before massive code construction begins.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Phase 3: Construction Purpose:</span>
+              <span>Iteratively develop, implement, and unit-test all remaining software modules, transforming the architectural skeleton into a complete operational system.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Construction Milestone: Initial Operational Capability (IOC):</span>
+              <span>Delivers the first fully integrated beta software product ready for user acceptance testing in target deployment environments.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Phase 4: Transition Purpose &amp; Product Release Milestone:</span>
+              <span>Deploys software to production, performs beta testing, conducts end-user training, fixes defects, culminating in the Product Release (PR) milestone.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain the FURPS+ model for requirement classification with detailed examples for each category.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">FURPS+ Model</span><span class="qa-tag">Requirements Engineering</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Origin and Significance of FURPS+:</span>
+              <span>Developed by Robert Grady at Hewlett-Packard, FURPS+ is a standardized taxonomy for comprehensively capturing functional and non-functional requirements.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&#x27;F&#x27; - Functionality:</span>
+              <span>Specifies core business capabilities, feature sets, mathematical calculations, security access controls, and input/output workflows (e.g., 'User can generate GST invoices').</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&#x27;U&#x27; - Usability:</span>
+              <span>Specifies human-computer interaction qualities: UI responsiveness, accessibility (WCAG), learnability, screen layouts, error messaging clarity, and documentation.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&#x27;R&#x27; - Reliability:</span>
+              <span>Specifies system trustworthiness: Mean Time Between Failures (MTBF), failure frequency, crash recovery time, fault tolerance, and data backup integrity.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&#x27;P&#x27; - Performance:</span>
+              <span>Specifies quantitative execution benchmarks: maximum transaction latency (<200ms), throughput (>5000 TPS), CPU memory footprint, and network bandwidth usage.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&#x27;S&#x27; - Supportability:</span>
+              <span>Specifies ease of ongoing engineering maintenance: testability, maintainability, modularity, configurability via YAML/JSON, and multi-language localization (i18n).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&#x27;+&#x27; - Design Constraints:</span>
+              <span>Architectural restrictions imposed on designers (e.g., 'Must adhere to Model-View-Controller architecture and microservice boundaries').</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&#x27;+&#x27; - Implementation Constraints:</span>
+              <span>Technical stack rules imposed on programmers (e.g., 'Must be implemented in Java 17 and utilize Spring Boot framework').</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&#x27;+&#x27; - Interface Constraints:</span>
+              <span>Mandates compatibility with external external systems (e.g., 'Must expose OpenAPI 3.0 REST endpoints and integrate with Stripe payment gateway').</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&#x27;+&#x27; - Physical Constraints:</span>
+              <span>Hardware sizing and environment constraints (e.g., 'Client app must consume less than 150MB RAM on Android mobile devices').</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Discuss the 9 Disciplines of the Unified Process and explain how Agile Unified Process (AUP) simplifies UP for modern development teams.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">UP Disciplines &amp; Agile UP</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Two-Dimensional Matrix Structure of UP:</span>
+              <span>UP is structured across two axes: Dynamic Horizontal Axis (Time: Inception, Elaboration, Construction, Transition) and Static Vertical Axis (Disciplines / Workflows).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Engineering Discipline 1: Business Modeling:</span>
+              <span>Understands organizational context and business domain processes through business use case models and domain models.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Engineering Discipline 2: Requirements:</span>
+              <span>Elicits, analyzes, and documents system behaviors and quality constraints using Use Cases and FURPS+ specifications.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Engineering Discipline 3: Analysis &amp; Design:</span>
+              <span>Transforms requirements into technical blueprints, creating class diagrams, interaction diagrams, and architectural views.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Engineering Discipline 4: Implementation:</span>
+              <span>Translates design specifications into executable source code, conducts unit tests, and integrates software components.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Engineering Discipline 5: Test &amp; Deployment:</span>
+              <span>Verifies correctness through integration and system testing, followed by packaging and deploying releases into production environments.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Supporting Disciplines (CM, PM, Environment):</span>
+              <span>Manages code versioning and change requests (Configuration & Change), project scheduling and risk (Project Management), and developer tooling (Environment).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Motivation for Agile UP (AUP):</span>
+              <span>Traditional Rational Unified Process (RUP) became criticized for excessive documentation and heavy ceremonial overhead, prompting Scott Ambler to create AUP.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Agile Techniques Integrated in AUP:</span>
+              <span>Adopts Test-Driven Development (TDD), Agile Model-Driven Development (AMDD), continuous integration, and simple user stories within UP's 4 phases.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Key Differences: UP vs AUP:</span>
+              <span>UP uses heavy formal documentation and CASE tools; AUP prioritizes working software, lightweight modeling, and collocated collaborative communication.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Unified Process (UP) vs Traditional Waterfall Model</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Unified Process (UP)</th><th>Traditional Waterfall Model</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Development Paradigm</td><td>Iterative and incremental with continuous feedback loops.</td><td>Linear and sequential with strict phase gates.</td></tr><tr><td>Risk Management</td><td>Identifies and mitigates high architectural risks early in Elaboration.</td><td>Risk mitigation occurs late; risks discovered during testing/deployment.</td></tr><tr><td>Requirement Evolution</td><td>Embraces changing requirements across iterations.</td><td>Assumes requirements are frozen and immutable upfront.</td></tr><tr><td>Delivery of Working Code</td><td>Executable architectural baseline delivered early in Elaboration.</td><td>Working software delivered only at the very end of the project.</td></tr><tr><td>Testing Integration</td><td>Testing is continuous across every iteration in all phases.</td><td>Testing occurs as a distinct phase near the end of the lifecycle.</td></tr><tr><td>Architecture Focus</td><td>Architecture-centric; builds executable prototype early.</td><td>Document-centric; architecture remains theoretical on paper until coding.</td></tr><tr><td>Customer Feedback</td><td>Continuous customer evaluation at each iteration milestone.</td><td>Customer feedback collected only at start (SRS) and final acceptance.</td></tr><tr><td>Project Failure Rate</td><td>Significantly lower failure rate due to early risk mitigation.</td><td>High project failure rate on large, evolving software systems.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Agile UP (AUP) vs Standard Rational Unified Process (RUP)</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Agile Unified Process (AUP)</th><th>Standard Rational Unified Process (RUP)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Process Weight</td><td>Lightweight, streamlined, and agile-friendly.</td><td>Heavyweight, highly ceremonial, and process-intensive.</td></tr><tr><td>Documentation Policy</td><td>Lightweight; only creates models that provide immediate value.</td><td>Exhaustive formal documentation artifacts for every discipline.</td></tr><tr><td>Testing Approach</td><td>Test-Driven Development (TDD) and automated continuous testing.</td><td>Formal test planning, test scripting, and defect tracking phases.</td></tr><tr><td>Tooling Requirement</td><td>Simple whiteboards, agile tracking tools, lightweight IDEs.</td><td>Heavy Enterprise CASE tools (Rational Rose, RequisitePro).</td></tr><tr><td>Iteration Length</td><td>Short iterations ranging from 1 to 4 weeks.</td><td>Longer iterations typically ranging from 4 to 12 weeks.</td></tr><tr><td>Team Communication</td><td>Informal, daily standups, high team collaboration.</td><td>Formal status reports, review boards, and sign-off meetings.</td></tr><tr><td>Core Discipline Count</td><td>Simplified into 7 streamlined disciplines.</td><td>Structured into 9 rigorous formal disciplines.</td></tr><tr><td>Ideal Project Context</td><td>Small to mid-sized teams building modern agile software.</td><td>Large-scale defense, aerospace, and heavily regulated enterprise systems.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>Unified Process (UP) is an iterative, use-case driven, architecture-centric, risk-managed process framework.</li><li style='margin-bottom:0.6rem;'>The 4 UP Phases & Milestones: Inception (LCO), Elaboration (LCA), Construction (IOC), Transition (PR).</li><li style='margin-bottom:0.6rem;'>Elaboration phase is most critical: resolves architectural risks and builds executable baseline architecture.</li><li style='margin-bottom:0.6rem;'>FURPS+ model: Functionality, Usability, Reliability, Performance, Supportability + Constraints (Design/Implementation/Interface/Physical).</li><li style='margin-bottom:0.6rem;'>UP spans 9 Disciplines (6 engineering + 3 supporting) across the 4 phases.</li><li style='margin-bottom:0.6rem;'>Agile UP (AUP) simplifies UP by integrating Test-Driven Development (TDD) and lightweight agile modeling.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20IV%20-%20Basic%20Behavioral%20and%20Architectural%20Modeling/main.html" class="unit-nav-btn">&larr; Previous: Unit IV</a></div>
+      <div><a href="../main.html" class="unit-nav-btn">Back to Object Oriented Software Engineering &uarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit IV - Worker Threads and Notification Mechanisms | Mobile Application Development</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Mobile Application Development</a> <span class="separator">/</span> <span class="current">Unit IV - Worker Threads and Notification Mechanisms</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJET306A &bull; Unit IV &bull; 4 Hrs</span>
+      <h1 class="hero-title">Unit IV - Worker Threads and Notification Mechanisms</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">4 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>4.1</strong> Threads running on UI Thread (runOnUiThread)</li><li><strong>4.2</strong> Worker Thread</li><li><strong>4.3</strong> Handlers &amp; Runnable</li><li><strong>4.4</strong> AsyncTask (in detail - onPreExecute, doInBackground, onProgressUpdate, onPostExecute)</li><li><strong>4.5</strong> Broadcast Receiver</li><li><strong>4.6</strong> Services (Service Lifecycle, Bounded Service, Unbounded Service)</li><li><strong>4.7</strong> Notification (NotificationManager, NotificationChannel, NotificationCompat)</li><li><strong>4.8</strong> Alarm (AlarmManager)</li><li><strong>4.9</strong> Accessing Phone Services (Call, SMS)</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">4.1 - 4.4 Multi-Threading, Worker Threads, Handlers, and AsyncTask</h3>
+          <div class="topic-body">
+            <p><strong>The Android Single-Thread Model (UI Thread):</strong></p>
+                    <p>Android applications execute UI rendering and touch handling on a single <strong>Main Thread (UI Thread)</strong>. If the UI Thread is blocked for more than 5 seconds, the OS terminates the app with an <strong>Application Not Responding (ANR)</strong> dialog. All long-running operations (networking, database queries, file I/O) must run on <strong>Worker Threads</strong>.</p>
+                    <p><strong>Thread Communication Mechanisms:</strong></p>
+                    <ul>
+                      <li><code>runOnUiThread(Runnable action)</code>: Executes code on the UI thread from background threads.</li>
+                      <li><strong>Handler & Looper:</strong> A <code>Handler</code> enqueues <code>Message</code> and <code>Runnable</code> objects into the thread's <code>MessageQueue</code> processed by a <code>Looper</code>.</li>
+                      <li><strong>AsyncTask (4 Execution Steps):</strong>
+                        <ol>
+                          <li><code>onPreExecute()</code>: Runs on UI Thread before background task begins (show ProgressBar).</li>
+                          <li><code>doInBackground(Params...)</code>: Runs on Worker Thread; performs heavy computations. Calls <code>publishProgress()</code>.</li>
+                          <li><code>onProgressUpdate(Progress...)</code>: Runs on UI Thread; updates progress bar.</li>
+                          <li><code>onPostExecute(Result)</code>: Runs on UI Thread after task finishes; displays final results.</li>
+                        </ol>
+                      </li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">4.5 &amp; 4.6 Broadcast Receivers &amp; Android Services</h3>
+          <div class="topic-body">
+            <p><strong>Broadcast Receiver:</strong> Listens for system events (<code>android.intent.action.BOOT_COMPLETED</code>). Implements <code>onReceive(Context context, Intent intent)</code>.</p>
+                    <p><strong>Android Services:</strong> Background components without UI:</p>
+                    <ul>
+                      <li><strong>Started / Unbounded Service:</strong> Started via <code>startService(intent)</code>. Runs indefinitely in the background until it calls <code>stopSelf()</code> or an activity calls <code>stopService()</code>. Lifecycle: <code>onCreate() $\rightarrow$ onStartCommand() $\rightarrow$ onDestroy()</code>.</li>
+                      <li><strong>Bound Service:</strong> Bound via <code>bindService(intent, connection, flags)</code>. Provides an <code>IBinder</code> interface for client-server RPC communication. Lifecycle: <code>onCreate() $\rightarrow$ onBind() $\rightarrow$ onUnbind() $\rightarrow$ onDestroy()</code>.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">4.7 - 4.9 Notifications, Alarms, and Telephony Services (SMS / Call)</h3>
+          <div class="topic-body">
+            <p><strong>Notifications (Android 8.0+ Oreo Requirements):</strong></p>
+                    <ul>
+                      <li>Requires a <strong>NotificationChannel</strong> (ID, Name, Importance).</li>
+                      <li>Built using <code>NotificationCompat.Builder</code>: SmallIcon, ContentTitle, ContentText, Priority, and <strong>PendingIntent</strong> (opens activity on tap).</li>
+                      <li>Posted via <code>NotificationManagerCompat.from(context).notify(id, notification)</code>.</li>
+                    </ul>
+                    <p><strong>AlarmManager:</strong> Schedules operations at fixed times or intervals even if app is asleep (<code>setExact()</code>, <code>setRepeating()</code> with <code>RTC_WAKEUP</code>).</p>
+                    <p><strong>Phone Services:</strong></p>
+                    <ul>
+                      <li><em>Making Calls:</em> <code>Intent(Intent.ACTION_CALL, Uri.parse("tel:..."))</code> (requires <code>android.permission.CALL_PHONE</code>).</li>
+                      <li><em>Sending SMS:</em> <code>SmsManager.getDefault().sendTextMessage(phone, null, message, sentIntent, deliveryIntent)</code> (requires <code>android.permission.SEND_SMS</code>).</li>
+                    </ul>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">ANR (Application Not Responding)</div>
+          <div class="revision-card-body">System error dialog shown when the UI thread is blocked for over 5 seconds.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">AsyncTask</div>
+          <div class="revision-card-body">Abstract helper class that facilitates executing background tasks and publishing results directly to the UI thread.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">NotificationChannel</div>
+          <div class="revision-card-body">Mandatory category channel in Android 8.0+ grouping notifications with distinct user-configurable settings.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">PendingIntent</div>
+          <div class="revision-card-body">A token granted to external applications (like NotificationManager) to execute an Intent with your application&#x27;s permissions.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the Android Single-Thread model, the causes of ANR errors, and the complete step-by-step lifecycle of AsyncTask.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">AsyncTask &amp; Threading</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">The Android Single-Thread Rule:</span>
+              <span>Android UI toolkit is not thread-safe; all UI widgets MUST only be created, modified, and updated on the dedicated Main UI Thread.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Application Not Responding (ANR) Trigger:</span>
+              <span>If an intensive operation (HTTP download, database query) blocks the UI thread for >5 seconds, Android OS displays the fatal ANR dialog.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Worker Thread Architecture:</span>
+              <span>Background operations must be offloaded to worker threads (`new Thread(new Runnable())`) to keep the UI thread responsive at 60 FPS.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Cross-Thread UI Update Restriction:</span>
+              <span>Worker threads cannot directly modify UI views; doing so throws `CalledFromWrongThreadException`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">AsyncTask Architecture (&lt;Params, Progress, Result&gt;):</span>
+              <span>An abstract helper class encapsulating thread creation, background execution, and synchronized UI thread communication.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Step 1: onPreExecute() Callback:</span>
+              <span>Runs on the UI Thread before execution begins; used to initialize UI elements and display a spinning `ProgressBar`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Step 2: doInBackground(Params...):</span>
+              <span>Runs on a dedicated Worker Thread; executes the heavy background processing and periodically calls `publishProgress()`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Step 3: onProgressUpdate(Progress...):</span>
+              <span>Runs on the UI Thread; receives progress values dispatched by `publishProgress()` to update progress bars in real time.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Step 4: onPostExecute(Result):</span>
+              <span>Runs on the UI Thread after background processing finishes; receives final result data to dismiss progress dialog and update UI.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">AsyncTask Deprecation &amp; Modern Replacements:</span>
+              <span>AsyncTask was deprecated in API 30 due to memory leaks; replaced in modern Kotlin by Coroutines and in Java by `ExecutorService` with `Handler`.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Compare Started (Unbounded) Services and Bound Services. Explain their lifecycles, execution models, and IPC mechanisms.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Services</span><span class="qa-tag">Background Processing</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Definition of Android Service:</span>
+              <span>An application component that executes long-running background tasks without providing a graphical user interface.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Started (Unbounded) Service Overview:</span>
+              <span>Initiated when an activity calls `startService(intent)`; runs indefinitely until explicitly stopped even if the calling activity is destroyed.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Started Service Lifecycle Callbacks:</span>
+              <span>Lifecycle: `onCreate()` (called once) $\rightarrow$ `onStartCommand()` (called on every startService) $\rightarrow$ `onDestroy()`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stopping a Started Service:</span>
+              <span>Must be stopped internally by calling `stopSelf()` or externally from an activity calling `stopService(intent)` to prevent battery drain.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Bound Service Overview:</span>
+              <span>Initiated when a component calls `bindService(intent, conn, flags)`; acts as a server in a client-server architecture.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Bound Service Lifecycle Callbacks:</span>
+              <span>Lifecycle: `onCreate()` $\rightarrow$ `onBind()` (returns IBinder) $\rightarrow$ `onUnbind()` $\rightarrow$ `onDestroy()`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">IBinder &amp; Local Service Binding:</span>
+              <span>For local intra-app binding, the service returns a custom `Binder` subclass exposing public methods directly to the bound activity.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Messenger &amp; AIDL for Cross-Process IPC:</span>
+              <span>For cross-process remote communication, Bound Services utilize `Messenger` (handler-based) or AIDL (Android Interface Definition Language).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Foreground Service Requirement:</span>
+              <span>Long-running background tasks noticeable to users (music playback, GPS tracking) must run as Foreground Services with a persistent status bar notification.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Service Threading Nuance:</span>
+              <span>A standard Service runs on the MAIN UI thread by default; heavy work inside a service must still spawn worker threads or use `IntentService`.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Describe the implementation of Android Notifications (Channels, NotificationCompat, PendingIntents) and AlarmManager for scheduled tasks.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Notifications &amp; AlarmManager</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Notification Concept &amp; Evolution:</span>
+              <span>Notifications display messages outside your normal app UI in the system status bar and notification shade to inform users of timely events.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Mandatory Notification Channels (Android 8.0+):</span>
+              <span>Android 8.0+ requires grouping notifications into channels (`NotificationChannel(id, name, importance)`) registered with `NotificationManager`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Notification Importance Levels:</span>
+              <span>Channels define importance: `IMPORTANCE_HIGH` (heads-up banner + sound), `IMPORTANCE_DEFAULT` (sound), `IMPORTANCE_LOW` (silent).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">NotificationCompat.Builder Construction:</span>
+              <span>Constructed using: `.setSmallIcon()`, `.setContentTitle()`, `.setContentText()`, `.setAutoCancel(true)`, and `.setPriority()`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">PendingIntent Integration:</span>
+              <span>Wraps an explicit Intent that launches an Activity when the user taps the notification: `PendingIntent.getActivity(context, reqCode, intent, flags)`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Posting the Notification:</span>
+              <span>Dispatched to system shade using `NotificationManagerCompat.from(context).notify(notificationId, builder.build())`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">AlarmManager Architecture:</span>
+              <span>A system service that triggers Intents at specified future clock times or repeating intervals even when the application is not running.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Alarm Types (RTC vs Elapsed Realtime):</span>
+              <span>`RTC_WAKEUP` triggers based on wall-clock time; `ELAPSED_REALTIME_WAKEUP` triggers based on time elapsed since device boot.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Exact vs Inexact Alarms:</span>
+              <span>`setExact()` guarantees precise triggering for alarms/timers; `setInexactRepeating()` batches alarms to conserve battery life (Doze Mode).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Runtime Notification Permissions:</span>
+              <span>Android 13+ (API 33) requires explicit user runtime permission: `<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />`.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Started Service vs Bound Service</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Started (Unbounded) Service</th><th>Bound Service</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Initiating Method</td><td>Started via `startService(intent)`.</td><td>Bound via `bindService(intent, connection, flags)`.</td></tr><tr><td>Lifecycle Binding</td><td>Independent of client activity; runs even if caller is destroyed.</td><td>Tightly coupled to client lifecycle; destroyed when all clients unbind.</td></tr><tr><td>Stopping Mechanism</td><td>Explicit call to `stopSelf()` or `stopService()`.</td><td>Automatically destroyed when the last bound client calls `unbindService()`.</td></tr><tr><td>Primary Callback</td><td>Executes `onStartCommand(intent, flags, startId)`.</td><td>Executes `onBind(intent)` returning an `IBinder` interface.</td></tr><tr><td>Client-Server Interaction</td><td>One-way fire-and-forget; does not return results to caller directly.</td><td>Two-way client-server interaction via direct method calls or RPC.</td></tr><tr><td>Multiple Clients</td><td>Can be started multiple times, but runs as a single service instance.</td><td>Multiple clients can bind concurrently to the same service.</td></tr><tr><td>Typical Use Cases</td><td>Playing background audio, uploading files, periodic syncing.</td><td>Inter-process communication (IPC), local sensor streaming to UI.</td></tr><tr><td>Thread of Execution</td><td>Runs on Main UI thread by default unless worker thread is spawned.</td><td>Runs on Main UI thread by default.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Service vs IntentService vs Thread</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Service</th><th>IntentService (Legacy)</th><th>Thread / Runnable</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Android Component</td><td>Core Android OS component declared in Manifest.</td><td>Subclass of Service declared in Manifest.</td><td>Standard Java language concurrency construct.</td></tr><tr><td>Execution Thread</td><td>Runs on the MAIN UI thread by default.</td><td>Spawns its own dedicated background worker thread.</td><td>Runs on its own standalone thread.</td></tr><tr><td>Task Handling</td><td>Handles concurrent tasks manually.</td><td>Processes tasks sequentially one-by-one via work queue.</td><td>Handles single task assigned to `run()` method.</td></tr><tr><td>Auto-Termination</td><td>Must be explicitly stopped via `stopSelf()`.</td><td>Automatically stops itself after the work queue is empty.</td><td>Terminates when `run()` method completes.</td></tr><tr><td>OS Lifecycle Priority</td><td>High priority; OS avoids killing active services.</td><td>High priority while processing queued intents.</td><td>Low priority; OS kills orphan threads if parent process is killed.</td></tr><tr><td>UI Interaction</td><td>Cannot directly touch UI; requires Handler / Broadcast.</td><td>Cannot directly touch UI; sends broadcasts.</td><td>Cannot touch UI; requires `runOnUiThread()`.</td></tr><tr><td>Configuration Changes</td><td>Survives activity destruction and screen rotation.</td><td>Survives activity destruction and screen rotation.</td><td>Often leaks memory or dies when activity is recreated.</td></tr><tr><td>Modern Replacement</td><td>Foreground Service / WorkManager.</td><td>WorkManager / JobIntentService.</td><td>Java Executors / Kotlin Coroutines.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>UI Thread handles rendering; blocking it for >5s causes an ANR (Application Not Responding) crash.</li><li style='margin-bottom:0.6rem;'>Worker threads run background tasks; UI updates must route via `runOnUiThread()`, `Handler`, or `AsyncTask`.</li><li style='margin-bottom:0.6rem;'>AsyncTask 4 steps: `onPreExecute()` (UI) $\rightarrow$ `doInBackground()` (Worker) $\rightarrow$ `onProgressUpdate()` (UI) $\rightarrow$ `onPostExecute()` (UI).</li><li style='margin-bottom:0.6rem;'>Started Service runs independently (`startService`); Bound Service provides client-server RPC (`bindService`).</li><li style='margin-bottom:0.6rem;'>Android 8.0+ notifications require `NotificationChannel`, `NotificationCompat.Builder`, and `PendingIntent`.</li><li style='margin-bottom:0.6rem;'>AlarmManager schedules future tasks using `RTC_WAKEUP` or `ELAPSED_REALTIME_WAKEUP`.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20III%20-%20Adapters%20and%20Menus/main.html" class="unit-nav-btn">&larr; Previous: Unit III</a></div>
+      <div><a href="../Unit%20V%20-%20Content%20Providers%2C%20SQLite%20Programming%20and%20Location%20Based%20Services/main.html" class="unit-nav-btn">Next: Unit V &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit I - Introduction | Software Testing</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Software Testing</a> <span class="separator">/</span> <span class="current">Unit I - Introduction</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJET306B &bull; Unit I &bull; 5 Hrs</span>
+      <h1 class="hero-title">Unit I - Introduction</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">5 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>1.1</strong> Introduction</li><li><strong>1.2</strong> Basics of Software Testing</li><li><strong>1.3</strong> Testing Principles (Goals, Testing Life Cycle, Phases of Testing)</li><li><strong>1.4</strong> Defects (Defect Life Cycle, Defect Report)</li><li><strong>1.5</strong> Test Plan (IEEE format)</li><li><strong>1.6</strong> Verification and validation</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">1.1 &amp; 1.2 Basics of Software Testing &amp; Quality Assurance</h3>
+          <div class="topic-body">
+            <p><strong>Software Testing:</strong> The systematic process of executing a software application with the intent of finding bugs, errors, and discrepancies between expected behavior and actual behavior, thereby verifying that the system satisfies specified requirements.</p>
+                    <p><strong>Fundamental Taxonomy of Software Flaws:</strong></p>
+                    <ul>
+                      <li><strong>Error (Mistake):</strong> A human action by a developer, analyst, or designer that produces an incorrect result (e.g., programming typo, logical misconception).</li>
+                      <li><strong>Fault / Bug / Defect:</strong> A manifestation of an error in software source code, documentation, or design schema.</li>
+                      <li><strong>Failure:</strong> The dynamic operational deviation of the software from its expected behavior during runtime execution visible to users.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">1.3 Testing Principles &amp; Software Testing Life Cycle (STLC)</h3>
+          <div class="topic-body">
+            <p><strong>7 Fundamental Principles of Software Testing (ISTQB):</strong></p>
+                    <ol>
+                      <li>Testing shows the presence of defects, not their absence.</li>
+                      <li>Exhaustive testing is impossible (risk-based testing is required).</li>
+                      <li>Early testing saves time and money (shifting left).</li>
+                      <li>Defect clustering (Pareto Principle: 80% of bugs reside in 20% of modules).</li>
+                      <li>Pesticide paradox (repeating identical tests loses bug-finding effectiveness).</li>
+                      <li>Testing is context-dependent (e-commerce vs banking vs medical devices).</li>
+                      <li>Absence-of-errors fallacy (a bug-free system is useless if it fails user business needs).</li>
+                    </ol>
+                    <p><strong>Phases of STLC:</strong> 1. Requirement Analysis $\rightarrow$ 2. Test Planning $\rightarrow$ 3. Test Case Design $\rightarrow$ 4. Test Environment Setup $\rightarrow$ 5. Test Execution $\rightarrow$ 6. Test Closure & Reporting.</p>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">1.4 - 1.6 Defect Life Cycle, IEEE 829 Test Plan, and V&amp;V</h3>
+          <div class="topic-body">
+            <p><strong>Defect Life Cycle (Bug Life Cycle):</strong> <em>New $\rightarrow$ Assigned $\rightarrow$ Open $\rightarrow$ Fixed $\rightarrow$ Pending Retest $\rightarrow$ Retest $\rightarrow$ Verified $\rightarrow$ Closed</em> (Alternative branches: <em>Rejected, Duplicate, Deferred, Reopened</em>).</p>
+                    <p><strong>IEEE 829 Standard Test Plan Format (16 Sections):</strong> Test Plan Identifier, Introduction, Test Items, Features to be Tested, Features not to be Tested, Approach / Strategy, Item Pass/Fail Criteria, Suspension/Resumption Criteria, Test Deliverables, Testing Tasks, Environmental Needs, Staffing & Training Needs, Responsibilities, Schedule, Risks & Contingencies, Approvals.</p>
+                    <p><strong>Verification vs Validation:</strong></p>
+                    <ul>
+                      <li><strong>Verification ('Are we building the product right?'):</strong> Static evaluation of documents, designs, and code without running programs (Reviews, Walkthroughs, Inspections).</li>
+                      <li><strong>Validation ('Are we building the RIGHT product?'):</strong> Dynamic evaluation of actual executing software to ensure it satisfies user expectations (Functional, System, UAT).</li>
+                    </ul>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Defect Life Cycle</div>
+          <div class="revision-card-body">The journey of a defect through various states from discovery by a tester to resolution and closure by developers.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">IEEE 829</div>
+          <div class="revision-card-body">The international standard defining the formal 16-section structure and content of software test documentation.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Verification</div>
+          <div class="revision-card-body">Static checking of work products (code, design, SRS) without executing code to verify compliance with specifications.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Validation</div>
+          <div class="revision-card-body">Dynamic testing of the running software against user business requirements and operational expectations.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the complete Software Testing Life Cycle (STLC) step-by-step with entry criteria, exit criteria, and deliverables for each phase.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">STLC Phases</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Overview of STLC:</span>
+              <span>The Software Testing Life Cycle is a structured sequence of specific testing activities conducted systematically to ensure software quality goals are met.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Phase 1: Requirement Analysis:</span>
+              <span>Testers review SRS and architectural documents to identify testable requirements, acceptance criteria, and create the Requirement Traceability Matrix (RTM).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Phase 2: Test Planning:</span>
+              <span>Test Lead estimates testing effort, determines test scope, selects testing strategy, allocates resources, defines toolsets, and authors the IEEE 829 Test Plan.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Phase 3: Test Case Development:</span>
+              <span>Testers author detailed test cases, prepare test data, specify preconditions, expected results, and review test scenarios with business analysts.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Phase 4: Test Environment Setup:</span>
+              <span>Configures hardware, server operating systems, database schemas, test data dumps, and network infrastructure; verified via Smoke / Sanity testing.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Phase 5: Test Execution:</span>
+              <span>Testers execute test cases against the build, log actual results (Pass/Fail), document defects in tracking tools (Jira/Bugzilla), and perform regression testing on fixes.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Phase 6: Test Closure &amp; Reporting:</span>
+              <span>Testing team analyzes test metrics (Defect Density, DRE), prepares the final Test Summary Report, documents lessons learned, and archives test assets.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Entry and Exit Criteria Discipline:</span>
+              <span>Each phase has explicit prerequisites (Entry Criteria) and completion deliverables (Exit Criteria) before advancing to subsequent stages.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Continuous Defect Retesting:</span>
+              <span>When developers mark bugs 'Fixed', testers re-execute failed test cases and run automated regression suites to ensure no ripple-effect defects.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Shift-Left Testing Alignment:</span>
+              <span>Modern STLC starts simultaneously with SDLC requirement phases to catch defects when they are cheapest to rectify.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain the Defect Life Cycle (Bug Life Cycle) in detail with a state transition diagram and describe the standard contents of a Defect Report.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Defect Life Cycle &amp; Reporting</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Definition of Defect Life Cycle:</span>
+              <span>The formal journey of a discovered software bug through various operational states from initial identification to final verification and closure.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">State 1: New / Logged:</span>
+              <span>A tester discovers a defect during test execution and logs it into the bug tracking system with evidence.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">State 2: Assigned &amp; Open:</span>
+              <span>Test Lead / Dev Lead reviews the bug and assigns it to a specific developer; developer investigates root cause (State: Open).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Triage Decisions (Rejected, Duplicate, Deferred):</span>
+              <span>Developer may mark bug: `Rejected` (not a bug), `Duplicate` (already logged), or `Deferred` (postponed to future release).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">State 3: Fixed:</span>
+              <span>The developer refactors source code, commits changes, and marks the defect as `Fixed` in the new build.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">State 4: Pending Retest &amp; Retest:</span>
+              <span>The bug moves to the tester's queue for verification against the patched software build.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">State 5: Verified &amp; Closed:</span>
+              <span>If the bug no longer occurs and functionality passes, the tester changes the state to `Verified` and then `Closed`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Alternative State: Reopened:</span>
+              <span>If the defect persists or causes a regression in the new build, the tester marks the bug as `Reopened` and routes back to the developer.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Defect Report Essential Fields:</span>
+              <span>Defect ID, Title/Summary, Description, Steps to Reproduce (1..N), Expected Result, Actual Result, Severity, Priority, Environment/OS, Build Number, Screenshots/Logs, Reporter, Assignee.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Distinction: Severity vs Priority:</span>
+              <span>Severity measures the technical impact on system operation (Crash/Fatal); Priority measures the business urgency for immediate fixing.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Describe the 16 sections of an IEEE 829 standard Test Plan and explain the difference between Verification and Validation.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">IEEE 829 Test Plan &amp; V&amp;V</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">IEEE 829 Standard Test Plan Purpose:</span>
+              <span>Provides a comprehensive formal blueprint detailing the scope, approach, resources, schedule, and management of software testing activities.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Test Plan Sections 1-4 (Scope &amp; Objectives):</span>
+              <span>1. Test Plan Identifier (unique ID), 2. Introduction, 3. Test Items (modules/versions to test), 4. Features to be Tested.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Test Plan Sections 5-8 (Strategy &amp; Criteria):</span>
+              <span>5. Features Not to be Tested, 6. Approach (testing types/tools), 7. Item Pass/Fail Criteria, 8. Suspension & Resumption Criteria.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Test Plan Sections 9-12 (Deliverables &amp; Setup):</span>
+              <span>9. Test Deliverables (cases, logs, reports), 10. Testing Tasks, 11. Environmental Needs (hardware/software/network), 12. Responsibilities.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Test Plan Sections 13-16 (Management &amp; Approvals):</span>
+              <span>13. Staffing & Training Needs, 14. Schedule & Milestones, 15. Risks & Contingencies, 16. Approvals & Sign-offs.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Verification Definition &amp; Question:</span>
+              <span>Verification asks: 'Are we building the product right?'; it is a static inspection process evaluating artifacts without running code.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Verification Techniques:</span>
+              <span>Includes peer code reviews, formal inspections, architectural walkthroughs, and automated static code analysis (SonarQube).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Validation Definition &amp; Question:</span>
+              <span>Validation asks: 'Are we building the right product?'; it is a dynamic testing process executing software to ensure customer requirements are fulfilled.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Validation Techniques:</span>
+              <span>Includes Black-Box testing, White-Box testing, System testing, Performance testing, and User Acceptance Testing (UAT).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Cost of Defects Rule:</span>
+              <span>Catching defects during Verification (Requirement/Design phase) costs up to 100x less than finding them during late Validation or Production.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Verification vs Validation in Software Engineering</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Verification (Static)</th><th>Validation (Dynamic)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Core Question</td><td>Are we building the product RIGHT?</td><td>Are we building the RIGHT product?</td></tr><tr><td>Execution Nature</td><td>Static testing performed WITHOUT executing program code.</td><td>Dynamic testing performed BY EXECUTING program code.</td></tr><tr><td>Primary Objective</td><td>Ensures software conforms to specification documents (SRS/Design).</td><td>Ensures software fulfills user expectations and business needs.</td></tr><tr><td>Techniques Used</td><td>Code reviews, walkthroughs, formal inspections, static analyzers.</td><td>Black-box, white-box, unit, integration, and system testing.</td></tr><tr><td>Timing in SDLC</td><td>Performed early throughout requirement and design phases.</td><td>Performed after code units and builds are compiled.</td></tr><tr><td>Artifacts Evaluated</td><td>SRS documents, architectural designs, database schemas, code syntax.</td><td>Compiled binary executables, APIs, and graphical user interfaces.</td></tr><tr><td>Performed By</td><td>Software developers, architects, and business analysts.</td><td>Dedicated QA engineers, test automation engineers, and end-users.</td></tr><tr><td>Target Identification</td><td>Discovers inconsistencies, ambiguities, and syntax errors.</td><td>Discovers functional failures, performance bottlenecks, and regressions.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Quality Assurance (QA) vs Quality Control (QC)</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Quality Assurance (QA)</th><th>Quality Control (QC)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Core Focus</td><td>Process-oriented: focuses on preventing defects in the development process.</td><td>Product-oriented: focuses on identifying and fixing defects in the final product.</td></tr><tr><td>Nature of Activity</td><td>Proactive activity establishing engineering standards and guidelines.</td><td>Reactive activity testing and verifying artifacts against specifications.</td></tr><tr><td>Primary Goal</td><td>Improve development and testing processes to prevent bugs from occurring.</td><td>Detect and correct bugs in software before delivery to customers.</td></tr><tr><td>Techniques</td><td>Audits, process definitions, training, CMMI/ISO standards compliance.</td><td>Test case execution, black-box testing, automated regression runs.</td></tr><tr><td>Responsibility Scope</td><td>The entire software engineering organization and management.</td><td>Dedicated Quality Control testing team.</td></tr><tr><td>Timing</td><td>Implemented continuously throughout the entire SDLC.</td><td>Implemented during the testing and verification phases.</td></tr><tr><td>Failure Handling</td><td>Analyzes root causes of defects to update development process rules.</td><td>Logs defect reports and retests fixes.</td></tr><tr><td>Cost Impact</td><td>Reduces overall lifecycle cost by preventing defect injection early.</td><td>Prevents defective software from reaching end-users.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>Error is human mistake $\rightarrow$ Defect/Bug is flaw in code $\rightarrow$ Failure is runtime behavioral deviation.</li><li style='margin-bottom:0.6rem;'>STLC phases: Requirement Analysis $\rightarrow$ Test Planning $\rightarrow$ Test Design $\rightarrow$ Env Setup $\rightarrow$ Execution $\rightarrow$ Closure.</li><li style='margin-bottom:0.6rem;'>Defect life cycle states: New $\rightarrow$ Assigned $\rightarrow$ Open $\rightarrow$ Fixed $\rightarrow$ Retest $\rightarrow$ Verified $\rightarrow$ Closed.</li><li style='margin-bottom:0.6rem;'>IEEE 829 Test Plan contains 16 formal sections (Scope, Strategy, Pass/Fail criteria, Risks, Schedule).</li><li style='margin-bottom:0.6rem;'>Verification is static checking without code execution; Validation is dynamic testing with code execution.</li><li style='margin-bottom:0.6rem;'>Severity is technical impact (Fatal/Major); Priority is business urgency for fixing (High/Low).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../main.html" class="unit-nav-btn">&larr; Back to Software Testing</a></div>
+      <div><a href="../Unit%20II%20-%20White-box%20testing/main.html" class="unit-nav-btn">Next: Unit II &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

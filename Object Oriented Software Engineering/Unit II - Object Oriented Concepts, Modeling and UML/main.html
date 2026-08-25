@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit II - Object Oriented Concepts, Modeling and UML | Object Oriented Software Engineering</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Object Oriented Software Engineering</a> <span class="separator">/</span> <span class="current">Unit II - Object Oriented Concepts, Modeling and UML</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJCT303 &bull; Unit II &bull; 6 Hrs</span>
+      <h1 class="hero-title">Unit II - Object Oriented Concepts, Modeling and UML</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">6 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>2.1</strong> What is Object Orientation? (class, object, interface, inheritance, polymorphism)</li><li><strong>2.2</strong> Model (Importance of Modeling, Object Oriented Modeling)</li><li><strong>2.3</strong> Object oriented system development (Function/data methods, OOA, OOD, OOT)</li><li><strong>2.4</strong> Identifying the elements of an object model (classes/objects, attributes, operations, finalizing definition)</li><li><strong>2.5</strong> Introduction to UML (Overview, Conceptual Model of UML, Architecture - 4+1 View)</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">2.1 Foundational Principles of Object Orientation</h3>
+          <div class="topic-body">
+            <p><strong>Core OOP Principles:</strong></p>
+                    <ul>
+                      <li><strong>Class:</strong> A blueprint, template, or prototype defining the attributes (state) and operations (behavior) that objects of that type possess.</li>
+                      <li><strong>Object:</strong> A concrete runtime instance of a class with an identity, a state (attribute values), and behavior.</li>
+                      <li><strong>Encapsulation & Data Hiding:</strong> Bundling data attributes and operations that manipulate them within a single unit and restricting direct external access via access modifiers (<code>private</code>, <code>protected</code>, <code>public</code>).</li>
+                      <li><strong>Abstraction:</strong> Exposing only essential characteristics of an entity while hiding unnecessary implementation complexity.</li>
+                      <li><strong>Inheritance (Generalization):</strong> Mechanism by which a subclass inherits attributes and operations from a superclass (IS-A relationship), promoting code reuse.</li>
+                      <li><strong>Polymorphism:</strong> Ability of a single interface to take multiple forms (Compile-time Method Overloading vs Runtime Method Overriding).</li>
+                      <li><strong>Interface:</strong> A pure contract defining abstract method signatures without implementation details that implementing classes must satisfy.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">2.2 &amp; 2.3 Object-Oriented System Development Lifecycle (OOA, OOD, OOT)</h3>
+          <div class="topic-body">
+            <p><strong>Phases of Object-Oriented System Development:</strong></p>
+                    <ul>
+                      <li><strong>Object-Oriented Analysis (OOA):</strong> Investigates the problem domain to identify real-world domain concepts, classes, attributes, and user interactions without considering programming languages or implementation constraints. Produces the <em>Domain Model</em> and <em>Use Case Model</em>.</li>
+                      <li><strong>Object-Oriented Design (OOD):</strong> Transforms the conceptual analysis model into technical software specifications by introducing solution-domain entities, UI classes, database persistence layers, design patterns, and exact method signatures.</li>
+                      <li><strong>Object-Oriented Construction (OOC / OOP):</strong> Translates design models into source code in an object-oriented programming language (Java, C++, C#).</li>
+                      <li><strong>Object-Oriented Testing (OOT):</strong> Verifies classes and object collaborations through Class Testing (Unit Testing), Integration Testing (Message passing/Polymorphic testing), and System Acceptance Testing.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">2.5 Introduction to UML &amp; The &#x27;4+1&#x27; Architectural View Model</h3>
+          <div class="topic-body">
+            <p><strong>UML (Unified Modeling Language - Booch, Rumbaugh, Jacobson):</strong> The standard graphical language for visualizing, specifying, constructing, and documenting software system artifacts.</p>
+                    <p><strong>Conceptual Model of UML:</strong> Composed of <strong>Things</strong> (Structural, Behavioral, Grouping, Annotational), <strong>Relationships</strong> (Association, Generalization, Dependency, Realization), and <strong>Diagrams</strong> (14 standard UML diagrams).</p>
+                    <p><strong>Kruchten's '4+1' Architectural View Model:</strong></p>
+                    <ul>
+                      <li><strong>1. Use Case View (The '+1'):</strong> Captures system behavior from the perspective of external actors; drives all other views. (Use Case Diagrams).</li>
+                      <li><strong>2. Logical View:</strong> Focuses on functional requirements, class structures, packages, and domain abstractions. (Class & Object Diagrams).</li>
+                      <li><strong>3. Process View:</strong> Focuses on runtime concurrency, synchronization, scalability, and threads. (Activity & Statechart Diagrams).</li>
+                      <li><strong>4. Development / Implementation View:</strong> Focuses on software module organization, packages, and source code libraries. (Component Diagrams).</li>
+                      <li><strong>5. Physical / Deployment View:</strong> Focuses on mapping software artifacts onto physical hardware nodes and network infrastructure. (Deployment Diagrams).</li>
+                    </ul>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Encapsulation</div>
+          <div class="revision-card-body">The mechanism of bundling data and methods into a single class and restricting direct access to internal state.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">OOA vs OOD</div>
+          <div class="revision-card-body">OOA focuses on understanding the problem domain (&#x27;what&#x27;); OOD focuses on designing the technical solution (&#x27;how&#x27;).</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">4+1 Architectural View</div>
+          <div class="revision-card-body">Kruchten&#x27;s model describing software architecture from 5 perspectives: Use Case (+1), Logical, Process, Development, and Physical views.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Unified Modeling Language (UML)</div>
+          <div class="revision-card-body">The standardized visual modeling language created by the &#x27;Three Amigos&#x27; (Booch, Rumbaugh, Jacobson) under the OMG.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the fundamental principles of Object Orientation: Class, Object, Encapsulation, Abstraction, Inheritance, and Polymorphism with practical examples.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">OOP Principles</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Class as an Abstract Template:</span>
+              <span>A class is a user-defined blueprint defining attributes (variables) and behaviors (methods) common to all objects of that category (e.g., class `BankAccount`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Object as a Concrete Runtime Instance:</span>
+              <span>An object possesses a distinct state (account balance = $5000), unique identity (memory address/account number), and behavior (invoking `deposit()`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Encapsulation &amp; Information Hiding:</span>
+              <span>Prevents unauthorized tampering with internal variables by marking fields `private` and exposing public getter/setter accessor methods.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Data Abstraction:</span>
+              <span>Hides complex implementation details behind a clean public interface; a driver interacts with the accelerator pedal without knowing internal fuel-injection physics.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Generalization &amp; Inheritance:</span>
+              <span>Subclasses extend superclasses (e.g., `SavingsAccount extends BankAccount`), inheriting properties and specializing behavior without code duplication.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Compile-Time Polymorphism (Method Overloading):</span>
+              <span>Multiple methods within the same class sharing the same name but differing in parameter count or data types (resolved statically at compile time).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Runtime Polymorphism (Method Overriding):</span>
+              <span>Subclass provides a specific implementation of a method declared in its superclass; executed method is resolved dynamically at runtime via dynamic dispatch.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Interface and Contract Realization:</span>
+              <span>An interface defines purely abstract contracts (`interface Payable { double calculatePay(); }`) realized by concrete classes across different hierarchies.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Composition vs Inheritance Principle:</span>
+              <span>Favor composition ('has-a') over inheritance ('is-a') to build flexible, loosely coupled object architectures (e.g., Car has an Engine).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Benefits to Software Engineering:</span>
+              <span>OOP reduces bug regression, simplifies software maintenance, promotes modular reusability, and mirrors real-world business domains.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain the 4+1 View Model of Software Architecture proposed by Philippe Kruchten, describing the role and UML diagrams associated with each view.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">4+1 Architectural View</span><span class="qa-tag">UML Architecture</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Motivation for the 4+1 View Model:</span>
+              <span>Proposed by Philippe Kruchten to organize software architecture into multiple concurrent views, addressing the concerns of different project stakeholders.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Use Case View (The Centering &#x27;+1&#x27; View):</span>
+              <span>Illustrates system functionality and business requirements from the perspective of external actors; drives and validates all other 4 architectural views (Use Case Diagram).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Logical View (Functional Perspective):</span>
+              <span>Describes the static structural decomposition into classes, packages, interfaces, and design patterns; primary audience is software designers (Class & Object Diagrams).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Process View (Concurrency Perspective):</span>
+              <span>Addresses non-functional requirements including concurrency, threads, processes, synchronization, performance, and fault tolerance (Sequence & Activity Diagrams).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Development / Implementation View:</span>
+              <span>Describes the static organization of software modules, source files, libraries, binaries, and build artifacts; primary audience is programmers (Component Diagrams).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Physical / Deployment View:</span>
+              <span>Maps software executables and components onto physical hardware servers, embedded chips, networks, and communication topologies (Deployment Diagrams).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stakeholder Mapping:</span>
+              <span>End-users $\rightarrow$ Use Case View; Architects $\rightarrow$ Logical & Process Views; Developers $\rightarrow$ Development View; System Engineers $\rightarrow$ Physical View.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Cross-View Consistency:</span>
+              <span>Every architectural decision in the Logical, Process, Development, and Physical views must trace back to fulfilling scenarios defined in the Use Case View.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Architectural Documentation Standard:</span>
+              <span>Adopted by the Rational Unified Process (RUP) and OMG as the standard structural blueprint for enterprise software documentation.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Summary for University Exam:</span>
+              <span>Draw the 4+1 quadrant diagram showing the Use Case view in the center connecting to Logical, Process, Implementation, and Deployment views.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Describe the stages of Object-Oriented Analysis (OOA), Object-Oriented Design (OOD), and the process of identifying classes, attributes, and operations.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">OOA &amp; OOD Process</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Objective of Object-Oriented Analysis (OOA):</span>
+              <span>Understand the problem domain by identifying domain classes, business relationships, and use-case scenarios without introducing technical implementation bias.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Noun Extraction Technique (Abbott&#x27;s Method):</span>
+              <span>Analyze problem statement texts: Nouns represent candidate classes/attributes (e.g., Customer, Account); Verbs represent operations/methods (e.g., deposit, withdraw).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">CRC Cards (Class-Responsibility-Collaboration):</span>
+              <span>Index cards used in brainstorming sessions documenting Class Name, Responsibilities (what it knows/does), and Collaborators (classes it interacts with).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Specifying Attributes:</span>
+              <span>Determine atomic state variables defining each class, choosing appropriate primitive/complex types, default values, and visibility access constraints.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Defining Operations and Behaviors:</span>
+              <span>Derive methods from use-case interaction flows, state transition triggers, and class responsibilities, assigning precise input parameters and return types.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Finalizing Object Definition:</span>
+              <span>Eliminate redundant/irrelevant candidate classes, resolve attribute collisions, and establish class generalizations (superclasses) and associations.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Objective of Object-Oriented Design (OOD):</span>
+              <span>Refines analysis models into technical software architecture by adding UI controller classes, database access objects (DAO), design patterns, and middleware.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Applying SOLID Principles:</span>
+              <span>Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion guide robust object-oriented design.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Object-Oriented Testing (OOT):</span>
+              <span>Focuses on unit testing class methods, integration testing polymorphic message flows, and state-based testing of object lifecycles.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Transition from OOA to OOD to OOP:</span>
+              <span>Seamless iterative progression: Problem Domain Concepts (OOA) $\rightarrow$ Software Solution Classes (OOD) $\rightarrow$ Source Code Implementation (OOP).</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Object-Oriented Analysis (OOA) vs Object-Oriented Design (OOD)</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Object-Oriented Analysis (OOA)</th><th>Object-Oriented Design (OOD)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Primary Question</td><td>Focuses on WHAT the system must do (Problem Domain).</td><td>Focuses on HOW the system will be implemented (Solution Domain).</td></tr><tr><td>Technical Independence</td><td>Independent of programming languages, hardware, and OS.</td><td>Dependent on chosen tech stack (Java/C#), database, and frameworks.</td></tr><tr><td>Scope of Entities</td><td>Models real-world business domain entities (Customer, Product).</td><td>Introduces technical helper classes (Controllers, DAOs, Thread pools).</td></tr><tr><td>Method Signatures</td><td>Operations listed conceptually without data types or parameters.</td><td>Fully typed method signatures with precise parameter types and return values.</td></tr><tr><td>Data Storage Consideration</td><td>Treats data conceptually without database schema design.</td><td>Designs relational ORM mappings, indexing, and persistent schemas.</td></tr><tr><td>Target Audience</td><td>Business analysts, domain experts, clients, and architects.</td><td>Software architects, developers, and technical leads.</td></tr><tr><td>Primary Deliverables</td><td>Use Case Diagrams, Domain Class Diagrams, Activity Diagrams.</td><td>Detailed Class Diagrams, Sequence Diagrams, Component Diagrams.</td></tr><tr><td>Applicability of Design Patterns</td><td>Design patterns (GoF) are not applied during analysis.</td><td>Design patterns (Factory, Singleton, Observer) are heavily applied.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Abstract Class vs Interface in Object-Oriented Design</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Abstract Class</th><th>Interface</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Method Implementation</td><td>Can contain both abstract methods and concrete implemented methods.</td><td>Contains only abstract method signatures (or default methods in Java 8+).</td></tr><tr><td>State / Variables</td><td>Can declare instance variables, fields, and stateful properties.</td><td>Can only declare `public static final` constant variables.</td></tr><tr><td>Inheritance Model</td><td>A class can extend only ONE abstract class (Single Inheritance).</td><td>A class can implement MULTIPLE interfaces (Multiple Inheritance).</td></tr><tr><td>Constructor Support</td><td>Can have constructors executed via `super()` in subclasses.</td><td>Cannot have constructors or instantiate state.</td></tr><tr><td>Access Modifiers</td><td>Methods and fields can have `private`, `protected`, or `public` access.</td><td>Methods are implicitly `public abstract`.</td></tr><tr><td>Conceptual Relationship</td><td>Represents an 'IS-A' relationship (e.g., Dog IS-A Mammal).</td><td>Represents a 'CAN-DO' capability contract (e.g., Dog CAN-DO Runnable).</td></tr><tr><td>Speed / Performance</td><td>Slightly faster method invocation via virtual method table lookup.</td><td>Slightly slower invocation due to interface search dispatch.</td></tr><tr><td>Design Recommendation</td><td>Use when closely related classes share common state and code.</td><td>Use to define decoupled functional contracts across unrelated classes.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>Core OOP principles: Class, Object, Encapsulation, Abstraction, Inheritance, Polymorphism, and Interface.</li><li style='margin-bottom:0.6rem;'>OOA models the problem domain ('what'); OOD models the technical solution architecture ('how').</li><li style='margin-bottom:0.6rem;'>Abbott's noun extraction: Nouns become candidate classes/attributes; Verbs become methods/operations.</li><li style='margin-bottom:0.6rem;'>Kruchten's 4+1 View Model: Use Case (+1), Logical, Process, Development, and Physical views.</li><li style='margin-bottom:0.6rem;'>UML conceptual model consists of Things, Relationships, and 14 standard Diagrams.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20I%20-%20Introduction%20to%20development%20approach%20SSAD%20and%20OOAD/main.html" class="unit-nav-btn">&larr; Previous: Unit I</a></div>
+      <div><a href="../Unit%20III%20-%20Basic%20and%20Advanced%20Structural%20Modeling/main.html" class="unit-nav-btn">Next: Unit III &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit II - White-box testing | Software Testing</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Software Testing</a> <span class="separator">/</span> <span class="current">Unit II - White-box testing</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJET306B &bull; Unit II &bull; 7 Hrs</span>
+      <h1 class="hero-title">Unit II - White-box testing</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">7 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>2.1</strong> Introduction (Need of white box testing, Testing types, Test adequacy criteria, Static testing by humans)</li><li><strong>2.2</strong> Structural testing (logic coverage criteria, Basis path testing)</li><li><strong>2.3</strong> Graph metrics</li><li><strong>2.4</strong> Loop Testing</li><li><strong>2.5</strong> Data flow testing</li><li><strong>2.5</strong> Mutation Testing</li><li><strong>2.6</strong> Design of test cases</li><li><strong>2.7</strong> Testing of Object oriented systems</li><li><strong>2.8</strong> Challenges in White box testing</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">2.1 &amp; 2.2 White-Box Testing &amp; Logic Coverage Criteria</h3>
+          <div class="topic-body">
+            <p><strong>White-Box Testing (Glass-Box / Structural / Clear-Box Testing):</strong> A testing methodology where the internal logic, source code structure, control flow graphs, and data paths of an application are fully visible and examined by the tester.</p>
+                    <p><strong>Logic Coverage Hierarchy:</strong></p>
+                    <ul>
+                      <li><strong>Statement Coverage:</strong> Ensures every executable code statement is executed at least once:
+                        $$\text{Statement Coverage} = \frac{\text{Number of executed statements}}{\text{Total statements}} \times 100\%$$
+                      </li>
+                      <li><strong>Branch / Decision Coverage:</strong> Ensures every decision point (e.g., <code>if/else</code>, <code>switch</code>) evaluates to both <code>TRUE</code> and <code>FALSE</code> at least once.</li>
+                      <li><strong>Condition Coverage:</strong> Evaluates every individual boolean sub-condition in compound expressions (e.g., in <code>if (A && B)</code>, test $A=\text{T/F}$ and $B=\text{T/F}$).</li>
+                      <li><strong>Multiple Condition Coverage (MCC):</strong> Tests all $2^n$ possible truth-table combinations of boolean conditions.</li>
+                      <li><strong>Path Coverage:</strong> Tests every independent executable path through the program from start to end (strongest coverage).</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">2.2.2 &amp; 2.3 Basis Path Testing &amp; Cyclomatic Complexity (McCabe)</h3>
+          <div class="topic-body">
+            <p><strong>Basis Path Testing (Tom McCabe):</strong> Identifies the set of linearly independent execution paths that span all possible program executions.</p>
+                    <p><strong>Control Flow Graph (CFG):</strong> Represents code flow using <strong>Nodes</strong> (sequential statements) and <strong>Edges</strong> (transfer of control/branches).</p>
+                    <p><strong>Cyclomatic Complexity $V(G)$ Calculation (3 Equivalent Methods):</strong></p>
+                    <ol>
+                      <li><strong>Formula 1 (Edges & Nodes):</strong> $V(G) = E - N + 2P$ (where $E$ = edges, $N$ = nodes, $P$ = connected components, usually 1).</li>
+                      <li><strong>Formula 2 (Predicate Nodes):</strong> $V(G) = P_n + 1$ (where $P_n$ is the number of binary decision/predicate nodes).</li>
+                      <li><strong>Formula 3 (Enclosed Regions):</strong> $V(G) = \text{Number of closed regions} + 1 \text{ (outer region)}$.</li>
+                    </ol>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">2.4 - 2.8 Loop Testing, Data Flow, Mutation Testing, and OO Testing</h3>
+          <div class="topic-body">
+            <p><strong>Loop Testing:</strong> Focuses specifically on loop constructs (Simple, Nested, Concatenated, Unstructured). For simple loops of max count $n$: test bypass loop ($0$), exactly $1$ iteration, $2$ iterations, typical $m < n$ iterations, $n-1$, $n$, and $n+1$ iterations.</p>
+                    <p><strong>Data Flow Testing:</strong> Tracks variable lifecycles across Define ($d$), Use ($u$ - computation or predicate), and Kill ($k$) states (DU-paths).</p>
+                    <p><strong>Mutation Testing:</strong> Fault-based testing where intentional artificial bugs (mutants) are injected into source code (e.g., changing <code>+</code> to <code>-</code>). A test suite is high quality if its test cases 'kill' (detect) all mutants:
+                    $$\text{Mutation Score} = \frac{\text{Killed Mutants}}{\text{Total Mutants} - \text{Equivalent Mutants}} \times 100\%$$
+                    </p>
+                    <p><strong>Testing Object-Oriented Systems:</strong> Challenges arise from Encapsulation (hidden state), Inheritance (re-testing inherited methods in new contexts), and Polymorphism (dynamic binding requires combinatorial testing across all concrete subclasses).</p>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Cyclomatic Complexity</div>
+          <div class="revision-card-body">A quantitative software metric measuring the number of linearly independent paths through a program&#x27;s source code.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Control Flow Graph (CFG)</div>
+          <div class="revision-card-body">A directed graph representing all paths that might be traversed through a program during its execution.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Basis Path Testing</div>
+          <div class="revision-card-body">A white-box testing technique that derives test cases to guarantee that every independent execution path is executed at least once.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Mutation Testing</div>
+          <div class="revision-card-body">A technique where mutants (modified code with artificial bugs) are evaluated against test suites to measure test adequacy.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain Cyclomatic Complexity in detail: define Control Flow Graphs (CFG), state the 3 mathematical formulas, and demonstrate with a complete numerical code example.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Cyclomatic Complexity</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Definition of Cyclomatic Complexity:</span>
+              <span>Developed by Thomas McCabe in 1976, Cyclomatic Complexity $V(G)$ is a structural metric measuring the logical complexity and number of independent basis paths in a software program.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Control Flow Graph (CFG) Construction:</span>
+              <span>Constructed from source code where Nodes represent sequential basic statement blocks and directed Edges represent conditional/unconditional jumps.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Predicate Nodes Concept:</span>
+              <span>A node containing a conditional branching decision (e.g., `if`, `while`, `for`, `case`) that splits control into two or more outgoing edges.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Calculation Method 1 (Edges and Nodes):</span>
+              <span>Formula: $V(G) = E - N + 2P$, where $E$ is the number of directed edges, $N$ is the number of nodes, and $P$ is connected components (typically $P=1$).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Calculation Method 2 (Predicate Nodes):</span>
+              <span>Formula: $V(G) = P + 1$, where $P$ is the total count of binary predicate decision points in the graph.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Calculation Method 3 (Bounded Regions):</span>
+              <span>Formula: $V(G) = R$, where $R$ is the total number of enclosed planar regions plus the single unbounded external region in the CFG.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Numerical Code Demonstration:</span>
+              <span>Given code: `if (A > 0) { if (B > 0) x=1; else x=2; } else x=3;`: Nodes $N=6$, Edges $E=7$, Predicates $P=2$. Complexity $V(G) = 7 - 6 + 2(1) = 3$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Deriving Linearly Independent Paths:</span>
+              <span>Path 1: $1-2-3-5-6$ (A>0, B>0); Path 2: $1-2-4-5-6$ (A>0, B<=0); Path 3: $1-5-6$ (A<=0). Exactly 3 test cases required for 100% basis path coverage.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Software Risk Thresholds:</span>
+              <span>$V(G) 1-10$: Low risk, simple program; $11-20$: Moderate risk, more complex; $21-50$: High risk, refactoring required; $>50$: Untestable, unstable code.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Benefits in Test Case Design:</span>
+              <span>Provides an exact mathematical upper bound on the minimum number of white-box test cases necessary to guarantee full branch coverage.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain the Logic Coverage Criteria in White-Box Testing: Statement Coverage, Branch/Decision Coverage, Condition Coverage, and Path Coverage.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Logic Coverage Criteria</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Concept of Structural Logic Coverage:</span>
+              <span>A quantitative measurement framework evaluating the thoroughness of a test suite in exercising internal source code constructs.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">1. Statement Coverage Definition:</span>
+              <span>Measures the percentage of executable code statements executed by the test suite: $\frac{\text{Executed Statements}}{\text{Total Statements}} \times 100\%$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Weakness of Statement Coverage:</span>
+              <span>Weakest coverage criterion; 100% statement coverage can completely miss critical `else` branches in single-branch `if` statements without throwing errors.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">2. Branch / Decision Coverage:</span>
+              <span>Requires that every decision point evaluates to both `TRUE` and `FALSE` at least once: $\frac{\text{Executed Decision Outcomes}}{\text{Total Decision Outcomes}} \times 100\%$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Branch Coverage Subsumption:</span>
+              <span>100% Branch Coverage guarantees 100% Statement Coverage, but 100% Statement Coverage does NOT guarantee 100% Branch Coverage.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">3. Condition Coverage:</span>
+              <span>Requires that each individual boolean sub-clause in a compound condition evaluates to both true and false independently (e.g., for `A || B`, testing $A$ and $B$).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Condition / Decision Coverage (C/DC):</span>
+              <span>Combines branch and condition coverage, requiring every condition and every overall decision outcome to evaluate to true and false.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Modified Condition / Decision Coverage (MC/DC):</span>
+              <span>Mandated by FAA for aviation software; proves that each individual condition can independently affect the decision outcome while holding other conditions fixed ($N+1$ tests).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">4. Complete Path Coverage:</span>
+              <span>The strongest coverage metric; tests every possible execution path from entry to exit, but practically impossible in loops due to infinite path explosion.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Practical University Exam Hierarchy:</span>
+              <span>Path Coverage (Strongest) > MC/DC > Multiple Condition > Branch/Decision > Statement Coverage (Weakest).</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Describe Mutation Testing, Loop Testing, and the specific challenges encountered in testing Object-Oriented software systems.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Advanced White-Box Testing</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Mutation Testing Core Concept:</span>
+              <span>A fault-based white-box technique where synthetic defects (mutations) are introduced into the source code to assess the effectiveness of existing test suites.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Mutation Operators:</span>
+              <span>Syntactic rules that modify code: Arithmetic Operator Replacement ($+$ to $-$), Relational Replacement ($>$ to $>=$), Logical Connector Replacement ($&&$ to $||$).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Killing Mutants vs Live Mutants:</span>
+              <span>If a test case fails when run on the mutated code, the mutant is 'Killed'; if all tests pass, the mutant is 'Live' (indicating a gap in test coverage).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Equivalent Mutants Challenge:</span>
+              <span>Mutations that alter syntax but produce identical semantic output to the original program (e.g., `i = i + 0`); cannot be killed by any test case.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Mutation Score Formula:</span>
+              <span>Calculated as: $\text{Mutation Score} = \frac{\text{Killed Mutants}}{\text{Total Mutants} - \text{Equivalent Mutants}} \times 100\%$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Loop Testing Methodology:</span>
+              <span>Focuses on loop validation: Simple loops tested at boundaries ($0, 1, 2, m < n, n-1, n, n+1$ iterations); Nested loops tested from innermost outward.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">OO Challenge: Encapsulation &amp; Information Hiding:</span>
+              <span>Private variables cannot be directly inspected by test drivers, requiring indirect state observation via public methods or reflection.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">OO Challenge: Inheritance Complexities:</span>
+              <span>Inherited methods operate in new subclass contexts and interact with overridden fields, necessitating re-testing of inherited code in each derived class.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">OO Challenge: Polymorphism &amp; Dynamic Binding:</span>
+              <span>A polymorphic method invocation (`shape.draw()`) can resolve to hundreds of derived classes at runtime, creating combinatorial test explosion.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">OO Challenge: State-Dependent Object Behavior:</span>
+              <span>Object method execution depends on internal object state, requiring state-based testing (testing sequences of method invocations).</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 White-Box Testing vs Black-Box Testing</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>White-Box Testing</th><th>Black-Box Testing</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Knowledge of Code</td><td>Requires full access and in-depth knowledge of internal source code.</td><td>Zero knowledge of internal source code; tests strictly against specifications.</td></tr><tr><td>Testing Level</td><td>Primarily applied at Unit Testing and Integration Testing levels.</td><td>Applied at System Testing, Acceptance Testing (UAT), and Functional Testing.</td></tr><tr><td>Performed By</td><td>Software developers, unit testers, and test automation engineers.</td><td>Dedicated QA testers, business analysts, and end-users.</td></tr><tr><td>Basis of Test Design</td><td>Control flow graphs, statement logic, data paths, code structure.</td><td>SRS requirements, functional specifications, use cases, user stories.</td></tr><tr><td>Primary Techniques</td><td>Basis Path Testing, Statement/Branch Coverage, Mutation Testing.</td><td>Equivalence Class Partitioning, Boundary Value Analysis, Decision Tables.</td></tr><tr><td>Programming Skill</td><td>Requires expert programming and algorithmic knowledge.</td><td>Does not require programming knowledge (for manual execution).</td></tr><tr><td>Scope of Defects</td><td>Finds algorithmic flaws, memory leaks, unhandled branches, dead code.</td><td>Finds missing functional requirements, UI defects, usability issues.</td></tr><tr><td>Exhaustive Execution</td><td>Complex paths make exhaustive path testing impossible for large systems.</td><td>Large input domains make exhaustive input testing impossible.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Statement Coverage vs Branch Coverage vs Path Coverage</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Statement Coverage</th><th>Branch / Decision Coverage</th><th>Path Coverage</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Coverage Objective</td><td>Every executable line of code executed at least once.</td><td>Every decision branch evaluates to TRUE and FALSE.</td><td>Every independent path from entry to exit executed.</td></tr><tr><td>Rigor / Strength</td><td>Weakest structural coverage metric.</td><td>Moderate structural coverage metric.</td><td>Strongest structural coverage metric.</td></tr><tr><td>Missing Logic Detection</td><td>Fails to detect missing `else` branches.</td><td>Detects missing `else` conditions and branch branches.</td><td>Detects all complex multi-branch combinatorial failures.</td></tr><tr><td>Test Case Count</td><td>Requires the minimum number of test cases.</td><td>Requires more test cases than statement coverage.</td><td>Requires the largest number of test cases ($O(2^N)$).</td></tr><tr><td>Subsumption Rule</td><td>Subsumed by Branch and Path coverage.</td><td>Subsumes Statement coverage; subsumed by Path coverage.</td><td>Subsumes both Statement and Branch coverage.</td></tr><tr><td>Formula</td><td>$\frac{\text{Executed Statements}}{\text{Total Statements}} \times 100\%$</td><td>$\frac{\text{Executed Branches}}{\text{Total Branches}} \times 100\%$</td><td>$\frac{\text{Executed Paths}}{\text{Total Independent Paths}} \times 100\%$</td></tr><tr><td>Industry Requirement</td><td>Standard minimum baseline for unit tests (80%).</td><td>Standard requirement for enterprise applications.</td><td>Required for critical safety systems (avionics / medical).</td></tr><tr><td>Feasibility in Loops</td><td>Easily achievable even in presence of loops.</td><td>Easily achievable in loops.</td><td>Practically impossible with unbounded loops.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>White-box testing examines internal source code logic and control flow paths.</li><li style='margin-bottom:0.6rem;'>Coverage hierarchy: Statement < Branch/Decision < Condition < MC/DC < Path Coverage.</li><li style='margin-bottom:0.6rem;'>Cyclomatic Complexity $V(G) = E - N + 2P = P_n + 1 = \text{Regions}$; defines independent basis paths.</li><li style='margin-bottom:0.6rem;'>Loop testing verifies boundary conditions: $0, 1, 2, m, n-1, n, n+1$ iterations.</li><li style='margin-bottom:0.6rem;'>Mutation testing evaluates test suite quality by measuring how many synthetic mutants are killed.</li><li style='margin-bottom:0.6rem;'>OO testing challenges: Encapsulation (hidden state), Inheritance (re-testing context), Polymorphism (dynamic binding explosion).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20I%20-%20Introduction/main.html" class="unit-nav-btn">&larr; Previous: Unit I</a></div>
+      <div><a href="../Unit%20III%20-%20Black-box%20Testing/main.html" class="unit-nav-btn">Next: Unit III &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

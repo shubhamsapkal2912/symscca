@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit III - Basic and Advanced Structural Modeling | Object Oriented Software Engineering</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Object Oriented Software Engineering</a> <span class="separator">/</span> <span class="current">Unit III - Basic and Advanced Structural Modeling</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJCT303 &bull; Unit III &bull; 6 Hrs</span>
+      <h1 class="hero-title">Unit III - Basic and Advanced Structural Modeling</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">6 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>3.1</strong> Classes Relationship (Association, Aggregation, Composition, Generalization, Dependency, Realization)</li><li><strong>3.2</strong> Common mechanism in UML (Specifications, Adornments, Common Divisions, Extensibility - Stereotypes, Tagged Values, Constraints)</li><li><strong>3.3</strong> Diagrams (Structural vs Behavioral)</li><li><strong>3.4</strong> Class diagram (Class notation, visibility, multiplicity, attributes, operations)</li><li><strong>3.5</strong> Advanced classes (Active classes, Abstract, Template, Utility)</li><li><strong>3.6</strong> Advanced Relationship (Association class, Qualified, N-ary, Reflexive)</li><li><strong>3.7</strong> Interface (Provided and Required interfaces)</li><li><strong>3.8</strong> Types and Roles</li><li><strong>3.9</strong> Packages (Package notation, importing, exporting, access)</li><li><strong>3.10</strong> Object Diagram (Instance specifications, links)</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">3.1 &amp; 3.4 Class Diagrams &amp; UML Class Relationships</h3>
+          <div class="topic-body">
+            <p><strong>Class Diagram:</strong> The central static structural diagram in UML showing system classes, attributes, operations, and relationships.</p>
+                    <p><strong>Class Notation:</strong> A 3-compartment rectangle: Top (Class Name), Middle (Attributes: <code>visibility name: type = default</code>), Bottom (Operations: <code>visibility name(parameters): return_type</code>).</p>
+                    <p><strong>Visibility Modifiers:</strong> <code>+</code> Public, <code>-</code> Private, <code>#</code> Protected, <code>~</code> Package.</p>
+                    <p><strong>Fundamental Class Relationships:</strong></p>
+                    <ul>
+                      <li><strong>Association (Solid Line):</strong> Structural connection between classes with multiplicity (e.g., <code>1..*</code>).</li>
+                      <li><strong>Aggregation (Hollow Diamond on Parent):</strong> Weak 'has-a' whole-part relationship where parts can exist independently of the whole (e.g., Department $\diamondsuit$– Professor).</li>
+                      <li><strong>Composition (Filled Black Diamond on Parent):</strong> Strong 'has-a' whole-part relationship where parts cannot exist without the whole (e.g., House $\blacklozenge$– Room). Lifetimes are tightly bound.</li>
+                      <li><strong>Generalization / Inheritance (Solid Line with Hollow Triangle):</strong> Subclass inherits from superclass.</li>
+                      <li><strong>Dependency (Dashed Arrow $\dashrightarrow$):</strong> 'Uses-a' relationship; changes in supplier affect client.</li>
+                      <li><strong>Realization (Dashed Line with Hollow Triangle):</strong> Class implements an interface contract.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">3.2 UML Common Mechanisms &amp; Extensibility</h3>
+          <div class="topic-body">
+            <p>UML provides 4 common mechanisms applied consistently across all diagrams:</p>
+                    <ul>
+                      <li><strong>1. Specifications:</strong> Behind every visual graphical symbol lies a detailed textual specification defining semantic rules and types.</li>
+                      <li><strong>2. Adornments:</strong> Textual or graphical decorations added to notations (e.g., multiplicity <code>1..*</code>, navigability arrows, visibility symbols).</li>
+                      <li><strong>3. Common Divisions:</strong>
+                        <ul>
+                          <li><em>Class vs Object:</em> Class represents abstraction; Object represents concrete runtime instance.</li>
+                          <li><em>Interface vs Implementation:</em> Interface specifies the contract; Class provides implementation.</li>
+                        </ul>
+                      </li>
+                      <li><strong>4. Extensibility Mechanisms:</strong>
+                        <ul>
+                          <li><strong>Stereotypes (<code>&laquo;stereotype&raquo;</code>):</strong> Extends UML vocabulary (e.g., <code>&laquo;entity&raquo;</code>, <code>&laquo;control&raquo;</code>, <code>&laquo;boundary&raquo;</code>).</li>
+                          <li><strong>Tagged Values (<code>{key = value}</code>):</strong> Adds new properties/metadata to model elements (e.g., <code>{author = "Shubham", version = 2.0}</code>).</li>
+                          <li><strong>Constraints (<code>{constraint expression}</code>):</strong> Enforces semantic rules using OCL (Object Constraint Language) (e.g., <code>{age &gt;= 18}</code>).</li>
+                        </ul>
+                      </li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">3.5 - 3.10 Advanced Classes, Relationships, Packages, and Object Diagrams</h3>
+          <div class="topic-body">
+            <p><strong>Advanced Class Types:</strong></p>
+                    <ul>
+                      <li><strong>Active Class:</strong> Has its own thread of execution (notated with double vertical borders).</li>
+                      <li><strong>Template / Parameterized Class:</strong> Generic class parameterized with types (e.g., <code>List&lt;T&gt;</code> with dashed box in top-right).</li>
+                      <li><strong>Utility Class:</strong> Contains static helper operations (stereotyped <code>&laquo;utility&raquo;</code>).</li>
+                    </ul>
+                    <p><strong>Advanced Relationships:</strong> Association Classes (associations containing attributes/methods), Qualified Associations (hashmap key lookup), Reflexive Associations (class associated with itself, e.g., Employee manages Employee).</p>
+                    <p><strong>Packages:</strong> Tabbed folder icon grouping related classes to manage large-scale namespace complexity.</p>
+                    <p><strong>Object Diagram:</strong> Represents a static snapshot of concrete object instances and links at a specific point in runtime.</p>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Aggregation vs Composition</div>
+          <div class="revision-card-body">Aggregation is a weak whole-part relationship where child lives independently; Composition is a strong whole-part where child lifetime is bound to parent.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Stereotype</div>
+          <div class="revision-card-body">A UML extensibility mechanism enclosed in guillemets (« ») that extends the semantic vocabulary of modeling elements.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Association Class</div>
+          <div class="revision-card-body">A class attached to an association line that holds attributes and operations belonging to the relationship itself.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Object Diagram</div>
+          <div class="revision-card-body">A snapshot of the runtime system showing concrete object instances (underlined names) and data attribute values.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain all UML Class Relationships: Association, Aggregation, Composition, Generalization, Dependency, and Realization with standard notations and examples.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">UML Class Relationships</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Association Relationship Notation:</span>
+              <span>Represented by a solid line connecting two classes, indicating a structural relationship where objects know about each other, annotated with roles and multiplicity.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Multiplicity Notations:</span>
+              <span>Specifies instance cardinality bounds: `1` (exactly one), `0..1` (zero or one), `*` or `0..*` (zero or more), `1..*` (one or more), `n..m` (specific range).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Navigability in Association:</span>
+              <span>An open arrowhead indicates unidirectional navigation (Class A can access Class B, but Class B cannot access Class A); no arrowheads implies bidirectional access.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Aggregation (Weak Whole-Part):</span>
+              <span>Represented by a hollow diamond at the aggregate whole end; indicates a shared relationship where parts can exist independently if the whole is destroyed (e.g., Team $\diamondsuit$– Player).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Composition (Strong Whole-Part):</span>
+              <span>Represented by a solid filled black diamond; indicates exclusive ownership where child parts are destroyed when the parent whole is deleted (e.g., Order $\blacklozenge$– OrderLineItem).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Generalization / Inheritance:</span>
+              <span>Represented by a solid line with a hollow triangle pointing to the superclass; models taxonomy and inheritance (Subclass IS-A Superclass).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Dependency Relationship:</span>
+              <span>Represented by a dashed line with an open arrow ($\dashrightarrow$); indicates a transient 'uses-a' relationship where changing the supplier class may affect the client class.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Realization Relationship:</span>
+              <span>Represented by a dashed line with a hollow triangle; indicates a class implementing the contract specified by an abstract interface.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Association Class Concept:</span>
+              <span>A class connected via a dashed line to an association link, used to store attributes belonging to the relationship itself (e.g., `Grade` in Student-Course enrollment).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Summary Diagrammatic Rules for Exams:</span>
+              <span>Ensure clear depiction of line styles (solid vs dashed) and arrowhead shapes (open, hollow triangle, hollow diamond, filled diamond).</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Describe the 4 Common Mechanisms of UML and explain Extensibility Mechanisms (Stereotypes, Tagged Values, Constraints) in detail.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">UML Common Mechanisms</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Foundation of UML Architecture:</span>
+              <span>UML is designed to be consistent, extensible, and mathematically sound across all diagrams through 4 unifying common mechanisms.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Mechanism 1: Specifications:</span>
+              <span>Every visual graphical icon in UML is backed by an underlying formal semantic specification describing attributes, types, visibility, and constraints.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Mechanism 2: Adornments:</span>
+              <span>Graphical and textual decorations added to basic symbols to enrich meaning (e.g., multiplicity strings, visibility signs `+,-,#`, navigability arrows).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Mechanism 3: Common Divisions (Class vs Object):</span>
+              <span>Distinguishes between abstract classifiers (Class, Component, Node) and concrete runtime instances (Object, Artifact, Device) notated with underlined names.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Common Divisions (Interface vs Implementation):</span>
+              <span>Distinguishes between the contractual public specification (Interface) and the concrete realization that executes the behavior (Class).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Mechanism 4: Extensibility Mechanisms Overview:</span>
+              <span>Allows software engineers to customize and extend UML vocabulary without modifying the core metamodel definition.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stereotypes (« »):</span>
+              <span>Extends UML vocabulary by creating new modeling building blocks derived from existing ones, written inside guillemets (e.g., `«entity»`, `«control»`, `«interface»`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Tagged Values ({key = value}):</span>
+              <span>Extends properties of model elements by attaching arbitrary key-value metadata strings (e.g., `{version = 1.2, author = 'DevTeam'}`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Constraints ({OCL Rule}):</span>
+              <span>Extends semantic behavior by enforcing boolean conditions or invariants written in natural language or Object Constraint Language (e.g., `{salary >= 0}`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Creating UML Profiles:</span>
+              <span>Bundling custom stereotypes, tagged values, and constraints forms a domain-specific UML Profile (e.g., UML Profile for Spring Boot, SysML for Aerospace).</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Explain the structure and purpose of Object Diagrams. Compare Class Diagrams and Object Diagrams with examples.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Object Diagrams</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Definition of Object Diagram:</span>
+              <span>An Object Diagram represents a static snapshot of runtime object instances, attribute values, and links at a specific discrete moment in system execution.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Instance Notation Syntax:</span>
+              <span>Represented by a rectangle with an underlined name compartment: `instanceName : ClassName` or anonymous `: ClassName` or `instanceName`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Attribute Values Compartment:</span>
+              <span>Contains the concrete assigned runtime values of attributes formatted as `attributeName : type = value` (e.g., `empId : int = 101`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Links vs Associations:</span>
+              <span>Connections between objects are called Links (instances of associations), represented by solid lines without multiplicity numbers.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Verification of Class Diagrams:</span>
+              <span>Object diagrams serve as concrete test scenarios to validate whether a proposed Class Diagram can support actual real-world business configurations.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Modeling Dynamic System States:</span>
+              <span>Particularly valuable for modeling complex recursive structures (e.g., Composite Design Pattern, Binary Trees, recursive org charts).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Modeling Snapshot Execution:</span>
+              <span>Captures pre-condition and post-condition object states before and after a complex transaction method executes.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Anonymous Objects:</span>
+              <span>Used when the specific instance identifier is unimportant and only the runtime class type and attribute values need demonstration.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Multiplicity Validation:</span>
+              <span>Proves that specific object link instances satisfy the multiplicity rules (e.g., verifying a Department actually holds 5 Professors).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Academic Exam Tip:</span>
+              <span>Always underline object and instance names in object diagrams to distinguish them from class diagrams.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Aggregation vs Composition Relationships</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Aggregation (Shared)</th><th>Composition (Composite)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Relationship Strength</td><td>Weak 'has-a' whole-part relationship.</td><td>Strong 'has-a' whole-part relationship.</td></tr><tr><td>UML Graphical Notation</td><td>Hollow diamond ($\diamondsuit$) at the parent aggregate end.</td><td>Filled solid black diamond ($lacklozenge$) at the parent composite end.</td></tr><tr><td>Lifecycle Dependency</td><td>Part can exist independently of the whole.</td><td>Part lifetime is strictly bound to the parent whole.</td></tr><tr><td>Deletion Cascade</td><td>Deleting the parent whole does NOT delete the parts.</td><td>Deleting the parent whole automatically deletes all child parts.</td></tr><tr><td>Exclusivity / Sharing</td><td>A part can be shared across multiple aggregate wholes.</td><td>A part belongs exclusively to exactly ONE composite parent.</td></tr><tr><td>Multiplicity Constraint</td><td>Parent multiplicity can be `0..*` or `1..*`.</td><td>Parent multiplicity is strictly `1` (or `0..1`).</td></tr><tr><td>Real-World Example</td><td>Department $\diamondsuit$– Professor (Professors exist without department).</td><td>House $lacklozenge$– Room (Rooms cannot exist without the House).</td></tr><tr><td>Memory Management Analogy</td><td>Pointer / reference passing (shallow lifecycle).</td><td>Nested object allocation / memory deletion cascade (deep lifecycle).</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Class Diagram vs Object Diagram</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Class Diagram</th><th>Object Diagram</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Nature of View</td><td>Static structural schema / blueprint of the system.</td><td>Static snapshot of concrete runtime instances at a specific time.</td></tr><tr><td>Core Elements</td><td>Classes, Interfaces, Packages.</td><td>Objects (Instances) and Links.</td></tr><tr><td>Name Compartment Syntax</td><td>Plain text: `ClassName` (not underlined).</td><td>Underlined text: `instanceName : ClassName`.</td></tr><tr><td>Data Representation</td><td>Declares attribute names and types without specific values.</td><td>Shows specific assigned attribute values (`balance = 5000`).</td></tr><tr><td>Relationship Notation</td><td>Associations with multiplicity strings (`1..*`, `0..1`).</td><td>Concrete Links without multiplicity numbers.</td></tr><tr><td>Abstraction Level</td><td>High level of abstraction covering all possible system states.</td><td>Low level of abstraction showing a single discrete state instance.</td></tr><tr><td>Temporal Dimension</td><td>Time-invariant; represents permanent structural rules.</td><td>Time-variant; represents system state at time $t$.</td></tr><tr><td>Primary Engineering Role</td><td>System design, code generation, and schema construction.</td><td>Testing, debugging, validating class diagram multiplicity rules.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>Class notation: 3 compartments (Name, Attributes, Operations). Visibility: `+` (public), `-` (private), `#` (protected), `~` (package).</li><li style='margin-bottom:0.6rem;'>Relationships: Association (solid line), Aggregation (hollow diamond), Composition (filled diamond), Generalization (hollow triangle), Dependency (dashed arrow), Realization (dashed hollow triangle).</li><li style='margin-bottom:0.6rem;'>Extensibility mechanisms: Stereotypes (`« »`), Tagged Values (`{key=val}`), Constraints (`{OCL}`).</li><li style='margin-bottom:0.6rem;'>Aggregation is weak whole-part (independent lifetime); Composition is strong whole-part (cascading lifetime).</li><li style='margin-bottom:0.6rem;'>Object diagrams represent runtime instance snapshots; object names MUST be underlined.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20II%20-%20Object%20Oriented%20Concepts%2C%20Modeling%20and%20UML/main.html" class="unit-nav-btn">&larr; Previous: Unit II</a></div>
+      <div><a href="../Unit%20IV%20-%20Basic%20Behavioral%20and%20Architectural%20Modeling/main.html" class="unit-nav-btn">Next: Unit IV &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

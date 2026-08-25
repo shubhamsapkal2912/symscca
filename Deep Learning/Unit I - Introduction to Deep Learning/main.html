@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit I - Introduction to Deep Learning | Deep Learning</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Deep Learning</a> <span class="separator">/</span> <span class="current">Unit I - Introduction to Deep Learning</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJCT301 &bull; Unit I &bull; 8 Hrs</span>
+      <h1 class="hero-title">Unit I - Introduction to Deep Learning</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">8 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>1.1</strong> What is Deep Learning?</li><li><strong>1.2</strong> Why Deep Learning?</li><li><strong>1.3</strong> What is a neural network?</li><li><strong>1.4</strong> Neural networks - Neurons, layers, weights, and biases</li><li><strong>1.5</strong> Deep Learning applications</li><li><strong>1.6</strong> Deep Learning real-world cases</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">1.1 &amp; 1.2 What is Deep Learning and Why Deep Learning?</h3>
+          <div class="topic-body">
+            <p><strong>Deep Learning (DL)</strong> is a specialized subfield of Machine Learning (ML) and Artificial Intelligence (AI) inspired by the biological structure and function of the human brain. It is based on <strong>Artificial Neural Networks (ANNs)</strong> with multiple hierarchical layers (hence "deep") that automatically discover feature representations directly from raw, unstructured data (such as pixels, audio waveforms, or text) without manual feature engineering.</p>
+                    <p><strong>Why Deep Learning Emerged and Dominates:</strong></p>
+                    <ul>
+                      <li><strong>Massive Data Availability (Big Data):</strong> Traditional ML algorithms (e.g., SVM, Logistic Regression, Decision Trees) plateau in performance once data volume exceeds a certain threshold. Deep neural networks continuously scale in accuracy as dataset size increases ($O(N)$ empirical capacity).</li>
+                      <li><strong>Hardware Acceleration (GPUs / TPUs):</strong> Matrix multiplications and tensor operations foundational to neural networks are massively parallelizable on Graphics Processing Units (GPUs) and Tensor Processing Units (TPUs).</li>
+                      <li><strong>End-to-End Representation Learning:</strong> Unlike traditional ML which requires hand-crafted feature extractors (e.g., SIFT, HOG, MFCC), Deep Learning learns intermediate feature hierarchies automatically from low-level edges to high-level semantic concepts.</li>
+                      <li><strong>Algorithmic Breakthroughs:</strong> Key innovations such as Rectified Linear Units (ReLU), Dropout regularization, Batch Normalization, and Adam optimizers solved historical hurdles like vanishing gradients.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">1.3 &amp; 1.4 Biological vs Artificial Neural Networks: Neurons, Layers, Weights, and Biases</h3>
+          <div class="topic-body">
+            <p>An <strong>Artificial Neural Network (ANN)</strong> is a computational graph consisting of interconnected processing elements called <strong>artificial neurons (perceptrons)</strong> arranged in layers.</p>
+                    <p><strong>Core Mathematical Components:</strong></p>
+                    <ul>
+                      <li><strong>Inputs (\(x_1, x_2, \dots, x_n\)):</strong> Input features representing observations or activations from preceding layers.</li>
+                      <li><strong>Weights (\(w_1, w_2, \dots, w_n\)):</strong> Learnable parameters that quantify the strength and direction (excitatory or inhibitory) of the connection between neurons.</li>
+                      <li><strong>Bias (\(b\)):</strong> An adjustable scalar offset that shifts the activation function along the input axis, allowing the model to fit patterns that do not pass through the origin.</li>
+                      <li><strong>Linear Aggregation (Pre-activation):</strong> Net input calculated as:
+                        $$\mathbf{z} = \sum_{i=1}^n w_i x_i + b = \mathbf{w}^T \mathbf{x} + b$$
+                      </li>
+                      <li><strong>Nonlinear Activation Function (\(f(z)\)):</strong> Maps linear aggregate $\mathbf{z}$ to output activation $\hat{y} = f(\mathbf{z})$ providing nonlinear expressive capacity.</li>
+                      <li><strong>Network Layers:</strong> Organized into an <strong>Input Layer</strong> (receives raw features), one or more <strong>Hidden Layers</strong> (extract latent representations), and an <strong>Output Layer</strong> (produces classification probabilities or regression values).</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">1.5 &amp; 1.6 Deep Learning Applications and Real-World Industry Case Studies</h3>
+          <div class="topic-body">
+            <p>Deep Learning has revolutionized multiple sectors through state-of-the-art predictive capabilities:</p>
+                    <ul>
+                      <li><strong>Computer Vision & Autonomous Vehicles:</strong> Real-time obstacle detection, semantic segmentation, lane following, and pedestrian tracking using deep convolutional networks (e.g., Tesla Autopilot, Waymo).</li>
+                      <li><strong>Healthcare & Medical Diagnostics:</strong> Automated tumor classification in MRI/CT scans, diabetic retinopathy screening from retinal fundus images, and de novo protein folding predictions (e.g., AlphaFold).</li>
+                      <li><strong>Natural Language Processing (NLP):</strong> Transformer-based Large Language Models (LLMs) for real-time translation, conversational agents, code generation, and sentiment analysis.</li>
+                      <li><strong>Speech Recognition & Voice Assistants:</strong> Acoustic modeling converting continuous audio waveforms to phonemes and text (e.g., Google Assistant, Siri, Alexa).</li>
+                      <li><strong>Financial Fraud Detection & Algorithmic Trading:</strong> Detecting anomalous high-frequency transaction patterns and dynamic portfolio risk optimization.</li>
+                    </ul>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Artificial Neural Network</div>
+          <div class="revision-card-body">A computational model composed of interconnected nodes inspired by the human brain, capable of non-linear function approximation.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Feature Hierarchy</div>
+          <div class="revision-card-body">The progressive abstraction of features from raw low-level primitives (edges, pixels) to high-level semantic objects across deep layers.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Weights &amp; Biases</div>
+          <div class="revision-card-body">The learnable parameters of a neural network adjusted iteratively via gradient-based optimization to minimize prediction loss.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Universal Approximation Theorem</div>
+          <div class="revision-card-body">Mathematical proof stating a feedforward network with a single hidden layer and non-linear activation can approximate any continuous function given sufficient neurons.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the fundamental architecture, working principle, and operational layers of Deep Neural Networks in detail.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Architecture</span><span class="qa-tag">Fundamental</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Biological Inspiration:</span>
+              <span>Deep Neural Networks mimic the structural behavior of biological neural networks, where dendrites receive electrical signals, the soma aggregates inputs, and the axon transmits action potentials via synapses.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Mathematical Formalization:</span>
+              <span>Each neuron calculates a weighted sum of inputs plus a bias term: $z = \sum (w_i \cdot x_i) + b$, followed by an activation function $a = f(z)$ to introduce non-linearity.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Input Layer Dynamics:</span>
+              <span>The first layer receives raw feature vectors (e.g., pixel intensities, tabular metrics) without applying weights or transformations, distributing signals forward to hidden layers.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Hidden Layers Feature Extraction:</span>
+              <span>Intermediate layers transform input representations into increasingly abstract latent spaces, capturing low-level edges in early layers and high-level concepts in deeper layers.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Output Layer Mapping:</span>
+              <span>The final layer produces task-specific outputs—such as Softmax probabilities for multi-class classification or linear activations for continuous regression.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Role of Learnable Weights:</span>
+              <span>Weights act as connection multipliers determining the relative importance of respective inputs, updated during backpropagation using gradient vectors.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Role of Bias Parameter:</span>
+              <span>Biases provide neurons with an independent degrees of freedom, ensuring non-zero activations even when all input feature values equal zero.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Nonlinear Mapping Capability:</span>
+              <span>Without non-linear activations, stacking multiple layers collapses mathematically into a single linear transformation; activations allow modeling complex non-linear decision boundaries.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Loss Function &amp; Feedback Loop:</span>
+              <span>A loss function (such as Cross-Entropy or Mean Squared Error) quantifies prediction error, driving gradient descent optimization to update all network parameters.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Inference and Forward Propagation:</span>
+              <span>During execution/inference, input tensors flow sequentially through feedforward matrix transformations layer by layer until producing predictions in deterministic time complexity $O(L)$.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Discuss why Deep Learning is preferred over Traditional Machine Learning with specific performance curves, challenges, and data scale.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Comparison</span><span class="qa-tag">Why Deep Learning</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Data Scalability Curve:</span>
+              <span>Traditional ML algorithms plateau early in accuracy as training samples grow, whereas Deep Learning architectures exhibit power-law performance gains with massive data.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Automated Feature Engineering:</span>
+              <span>Traditional ML relies heavily on domain experts for manual feature extraction (SIFT, Bag-of-Words), whereas Deep Learning automatically learns optimal feature extractors end-to-end.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Handling Unstructured Data:</span>
+              <span>Deep Learning excels at raw unstructured modalities (images, video, raw text, audio waveforms) which break traditional tabular ML algorithms.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Hierarchical Representation:</span>
+              <span>Deep architectures learn hierarchical compositions of concepts, allowing knowledge sharing across complex tasks via transfer learning.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Hardware Synergy (GPU/TPU):</span>
+              <span>Modern deep learning algorithms are mathematically formulated as massive matrix multiplications, enabling orders-of-magnitude acceleration on parallel hardware.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Generalization Capacity:</span>
+              <span>Deep over-parameterized models regularized with techniques like Dropout, BatchNorm, and weight decay achieve high generalization on complex manifolds.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Transfer Learning Feasibility:</span>
+              <span>Pre-trained models on massive corpora (e.g., ImageNet, BERT) can be fine-tuned on small target datasets with state-of-the-art results.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Fault Tolerance &amp; Redundancy:</span>
+              <span>Distributed representations across millions of parameters make neural networks resilient to localized noise and missing input features.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">End-to-End System Optimization:</span>
+              <span>All pipeline components are jointly optimized against a single global objective function via backpropagation rather than optimizing isolated sub-pipelines.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Computational and Resource Trade-offs:</span>
+              <span>While traditional ML is fast and interpretable on small tabular data, Deep Learning is indispensable for high-complexity, perceptual, and multi-modal AI systems.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Describe 5 real-world industrial use cases where Deep Learning is applied, detailing the underlying architecture and practical impact.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Real-World Applications</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Autonomous Driving Perception:</span>
+              <span>Self-driving platforms utilize multi-camera CNNs and Vision Transformers for 3D bounding box detection, semantic lane segmentation, and depth estimation.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Medical Imaging &amp; Cancer Diagnostics:</span>
+              <span>Deep Convolutional Networks analyze chest X-rays and MRI scans, achieving radiologist-level sensitivity in identifying pulmonary nodules, tumors, and fractures.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Automated Speech Recognition (ASR):</span>
+              <span>Deep Recurrent architectures and Transformer models transcribe spoken speech in real time with high accuracy across noisy acoustic environments.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Conversational AI and Language Models:</span>
+              <span>Large Language Models powered by Transformer decoders enable conversational interfaces, code synthesis, multi-lingual translation, and automated document summarization.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Financial Fraud &amp; Anti-Money Laundering:</span>
+              <span>Graph Neural Networks (GNNs) and Deep Autoencoders inspect billions of transactions per second to detect fraudulent patterns and anomalous laundering rings.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Predictive Maintenance in Industry 4.0:</span>
+              <span>LSTM networks analyze vibration, temperature, and acoustic sensor streams from turbines and aircraft engines to predict component failure weeks in advance.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">E-Commerce Recommendation Engines:</span>
+              <span>Deep collaborative filtering and two-tower neural networks process billions of user interactions to generate personalized product recommendations.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Agriculture &amp; Crop Disease Detection:</span>
+              <span>Mobile-embedded lightweight CNNs (MobileNet) analyze leaf photos to diagnose crop fungal infections and nutrient deficiencies in the field.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Biometric Authentication &amp; Facial Recognition:</span>
+              <span>Deep metric learning (e.g., FaceNet, ArcFace) generates embedding vectors for ultra-fast, secure biometric verification and identity access control.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Drug Discovery &amp; Protein Modeling:</span>
+              <span>Deep 3D spatial models predict molecular interactions and protein folding structures (e.g., AlphaFold), reducing drug development timelines from years to days.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Machine Learning (Traditional) vs Deep Learning</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Traditional Machine Learning</th><th>Deep Learning</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Core Definition</td><td>Subset of AI relying on statistical algorithms and hand-crafted features.</td><td>Specialized subset of ML based on multi-layered artificial neural networks.</td></tr><tr><td>Feature Engineering</td><td>Requires manual feature extraction by domain experts (SIFT, HOG, PCA).</td><td>Learns hierarchical features automatically from raw unstructured data.</td></tr><tr><td>Data Dependency</td><td>Performs well on small to medium datasets; plateaus with big data.</td><td>Requires massive datasets to prevent overfitting and achieve superior accuracy.</td></tr><tr><td>Hardware Requirements</td><td>Runs efficiently on standard CPUs with low memory requirements.</td><td>Requires dedicated high-performance GPUs / TPUs for tensor calculations.</td></tr><tr><td>Training Time</td><td>Relatively quick training ranging from seconds to a few hours.</td><td>Computationally intensive; training can take days or weeks.</td></tr><tr><td>Interpretability / Explainability</td><td>High interpretability (e.g., Decision Trees, Linear Weights).</td><td>Often treated as a 'black box' due to millions of non-linear parameters.</td></tr><tr><td>Problem-Solving Approach</td><td>Breaks problems into sub-components, solves individually, and aggregates.</td><td>Solves problems end-to-end from raw input to final output prediction.</td></tr><tr><td>Mathematical Foundation</td><td>Statistical learning theory, convex optimization, kernel methods.</td><td>Non-convex optimization, multivariable calculus (chain rule), linear algebra.</td></tr><tr><td>Execution (Inference) Time</td><td>Low inference latency with lightweight mathematical models.</td><td>Moderate to high latency requiring model quantization or pruning on edge devices.</td></tr><tr><td>Ideal Use Cases</td><td>Tabular financial data, small clinical datasets, basic regression.</td><td>Computer vision, speech recognition, generative AI, NLP, autonomous systems.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Biological Neuron vs Artificial Neuron</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Parameter</th><th>Biological Neuron (Human Brain)</th><th>Artificial Neuron (Perceptron / Node)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Input Mechanism</td><td>Dendrites receive chemical and electrical impulses from other neurons.</td><td>Input vector ($x_1, x_2, \dots, x_n$) receives numeric feature values.</td></tr><tr><td>Connection Strength</td><td>Synaptic strength altered via biochemical neuroplasticity.</td><td>Learnable scalar weights ($w_1, w_2, \dots, w_n$) adjusted by backpropagation.</td></tr><tr><td>Summation Point</td><td>Soma (cell body) aggregates postsynaptic potential changes.</td><td>Linear summation operator: $z = \sum w_i x_i + b$.</td></tr><tr><td>Threshold / Bias</td><td>Action potential fires only when membrane potential threshold is reached.</td><td>Learnable bias parameter $b$ offsets the activation threshold.</td></tr><tr><td>Output Transmission</td><td>Axon transmits action potential spikes to downstream synapses.</td><td>Output scalar value $\hat{y} = f(z)$ transmitted along forward edges.</td></tr><tr><td>Signal Nature</td><td>All-or-none electrochemical spikes (temporal pulse trains).</td><td>Continuous or discrete numerical floating-point values.</td></tr><tr><td>Speed of Operation</td><td>Slow chemical transmission (~millisecond scale, ~100 Hz).</td><td>Ultra-fast electronic clock speeds (~nanosecond scale, GHz processors).</td></tr><tr><td>Parallelism & Scale</td><td>Massive parallel connectivity (~$10^{11}$ neurons, ~$10^{14}$ synapses).</td><td>Simulated matrix operations constrained by GPU VRAM and memory bandwidth.</td></tr><tr><td>Power Efficiency</td><td>Extremely energy efficient (~20 Watts total brain consumption).</td><td>High power consumption (hundreds of Watts per GPU cluster).</td></tr><tr><td>Learning Mechanism</td><td>Hebbian learning and complex neuro-chemical adaptation.</td><td>Gradient descent optimization via backpropagation and loss minimization.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>Deep Learning is a subset of ML based on deep neural networks that automatically extract feature representations.</li><li style='margin-bottom:0.6rem;'>Traditional ML relies on manual feature engineering; DL utilizes end-to-end representation learning.</li><li style='margin-bottom:0.6rem;'>An artificial neuron computes the weighted sum $z = \mathbf{w}^T \mathbf{x} + b$ and applies a non-linear activation function $f(z)$.</li><li style='margin-bottom:0.6rem;'>Layers are structured as Input Layer $\rightarrow$ One or more Hidden Layers $\rightarrow$ Output Layer.</li><li style='margin-bottom:0.6rem;'>DL breakthroughs are driven by Big Data, parallel GPU hardware acceleration, and non-saturating activations (ReLU).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../main.html" class="unit-nav-btn">&larr; Back to Deep Learning</a></div>
+      <div><a href="../Unit%20II%20-%20Artificial%20Neural%20Network%20%28ANN%29/main.html" class="unit-nav-btn">Next: Unit II &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

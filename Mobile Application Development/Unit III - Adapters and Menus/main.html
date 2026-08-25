@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit III - Adapters and Menus | Mobile Application Development</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Mobile Application Development</a> <span class="separator">/</span> <span class="current">Unit III - Adapters and Menus</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJET306A &bull; Unit III &bull; 4 Hrs</span>
+      <h1 class="hero-title">Unit III - Adapters and Menus</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">4 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>3.1</strong> Adapters</li><li><strong>3.1.1</strong> Base Adapter</li><li><strong>3.1.2</strong> Array Adapter</li><li><strong>3.1.3</strong> ListView using Adapter</li><li><strong>3.1.4</strong> GridView using Adapter</li><li><strong>3.1.5</strong> Photo Gallery using Adapter</li><li><strong>3.2</strong> Using Menu with Views</li><li><strong>3.2.1</strong> Option Menu</li><li><strong>3.2.2</strong> Context Menu</li><li><strong>3.3.3</strong> Popup Menu</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">3.1 Adapters, BaseAdapter, ArrayAdapter &amp; AdapterView</h3>
+          <div class="topic-body">
+            <p>An <strong>Adapter</strong> acts as a bridge between an <strong>AdapterView</strong> (such as <code>ListView</code>, <code>GridView</code>, <code>Spinner</code>, <code>RecyclerView</code>) and the underlying data source (such as an <code>ArrayList</code>, Array, or SQLite Cursor). It converts individual data items into rendered row views.</p>
+                    <p><strong>Types of Adapters:</strong></p>
+                    <ul>
+                      <li><strong>ArrayAdapter:</strong> Built-in adapter that binds an Array or <code>List&lt;T&gt;</code> of objects to a single <code>TextView</code> per row (e.g., <code>android.R.layout.simple_list_item_1</code>).</li>
+                      <li><strong>BaseAdapter:</strong> Abstract root adapter providing complete customization for complex multi-widget rows. Requires overriding 4 core methods:
+                        <ol>
+                          <li><code>int getCount()</code>: Returns total number of data items in collection.</li>
+                          <li><code>Object getItem(int position)</code>: Returns data item at specified index.</li>
+                          <li><code>long getItemId(int position)</code>: Returns unique row ID for the item.</li>
+                          <li><code>View getView(int position, View convertView, ViewGroup parent)</code>: Inflates custom XML row layout and binds data to view widgets.</li>
+                        </ol>
+                      </li>
+                      <li><strong>ViewHolder Pattern:</strong> Reuses inflated row views (<code>convertView</code>) and caches subview references inside a static class, eliminating repetitive <code>findViewById()</code> calls and providing smooth 60 FPS scrolling.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">3.2 Android Menu Types: Options Menu, Context Menu, and Popup Menu</h3>
+          <div class="topic-body">
+            <p>Menus provide clean UI navigation without cluttering the screen:</p>
+                    <ul>
+                      <li><strong>1. Options Menu:</strong> Primary menu appearing in the top App Bar / Action Bar containing global actions (Search, Settings, Help):
+                        <ul>
+                          <li>Inflated in: <code>onCreateOptionsMenu(Menu menu)</code> via <code>getMenuInflater().inflate(R.menu.main_menu, menu)</code>.</li>
+                          <li>Item selection handled in: <code>onOptionsItemSelected(MenuItem item)</code> using <code>item.getItemId()</code>.</li>
+                        </ul>
+                      </li>
+                      <li><strong>2. Context Menu:</strong> Floating menu appearing when a user performs a <em>long-press / touch-and-hold</em> on a registered view (e.g., Delete, Copy, Share item in a list):
+                        <ul>
+                          <li>Registered via: <code>registerForContextMenu(view)</code>.</li>
+                          <li>Inflated in: <code>onCreateContextMenu(...)</code>.</li>
+                          <li>Handled in: <code>onContextItemSelected(MenuItem item)</code>.</li>
+                        </ul>
+                      </li>
+                      <li><strong>3. Popup Menu:</strong> Modal menu anchored directly to a specific view widget (e.g., tapping an overflow 3-dots icon on a card):
+                        <ul>
+                          <li>Instantiated via: <code>PopupMenu popup = new PopupMenu(context, anchorView);</code></li>
+                          <li>Handled via: <code>popup.setOnMenuItemClickListener(...)</code>.</li>
+                        </ul>
+                      </li>
+                    </ul>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Adapter</div>
+          <div class="revision-card-body">A software bridge converting raw data collections into individual visual View rows for display in an AdapterView.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">ViewHolder Pattern</div>
+          <div class="revision-card-body">A performance optimization pattern that caches view references to eliminate repetitive expensive findViewById() calls during list scrolling.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Options Menu</div>
+          <div class="revision-card-body">The primary action bar menu containing global activities like Search, Filter, and Settings.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Context Menu</div>
+          <div class="revision-card-body">A contextual floating menu triggered by a long-press on a registered UI element.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the architectural role of Adapters in Android. Describe the 4 mandatory methods of BaseAdapter and the ViewHolder design pattern.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Adapters &amp; ViewHolder</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Bridge Architectural Concept:</span>
+              <span>An Adapter decouples data storage from UI rendering, converting data models into graphical view rows requested on demand by an AdapterView.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">AdapterView Recycling Mechanism:</span>
+              <span>Instead of instantiating 10,000 views for a 10,000-item list, AdapterView instantiates only enough views to fill the screen (~10) and recycles them as the user scrolls.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">BaseAdapter Method 1: getCount():</span>
+              <span>Returns total count of data items (`return dataList.size()`); dictates to the AdapterView how many rows must be scrolled.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">BaseAdapter Method 2: getItem(position):</span>
+              <span>Returns the underlying data object entity located at the specific index position (`return dataList.get(position)`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">BaseAdapter Method 3: getItemId(position):</span>
+              <span>Returns a unique 64-bit numerical identifier for the item (often `position` or database primary key ID).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">BaseAdapter Method 4: getView():</span>
+              <span>The core rendering method: inflates XML row layouts, binds data fields to UI widgets, and returns the configured `View` to the display system.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Role of convertView Parameter:</span>
+              <span>When an existing row scrolls offscreen, Android passes it back as `convertView` so the developer can reuse the layout rather than inflating a new one via XML parser.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">The ViewHolder Pattern Optimization:</span>
+              <span>Creating a static class holding widget references (`TextView title`, `ImageView icon`) and attaching it to `convertView.setTag(holder)` avoids calling `findViewById()` on every scroll.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Smooth 60 FPS Performance:</span>
+              <span>Combining `convertView` recycling with `ViewHolder` reference caching guarantees zero UI stuttering and smooth 60 FPS scroll performance.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">ArrayAdapter vs BaseAdapter Choice:</span>
+              <span>Use ArrayAdapter for simple single-TextView rows; use BaseAdapter (or modern RecyclerView.Adapter) for custom multi-widget layouts.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain the 3 types of Menus in Android: Options Menu, Context Menu, and Popup Menu with lifecycle callbacks and XML implementation.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Android Menus</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Menu Resource XML Definition:</span>
+              <span>Menus are defined in `res/menu/` XML files using `<menu>` root containing `<item android:id='@+id/action_settings' android:title='Settings' android:icon='...' app:showAsAction='ifRoom' />`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Options Menu Definition &amp; Scope:</span>
+              <span>The primary menu located in the top App Bar / Action Bar providing access to global application actions (Search, Settings, Account profile).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Inflating Options Menu (onCreateOptionsMenu):</span>
+              <span>Overridden in Activity: `getMenuInflater().inflate(R.menu.main_menu, menu); return true;` to populate top bar items.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Handling Options Clicks (onOptionsItemSelected):</span>
+              <span>Uses a `switch (item.getItemId())` or `if-else` block to execute specific action methods based on clicked menu ID.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Context Menu Definition &amp; Trigger:</span>
+              <span>A floating modal menu that appears when a user performs a long-press (touch and hold) on a registered view element.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Context Menu Registration &amp; Callbacks:</span>
+              <span>Registered in `onCreate()` via `registerForContextMenu(listView)`; inflated in `onCreateContextMenu()`; handled via `onContextItemSelected()`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Popup Menu Definition &amp; Anchor:</span>
+              <span>A modal dropdown menu anchored directly to a specific view (e.g., a three-dots overflow icon button on a card item).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">PopupMenu Java Instantiation:</span>
+              <span>Instantiated programmatically: `PopupMenu popup = new PopupMenu(context, buttonView); popup.inflate(R.menu.popup_menu); popup.show();`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">PopupMenu Click Listener:</span>
+              <span>Handled using `popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() { ... });`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Exam Summary Distinction:</span>
+              <span>Options Menu: Global app actions (top bar); Context Menu: Item-specific actions (long press); Popup Menu: Widget-anchored dropdown (tap).</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Describe the implementation of a Custom GridView / Photo Gallery using BaseAdapter and custom XML layouts.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">GridView &amp; Custom Adapters</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">GridView Component Concept:</span>
+              <span>A two-dimensional scrolling grid of views arranging child items in rows and columns governed by `android:numColumns='auto_fit'` and `android:columnWidth='100dp'`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Data Model Class Construction:</span>
+              <span>Create a Java POJO class (e.g., `PhotoItem`) encapsulating image resource ID (`int imageResId`) and caption string (`String title`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Custom Grid Item Layout XML:</span>
+              <span>Design `grid_item_photo.xml` with an `ImageView` and `TextView` wrapped inside a `CardView` or `LinearLayout`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Custom Adapter Class Header:</span>
+              <span>Create `PhotoGalleryAdapter extends BaseAdapter` accepting `Context context` and `List<PhotoItem> photoList` in constructor.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Overriding Core Methods:</span>
+              <span>Implement `getCount()` returning `photoList.size()` and `getItem(position)` returning `photoList.get(position)`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Defining the ViewHolder:</span>
+              <span>Define `static class ViewHolder { ImageView photoImg; TextView captionTxt; }`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Implementing getView() Inflation:</span>
+              <span>If `convertView == null`, inflate `grid_item_photo.xml` via `LayoutInflater.from(context)`, create ViewHolder, and attach via `setTag(holder)`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Data Binding in getView():</span>
+              <span>Retrieve ViewHolder via `(ViewHolder) convertView.getTag()`, set image via `holder.photoImg.setImageResource()`, and set text via `holder.captionTxt.setText()`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Binding Adapter to GridView in Activity:</span>
+              <span>In `MainActivity.java`, instantiate adapter: `gridView.setAdapter(new PhotoGalleryAdapter(this, list));`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Handling Grid Clicks (OnItemClickListener):</span>
+              <span>Attach `gridView.setOnItemClickListener((parent, view, position, id) -> { ... })` to open full-screen photo views.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Options Menu vs Context Menu vs Popup Menu</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Options Menu</th><th>Context Menu</th><th>Popup Menu</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>UI Location</td><td>Top App Bar / Action Bar header.</td><td>Floating dialog in center of screen.</td><td>Anchored directly below/above the triggering View widget.</td></tr><tr><td>Trigger Mechanism</td><td>Tapping 3-dots icon on Action Bar or permanent action icon.</td><td>Long-press (touch and hold) on a registered view.</td><td>Normal click / tap on a specific button or view.</td></tr><tr><td>Registration Requirement</td><td>No registration; automatically bound to Activity.</td><td>Must be explicitly registered via `registerForContextMenu(view)`.</td><td>No registration; instantiated dynamically in click listener.</td></tr><tr><td>Scope of Actions</td><td>Global application actions (Search, Settings, Help).</td><td>Contextual actions specific to the selected item (Delete, Edit).</td><td>Secondary actions related to a specific UI widget.</td></tr><tr><td>Lifecycle Inflation Callback</td><td>`onCreateOptionsMenu(Menu menu)`</td><td>`onCreateContextMenu(ContextMenu, View, ContextMenuInfo)`</td><td>Programmatic: `popup.inflate(R.menu.popup_menu)`</td></tr><tr><td>Click Handling Callback</td><td>`onOptionsItemSelected(MenuItem item)`</td><td>`onContextItemSelected(MenuItem item)`</td><td>`popup.setOnMenuItemClickListener(...)`</td></tr><tr><td>Number of Menus per Activity</td><td>Typically exactly one primary Options Menu per Activity.</td><td>Multiple views can register separate context menus.</td><td>Unlimited; dynamically created anywhere in UI hierarchy.</td></tr><tr><td>Modern Usage</td><td>Standard in almost all top app bars.</td><td>Replaced in modern UX by Contextual Action Bar (CAB).</td><td>Heavily used in modern card menus and overflow buttons.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 ArrayAdapter vs BaseAdapter</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>ArrayAdapter</th><th>BaseAdapter</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Class Hierarchy</td><td>Concrete subclass extending BaseAdapter.</td><td>Abstract root base class implementing ListAdapter.</td></tr><tr><td>Row Layout Customization</td><td>Limited; designed for simple rows with 1 or 2 TextViews.</td><td>Completely unlimited; supports arbitrary complex custom layouts.</td></tr><tr><td>Data Source Type</td><td>Exclusively arrays (`T[]`) or `java.util.List<T>` objects.</td><td>Any custom data structure, database cursor, or remote stream.</td></tr><tr><td>Implementation Effort</td><td>Minimal effort; requires only a single constructor call.</td><td>Requires creating a custom class overriding 4 core methods.</td></tr><tr><td>ViewHolder Pattern</td><td>Not easily integrated in standard ArrayAdapter without subclassing.</td><td>Standard practice; natively integrated inside overridden `getView()`.</td></tr><tr><td>Multi-Widget Binding</td><td>Difficult to bind images, buttons, and multiple text views.</td><td>Easily binds multiple interactive widgets per row.</td></tr><tr><td>Performance Control</td><td>Managed internally by the framework.</td><td>Full developer control over view recycling and memory optimization.</td></tr><tr><td>Best Use Case</td><td>Simple dropdown Spinners, basic text lists.</td><td>E-commerce product lists, chat screens, photo galleries.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>Adapters bridge data collections to `AdapterView` (ListView, GridView, Spinner).</li><li style='margin-bottom:0.6rem;'>BaseAdapter requires overriding 4 methods: `getCount()`, `getItem()`, `getItemId()`, `getView()`.</li><li style='margin-bottom:0.6rem;'>ViewHolder pattern caches subview references to avoid expensive `findViewById()` calls during scrolling.</li><li style='margin-bottom:0.6rem;'>Options Menu contains global action bar items (`onCreateOptionsMenu`, `onOptionsItemSelected`).</li><li style='margin-bottom:0.6rem;'>Context Menu triggers on long-press (`registerForContextMenu`, `onCreateContextMenu`).</li><li style='margin-bottom:0.6rem;'>Popup Menu anchors to a specific view button via `PopupMenu(context, anchor)`.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20II%20-%20Activity%2C%20Intent%2C%20Layout%20%26%20UI%20Design/main.html" class="unit-nav-btn">&larr; Previous: Unit II</a></div>
+      <div><a href="../Unit%20IV%20-%20Worker%20Threads%20and%20Notification%20Mechanisms/main.html" class="unit-nav-btn">Next: Unit IV &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

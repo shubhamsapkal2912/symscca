@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit I - Introduction to Android Programming | Mobile Application Development</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Mobile Application Development</a> <span class="separator">/</span> <span class="current">Unit I - Introduction to Android Programming</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJET306A &bull; Unit I &bull; 8 Hrs</span>
+      <h1 class="hero-title">Unit I - Introduction to Android Programming</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">8 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>1.1</strong> What is Android? (Overview of Android OS, Key Features, Overview and Evolution, Advantages and Key Features for App Development)</li><li><strong>1.2</strong> Android Architecture (Key Layers in Android Architecture, Interaction between Linux Kernel, Libraries, ART, and Framework)</li><li><strong>1.3</strong> Basic Building Blocks (Activities &amp; Services, Broadcast Receivers, Content Providers)</li><li><strong>1.4</strong> Android API Levels (Understanding Android API Levels, Compatibility with different Android versions)</li><li><strong>1.5</strong> Application Structure (Project Structure of Android Applications, Key Files and Directories - Java, Resources, Manifest)</li><li><strong>1.6</strong> First &#x27;Hello World&#x27; Program (Writing and Running, Introduction to Android Studio &amp; Dev Environment, Role and Structure of AndroidManifest.xml)</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">1.1 &amp; 1.2 Android OS Overview, Evolution, and Layered Architecture</h3>
+          <div class="topic-body">
+            <p><strong>Android OS:</strong> An open-source, Linux-based software stack created by Google and the Open Handset Alliance (OHA) designed for mobile smartphones, tablets, wearables (WearOS), TV (Android TV), and automotive systems.</p>
+                    <p><strong>The 5 Key Layers in Android Architecture:</strong></p>
+                    <ul>
+                      <li><strong>1. Linux Kernel (Foundation):</strong> Provides core system services: hardware abstraction, device drivers (Display, Camera, Bluetooth, Wi-Fi, Audio, Binder IPC), memory management, process management, and security.</li>
+                      <li><strong>2. Hardware Abstraction Layer (HAL):</strong> Exposes standard C/C++ interfaces to hardware vendors, allowing the higher-level framework to interact with device hardware without knowing device-specific driver implementations.</li>
+                      <li><strong>3. Native C/C++ Libraries & Android Runtime (ART):</strong>
+                        <ul>
+                          <li><em>Native Libraries:</em> WebKit/Blink (browser engine), SQLite (database engine), OpenGL ES / Vulkan (3D graphics), FreeType (font rendering), Media Framework.</li>
+                          <li><em>Android Runtime (ART):</em> Replaced legacy Dalvik Virtual Machine (DVM). Uses <strong>Ahead-Of-Time (AOT)</strong> compilation and Just-In-Time (JIT) profiling to convert DEX bytecode into native machine instructions at installation/runtime, providing smoother execution and reduced battery consumption.</li>
+                        </ul>
+                      </li>
+                      <li><strong>4. Application Framework:</strong> Java/Kotlin APIs providing reusable services to apps: <em>Activity Manager</em>, <em>Window Manager</em>, <em>Package Manager</em>, <em>Telephony Manager</em>, <em>Resource Manager</em>, <em>Location Manager</em>, <em>Notification Manager</em>, <em>Content Providers</em>.</li>
+                      <li><strong>5. Applications Layer (Top Layer):</strong> Native core apps (Phone, SMS, Camera, Contacts, Settings) and third-party user-installed applications.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">1.3 The 4 Core Building Blocks of Android Applications</h3>
+          <div class="topic-body">
+            <p>Every Android app is composed of loosely coupled components declared in <code>AndroidManifest.xml</code>:</p>
+                    <ul>
+                      <li><strong>1. Activity:</strong> Represents a single screen with a graphical user interface (e.g., LoginActivity, UserProfileActivity).</li>
+                      <li><strong>2. Service:</strong> A background component that performs long-running operations without providing a user interface (e.g., background music playback, periodic file downloading).</li>
+                      <li><strong>3. Broadcast Receiver:</strong> A component that listens for and responds to system-wide broadcast announcements (e.g., <code>ACTION_BATTERY_LOW</code>, <code>ACTION_BOOT_COMPLETED</code>, <code>CONNECTIVITY_CHANGE</code>).</li>
+                      <li><strong>4. Content Provider:</strong> Manages access to a central repository of structured data, enabling secure inter-application data sharing (e.g., querying Contacts or MediaStore via standard URI schemes).</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">1.4 - 1.6 API Levels, Project Structure, and AndroidManifest.xml</h3>
+          <div class="topic-body">
+            <p><strong>Android API Levels & Version Compatibility:</strong></p>
+                    <ul>
+                      <li><code>compileSdkVersion</code>: The Android SDK version used to compile the code.</li>
+                      <li><code>minSdkVersion</code>: The absolute minimum Android OS version required to run the app.</li>
+                      <li><code>targetSdkVersion</code>: The tested Android version for which runtime behavior and modern permission models are enabled.</li>
+                    </ul>
+                    <p><strong>Android Project Directory Structure:</strong></p>
+                    <ul>
+                      <li><code>app/src/main/java/</code>: Java/Kotlin source code packages.</li>
+                      <li><code>app/src/main/res/</code>: Application resources (<code>layout/</code> for XML UI designs, <code>drawable/</code> for images/vectors, <code>values/</code> for strings, colors, styles).</li>
+                      <li><code>app/src/main/AndroidManifest.xml</code>: The central configuration file declaring app package name, components, hardware permissions (<code>&lt;uses-permission&gt;</code>), and intent filters.</li>
+                      <li><code>build.gradle</code>: Gradle build automation script managing external dependencies and SDK configurations.</li>
+                    </ul>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Android Runtime (ART)</div>
+          <div class="revision-card-body">The runtime environment in Android executing DEX bytecode using Ahead-of-Time (AOT) and Just-in-Time (JIT) compilation.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Dalvik Virtual Machine (DVM)</div>
+          <div class="revision-card-body">The legacy register-based virtual machine replaced by ART that used JIT compilation.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">AndroidManifest.xml</div>
+          <div class="revision-card-body">The root XML configuration manifest that declares all application components, permissions, and hardware features to the OS.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Intent Filter</div>
+          <div class="revision-card-body">An XML declaration in the manifest specifying what types of implicit intents an Activity, Service, or Receiver can handle.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the 5-layer architecture of the Android Operating System in detail, describing the functions of each layer and the role of ART.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Android Architecture</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Overview of Android Architecture:</span>
+              <span>Android OS is structured into a 5-layer software stack combining a Linux foundation with a rich Java/Kotlin application framework.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Layer 1: Linux Kernel:</span>
+              <span>Acts as the foundation layer handling hardware interaction, process management, memory paging, power management (Wakelocks), and low-level Binder IPC drivers.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Layer 2: Hardware Abstraction Layer (HAL):</span>
+              <span>Provides standard C/C++ interfaces exposing hardware capabilities (Camera, Audio, Bluetooth, Sensors) to the higher-level framework regardless of specific vendor chipsets.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Layer 3: Native C/C++ Libraries:</span>
+              <span>Includes core system libraries: SQLite for relational storage, OpenGL ES / Vulkan for 2D/3D graphics, WebKit for web rendering, FreeType for fonts, and SSL for cryptography.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Layer 3: Android Runtime (ART):</span>
+              <span>Executes Dalvik Executable (.dex) bytecode using Ahead-of-Time (AOT) compilation and profile-guided JIT compilation, providing faster app startup and smoother UI.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">DVM vs ART Evolution:</span>
+              <span>ART compiles DEX bytecode into native machine ELF binaries during app installation/idle charging, eliminating DVM's runtime JIT translation overhead.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Layer 4: Application Framework:</span>
+              <span>Exposes high-level Java APIs for app development, including ActivityManager, WindowManager, ContentProviders, ViewSystem, and NotificationManager.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Layer 5: Applications Layer:</span>
+              <span>The topmost layer containing pre-installed system apps (Phone, Contacts, Settings) and third-party user applications downloaded from Google Play.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Inter-Process Communication (Binder IPC):</span>
+              <span>Enables high-speed, secure inter-process communication between application components and system framework services via shared memory.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Application Sandboxing Security:</span>
+              <span>Every Android app runs in an isolated Linux process assigned a unique Linux User ID (UID), preventing unauthorized memory access across apps.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain the 4 fundamental Building Blocks of Android (Activity, Service, Broadcast Receiver, Content Provider) with their lifecycles and practical use cases.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Android Building Blocks</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Overview of Building Blocks:</span>
+              <span>Android applications are constructed from four loosely coupled core components, each serving a distinct operational purpose in the mobile lifecycle.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">1. Activity Component:</span>
+              <span>Represents a single screen with a graphical user interface (UI); handles user interaction, UI rendering, and touch input (e.g., `MainActivity`, `CheckoutActivity`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Activity Invocation &amp; Stack Management:</span>
+              <span>Activities are managed in a Last-In-First-Out (LIFO) Back Stack and launched via Intents using `startActivity(intent)`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">2. Service Component:</span>
+              <span>Performs long-running background operations without providing a user interface (e.g., playing music, background GPS tracking, downloading files).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Service Types (Started vs Bound):</span>
+              <span>Started Services run indefinitely until stopped (`startService()`); Bound Services provide a client-server interface bound to other components (`bindService()`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">3. Broadcast Receiver Component:</span>
+              <span>Acts as an event listener responding to system-wide or app-level broadcast announcements without maintaining an active UI.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Broadcast Triggers &amp; Registration:</span>
+              <span>Responds to intents like `BOOT_COMPLETED`, `BATTERY_LOW`, or `AIRPLANE_MODE_CHANGED`; registered statically in Manifest or dynamically via `registerReceiver()`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">4. Content Provider Component:</span>
+              <span>Manages access to a central repository of structured data, abstracting underlying storage (SQLite, files) and enabling secure cross-app data sharing.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">ContentResolver &amp; URI Addressing:</span>
+              <span>Client apps interact with Content Providers using a `ContentResolver` addressing data via uniform URIs (e.g., `content://contacts/people`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Manifest Declaration Rule:</span>
+              <span>All Activities (`<activity>`), Services (`<service>`), Broadcast Receivers (`<receiver>`), and Content Providers (`<provider>`) must be declared in `AndroidManifest.xml`.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Describe the structure, role, and key XML tags of AndroidManifest.xml in Android application development.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">AndroidManifest.xml</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Central Role of AndroidManifest.xml:</span>
+              <span>The manifest file is the root configuration contract providing essential metadata about the app to the Android OS, Google Play Store, and build tools.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Root &lt;manifest&gt; Tag and Package Attribute:</span>
+              <span>The root element `<manifest xmlns:android="..." package="com.example.myapp">` defining the unique application namespace and build identifiers.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Hardware &amp; System Permissions (&lt;uses-permission&gt;):</span>
+              <span>Declares system permissions required by the application (e.g., `<uses-permission android:name="android.permission.CAMERA" />`, `INTERNET`, `ACCESS_FINE_LOCATION`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Hardware Feature Filtering (&lt;uses-feature&gt;):</span>
+              <span>Specifies hardware sensors required (e.g., `<uses-feature android:name="android.hardware.camera.autofocus" android:required="true" />`) for Google Play filtering.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">The &lt;application&gt; Container Tag:</span>
+              <span>Encloses all application-level metadata including `android:icon`, `android:label`, `android:theme`, `android:allowBackup`, and component declarations.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&lt;activity&gt; Declaration &amp; Launcher Intent Filter:</span>
+              <span>Declares activities; the main entry point activity contains `<intent-filter>` with `<action android:name="android.intent.action.MAIN" />` and `<category android:name="android.intent.category.LAUNCHER" />`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&lt;service&gt; &amp; &lt;receiver&gt; Declarations:</span>
+              <span>Declares background services and static broadcast receivers, specifying permissions and intent filters for external access.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&lt;provider&gt; Tag &amp; Authorities:</span>
+              <span>Declares Content Providers, defining `android:name` and `android:authorities` URI namespace used by ContentResolvers.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">API Level &amp; SDK Compatibility (&lt;uses-sdk&gt;):</span>
+              <span>Historical tag (now configured in `build.gradle`) specifying `minSdkVersion`, `targetSdkVersion`, and `maxSdkVersion`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Security &amp; Export Restrictions (android:exported):</span>
+              <span>Controls whether other applications on the device can invoke this component; explicitly set `android:exported="false"` for private internal components.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Dalvik Virtual Machine (DVM) vs Android Runtime (ART)</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Dalvik Virtual Machine (DVM)</th><th>Android Runtime (ART)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Compilation Model</td><td>Just-In-Time (JIT) compilation during runtime.</td><td>Ahead-Of-Time (AOT) compilation + profile-guided JIT.</td></tr><tr><td>Bytecode Translation Timing</td><td>Translates DEX bytecode into native code dynamically while app is running.</td><td>Translates DEX bytecode into native machine ELF binaries during installation.</td></tr><tr><td>App Execution Speed</td><td>Slower; incurs CPU translation latency every time code executes.</td><td>Significantly faster; runs directly as pre-compiled native machine instructions.</td></tr><tr><td>App Startup Time</td><td>Longer startup times due to runtime bytecode interpretation.</td><td>Faster app launch times with immediate native execution.</td></tr><tr><td>Storage Space Required</td><td>Smaller storage footprint; stores only compact DEX bytecode files.</td><td>Larger storage footprint (~10-20% more space for compiled ELF binaries).</td></tr><tr><td>Battery & CPU Efficiency</td><td>Higher battery consumption due to repetitive JIT compilation cycles.</td><td>Superior power efficiency; lower CPU cycles during app execution.</td></tr><tr><td>Garbage Collection (GC)</td><td>Frequent, stop-the-world GC pauses causing UI stutter/jank.</td><td>Optimized GC with a single pause and background memory compaction.</td></tr><tr><td>Android OS Introduction</td><td>Used from Android 1.0 up to Android 4.4 (KitKat).</td><td>Introduced in Android 4.4, became the default runtime in Android 5.0 (Lollipop).</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Explicit Intent vs Implicit Intent</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Explicit Intent</th><th>Implicit Intent</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Target Specification</td><td>Explicitly names the exact target component class (e.g., `SecondActivity.class`).</td><td>Does not name a specific class; specifies a general action to perform.</td></tr><tr><td>Intent Creation Syntax</td><td>`new Intent(MainActivity.this, SecondActivity.class)`</td><td>`new Intent(Intent.ACTION_VIEW, Uri.parse("https://google.com"))`</td></tr><tr><td>Target Resolution</td><td>Directly resolves to the specified Java/Kotlin class within the same app.</td><td>Android OS evaluates Intent Filters across all installed apps to find matches.</td></tr><tr><td>Use Case</td><td>Navigating between known screens/activities within the same application.</td><td>Delegating tasks to external apps (opening browser, dialing phone, camera).</td></tr><tr><td>App Chooser Dialog</td><td>Never displays an app chooser dialog.</td><td>Displays Android App Chooser if multiple apps can handle the intent.</td></tr><tr><td>Security Risk</td><td>Completely secure; cannot be intercepted by external malicious apps.</td><td>Can be intercepted if broadcast filters are not restricted.</td></tr><tr><td>Intent Filter Requirement</td><td>Target activity does NOT require `<intent-filter>` in manifest.</td><td>Target component MUST declare an `<intent-filter>` to be discovered.</td></tr><tr><td>Action & Data Fields</td><td>Typically does not require action strings or URI data schemes.</td><td>Relies heavily on `Action` (e.g., `ACTION_SEND`), `Data`, `Type`, and `Category`.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>Android architecture: Linux Kernel $\rightarrow$ HAL $\rightarrow$ Native Libraries & ART $\rightarrow$ Application Framework $\rightarrow$ Applications.</li><li style='margin-bottom:0.6rem;'>ART uses Ahead-of-Time (AOT) compilation; DVM used Just-in-Time (JIT) compilation.</li><li style='margin-bottom:0.6rem;'>The 4 Building Blocks: Activity (UI), Service (background), Broadcast Receiver (events), Content Provider (data sharing).</li><li style='margin-bottom:0.6rem;'>API levels: `minSdkVersion` (minimum supported OS), `targetSdkVersion` (tested OS behavior), `compileSdkVersion` (build SDK).</li><li style='margin-bottom:0.6rem;'>`AndroidManifest.xml` declares all components, permissions (`<uses-permission>`), and intent filters.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../main.html" class="unit-nav-btn">&larr; Back to Mobile Application Development</a></div>
+      <div><a href="../Unit%20II%20-%20Activity%2C%20Intent%2C%20Layout%20%26%20UI%20Design/main.html" class="unit-nav-btn">Next: Unit II &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

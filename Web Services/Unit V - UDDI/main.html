@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit V - UDDI | Web Services</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Web Services</a> <span class="separator">/</span> <span class="current">Unit V - UDDI</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJCT302 &bull; Unit V &bull; 10 Hrs</span>
+      <h1 class="hero-title">Unit V - UDDI</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">10 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>5.1</strong> UDDI – UDDI Registries</li><li><strong>5.2</strong> Uses of UDDI Registry (White, Yellow, Green Pages)</li><li><strong>5.3</strong> Programming with UDDI</li><li><strong>5.4</strong> UDDI data structures</li><li><strong>5.5</strong> Support for categorization in UDDI Registries</li><li><strong>5.6</strong> Publishing API</li><li><strong>5.7</strong> Publishing information to a UDDI Registry</li><li><strong>5.8</strong> Searching information in a UDDI Registry</li><li><strong>5.9</strong> Deleting information in a UDDI Registry</li><li><strong>5.10</strong> Limitations of UDDI</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">5.1 &amp; 5.2 UDDI Overview &amp; Information Directory Model (White, Yellow, Green Pages)</h3>
+          <div class="topic-body">
+            <p><strong>UDDI (Universal Description, Discovery, and Integration)</strong> is an OASIS standard and XML-based registry for businesses worldwide to list themselves on the internet and discover web services offered by other organizations.</p>
+                    <p><strong>The Three UDDI Information Directory Pages:</strong></p>
+                    <ul>
+                      <li><strong>1. White Pages (Business Identity):</strong> Contains general contact information about the business entity: company name, street address, telephone numbers, contact persons, tax IDs, and unique identifiers (e.g., D-U-N-S numbers).</li>
+                      <li><strong>2. Yellow Pages (Industry & Geographic Categorization):</strong> Categorizes businesses and services using standard taxonomies:
+                        <ul>
+                          <li><strong>NAICS (North American Industry Classification System):</strong> Industry sector codes.</li>
+                          <li><strong>UNSPSC (Universal Standard Products and Services Classification):</strong> Product/service codes.</li>
+                          <li><strong>ISO 3166:</strong> Geographic country and region codes.</li>
+                        </ul>
+                      </li>
+                      <li><strong>3. Green Pages (Technical Specifications):</strong> Contains technical information about how to bind to and invoke the web service: pointers to WSDL files, supported communication protocols, wire formats, and references to <strong>tModels</strong> (technical models).</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">5.4 UDDI Core Data Structures</h3>
+          <div class="topic-body">
+            <p>UDDI structures information using 5 interconnected XML entities:</p>
+                    <ul>
+                      <li><code>businessEntity</code>: Top-level entry representing the company/provider (White/Yellow pages info).</li>
+                      <li><code>businessService</code>: Represents a specific business capability offered by a <code>businessEntity</code>.</li>
+                      <li><code>bindingTemplate</code>: Technical description of the service endpoint containing access URL and reference to tModels.</li>
+                      <li><code>tModel</code> (Technical Model): The technical fingerprint/blueprint representing a service specification or taxonomy classification.</li>
+                      <li><code>publisherAssertion</code>: Defines business relationships between multiple independent <code>businessEntity</code> records (e.g., parent-subsidiary, joint venture).</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">5.6 - 5.10 UDDI APIs (Publishing, Inquiry, Security) &amp; Limitations</h3>
+          <div class="topic-body">
+            <p><strong>UDDI Programmer's API Sets:</strong></p>
+                    <ul>
+                      <li><strong>Inquiry API (Public / Read-Only):</strong>
+                        <ul>
+                          <li><code>find_business</code>, <code>find_service</code>, <code>find_binding</code>, <code>find_tModel</code>: Search registry entries by name or taxonomy.</li>
+                          <li><code>get_businessDetail</code>, <code>get_serviceDetail</code>, <code>get_tModelDetail</code>: Retrieve full XML entity structures.</li>
+                        </ul>
+                      </li>
+                      <li><strong>Publishing API (Authenticated / Write):</strong>
+                        <ul>
+                          <li><code>get_authToken</code>: Authenticate publisher credentials and obtain a security session token.</li>
+                          <li><code>save_business</code>, <code>save_service</code>, <code>save_binding</code>, <code>save_tModel</code>: Create or update registry records.</li>
+                          <li><code>delete_business</code>, <code>delete_service</code>, <code>delete_binding</code>, <code>delete_tModel</code>: Remove entries from the registry.</li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <p><strong>Limitations of UDDI:</strong> High setup and governance overhead, lack of real-time automated verification of endpoint health, spam/stale entries in public registries (leading to the shutdown of public UDDI nodes by IBM/Microsoft/SAP in 2006), replaced in modern architectures by internal lightweight service registries (Eureka, Consul, Kubernetes DNS).</p>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">businessEntity</div>
+          <div class="revision-card-body">The top-level UDDI XML structure representing an organization or service provider.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">tModel (Technical Model)</div>
+          <div class="revision-card-body">A reusable technical fingerprint in UDDI that represents an interface specification (WSDL pointer) or taxonomy system.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">bindingTemplate</div>
+          <div class="revision-card-body">The UDDI element that contains the physical access point URL and protocol binding for a service.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">UNSPSC &amp; NAICS</div>
+          <div class="revision-card-body">Standardized industrial taxonomy classification coding systems used by UDDI Yellow Pages.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the architecture, information directory model (White, Yellow, and Green Pages), and data structures of UDDI in detail.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">UDDI Architecture</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Core Definition of UDDI:</span>
+              <span>Universal Description, Discovery, and Integration is an OASIS XML-based standard defining a distributed directory for publishing and discovering web services.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">UDDI White Pages Architecture:</span>
+              <span>Stores essential business identity information: organization legal name, description, physical address, web URLs, and administrative contact details.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">UDDI Yellow Pages Taxonomy:</span>
+              <span>Enables categorization of services using standardized industrial taxonomies including NAICS (industry sectors), UNSPSC (products/services), and ISO 3166 (geography).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">UDDI Green Pages Technical Bindings:</span>
+              <span>Provides direct technical binding instructions: physical endpoint URLs, wire protocol specifications, and pointers to external WSDL contracts.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">businessEntity Data Structure:</span>
+              <span>The root XML structure representing a business organization, containing unique `businessKey`, names, contact lists, and child `businessServices`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">businessService Data Structure:</span>
+              <span>Represents a distinct functional service grouping under a business entity, identified by a unique `serviceKey` and descriptive metadata.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">bindingTemplate Data Structure:</span>
+              <span>Contains physical technical access points (`accessPoint URL`), hosting redirector pointers, and references to associated `tModels`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">tModel (Technical Model) Abstraction:</span>
+              <span>Acts as a technical blueprint or fingerprint; stores canonical references to interface contracts (WSDL) and taxonomy classification schemes.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">publisherAssertion Structure:</span>
+              <span>Enables modeling complex corporate hierarchies (parent-subsidiary, supply-chain partnerships) between independent `businessEntity` entries.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Role in SOA Triangle:</span>
+              <span>UDDI functions as the central 'Service Registry' broker in the Publish-Find-Bind operational architecture.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain the UDDI Programmer&#x27;s API sets: Inquiry API, Publication API, and Security API with operation signatures and XML workflows.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">UDDI Programming APIs</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">UDDI API Architectural Paradigm:</span>
+              <span>UDDI APIs are themselves implemented as standardized SOAP web services accepting XML request envelopes over HTTP POST.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">UDDI Security API (get_authToken):</span>
+              <span>Publishers must first invoke `get_authToken` supplying userID and cred (password) to obtain an ephemeral XML security token for write access.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Publication API: save_business:</span>
+              <span>Creates or updates `businessEntity` records by passing complete XML entity structures along with the valid authentication token.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Publication API: save_service &amp; save_binding:</span>
+              <span>Persists new `businessService` and `bindingTemplate` entities containing updated access point URLs and tModel references.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Publication API: save_tModel:</span>
+              <span>Registers new technical interface specifications or custom taxonomy schemes into the registry directory.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Publication API: Deletion Operations:</span>
+              <span>Provides `delete_business`, `delete_service`, `delete_binding`, and `delete_tModel` taking primary entity keys to safely remove records.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Inquiry API: Search Operations (find_*):</span>
+              <span>Publicly accessible read-only methods including `find_business`, `find_service`, and `find_tModel` supporting wildcard and category bag queries.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Inquiry API: Detail Retrieval (get_*):</span>
+              <span>Methods like `get_businessDetail` and `get_serviceDetail` return complete XML document hierarchies for specific known keys.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Client Programming via JAXR &amp; UDDI4J:</span>
+              <span>Java applications interact with UDDI using Java API for XML Registries (JAXR) or the open-source UDDI4J library.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Error Handling via dispositionReport:</span>
+              <span>UDDI faults return a standardized `<dispositionReport>` element containing detailed error codes (e.g., `E_invalidKeyPassed`, `E_authTokenExpired`).</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Discuss the limitations of UDDI that led to its decline in public networks and explain how modern microservice registries evolved from it.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">UDDI Limitations &amp; Evolution</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Excessive Complexity and XML Overhead:</span>
+              <span>UDDI specifications were overly complicated, requiring heavy SOAP XML payloads and complex data structure hierarchies for basic lookups.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Data Quality &amp; Stale Entries in Public Registries:</span>
+              <span>Public UDDI registries suffered from spam, dead endpoint URLs, and lack of automated health checking to verify whether registered services were active.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Lack of Automated Quality of Service (QoS) Metrics:</span>
+              <span>UDDI only stored static metadata descriptions without tracking real-time server latency, uptime, load, or SLA compliance.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Governance &amp; Security Deficiencies:</span>
+              <span>Public registries lacked fine-grained role-based authorization, intellectual property safeguards, and trust verification mechanisms between competitors.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Shutdown of Public UDDI Business Registries:</span>
+              <span>In 2006, major founders (IBM, Microsoft, SAP) decommissioned the public Universal Business Registry (UBR) due to low commercial ROI.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Pivot to Private Enterprise Registries:</span>
+              <span>UDDI found practical utility solely within private corporate intranets for internal service cataloging and governance behind firewalls.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Shift Towards Lightweight REST &amp; OpenAPI:</span>
+              <span>Modern web developers favored lightweight Swagger/OpenAPI interactive developer portals over complex UDDI taxonomies.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Cloud-Native Service Discovery (Eureka / Consul / ZooKeeper):</span>
+              <span>Modern systems replaced UDDI with dynamic, lightweight registries providing automated heartbeat health checks and real-time DNS routing.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Kubernetes Internal DNS &amp; Service Mesh:</span>
+              <span>Container orchestration handles discovery automatically via cluster IP DNS and Envoy sidecars, eliminating the need for manual API discovery lookups.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Summary of Historical Legacy:</span>
+              <span>While public UDDI failed, its core concept of centralized service registration and taxonomy discovery directly influenced modern cloud service meshes.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 UDDI White Pages vs Yellow Pages vs Green Pages</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>UDDI White Pages</th><th>UDDI Yellow Pages</th><th>UDDI Green Pages</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Primary Purpose</td><td>Identifies the business entity (who provides the service).</td><td>Categorizes the business/service (what industry/domain it belongs to).</td><td>Specifies technical binding (how to invoke the service).</td></tr><tr><td>Information Stored</td><td>Company name, description, address, contacts, tax/DUNS ID.</td><td>Standard taxonomy codes (NAICS, UNSPSC, ISO 3166).</td><td>AccessPoint URLs, protocol bindings, WSDL pointers, tModels.</td></tr><tr><td>Search Method</td><td>Searched by company name, text keyword, or business key.</td><td>Searched by industry code, product category, or geographic region.</td><td>Searched by technical specification fingerprint or tModel key.</td></tr><tr><td>Consumer Target</td><td>Procurement teams and business analysts.</td><td>Enterprise search engines and category-based aggregators.</td><td>Software developers, client stub generators, and runtime SOAP engines.</td></tr><tr><td>Associated Data Structure</td><td>Encapsulated within `businessEntity` and `contact` elements.</td><td>Encapsulated within `categoryBag` and `keyedReference` elements.</td><td>Encapsulated within `bindingTemplate` and `tModel` elements.</td></tr><tr><td>Dynamic vs Static</td><td>Static organizational identity data.</td><td>Static industry classification data.</td><td>Dynamic technical binding and endpoint URL pointers.</td></tr><tr><td>Analogy</td><td>Traditional telephone white pages (name & phone).</td><td>Telephone yellow pages (business directory by category).</td><td>Technical user manual & wiring diagram.</td></tr><tr><td>Required for Invocation</td><td>Not strictly required for executing runtime calls.</td><td>Not strictly required for executing runtime calls.</td><td>Mandatory for generating stubs and transmitting network messages.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 UDDI Inquiry API vs UDDI Publication API</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>UDDI Inquiry API</th><th>UDDI Publication API</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Operation Category</td><td>Read-only search and retrieval operations.</td><td>Write, modify, and delete administrative operations.</td></tr><tr><td>Authentication Requirement</td><td>Publicly accessible; requires no authentication token.</td><td>Mandatory authentication; requires valid session token (`get_authToken`).</td></tr><tr><td>Primary Methods</td><td>`find_business`, `find_service`, `get_businessDetail`.</td><td>`save_business`, `save_service`, `delete_business`, `delete_binding`.</td></tr><tr><td>Target User Role</td><td>Service consumers, client applications, search tools.</td><td>Service providers, system administrators, registry publishers.</td></tr><tr><td>Data Mutation</td><td>Does not alter or mutate registry database records.</td><td>Creates, updates, or deletes records in the registry database.</td></tr><tr><td>Security Risk</td><td>Low risk; exposes only public metadata.</td><td>High risk; unauthorized calls can corrupt or delete enterprise service entries.</td></tr><tr><td>Caching Applicability</td><td>Responses can be aggressively cached by proxies.</td><td>Responses cannot be cached; requires atomic database transactions.</td></tr><tr><td>Error Reporting</td><td>Throws faults if keys are not found or queries are malformed.</td><td>Throws security faults (`E_authTokenExpired`) and integrity violations.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>UDDI is an XML-based registry standard for discovering and publishing web services.</li><li style='margin-bottom:0.6rem;'>Directory model: White Pages (business info), Yellow Pages (taxonomies - NAICS/UNSPSC), Green Pages (technical WSDL/tModels).</li><li style='margin-bottom:0.6rem;'>Core data structures: `businessEntity`, `businessService`, `bindingTemplate`, `tModel`, `publisherAssertion`.</li><li style='margin-bottom:0.6rem;'>Inquiry API (`find_*`, `get_*`) is read-only; Publication API (`save_*`, `delete_*`) requires authentication (`get_authToken`).</li><li style='margin-bottom:0.6rem;'>Public UDDI was decommissioned due to lack of QoS and spam; evolved into modern dynamic registries (Consul/Eureka).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20IV%20-%20Describing%20and%20Discovering%20Web%20Services/main.html" class="unit-nav-btn">&larr; Previous: Unit IV</a></div>
+      <div><a href="../Unit%20VI%20-%20The%20REST%20Architectural%20style/main.html" class="unit-nav-btn">Next: Unit VI &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

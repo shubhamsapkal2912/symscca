@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit IV - Describing and Discovering Web Services | Web Services</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Web Services</a> <span class="separator">/</span> <span class="current">Unit IV - Describing and Discovering Web Services</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJCT302 &bull; Unit IV &bull; 10 Hrs</span>
+      <h1 class="hero-title">Unit IV - Describing and Discovering Web Services</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">10 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>4.1</strong> WSDL - WSDL in the world of Web Services</li><li><strong>4.2</strong> Web Services life cycle</li><li><strong>4.3</strong> Anatomy of WSDL definition document</li><li><strong>4.4</strong> WSDL bindings</li><li><strong>4.5</strong> WSDL Tools</li><li><strong>4.6</strong> Limitations of WSDL</li><li><strong>4.7</strong> Service discovery</li><li><strong>4.8</strong> Role of service discovery in a SOA</li><li><strong>4.9</strong> Service discovery mechanisms</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">4.1 &amp; 4.3 Anatomy of a WSDL Definition Document</h3>
+          <div class="topic-body">
+            <p><strong>WSDL (Web Services Description Language)</strong> is an XML grammar defined by W3C to describe what a web service does, how to invoke it, and where to find it on the network. A WSDL document is partitioned into <strong>Abstract Definitions</strong> (interface contract) and <strong>Concrete Definitions</strong> (network implementation details):</p>
+                    <ul>
+                      <li><strong>1. &lt;types&gt; (Abstract):</strong> Defines the data types used in messages using standard XML Schema (XSD).</li>
+                      <li><strong>2. &lt;message&gt; (Abstract):</strong> Defines the typed data elements transmitted. A one-way operation has 1 message; request-response has 2 (Input and Output).</li>
+                      <li><strong>3. &lt;portType&gt; (Abstract - called &lt;interface&gt; in WSDL 2.0):</strong> The programmatic interface defining the operations supported by the service. Operations can be: <em>One-Way</em>, <em>Request-Response</em>, <em>Solicit-Response</em>, or <em>Notification</em>.</li>
+                      <li><strong>4. &lt;binding&gt; (Concrete):</strong> Specifies concrete wire protocol formats (SOAP 1.1, SOAP 1.2, HTTP GET/POST) and data serialization style (document/literal or rpc/literal).</li>
+                      <li><strong>5. &lt;port&gt; / &lt;endpoint&gt; (Concrete):</strong> Specifies the concrete network address URL where the binding can be accessed.</li>
+                      <li><strong>6. &lt;service&gt; (Concrete):</strong> The root collection of related ports.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">4.2 Web Services Lifecycle &amp; 4.5 WSDL Tools</h3>
+          <div class="topic-body">
+            <p><strong>Web Services Lifecycle Stages:</strong></p>
+                    <ol>
+                      <li><strong>Creation / Development:</strong> Designing schemas and implementing business logic.</li>
+                      <li><strong>Description:</strong> Generating machine-readable WSDL contract.</li>
+                      <li><strong>Publishing:</strong> Registering service metadata into UDDI registries.</li>
+                      <li><strong>Discovery:</strong> Consumers querying registries to locate service.</li>
+                      <li><strong>Binding & Invocation:</strong> Generating client stubs and executing operations.</li>
+                      <li><strong>Monitoring & Maintenance:</strong> Tracking SLA, security, and versioning.</li>
+                      <li><strong>Retirement / Deprecation:</strong> Decommissioning obsolete service endpoints.</li>
+                    </ol>
+                    <p><strong>Standard WSDL Tools:</strong></p>
+                    <ul>
+                      <li><code>wsimport</code>: Generates JAX-WS portable Java artifacts from a WSDL URL.</li>
+                      <li><code>wsgen</code>: Reads compiled Java SEI classes and generates WSDL/XSD files.</li>
+                      <li><code>WSDL2Java / Java2WSDL</code>: Apache Axis/CXF command-line code generators.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">4.7 - 4.9 Service Discovery in SOA and Discovery Mechanisms</h3>
+          <div class="topic-body">
+            <p><strong>Service Discovery</strong> is the mechanism by which service requesters locate available web service descriptions matching functional and non-functional requirements.</p>
+                    <ul>
+                      <li><strong>Static Discovery:</strong> The service developer manually locates the WSDL URL at design time, embeds the URL into the client source code, and compiles client stubs.</li>
+                      <li><strong>Dynamic Discovery:</strong> The client application queries a runtime service registry (UDDI or DNS/ZooKeeper/Consul) dynamically at runtime, binds to the returned endpoint, and executes operations without manual recompilation.</li>
+                      <li><strong>Direct Discovery (Inspection):</strong> Using standards like WS-Inspection (WSIL) to inspect web server directories directly for available services without a centralized registry.</li>
+                    </ul>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">WSDL portType</div>
+          <div class="revision-card-body">The abstract set of operations supported by a web service, analogous to an interface in object-oriented programming.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">WSDL Binding</div>
+          <div class="revision-card-body">The concrete specification linking an abstract portType to physical transport protocols and message encoding formats.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Static Discovery</div>
+          <div class="revision-card-body">Design-time retrieval and hardcoding of service endpoint descriptions by software developers.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Dynamic Discovery</div>
+          <div class="revision-card-body">Runtime querying of service registries by automated client software to find and bind to active endpoints.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the anatomy and structural elements of a WSDL 1.1 document in detail, distinguishing clearly between Abstract and Concrete definitions.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">WSDL Anatomy</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">WSDL XML Architecture:</span>
+              <span>A WSDL document is a standardized XML dialect structured into modular elements separating interface contracts from physical network deployments.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Abstract vs Concrete Separation:</span>
+              <span>Abstract elements (`types`, `message`, `portType`) define what the service does; Concrete elements (`binding`, `port`, `service`) define how and where it is invoked.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&lt;types&gt; Element:</span>
+              <span>Encapsulates data type definitions using XML Schema (XSD), declaring complex types, elements, and constraints used in messages.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&lt;message&gt; Element:</span>
+              <span>Defines the typed data payload transmitted during an exchange; composed of one or more `<part>` elements linked to XSD types.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&lt;portType&gt; Element:</span>
+              <span>Defines the service's abstract programming interface, containing a collection of `<operation>` elements with input, output, and fault messages.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Four WSDL Operation Transmission Primitives:</span>
+              <span>Supports One-Way (input only), Request-Response (input/output), Solicit-Response (output/input), and Notification (output only).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&lt;binding&gt; Element:</span>
+              <span>Maps an abstract `portType` to a specific protocol (SOAP 1.1, SOAP 1.2, HTTP) and specifies message format (document/literal style).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&lt;port&gt; Element:</span>
+              <span>Defines an individual endpoint by combining a binding with a concrete physical network URL address (e.g., `soap:address location="..."`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">&lt;service&gt; Element:</span>
+              <span>The root container aggregating related `<port>` endpoints into a single logical service entry.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">WSDL Import Mechanism:</span>
+              <span>The `<import>` tag enables modular separation by referencing external XSD schemas and WSDL fragments across different files.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Describe the complete 7-stage Web Services Lifecycle from initial conception to retirement.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Web Services Lifecycle</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stage 1: Conception &amp; Requirement Analysis:</span>
+              <span>Identify business capabilities suited for service exposure, analyze consumer requirements, and define data models.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stage 2: Architecture &amp; Contract Design:</span>
+              <span>Author XML Schema Definitions (XSD) and formal WSDL contracts (in Contract-First design) defining operation signatures and policies.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stage 3: Service Implementation &amp; Unit Testing:</span>
+              <span>Implement backend business logic in Java/C#, connect databases, configure security policies, and conduct unit testing.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stage 4: Packaging and Deployment:</span>
+              <span>Package service artifacts into WAR/EAR archives and deploy to certified application servers (Tomcat, WebLogic, JBoss).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stage 5: Publishing &amp; Registration:</span>
+              <span>Publish the deployed WSDL contract and business taxonomy to service registries (UDDI) or enterprise API gateways.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stage 6: Discovery, Binding, &amp; Runtime Invocation:</span>
+              <span>Consumers discover service endpoints, generate client stubs via `wsimport`, bind to network endpoints, and invoke operations.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stage 7: Monitoring, SLA Management, &amp; Governance:</span>
+              <span>Monitor runtime metrics (latency, error rates, throughput) and enforce QoS contracts and rate limits.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stage 8: Interface Versioning:</span>
+              <span>Handle evolution through non-breaking changes or multi-version parallel routing when breaking changes occur.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stage 9: Deprecation:</span>
+              <span>Issue formal deprecation notices to consumers with sunset timelines when newer service versions are available.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stage 10: Decommissioning &amp; Retirement:</span>
+              <span>Safely shut down legacy endpoints and remove registered metadata from registries after all consumers migrate.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Discuss Service Discovery in SOA: explain Static Discovery vs Dynamic Discovery, WS-Inspection (WSIL), and the role of registries.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Service Discovery</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Definition and Importance of Service Discovery:</span>
+              <span>Service discovery is the process by which a client locates the network location and operational contract of a service matching its functional requirements.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Static Service Discovery Workflow:</span>
+              <span>The software engineer manually finds the WSDL URL, generates client proxy stubs at compile time, and embeds the URL into the client application binary.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Limitations of Static Discovery:</span>
+              <span>If the provider's server IP or domain changes, the client application fails and requires source code modification, recompilation, and redeployment.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Dynamic Service Discovery Workflow:</span>
+              <span>The client application dynamically queries a centralized registry (UDDI / Consul) at runtime using criteria like service name or taxonomy category.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Benefits of Dynamic Discovery:</span>
+              <span>Provides automatic failover, load balancing, dynamic endpoint reconfiguration, and runtime binding without modifying client code.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Role of Centralized Registries (UDDI):</span>
+              <span>Acts as an enterprise directory maintaining White Pages (business info), Yellow Pages (taxonomies), and Green Pages (technical WSDL pointers).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">WS-Inspection (WSIL) Decentralized Discovery:</span>
+              <span>An XML-based standard allowing clients to inspect a web server directly (e.g., `inspection.wsil`) to discover all hosted services without a global registry.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">DNS-Based &amp; Service Mesh Discovery:</span>
+              <span>Modern cloud-native SOA uses DNS-based discovery and Envoy/Consul service meshes to resolve ephemeral microservice IPs automatically.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Security in Discovery:</span>
+              <span>Enforces access control policies in registries so that sensitive internal enterprise services are only visible to authorized authenticated consumers.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Practical Limitations in Early SOA:</span>
+              <span>Public UDDI registries suffered from stale data and lack of adoption, leading enterprise SOA to favor private internal registries and API Gateways.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Abstract Parts vs Concrete Parts of WSDL</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Abstract Definitions (WSDL)</th><th>Concrete Definitions (WSDL)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Core Purpose</td><td>Defines the programmatic interface contract (what the service does).</td><td>Defines the physical deployment and wire transport (how & where).</td></tr><tr><td>Primary Elements</td><td>`<types>`, `<message>`, `<portType>` (`<interface>`).</td><td>`<binding>`, `<port>` (`<endpoint>`), `<service>`.</td></tr><tr><td>Protocol Dependency</td><td>Completely protocol-independent and transport-neutral.</td><td>Tightly coupled to specific protocols (SOAP 1.1, SOAP 1.2, HTTP).</td></tr><tr><td>Network Address</td><td>Contains no network addresses, ports, or IP URLs.</td><td>Contains explicit physical network endpoint URLs (`soap:address`).</td></tr><tr><td>Data Types Definition</td><td>Defines all payload data structures using XML Schema (XSD).</td><td>Does not define data types; references abstract message types.</td></tr><tr><td>Reusability</td><td>Can be reused across multiple different protocols and network endpoints.</td><td>Specific to a single physical server deployment.</td></tr><tr><td>Programming Analogy</td><td>Analogous to a Java `interface` declaration.</td><td>Analogous to a compiled Java `class` implementing the interface on a server.</td></tr><tr><td>Modification Impact</td><td>Changes to abstract definitions break client code compilation.</td><td>Changing concrete URLs only requires updating endpoint configuration.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Static Discovery vs Dynamic Discovery in SOA</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Static Service Discovery</th><th>Dynamic Service Discovery</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Discovery Timing</td><td>Performed manually at design-time / compile-time by developers.</td><td>Performed automatically at runtime by client software.</td></tr><tr><td>Endpoint Binding</td><td>Endpoint URL is hardcoded or configured in static client properties.</td><td>Endpoint URL is resolved dynamically by querying a registry.</td></tr><tr><td>Resilience to Server Migration</td><td>Fails immediately if server IP or port changes; requires recompilation.</td><td>Resilient; registry automatically routes requests to new server locations.</td></tr><tr><td>Implementation Complexity</td><td>Very simple; requires no runtime directory lookups or discovery protocols.</td><td>Higher complexity; requires registry infrastructure (UDDI, Consul, Eureka).</td></tr><tr><td>Latency Overhead</td><td>Zero discovery latency during request execution.</td><td>Incurs additional network lookup latency when querying registry.</td></tr><tr><td>Stub Generation</td><td>Client proxy stubs are pre-compiled at build time (`wsimport`).</td><td>Stubs use dynamic proxies (DII - Dynamic Invocation Interface) or runtime reflection.</td></tr><tr><td>Failover & Load Balancing</td><td>Requires external hardware load balancers (F5).</td><td>Supports software-driven client-side load balancing and health checking.</td></tr><tr><td>Industry Usage</td><td>Predominant in standard SOAP enterprise client applications.</td><td>Standard in modern cloud-native microservice architectures (Kubernetes/Consul).</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>WSDL defines what a service does (Abstract: types, message, portType) and where it is (Concrete: binding, port, service).</li><li style='margin-bottom:0.6rem;'>WSDL operation types: One-Way, Request-Response, Solicit-Response, Notification.</li><li style='margin-bottom:0.6rem;'>WSDL Tools: `wsimport` (WSDL to Java stubs) and `wsgen` (Java to WSDL contract).</li><li style='margin-bottom:0.6rem;'>Lifecycle stages: Conception $\rightarrow$ Design $\rightarrow$ Implementation $\rightarrow$ Deploy $\rightarrow$ Publish $\rightarrow$ Discover $\rightarrow$ Invoke $\rightarrow$ Retire.</li><li style='margin-bottom:0.6rem;'>Static discovery hardcodes URLs at build-time; Dynamic discovery resolves endpoints at runtime via registries.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20III%20-%20SOAP%20Simple%20Object%20Access%20Protocol/main.html" class="unit-nav-btn">&larr; Previous: Unit III</a></div>
+      <div><a href="../Unit%20V%20-%20UDDI/main.html" class="unit-nav-btn">Next: Unit V &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

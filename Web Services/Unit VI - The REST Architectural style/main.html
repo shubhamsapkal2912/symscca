@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit VI - The REST Architectural style | Web Services</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Web Services</a> <span class="separator">/</span> <span class="current">Unit VI - The REST Architectural style</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJCT302 &bull; Unit VI &bull; 10 Hrs</span>
+      <h1 class="hero-title">Unit VI - The REST Architectural style</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">10 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>6.1</strong> Introducing HTTP (Methods, Status Codes, Statelessness)</li><li><strong>6.2</strong> The core architectural elements of a RESTful system</li><li><strong>6.3</strong> Description and discovery of RESTful web services</li><li><strong>6.4</strong> Java tools and frameworks for building RESTful web services</li><li><strong>6.5</strong> JSON message format and tools and frameworks around JSON</li><li><strong>6.6</strong> Build RESTful web services with JAX-RS APIs</li><li><strong>6.7</strong> The Description and Discovery of RESTful Web Services</li><li><strong>6.8</strong> Design guidelines for building RESTful web services</li><li><strong>6.9</strong> Secure RESTful web services</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">6.1 &amp; 6.2 HTTP Fundamentals &amp; Architectural Constraints of REST</h3>
+          <div class="topic-body">
+            <p><strong>REST (Representational State Transfer)</strong> is an architectural style formulated by Roy Fielding (2000) for distributed hypermedia systems. It treats every component as a <strong>Resource</strong> identified by a uniform URI and manipulated via standard HTTP verbs.</p>
+                    <p><strong>Six Guiding Architectural Constraints of REST:</strong></p>
+                    <ul>
+                      <li><strong>1. Client-Server Separation:</strong> Decouples user interface concerns from data storage concerns, improving portability and scalability.</li>
+                      <li><strong>2. Statelessness:</strong> Every request from client to server must contain all information necessary to understand and process the request; server stores no client session context.</li>
+                      <li><strong>3. Cacheability:</strong> Responses must explicitly define themselves as cacheable or non-cacheable (via <code>Cache-Control</code>, <code>ETag</code>) to reduce network latency.</li>
+                      <li><strong>4. Uniform Interface:</strong> The cornerstone constraint consisting of: Resource identification in requests (URIs), Resource manipulation through representations (JSON/XML), Self-descriptive messages (MIME types), and <strong>HATEOAS</strong> (Hypermedia as the Engine of Application State).</li>
+                      <li><strong>5. Layered System:</strong> Architecture allows intermediaries (proxies, load balancers, API gateways, security firewalls) without client awareness.</li>
+                      <li><strong>6. Code-on-Demand (Optional):</strong> Servers can extend client functionality by transmitting executable code (e.g., JavaScript).</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">6.4 - 6.6 Building RESTful Web Services in Java (JAX-RS &amp; JSON Frameworks)</h3>
+          <div class="topic-body">
+            <p><strong>JAX-RS (Java API for RESTful Web Services) Annotations:</strong></p>
+                    <ul>
+                      <li><code>@Path("/employees")</code>: Defines the relative URI path for a resource class or method.</li>
+                      <li><code>@GET, @POST, @PUT, @DELETE, @PATCH</code>: Maps HTTP methods to Java methods.</li>
+                      <li><code>@Produces(MediaType.APPLICATION_JSON)</code>: Specifies the response MIME media type returned.</li>
+                      <li><code>@Consumes(MediaType.APPLICATION_JSON)</code>: Specifies the incoming request body payload format accepted.</li>
+                      <li><code>@PathParam("id")</code>: Binds a URI path parameter (e.g., <code>/employees/{id}</code>) to a method variable.</li>
+                      <li><code>@QueryParam("dept")</code>: Binds URL query string parameters (e.g., <code>/employees?dept=IT</code>).</li>
+                      <li><code>@HeaderParam</code> & <code>@CookieParam</code>: Extract HTTP headers and cookies.</li>
+                    </ul>
+                    <p><strong>JSON Processing Frameworks:</strong> Jackson (<code>ObjectMapper</code>), Google Gson, JSON-B (Java API for JSON Binding) for high-speed serialization and deserialization.</p>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">6.7 - 6.9 API Description, Design Best Practices, and Security</h3>
+          <div class="topic-body">
+            <p><strong>REST Description:</strong> Documented using <strong>OpenAPI Specification (OAS / Swagger)</strong> and legacy WADL (Web Application Description Language).</p>
+                    <p><strong>RESTful Design Guidelines:</strong></p>
+                    <ul>
+                      <li>Use nouns for URIs, never verbs (e.g., <code>GET /api/v1/orders</code>, NOT <code>/api/v1/getOrders</code>).</li>
+                      <li>Use plural nouns for collections (<code>/users</code>, <code>/products</code>).</li>
+                      <li>Maintain correct HTTP status codes: <code>200 OK</code>, <code>201 Created</code>, <code>204 No Content</code>, <code>400 Bad Request</code>, <code>401 Unauthorized</code>, <code>403 Forbidden</code>, <code>404 Not Found</code>, <code>500 Internal Error</code>.</li>
+                      <li>Ensure <strong>Idempotency</strong>: GET, PUT, and DELETE are idempotent; POST is non-idempotent.</li>
+                    </ul>
+                    <p><strong>Security Mechanisms:</strong> Transport Layer Security (HTTPS/TLS 1.3), <strong>OAuth 2.0 & OpenID Connect</strong> for delegated token authorization, <strong>JSON Web Tokens (JWT)</strong> for stateless bearer authentication, API Key rate limiting, and CORS headers.</p>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Resource &amp; URI</div>
+          <div class="revision-card-body">Any conceptual entity exposed by a RESTful system identified by a unique Uniform Resource Identifier.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">HATEOAS</div>
+          <div class="revision-card-body">Hypermedia As The Engine Of Application State; clients dynamically navigate resources via hypermedia links embedded in responses.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Idempotency</div>
+          <div class="revision-card-body">Property where executing an HTTP method multiple identical times produces the exact same server resource state (GET, PUT, DELETE).</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">JSON Web Token (JWT)</div>
+          <div class="revision-card-body">A compact, URL-safe means of representing signed claims between two parties for stateless REST authentication.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the 6 core architectural constraints of REST formulated by Roy Fielding and discuss how they ensure web scalability.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">REST Architectural Constraints</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Origins of REST Architecture:</span>
+              <span>Formulated by Roy Fielding in his 2000 doctoral dissertation, REST is an architectural style governing distributed hypermedia systems over HTTP.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Constraint 1: Client-Server Architecture:</span>
+              <span>Separates user interface concerns on clients from data storage and business logic on servers, enabling independent evolution of mobile/web clients.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Constraint 2: Statelessness:</span>
+              <span>Every HTTP request must contain all authentication credentials and context necessary for execution; server holds no session state between calls, enabling effortless horizontal scaling.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Constraint 3: Cacheability:</span>
+              <span>Responses must explicitly declare caching directives (`Cache-Control`, `max-age`, `ETag`) allowing clients and intermediate proxies to cache responses, drastically reducing latency.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Constraint 4: Uniform Interface:</span>
+              <span>Provides a standard contract across all resources consisting of 4 sub-principles: resource identification (URIs), manipulation via representations, self-describing messages, and HATEOAS.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Constraint 5: Layered System:</span>
+              <span>Allows intermediate architectural tiers (load balancers, reverse proxies, API gateways, CDNs) to intercept traffic without client knowledge, enhancing security and caching.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Constraint 6: Code on Demand (Optional):</span>
+              <span>Servers can temporarily extend client functionality by transmitting executable scripts (e.g., JavaScript applets), the only optional constraint.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Scalability and Fault Tolerance:</span>
+              <span>Statelessness combined with standard caching allows RESTful systems to serve billions of requests across globally distributed CDNs.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Simplicity Over Protocols:</span>
+              <span>Leverages existing HTTP infrastructure rather than introducing heavy transport wrapper protocols like SOAP envelopes.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Ubiquitous Adoption in Modern Web:</span>
+              <span>Forms the dominant architecture for public web APIs, microservice ecosystems, and cloud-native mobile backends.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain how to design, develop, and annotate a complete CRUD RESTful Web Service in Java using JAX-RS and Jackson JSON parser.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">JAX-RS Java Implementation</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Resource Class Architecture (@Path):</span>
+              <span>Annotate root Java class with `@Path('/api/v1/products')` and `@Produces(MediaType.APPLICATION_JSON)` to define the base URI and default media representation.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">CREATE Operation (@POST):</span>
+              <span>Implement `@POST` method accepting JSON entity body, persisting data, and returning HTTP `201 Created` with a `Location` header pointing to new resource.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">READ Collection Operation (@GET):</span>
+              <span>Implement `@GET` method returning complete list of products with optional query filtering via `@QueryParam('category')` and pagination parameters.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">READ Single Resource (@GET with @PathParam):</span>
+              <span>Implement `@GET @Path('/{id}')` method extracting path variable via `@PathParam('id') int id`, returning `200 OK` or `404 Not Found` if missing.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">UPDATE Full Resource (@PUT):</span>
+              <span>Implement `@PUT @Path('/{id}')` method replacing the entire product resource idempotently, returning `200 OK` or `204 No Content`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">PARTIAL UPDATE (@PATCH):</span>
+              <span>Implement `@PATCH @Path('/{id}')` method updating specific fields (e.g., price only) without requiring the entire product payload.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">DELETE Operation (@DELETE):</span>
+              <span>Implement `@DELETE @Path('/{id}')` method removing resource and returning `204 No Content` (or `200 OK`), ensuring idempotent behavior.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Jackson JSON Serialization Integration:</span>
+              <span>Jackson's `ObjectMapper` automatically marshals Java POJOs into JSON strings and deserializes incoming JSON payloads into strongly-typed Java objects.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Exception Mapping via ExceptionMapper&lt;T&gt;:</span>
+              <span>Implement custom `ExceptionMapper` classes to catch unchecked Java exceptions and convert them into standardized JSON error responses with proper HTTP status codes.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Response Builder &amp; Status Codes:</span>
+              <span>Use `Response.status(Response.Status.CREATED).entity(product).build()` to control HTTP response codes and headers cleanly.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Discuss RESTful Web Service security: explain HTTPS/TLS, OAuth 2.0 authorization framework, JWT tokens, API Keys, and CORS protection.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">REST Security</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Transport Layer Security (HTTPS / TLS 1.3):</span>
+              <span>Mandatory foundation for all REST APIs, encrypting request/response payloads, headers, and URI parameters against packet sniffing and Man-in-the-Middle (MitM) attacks.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">OAuth 2.0 Delegated Authorization Framework:</span>
+              <span>Industry standard allowing third-party applications to access server resources on behalf of a user without exposing user passwords (using Authorization Code, Client Credentials grants).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">JSON Web Token (JWT) Architecture:</span>
+              <span>A compact, cryptographically signed token containing Header (algorithm), Payload (claims/user ID/roles), and Signature (`HMAC-SHA256` or `RSA-256`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stateless Bearer Authentication via JWT:</span>
+              <span>Clients pass tokens in HTTP `Authorization: Bearer <JWT_TOKEN>` header; servers verify signature mathematically without querying session databases.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">API Key Authentication &amp; Limitations:</span>
+              <span>Transmits static unique keys in headers (e.g., `X-API-Key`) for client identification and rate limiting, but unsuitable for user-level delegated authorization.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Cross-Origin Resource Sharing (CORS):</span>
+              <span>Browser security mechanism where servers declare allowed client domains via `Access-Control-Allow-Origin` and handle HTTP `OPTIONS` preflight checks.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Rate Limiting &amp; Throttling:</span>
+              <span>Protects endpoints against Denial of Service (DoS) and brute-force attacks using Token Bucket / Leaky Bucket algorithms returning `429 Too Many Requests`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Input Validation &amp; Content Security:</span>
+              <span>Strictly validate payload schemas and sanitize inputs to prevent SQL Injection, NoSQL Injection, and Cross-Site Scripting (XSS).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Sensitive Data Exposure in URIs:</span>
+              <span>Never place sensitive credentials or passwords in URL query parameters, as URLs are logged in plain text in browser histories, proxy caches, and server access logs.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Role-Based Access Control (RBAC) in JAX-RS:</span>
+              <span>Enforce endpoint authorization using security annotations like `@RolesAllowed('ADMIN')` to restrict privileged endpoints.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 SOAP Web Services vs RESTful Web Services</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>SOAP Web Services</th><th>RESTful Web Services</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Architectural Paradigm</td><td>Strict protocol specification with rigid XML standards.</td><td>Lightweight architectural style based on HTTP principles.</td></tr><tr><td>Data Payload Formats</td><td>Exclusively XML (strict SOAP envelope format).</td><td>Polyglot: JSON (predominant), XML, YAML, Plain Text, HTML.</td></tr><tr><td>Transport Protocol</td><td>Transport agnostic (HTTP, HTTPS, SMTP, JMS, TCP).</td><td>Tightly bound to HTTP / HTTPS.</td></tr><tr><td>Interface Contract</td><td>Strict contract defined via machine-readable WSDL.</td><td>Described via OpenAPI / Swagger or self-descriptive HATEOAS.</td></tr><tr><td>Message Footprint & Overhead</td><td>Heavy footprint due to XML tags and envelope nesting.</td><td>Lightweight payload footprint; compact JSON consumes less bandwidth.</td></tr><tr><td>Caching Capability</td><td>Cannot be cached by standard HTTP caches (uses POST).</td><td>Highly cacheable; fully utilizes HTTP caching headers (`Cache-Control`, `ETag`).</td></tr><tr><td>Security Standards</td><td>WS-Security (message-level encryption and digital signatures).</td><td>HTTPS/TLS (transport level), OAuth 2.0, JWT, and API Keys.</td></tr><tr><td>Error Handling</td><td>Standardized XML `<soap:Fault>` structure.</td><td>Standard HTTP response status codes (404, 401, 500) + custom JSON.</td></tr><tr><td>Performance & Latency</td><td>Lower performance due to heavy XML DOM parsing.</td><td>High performance; fast JSON serialization and low network latency.</td></tr><tr><td>Ideal Application Domain</td><td>Enterprise banking, financial transactions, legacy B2B.</td><td>Modern web apps, mobile backends, public APIs, cloud microservices.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 XML vs JSON Data Interchange Formats</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>XML (Extensible Markup Language)</th><th>JSON (JavaScript Object Notation)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Syntax Structure</td><td>Tag-based markup syntax (`<name>Value</name>`).</td><td>Key-Value pairs and array data structures (`{"name": "Value"}`).</td></tr><tr><td>Verbosity & Payload Size</td><td>High verbosity with repetitive closing tags; larger payload.</td><td>Compact and concise; significantly smaller payload size.</td></tr><tr><td>Parsing Speed in Browsers</td><td>Slower; requires XML DOM Parser or SAX parser.</td><td>Native JavaScript parsing via ultra-fast `JSON.parse()`.</td></tr><tr><td>Data Typing Support</td><td>All content is text; requires XSD for data typing.</td><td>Native primitive data types (String, Number, Boolean, Array, Object, Null).</td></tr><tr><td>Schema Validation</td><td>Extremely rich schema validation (XML Schema / XSD, DTD).</td><td>JSON Schema exists but is less formally integrated into early standards.</td></tr><tr><td>Namespaces Support</td><td>Robust support for XML Namespaces to avoid tag collisions.</td><td>No native namespace support.</td></tr><tr><td>Human Readability</td><td>Moderate readability; cluttered by extensive nested tags.</td><td>High readability; clean, clean, and intuitive object notation.</td></tr><tr><td>Tooling Ecosystem</td><td>XPath, XSLT transformations, XQuery.</td><td>JSONPath, jq, Jackson, Gson, native browser engines.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>REST is an architectural style based on 6 constraints: Client-Server, Stateless, Cacheable, Uniform Interface, Layered, Code-on-Demand.</li><li style='margin-bottom:0.6rem;'>HTTP methods: GET (read), POST (create), PUT (replace), PATCH (partial update), DELETE (remove).</li><li style='margin-bottom:0.6rem;'>GET, PUT, DELETE are Idempotent; POST is non-idempotent.</li><li style='margin-bottom:0.6rem;'>JAX-RS annotations: `@Path`, `@GET`, `@POST`, `@PUT`, `@DELETE`, `@Produces`, `@Consumes`, `@PathParam`, `@QueryParam`.</li><li style='margin-bottom:0.6rem;'>REST security: HTTPS/TLS, OAuth 2.0, JWT Bearer tokens, API Keys, and CORS headers.</li><li style='margin-bottom:0.6rem;'>REST APIs are documented using OpenAPI / Swagger specifications.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20V%20-%20UDDI/main.html" class="unit-nav-btn">&larr; Previous: Unit V</a></div>
+      <div><a href="../main.html" class="unit-nav-btn">Back to Web Services &uarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

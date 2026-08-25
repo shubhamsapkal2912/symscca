@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit II - Web Services Architecture | Web Services</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Web Services</a> <span class="separator">/</span> <span class="current">Unit II - Web Services Architecture</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJCT302 &bull; Unit II &bull; 10 Hrs</span>
+      <h1 class="hero-title">Unit II - Web Services Architecture</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">10 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>2.1</strong> Web services Architecture and its characteristics</li><li><strong>2.2</strong> Core building blocks of web services</li><li><strong>2.3</strong> Standards and technologies available for implementing web services</li><li><strong>2.4</strong> Web services communication models</li><li><strong>2.5</strong> Basic steps of implementing web services</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">2.1 &amp; 2.2 Web Services Architecture, Characteristics, and Core Building Blocks</h3>
+          <div class="topic-body">
+            <p>The Web Services Architecture is a multi-layered conceptual model designed to provide open, standardized communication across heterogeneous computing platforms.</p>
+                    <p><strong>Core Architectural Layers:</strong></p>
+                    <ul>
+                      <li><strong>1. Transport Layer:</strong> Responsible for transferring raw messages between endpoints across networks. Utilizes ubiquitous protocols: HTTP, HTTPS, SMTP, FTP, JMS.</li>
+                      <li><strong>2. Messaging / Wire Protocol Layer:</strong> Defines the standard packaging and envelope structure for messages. Primarily <strong>SOAP (Simple Object Access Protocol)</strong> and <strong>REST (HTTP verbs with XML/JSON payloads)</strong>.</li>
+                      <li><strong>3. Description Layer:</strong> Defines the public interface, operations, parameter data types, and endpoint network bindings using <strong>WSDL (Web Services Description Language)</strong>.</li>
+                      <li><strong>4. Discovery Layer:</strong> Provides directory and lookup mechanisms for finding services across enterprises using <strong>UDDI (Universal Description, Discovery, and Integration)</strong>.</li>
+                      <li><strong>5. Quality of Service (QoS) & Security Layer:</strong> Enforces enterprise policies: WS-Security (XML Encryption/Signature), WS-ReliableMessaging, WS-Addressing, WS-Coordination.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">2.3 Standards &amp; Technologies for Implementation</h3>
+          <div class="topic-body">
+            <p>Key W3C and OASIS open standards powering the web services stack:</p>
+                    <ul>
+                      <li><strong>XML / XML Schema (XSD):</strong> Standard meta-language and type definition schema enforcing data structure validity.</li>
+                      <li><strong>SOAP 1.1 / 1.2:</strong> XML envelope specification providing decentralized, distributed message exchange.</li>
+                      <li><strong>WSDL 1.1 / 2.0:</strong> Formal XML dialect defining service ports, portTypes, messages, and bindings.</li>
+                      <li><strong>UDDI 3.0:</strong> Directory standard defining XML data structures for business and technical taxonomy registration.</li>
+                      <li><strong>WS-Security:</strong> OASIS standard defining mechanisms for message-level authentication, integrity (XML-DSig), and confidentiality (XML-Enc).</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">2.4 &amp; 2.5 Communication Models and Implementation Approaches</h3>
+          <div class="topic-body">
+            <p><strong>Web Services Communication Models:</strong></p>
+                    <ul>
+                      <li><strong>Synchronous (Request-Response / RPC-Style):</strong> Client sends request and blocks execution waiting for the server to process and return response.</li>
+                      <li><strong>Asynchronous (Messaging / One-Way / Notification):</strong> Client transmits message and immediately resumes execution; server processes asynchronously and notifies client via callback, webhook, or polling.</li>
+                      <li><strong>Document-Oriented vs RPC-Oriented:</strong> RPC model maps directly to remote procedure method signatures; Document model exchanges complete self-contained XML business documents.</li>
+                    </ul>
+                    <p><strong>Two Core Implementation Strategies:</strong></p>
+                    <ul>
+                      <li><strong>Contract-First (Top-Down / WSDL-First):</strong> Design the WSDL/XSD contract first, then generate server skeletons and client stubs using tools (<code>wsimport</code>). Guarantees platform independence.</li>
+                      <li><strong>Code-First (Bottom-Up / Java-First):</strong> Implement Java classes with annotations (<code>@WebService</code>), and let the framework generate WSDL automatically (<code>wsgen</code>). Rapid development for Java-only ecosystems.</li>
+                    </ul>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Contract-First Development</div>
+          <div class="revision-card-body">Development strategy where the formal WSDL/XSD schema is created before writing implementation code, ensuring strict interoperability.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Code-First Development</div>
+          <div class="revision-card-body">Strategy where code is written in a programming language first and the service descriptor (WSDL) is automatically generated by tools.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">WS-Security</div>
+          <div class="revision-card-body">An OASIS standard providing message-level encryption, digital signatures, and token-based authentication independent of the transport layer.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Document-Style Messaging</div>
+          <div class="revision-card-body">Web service interaction pattern where entire XML business documents are transmitted and validated against XML Schemas without RPC semantics.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the layered architectural framework of Web Services, describing each layer from Transport to Quality of Service (QoS).</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Layered Architecture</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Layered Design Philosophy:</span>
+              <span>The Web Services architecture is structured into layered abstractions to decouple network transport, message encapsulation, interface description, and business discovery.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Network Transport Layer:</span>
+              <span>Transports byte streams across networks using standard internet protocols, primarily HTTP/HTTPS for web traversal, SMTP for asynchronous delivery, and JMS for enterprise queues.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">XML-Based Messaging Layer:</span>
+              <span>Enforces standardized packaging of messages using SOAP envelopes, defining mandatory Body payloads and optional Header metadata.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Service Description Layer (WSDL):</span>
+              <span>Provides a machine-readable XML contract specifying data types (XSD), input/output message schemas, operation signatures, and protocol bindings.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Service Discovery Layer (UDDI):</span>
+              <span>Maintains categorized registries allowing requesters to search for business services by industry codes (NAICS) or technical fingerprints (tModels).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Service Composition &amp; Orchestration:</span>
+              <span>Enables combining multiple primitive web services into complex end-to-end business workflows using WS-BPEL (Business Process Execution Language).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Quality of Service (QoS) Policies:</span>
+              <span>Defines declarative policies (WS-Policy) for reliable message delivery (WS-ReliableMessaging) and distributed transaction coordination (WS-Coordination).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Message-Level Security Architecture:</span>
+              <span>Implements WS-Security, XML Signature, and XML Encryption to guarantee end-to-end confidentiality and non-repudiation across multi-hop proxies.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Management and Monitoring:</span>
+              <span>Provides standards (WS-Management) for tracking service health, SLA compliance, latency, and throughput metrics.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Architectural Extensibility:</span>
+              <span>Modular layer specifications allow enterprises to adopt advanced security and transaction protocols without altering base business logic.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Compare Contract-First (Top-Down) and Code-First (Bottom-Up) approaches for implementing Web Services. Discuss their workflows, pros, and cons.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Implementation Approaches</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Contract-First Definition:</span>
+              <span>In Contract-First (Top-Down), architects design the XML Schema (XSD) and WSDL definition contract before writing any implementation source code.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Code-First Definition:</span>
+              <span>In Code-First (Bottom-Up), developers write backend service classes in programming languages like Java or C# and use framework tools to auto-generate WSDL.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Interoperability in Contract-First:</span>
+              <span>Offers superior cross-platform interoperability because the contract is designed using pure XSD standards, avoiding language-specific quirks.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Interoperability Risks in Code-First:</span>
+              <span>Language-specific data structures (e.g., Java Collections, HashMaps) often translate poorly into XSD, creating parsing incompatibilities for non-Java clients.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Development Velocity:</span>
+              <span>Code-First allows rapid prototyping and faster initial delivery since developers write familiar native code without learning complex WSDL/XSD syntax.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Contract Stability &amp; Versioning:</span>
+              <span>Contract-First yields stable, long-lived API contracts; in Code-First, minor refactoring of internal Java classes can inadvertently alter generated WSDL and break clients.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Tooling and Code Generation:</span>
+              <span>Contract-First uses tools like `wsimport` to generate client stubs and server interfaces; Code-First uses `wsgen` to create WSDL artifacts.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Team Collaboration Workflow:</span>
+              <span>Contract-First allows frontend, backend, and external partner teams to work in parallel against the agreed-upon WSDL mock before code completion.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Reusability of Existing Data Schemas:</span>
+              <span>Contract-First enables direct integration of established enterprise XML schemas (e.g., ISO financial standards, HL7 healthcare formats).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Industry Recommendation for Exam:</span>
+              <span>Use Code-First for rapid internal/prototyping projects; use Contract-First for enterprise-wide, multi-vendor, mission-critical integrations.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Explain the different Web Services communication models (Synchronous vs Asynchronous, RPC-Style vs Document-Style) with practical examples.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Communication Models</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Synchronous Communication Overview:</span>
+              <span>The requester sends a request message and blocks waiting for the provider to complete processing and return a synchronous response over the same open socket.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Synchronous Use Cases &amp; Constraints:</span>
+              <span>Ideal for fast read queries (e.g., Currency conversion, stock price check); vulnerable to network timeouts and resource blocking on long tasks.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Asynchronous Communication Overview:</span>
+              <span>The requester dispatches a message and immediately continues executing without blocking. The server processes the request independently.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Asynchronous Patterns (Callback &amp; Polling):</span>
+              <span>Implemented via: Callback (server invokes client callback URL when done), Polling (client checks status via Token ID), or Messaging Queues (JMS/RabbitMQ).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">RPC-Style Web Services:</span>
+              <span>Models communication as remote function execution: message body contains the exact method name and typed input arguments matching the server interface.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">RPC Encoding Constraints:</span>
+              <span>Tightly binds the wire message to programming language procedure call semantics, reducing flexibility and schema validation effectiveness.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Document-Style Web Services:</span>
+              <span>Exchanges complete, self-describing XML business documents (e.g., Purchase Order XML) validated against an explicit XML Schema Definition (XSD).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Document-Style Loose Coupling:</span>
+              <span>Provides maximum decoupling because client and server only agree on document structure rather than specific remote function names.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Document/Literal vs RPC/Encoded:</span>
+              <span>WS-I Basic Profile mandates 'Document/Literal' or 'RPC/Literal' style, completely deprecating 'RPC/Encoded' due to interoperability bugs.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Enterprise Application Alignment:</span>
+              <span>Document-style is the standard for B2B e-commerce and asynchronous messaging, while RPC-style suits simple programmatic service calls.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Synchronous vs Asynchronous Web Services Communication</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Synchronous Communication</th><th>Asynchronous Communication</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Execution Blocking</td><td>Client thread is blocked waiting for server response.</td><td>Client thread is non-blocking; execution resumes immediately after dispatch.</td></tr><tr><td>Connection Duration</td><td>Requires a persistent open HTTP connection until response finishes.</td><td>Connection is closed immediately after request ingestion or uses separate channels.</td></tr><tr><td>Response Mechanism</td><td>Direct inline response payload on the same request channel.</td><td>Handled via asynchronous callbacks, webhooks, or polling endpoints.</td></tr><tr><td>Latency Tolerance</td><td>Low tolerance; vulnerable to HTTP gateway timeouts (504 Gateway Timeout).</td><td>High tolerance; ideally suited for long-running batch jobs and background tasks.</td></tr><tr><td>Resource Utilization</td><td>Ties up client and server thread pools during long idle processing.</td><td>Maximizes thread pool efficiency and system throughput under heavy load.</td></tr><tr><td>Error Handling</td><td>Immediate feedback: exceptions and error faults returned in real-time.</td><td>Requires correlation IDs, error callbacks, or status tracking endpoints.</td></tr><tr><td>Complexity</td><td>Simple programming model with intuitive linear call stack.</td><td>Higher architectural complexity requiring message brokers, queues, and state stores.</td></tr><tr><td>Standard Use Cases</td><td>Credit card authorization, authentication checks, real-time lookups.</td><td>Generating large PDF reports, video rendering, credit underwriting, order fulfillment.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Contract-First (WSDL-First) vs Code-First (Java-First) Development</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Contract-First (WSDL-First)</th><th>Code-First (Java-First)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Starting Point</td><td>Architect designs XSD schema and WSDL document first.</td><td>Developer writes Java/C# service implementation classes first.</td></tr><tr><td>Interoperability Quality</td><td>Superior; strictly adheres to platform-neutral XML standards.</td><td>Prone to interoperability issues due to language-specific type leakage.</td></tr><tr><td>Tooling Used</td><td>`wsimport` (WSDL to Java source / stubs).</td><td>`wsgen` (Java compiled class to WSDL contract).</td></tr><tr><td>Contract Longevity</td><td>Stable, controlled, and resilient to backend refactoring.</td><td>Fragile; modifying backend classes can silently mutate generated WSDL.</td></tr><tr><td>Learning Curve</td><td>Steeper; requires expertise in XSD, namespaces, and WSDL grammar.</td><td>Gentler; developers only need familiar Java OOP skills.</td></tr><tr><td>Parallel Development</td><td>Enables frontend and backend teams to develop concurrently against mock WSDL.</td><td>Frontend/consumer teams must wait until backend code is written and compiled.</td></tr><tr><td>Reusability of Schemas</td><td>Directly reuses industry-standard XSD schemas (OAGIS, HL7).</td><td>Generates custom synthetic XSD types that rarely match industry schemas.</td></tr><tr><td>Best Application</td><td>Enterprise B2B integrations, multi-language ecosystems.</td><td>Internal enterprise services, rapid prototyping, pure Java environments.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>Web services architecture layers: Transport (HTTP), Messaging (SOAP/REST), Description (WSDL), Discovery (UDDI), QoS (WS-*).</li><li style='margin-bottom:0.6rem;'>Contract-First builds XSD/WSDL before code; Code-First builds Java code and auto-generates WSDL.</li><li style='margin-bottom:0.6rem;'>Synchronous communication blocks waiting for responses; Asynchronous uses callbacks, polling, or queues.</li><li style='margin-bottom:0.6rem;'>Document-style exchanges self-contained XML business documents; RPC-style models remote procedure function calls.</li><li style='margin-bottom:0.6rem;'>WS-Security provides message-level encryption and signatures independent of transport protocol.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20I%20-%20Web%20Service%20and%20SOA%20fundamentals/main.html" class="unit-nav-btn">&larr; Previous: Unit I</a></div>
+      <div><a href="../Unit%20III%20-%20SOAP%20Simple%20Object%20Access%20Protocol/main.html" class="unit-nav-btn">Next: Unit III &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

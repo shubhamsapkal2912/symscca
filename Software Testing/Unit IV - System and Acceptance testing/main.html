@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit IV - System and Acceptance testing | Software Testing</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Software Testing</a> <span class="separator">/</span> <span class="current">Unit IV - System and Acceptance testing</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJET306B &bull; Unit IV &bull; 7 Hrs</span>
+      <h1 class="hero-title">Unit IV - System and Acceptance testing</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">7 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>4.1</strong> System testing (Functional system testing, Non-functional system testing)</li><li><strong>4.2</strong> Acceptance testing</li><li><strong>4.3</strong> Performance testing</li><li><strong>4.4</strong> Regression testing</li><li><strong>4.5</strong> Ad-hoc testing</li><li><strong>4.6</strong> Internationalization testing</li><li><strong>4.7</strong> Usability and Accessibility testing</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">4.1 &amp; 4.2 System Testing &amp; Acceptance Testing (Alpha / Beta)</h3>
+          <div class="topic-body">
+            <p><strong>System Testing:</strong> Black-box testing of the complete, fully integrated software system to evaluate compliance with specified end-to-end requirements. Includes <strong>Functional System Testing</strong> (business features, workflows) and <strong>Non-Functional System Testing</strong> (performance, security, usability).</p>
+                    <p><strong>Acceptance Testing Levels:</strong></p>
+                    <ul>
+                      <li><strong>Alpha Testing:</strong> Conducted at the developer's site by internal staff or trusted clients in a controlled lab environment before general release.</li>
+                      <li><strong>Beta Testing (Field Testing):</strong> Conducted at real end-user locations in un-controlled real-world operational environments across diverse hardware configurations.</li>
+                      <li><strong>User Acceptance Testing (UAT):</strong> Business clients test against business contracts before final payment sign-off.</li>
+                      <li><strong>Operational Acceptance Testing (OAT):</strong> Evaluates backup/restore, disaster recovery, and maintenance procedures.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">4.3 Performance Testing &amp; 4.4 Regression Testing</h3>
+          <div class="topic-body">
+            <p><strong>Performance Testing Dimensions:</strong></p>
+                    <ul>
+                      <li><strong>Load Testing:</strong> Tests system behavior under expected normal and peak user loads (e.g., 5,000 concurrent users).</li>
+                      <li><strong>Stress Testing:</strong> Pushes system beyond extreme limits to evaluate graceful degradation and crash recovery.</li>
+                      <li><strong>Endurance / Soak Testing:</strong> Runs sustained load for long durations (24–72 hours) to detect memory leaks and resource exhaustion.</li>
+                      <li><strong>Spike Testing:</strong> Evaluates sudden dramatic traffic surges (e.g., Black Friday flash sales).</li>
+                    </ul>
+                    <p><strong>Regression Testing:</strong> Re-executing existing test suites after bug fixes or feature additions to ensure old working functionality has not broken. Types: <em>Corrective</em>, <em>Progressive</em>, <em>Retest-All</em>, and <em>Selective Regression</em>.</p>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">4.5 - 4.7 Ad-Hoc, Internationalization, Usability, and Accessibility Testing</h3>
+          <div class="topic-body">
+            <p><strong>Ad-Hoc & Exploratory Testing:</strong> Informal testing without formal test cases, using tester intuition and <em>Monkey Testing</em> (random inputs).</p>
+                    <p><strong>Internationalization (i18n) & Localization (l10n):</strong> Tests multi-language translation, Unicode UTF-8 character encoding, currency symbols ($ / ₹ / €), date/time formats (MM/DD vs DD/MM), and Right-to-Left (RTL) Arabic/Hebrew script rendering.</p>
+                    <p><strong>Usability & Accessibility (a11y) Testing:</strong> Evaluates user interface intuitiveness, learnability, and compliance with <strong>WCAG 2.1</strong> guidelines (screen reader support, color contrast ratios, keyboard navigation for differently-abled users).</p>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">System Testing</div>
+          <div class="revision-card-body">Testing the completely integrated application to verify compliance with specified system requirements.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Alpha vs Beta Testing</div>
+          <div class="revision-card-body">Alpha is performed at developer&#x27;s site in controlled environment; Beta is performed by real users at their own sites.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Regression Testing</div>
+          <div class="revision-card-body">Re-testing unchanged software components to verify that code modifications have not introduced new unintended bugs.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">WCAG 2.1</div>
+          <div class="revision-card-body">Web Content Accessibility Guidelines establishing global standards for making web systems accessible to users with disabilities.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain System Testing in detail, distinguishing between Functional and Non-Functional System Testing and comparing Alpha and Beta Acceptance Testing.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">System &amp; Acceptance Testing</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Definition of System Testing:</span>
+              <span>The highest level of black-box testing where the complete, fully integrated software product is validated against end-to-end business and technical requirements.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Functional System Testing Scope:</span>
+              <span>Validates business workflows, user journeys, data calculations, boundary conditions, and cross-module transactions specified in the SRS.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Non-Functional System Testing Scope:</span>
+              <span>Evaluates operational quality attributes including Performance, Load capacity, Security vulnerabilities, Stress resilience, and Disaster Recovery.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">User Acceptance Testing (UAT) Goal:</span>
+              <span>The final formal gate where business stakeholders verify that the software delivers the contractual business value before commercial rollout.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Alpha Testing Environment &amp; Conduct:</span>
+              <span>Performed at the developer's site in a controlled laboratory environment by internal testers, product managers, or selected clients.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Beta Testing Environment &amp; Conduct:</span>
+              <span>Performed by a wide audience of external end-users in their own real-world uncontrolled hardware and network environments.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Defect Capture in Alpha vs Beta:</span>
+              <span>Alpha testing allows immediate real-time debugging by on-site developers; Beta testing relies on automated telemetry logs and user feedback forms.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Operational Acceptance Testing (OAT):</span>
+              <span>Validates system administration procedures: automated failover, database backup/restore, security patching, and disaster recovery.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Contract and Regulatory Acceptance:</span>
+              <span>Ensures the system complies with government regulations (HIPAA, GDPR, PCI-DSS) and legal contractual agreements.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Sign-off Milestone:</span>
+              <span>Successful completion of Acceptance Testing leads to formal customer sign-off and commercial deployment into production.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain Performance Testing types: Load, Stress, Endurance (Soak), and Spike testing with performance metrics and tuning strategies.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Performance Testing</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Objective of Performance Testing:</span>
+              <span>Determines system responsiveness, throughput, resource efficiency, and stability under specified workload conditions rather than finding functional bugs.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Load Testing Mechanism:</span>
+              <span>Simulates expected normal and peak user traffic (e.g., ramping up to 10,000 concurrent virtual users) to verify system satisfies SLA latency benchmarks.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stress Testing Mechanism:</span>
+              <span>Applies extreme workloads beyond system breaking capacity to observe failure behavior and verify graceful degradation without data corruption.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Endurance / Soak Testing Mechanism:</span>
+              <span>Sustains a continuous moderate load over extended time periods (24 to 72 hours) to expose memory leaks, buffer overflows, and disk exhaustion.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Spike Testing Mechanism:</span>
+              <span>Introduces sudden, dramatic spikes in concurrent traffic (e.g., instant surge from 1,000 to 50,000 users) and measures stabilization time.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Core Metric: Response Time / Latency:</span>
+              <span>The round-trip duration from client request dispatch to complete response receipt (measured in milliseconds at 95th/99th percentiles).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Core Metric: Throughput (TPS):</span>
+              <span>The number of successful transactions processed per second by the server cluster under test.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Core Metric: Resource Utilization:</span>
+              <span>Monitors CPU usage percentage, RAM consumption, disk I/O wait times, and network bandwidth saturation.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Testing Tools (JMeter / LoadRunner):</span>
+              <span>Automated tools simulate thousands of headless virtual user threads generating distributed HTTP/REST traffic.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Performance Bottleneck Tuning:</span>
+              <span>Identifies slow SQL queries (requiring indexing), thread pool starvation, unoptimized database connection pools, and lack of Redis caching.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Describe Regression Testing strategies, Ad-Hoc testing, Internationalization (i18n) testing, and Web Accessibility (WCAG) testing.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Specialized Testing Types</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Need for Regression Testing:</span>
+              <span>Code modifications, bug patches, and new feature additions can inadvertently break previously functioning software modules (regression defects).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Retest-All vs Selective Regression:</span>
+              <span>'Retest-All' executes the entire test repository (expensive, time-consuming); 'Selective Regression' selects test cases impacted by modified code dependencies.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Automated Regression Test Suites:</span>
+              <span>Regression suites are automated using tools (Selenium, Playwright) and executed automatically in continuous integration (CI/CD) pipelines on every code commit.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Ad-Hoc and Exploratory Testing:</span>
+              <span>Unscripted, creative testing without formal test cases where skilled testers explore edge scenarios based on system understanding and intuition.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Monkey Testing Concept:</span>
+              <span>A subset of ad-hoc testing providing random, chaotic user inputs and touches to test system crash resilience and exception handling.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Internationalization (i18n) Testing:</span>
+              <span>Verifies that the software architecture supports global localization without engineering redesign (UTF-8 encoding, multi-byte Unicode strings).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Localization (l10n) Testing:</span>
+              <span>Validates region-specific translations, currency conversions ($ / ₹), date/time formats (DD/MM/YYYY vs MM/DD/YYYY), and cultural graphics.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Right-to-Left (RTL) Layout Testing:</span>
+              <span>Verifies that UI layouts mirror properly for RTL languages (Arabic, Hebrew, Persian) including menu orientations and text alignment.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Accessibility Testing (a11y) &amp; WCAG:</span>
+              <span>Ensures applications are usable by persons with visual, auditory, cognitive, and motor disabilities per WCAG 2.1 standards.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">WCAG Testing Criteria:</span>
+              <span>Validates screen reader accessibility (ARIA labels), keyboard-only navigation without mouse, minimum color contrast ratio (4.5:1), and resizable text fonts.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Alpha Testing vs Beta Testing</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Alpha Testing</th><th>Beta Testing (Field Testing)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Testing Location</td><td>Conducted at the Developer's Organization site.</td><td>Conducted at Real End-User external client locations.</td></tr><tr><td>Target Testers</td><td>Internal QA testers, developers, and invited key stakeholders.</td><td>Real end-users, public beta testers, and customer groups.</td></tr><tr><td>Environment Control</td><td>Strictly controlled virtual test laboratory environment.</td><td>Uncontrolled, diverse real-world hardware, OS, and network setups.</td></tr><tr><td>Timing in Lifecycle</td><td>Performed BEFORE Beta testing (first acceptance gate).</td><td>Performed AFTER Alpha testing before final commercial release.</td></tr><tr><td>Security & Privacy</td><td>High confidentiality; internal proprietary pre-release build.</td><td>Lower confidentiality; public or semi-public software build.</td></tr><tr><td>Defect Resolution</td><td>Developers are on-site to immediately reproduce and debug bugs.</td><td>Defects collected via telemetry crash logs and feedback portals.</td></tr><tr><td>Testing Focus</td><td>Validates core functionality, stability, and system integration.</td><td>Validates usability, real-world compatibility, and customer satisfaction.</td></tr><tr><td>Duration</td><td>Typically longer, structured execution cycles.</td><td>Timeboxed public testing period (typically 2 to 6 weeks).</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Load Testing vs Stress Testing</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Load Testing</th><th>Stress Testing</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Workload Range</td><td>Tested within normal expected workloads up to peak designed capacity.</td><td>Tested BEYOND peak design capacity up to system breaking point.</td></tr><tr><td>Primary Goal</td><td>Verify system meets SLA response times and throughput under normal load.</td><td>Evaluate system stability, failure behavior, and crash recovery mechanisms.</td></tr><tr><td>Breakdown Expectation</td><td>The system is NOT expected to break or throw errors.</td><td>The system IS expected to break; evaluates graceful degradation.</td></tr><tr><td>Resource Utilization</td><td>Monitors resource consumption within safe operating thresholds.</td><td>Pushes CPU, Memory, and Disk to 100% saturation.</td></tr><tr><td>Key Metric</td><td>Average response latency and throughput (TPS) at peak capacity.</td><td>Maximum breaking concurrency limit and recovery time (MTTR).</td></tr><tr><td>Data Integrity Focus</td><td>Validates that transactions complete successfully under heavy usage.</td><td>Ensures database is not corrupted when server process crashes.</td></tr><tr><td>Example Scenario</td><td>Testing e-commerce portal with 5,000 concurrent shopping users.</td><td>Flooding portal with 50,000 users until web server threads exhaust.</td></tr><tr><td>Post-Test Behavior</td><td>System continues running smoothly.</td><td>Tests whether system auto-recovers (self-healing) once stress load ceases.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>System testing verifies the complete integrated application against functional and non-functional requirements.</li><li style='margin-bottom:0.6rem;'>Alpha testing is at developer's site (controlled); Beta testing is at user's site (real-world environment).</li><li style='margin-bottom:0.6rem;'>Performance testing types: Load (expected peak), Stress (breaking point), Endurance (memory leaks over time), Spike (sudden surge).</li><li style='margin-bottom:0.6rem;'>Regression testing verifies that bug fixes have not broken existing functionality.</li><li style='margin-bottom:0.6rem;'>Ad-hoc testing is unscripted intuitive testing; Monkey testing provides random chaotic inputs.</li><li style='margin-bottom:0.6rem;'>i18n handles multi-language/UTF-8/dates; WCAG 2.1 governs accessible UI for differently-abled users.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20III%20-%20Black-box%20Testing/main.html" class="unit-nav-btn">&larr; Previous: Unit III</a></div>
+      <div><a href="../Unit%20V%20-%20Test%20Management%2C%20Automation%2C%20metrics%20and%20measurements/main.html" class="unit-nav-btn">Next: Unit V &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

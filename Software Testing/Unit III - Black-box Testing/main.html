@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit III - Black-box Testing | Software Testing</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Software Testing</a> <span class="separator">/</span> <span class="current">Unit III - Black-box Testing</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJET306B &bull; Unit III &bull; 7 Hrs</span>
+      <h1 class="hero-title">Unit III - Black-box Testing</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">7 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>3.1</strong> Introduction (Need of black box testing)</li><li><strong>3.2</strong> Black box testing Concept (Requirement Analysis, Test case design criteria)</li><li><strong>3.3</strong> Testing Methods (Requirement based testing, Positive &amp; negative testing)</li><li><strong>3.4</strong> Boundary value analysis</li><li><strong>3.5</strong> Equivalence Partitioning class (State based or graph based, cause effect graph based, Error guessing)</li><li><strong>3.6</strong> Documentation testing &amp; domain testing</li><li><strong>3.7</strong> Design of test cases</li><li><strong>3.8</strong> Integration testing</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">3.1 - 3.3 Black-Box Testing Fundamentals &amp; Positive/Negative Testing</h3>
+          <div class="topic-body">
+            <p><strong>Black-Box Testing (Behavioral / Functional / Specification-Based Testing):</strong> A testing methodology where software functionality is tested without looking at internal code implementation, data structures, or server architecture. Tests are derived strictly from requirement specifications (SRS).</p>
+                    <p><strong>Testing Paradigms:</strong></p>
+                    <ul>
+                      <li><strong>Requirement-Based Testing:</strong> Every functional requirement in the SRS is validated by mapping to corresponding test cases in the Requirement Traceability Matrix (RTM).</li>
+                      <li><strong>Positive Testing:</strong> Tests that the system behaves correctly when provided with valid input data (Happy Path, verifying expected functionality).</li>
+                      <li><strong>Negative Testing:</strong> Tests that the system handles invalid, unexpected, out-of-range, or malicious input gracefully without crashing, throwing user-friendly error messages.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">3.4 Boundary Value Analysis (BVA) &amp; 3.5 Equivalence Class Partitioning (ECP)</h3>
+          <div class="topic-body">
+            <p><strong>Equivalence Class Partitioning (ECP):</strong> Divides the input domain into disjoint subsets of data called <strong>Equivalence Classes</strong> such that all members of a class are assumed to be processed identically by the system:</p>
+                    <ul>
+                      <li><strong>Valid Equivalence Classes:</strong> Values that conform to valid specification rules.</li>
+                      <li><strong>Invalid Equivalence Classes:</strong> Values that violate specification constraints (too small, too large, incorrect data type, empty).</li>
+                      <li><em>Rule:</em> Select one representative test case from each equivalence class.</li>
+                    </ul>
+                    <p><strong>Boundary Value Analysis (BVA):</strong> Studies show that software bugs cluster around the extreme boundary edges of input ranges rather than the middle. For a range $[a, b]$:</p>
+                    <ul>
+                      <li><strong>Standard BVA (4 values):</strong> $a$ (Min), $a+1$ (Min+), $b-1$ (Max-), $b$ (Max), plus nominal middle value.</li>
+                      <li><strong>Robustness Testing (6 values):</strong> $a-1$ (Min-), $a$ (Min), $a+1$ (Min+), $b-1$ (Max-), $b$ (Max), $b+1$ (Max+).</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">3.5 - 3.8 Decision Tables, Error Guessing, Test Design, and Integration Testing</h3>
+          <div class="topic-body">
+            <p><strong>Cause-Effect Graphing & Decision Tables:</strong> Tabular representation mapping combinations of boolean input conditions (Causes / Inputs) to corresponding system actions (Effects / Outputs). Particularly effective for complex business logic rules (e.g., insurance premium calculations).</p>
+                    <p><strong>Error Guessing:</strong> An experience-based, intuitive testing technique where testers use historical knowledge of common developer mistakes to design targeted test cases (e.g., entering blank strings, divide-by-zero, SQL quotes, boundary integer overflow).</p>
+                    <p><strong>Integration Testing Approaches:</strong></p>
+                    <ul>
+                      <li><strong>Top-Down Integration:</strong> High-level modules tested first; lower modules simulated using <strong>Stubs</strong> (dummy called programs).</li>
+                      <li><strong>Bottom-Up Integration:</strong> Low-level modules tested first; higher modules simulated using <strong>Drivers</strong> (dummy calling programs).</li>
+                      <li><strong>Sandwich / Hybrid Integration:</strong> Combines Top-Down and Bottom-Up simultaneously.</li>
+                      <li><strong>Big Bang Integration:</strong> All modules integrated and tested at once (causes chaotic debugging).</li>
+                    </ul>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Equivalence Partitioning (ECP)</div>
+          <div class="revision-card-body">A black-box technique partitioning inputs into equivalent classes where any value in a class produces identical testing outcomes.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Boundary Value Analysis (BVA)</div>
+          <div class="revision-card-body">A technique testing extreme boundary values (Min, Min+, Max-, Max) where software bugs occur most frequently.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Stub</div>
+          <div class="revision-card-body">A dummy program used in Top-Down integration testing that simulates the behavior of unwritten lower-level modules called by the module under test.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Driver</div>
+          <div class="revision-card-body">A dummy program used in Bottom-Up integration testing that calls the module under test and passes test data.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain Equivalence Class Partitioning (ECP) and Boundary Value Analysis (BVA) with mathematical definitions and practical numerical test suite derivations.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">ECP &amp; BVA</span><span class="qa-tag">Core Techniques</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Philosophy of Input Domain Reduction:</span>
+              <span>Exhaustive testing of infinite input domains is impossible; ECP and BVA reduce billions of input combinations into a small set of high-yield test cases.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Equivalence Class Partitioning Concept:</span>
+              <span>Divides input space into disjoint partitions where program behavior is assumed identical for all values within a single partition.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Identification of Valid &amp; Invalid Partitions:</span>
+              <span>For an integer input 'Age between 18 and 60': Valid Partition $P_1 = [18, 60]$; Invalid Partitions $P_2 = [-\infty, 17]$ and $P_3 = [61, \infty]$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Selecting Test Cases from ECP:</span>
+              <span>Test cases selected: Valid test (e.g., $Age = 35$), Invalid test 1 ($Age = 10$), Invalid test 2 ($Age = 75$), Invalid test 3 ($Age = "ABC"$).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Boundary Value Analysis Rationale:</span>
+              <span>Empirical testing shows defects cluster at the boundaries due to programmer relational operator errors ($<$ instead of $<=$).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Standard BVA Values Selection:</span>
+              <span>For range $[a, b]$, test: $a$ (Minimum), $a+1$ (Just above Min), Nominal (Middle), $b-1$ (Just below Max), and $b$ (Maximum).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Robustness Testing BVA Extension:</span>
+              <span>Adds out-of-bound tests: $a-1$ (Just below Min) and $b+1$ (Just above Max) to verify robust error handling.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">BVA Applied to Age Example [18, 60]:</span>
+              <span>Robustness BVA test values: $17$ (Invalid Min-), $18$ (Valid Min), $19$ (Valid Min+), $35$ (Nominal), $59$ (Valid Max-), $60$ (Valid Max), $61$ (Invalid Max+).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Multi-Variable BVA Test Case Count:</span>
+              <span>For $n$ input variables, Standard BVA produces $4n + 1$ test cases; Robustness BVA produces $6n + 1$ test cases.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Combined ECP-BVA Best Practice:</span>
+              <span>Professional QA teams use ECP to identify partitions and BVA to select the precise values at partition edges.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Describe Decision Table Based Testing and Cause-Effect Graphing with a complete business logic scenario and truth table.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Decision Tables &amp; Cause-Effect</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Purpose of Decision Tables:</span>
+              <span>A structured mathematical tool for modeling complex business logic rules containing multiple combinations of input conditions and resulting actions.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Four Quadrants of a Decision Table:</span>
+              <span>1. Condition Stub (Upper Left), 2. Condition Entry (Upper Right), 3. Action Stub (Lower Left), 4. Action Entry (Lower Right).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Calculating Total Combinatorial Rules:</span>
+              <span>For $N$ binary conditions, the complete decision table contains $2^N$ distinct rule columns ensuring 100% combination coverage.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Practical E-Commerce Discount Scenario:</span>
+              <span>Conditions: $C_1$: Is Student? (Y/N), $C_2$: Order Amount > $100 (Y/N), $C_3$: Has Festive Coupon? (Y/N). Actions: Apply 20% Discount, Apply 10% Discount, Free Shipping.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Constructing Truth Table Columns:</span>
+              <span>Tabulate all 8 combinations ($2^3 = 8$) from YYY to NNN, specifying exact action outcomes for each column.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Table Reduction &amp; Don&#x27;t-Care Conditions:</span>
+              <span>Simplify rules using 'Don't Care' ($-$) entries when a condition does not affect the outcome, reducing redundant test cases.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Cause-Effect Graphing Architecture:</span>
+              <span>A formal graphical notation representing boolean logic relationships between inputs (Causes) and outputs (Effects) using Identity, NOT, OR, AND gates.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Constraint Symbols in Cause-Effect Graphs:</span>
+              <span>Applies constraints: Exclusive ($E$), Inclusive ($I$), One and only one ($O$), Requires ($R$), and Mask ($M$).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Transforming Cause-Effect Graphs to Decision Tables:</span>
+              <span>Cause-effect graph paths are systematically converted into decision table rule columns for executable test case generation.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Industrial Strength of Technique:</span>
+              <span>Guarantees that no edge-case business rule combination is overlooked in financial, insurance, and billing engines.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Compare Top-Down, Bottom-Up, Sandwich, and Big-Bang Integration Testing approaches. Explain the role of Stubs and Drivers.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Integration Testing &amp; Stubs/Drivers</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Definition and Goal of Integration Testing:</span>
+              <span>Verifies interactions, data communication, and interface contracts between integrated software modules after unit testing.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Big Bang Integration Approach:</span>
+              <span>All developed modules are merged simultaneously in a single step; extremely difficult to isolate bug locations when crashes occur.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Top-Down Integration Strategy:</span>
+              <span>Begins testing from top-level control modules moving progressively downward through subroutine hierarchies; requires **Stubs** to simulate missing lower modules.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Role and Nature of Stubs:</span>
+              <span>A dummy subordinate program called by the module under test that accepts parameters and returns hardcoded mock values simulating lower-level operations.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Top-Down Advantages &amp; Disadvantages:</span>
+              <span>Demonstrates major architectural workflow early to stakeholders; disadvantage: low-level complex database I/O is tested late.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Bottom-Up Integration Strategy:</span>
+              <span>Begins testing from lowest-level utility/database modules moving upward; requires **Drivers** to simulate missing calling modules.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Role and Nature of Drivers:</span>
+              <span>A dummy calling program that sets up test inputs, calls the module under test, and prints/evaluates returned outputs.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Bottom-Up Advantages &amp; Disadvantages:</span>
+              <span>Tests critical low-level algorithms thoroughly; disadvantage: overall system control architecture is only verified at the end.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Sandwich / Hybrid Integration Strategy:</span>
+              <span>Combines Top-Down (for user interface and high-level logic) and Bottom-Up (for database and low-level processing) meeting at a middle target layer.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Summary Recommendation for University Exams:</span>
+              <span>Top-Down uses Stubs; Bottom-Up uses Drivers; Sandwich uses both; Big Bang avoids stubs/drivers but is high-risk.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Boundary Value Analysis (BVA) vs Equivalence Class Partitioning (ECP)</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Boundary Value Analysis (BVA)</th><th>Equivalence Class Partitioning (ECP)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Core Testing Philosophy</td><td>Tests the extreme boundary edges of input ranges.</td><td>Tests representative values selected from partitioned equivalence classes.</td></tr><tr><td>Defect Target</td><td>Catches boundary off-by-one errors ($<$ instead of $<=$).</td><td>Catches functional logic errors across entire input categories.</td></tr><tr><td>Values Selected</td><td>Selects boundary values ($Min, Min+, Max-, Max$).</td><td>Selects any representative nominal value inside each partition.</td></tr><tr><td>Input Data Types</td><td>Applicable only to ordered continuous numeric/date ranges.</td><td>Applicable to all data types (numeric, text strings, enums, radio options).</td></tr><tr><td>Test Case Count</td><td>Generates $4n+1$ (or $6n+1$) test cases per variable.</td><td>Generates 1 test case per valid/invalid partition.</td></tr><tr><td>Complementary Role</td><td>Refines value selection within partitions identified by ECP.</td><td>Identifies high-level partitions for BVA boundary testing.</td></tr><tr><td>Example for Range [1, 100]</td><td>Test values: $0, 1, 2, 50, 99, 100, 101$.</td><td>Test values: $50$ (Valid), $-10$ (Invalid Low), $150$ (Invalid High).</td></tr><tr><td>Efficiency</td><td>Highest defect density yield per test case executed.</td><td>Drastically reduces massive input sets into minimal test cases.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Stub vs Driver in Integration Testing</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Stub (Called Mock)</th><th>Driver (Calling Mock)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Integration Methodology</td><td>Used in Top-Down Integration Testing.</td><td>Used in Bottom-Up Integration Testing.</td></tr><tr><td>Simulation Role</td><td>Simulates an unwritten LOWER-LEVEL module called by the tested module.</td><td>Simulates an unwritten HIGHER-LEVEL module that calls the tested module.</td></tr><tr><td>Invocation Relationship</td><td>The module under test CALLS the Stub.</td><td>The Driver CALLS the module under test.</td></tr><tr><td>Data Flow Direction</td><td>Receives parameters from tested module and returns canned dummy data.</td><td>Supplies test data inputs to the tested module and captures outputs.</td></tr><tr><td>Complexity</td><td>Can be simple or complex depending on return logic.</td><td>Typically simple main() harness passing fixed test vectors.</td></tr><tr><td>Lifecycle</td><td>Replaced when real lower-level subroutines are compiled.</td><td>Discarded when real higher-level control modules are integrated.</td></tr><tr><td>Analogy</td><td>A mock backend database API returning static JSON.</td><td>A JUnit test runner method invoking a business service method.</td></tr><tr><td>Development Effort</td><td>Higher effort if stateful dummy behavior is required.</td><td>Lower effort; simple test execution script.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>Black-box testing derives test cases from SRS specifications without viewing internal source code.</li><li style='margin-bottom:0.6rem;'>Positive testing tests valid happy paths; Negative testing tests invalid out-of-range inputs.</li><li style='margin-bottom:0.6rem;'>ECP partitions inputs into valid/invalid classes; BVA tests boundary edges ($Min, Min+, Max-, Max$).</li><li style='margin-bottom:0.6rem;'>Robustness BVA adds $Min-1$ and $Max+1$ ($6n+1$ tests).</li><li style='margin-bottom:0.6rem;'>Decision tables map combinations of conditions to actions ($2^N$ rules).</li><li style='margin-bottom:0.6rem;'>Top-down integration uses Stubs (called dummy); Bottom-up uses Drivers (calling dummy).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20II%20-%20White-box%20testing/main.html" class="unit-nav-btn">&larr; Previous: Unit II</a></div>
+      <div><a href="../Unit%20IV%20-%20System%20and%20Acceptance%20testing/main.html" class="unit-nav-btn">Next: Unit IV &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

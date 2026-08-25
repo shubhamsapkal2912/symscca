@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit I - Introduction to development approach SSAD and OOAD | Object Oriented Software Engineering</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Object Oriented Software Engineering</a> <span class="separator">/</span> <span class="current">Unit I - Introduction to development approach SSAD and OOAD</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJCT303 &bull; Unit I &bull; 6 Hrs</span>
+      <h1 class="hero-title">Unit I - Introduction to development approach SSAD and OOAD</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">6 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>1.1</strong> Overview of Software Development with SSAD</li><li><strong>1.1.1</strong> Basic System Development Life Cycle with different users and their role in SDLC</li><li><strong>1.2.2</strong> Different Approaches and Models for System Development</li><li><strong>1.2.2.1</strong> Waterfall Model</li><li><strong>1.2.2.2</strong> Spiral Model</li><li><strong>1.2.2.3</strong> Prototyping Model</li><li><strong>1.2.2.4</strong> RAD</li><li><strong>1.2</strong> Types of Requirements – Functional and Non functional</li><li><strong>1.2.1</strong> Fact Finding Techniques</li><li><strong>1.2.2</strong> Feasibility Study</li><li><strong>1.3</strong> Software Requirement Specification (SRS)</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">1.1 SSAD vs OOAD &amp; Roles in SDLC</h3>
+          <div class="topic-body">
+            <p><strong>Structured System Analysis and Design (SSAD):</strong> A process-centric paradigm that separates data from functions using Data Flow Diagrams (DFDs), Entity-Relationship (ER) diagrams, and Structure Charts. Functions act upon passive global data stores.</p>
+                    <p><strong>Object-Oriented Analysis and Design (OOAD):</strong> Encapsulates data attributes and behavioral operations into unified entities called <strong>Objects</strong>. Emphasizes real-world mapping, modularity, abstraction, and reusability.</p>
+                    <p><strong>Key Stakeholders and Roles in SDLC:</strong></p>
+                    <ul>
+                      <li><strong>Business Analyst / System Analyst:</strong> Elicits user requirements, conducts feasibility studies, authors the Software Requirement Specification (SRS).</li>
+                      <li><strong>System Architect & Designer:</strong> Creates high-level architectural designs, UML class/component diagrams, and database schemas.</li>
+                      <li><strong>Software Developers:</strong> Implements code, conducts unit testing, and integrates modules.</li>
+                      <li><strong>Quality Assurance (QA) / Testers:</strong> Designs test plans, executes black-box/white-box test cases, logs defect reports.</li>
+                      <li><strong>Project Manager:</strong> Manages project scope, budget, milestones, risk assessment, and resource allocation.</li>
+                      <li><strong>End-Users & Clients:</strong> Provide business domain requirements and execute User Acceptance Testing (UAT).</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">1.2 SDLC Models: Waterfall, Spiral, Prototyping, and RAD</h3>
+          <div class="topic-body">
+            <p><strong>Comparison of Core Process Models:</strong></p>
+                    <ul>
+                      <li><strong>Waterfall Model:</strong> Linear-sequential lifecycle (Requirements $\rightarrow$ Design $\rightarrow$ Implementation $\rightarrow$ Verification $\rightarrow$ Maintenance). High rigidity; changes in later phases are prohibitively expensive. Ideal for projects with completely stable, well-understood requirements.</li>
+                      <li><strong>Spiral Model (Boehm):</strong> Risk-driven iterative model structured in 4 quadrants per loop: <em>Planning & Objective Setting</em>, <em>Risk Analysis & Mitigation</em>, <em>Engineering & Development</em>, and <em>Customer Evaluation</em>. Excellent for high-risk, mission-critical systems.</li>
+                      <li><strong>Prototyping Model:</strong> Develops a quick mock-up/working prototype to clarify ambiguous user requirements. Helps bridge communication gaps between clients and developers.</li>
+                      <li><strong>Rapid Application Development (RAD):</strong> Focuses on rapid prototyping and component-based construction in short timeboxes (60–90 days) using automated code generators, visual GUI builders, and joint application development (JAD).</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">1.2 &amp; 1.3 Requirements Engineering, Fact-Finding, Feasibility, and SRS (IEEE 830)</h3>
+          <div class="topic-body">
+            <p><strong>Types of Requirements:</strong></p>
+                    <ul>
+                      <li><strong>Functional Requirements:</strong> Describe specific system behaviors, inputs, calculations, and output responses (e.g., 'System shall calculate payroll tax').</li>
+                      <li><strong>Non-Functional Requirements:</strong> Specify quality attributes and operational constraints (Performance, Scalability, Security, Usability, Availability).</li>
+                    </ul>
+                    <p><strong>Fact-Finding Techniques:</strong> Interviews, Questionnaires, Observation (On-site shadowing), Document Review, and Joint Application Development (JAD) workshops.</p>
+                    <p><strong>Feasibility Study Dimensions:</strong> Technical (hardware/tech stack), Economic (Cost-Benefit Analysis, ROI), Operational (user adaptability), Legal (compliance/GDPR), and Schedule feasibility.</p>
+                    <p><strong>SRS (IEEE 830 Standard Structure):</strong> 1. Introduction (Purpose, Scope), 2. Overall Description (Product perspective, user classes, constraints), 3. Specific Requirements (Functional & Non-functional requirements, external interface requirements).</p>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">SSAD</div>
+          <div class="revision-card-body">Structured System Analysis and Design; a process-driven approach separating data flow from functions using DFDs.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">OOAD</div>
+          <div class="revision-card-body">Object-Oriented Analysis and Design; an approach combining data and methods into cohesive real-world objects.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Spiral Model</div>
+          <div class="revision-card-body">A risk-driven iterative software development model incorporating systematic risk analysis in every iteration loop.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">IEEE 830</div>
+          <div class="revision-card-body">The industry standard guideline for writing structured, unambiguous Software Requirement Specifications (SRS).</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Compare and contrast Structured System Analysis and Design (SSAD) and Object-Oriented Analysis and Design (OOAD) in complete detail.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">SSAD vs OOAD</span><span class="qa-tag">Core Concept</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Core Architectural Philosophy:</span>
+              <span>SSAD is process-centric and function-oriented, focusing on how data flows through transformations; OOAD is object-centric, organizing systems around real-world objects containing state and behavior.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Data and Process Relationship:</span>
+              <span>In SSAD, data and functions are separated (data stored in global structures, manipulated by external subroutines); in OOAD, data attributes and operations are encapsulated together inside classes.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Primary Modeling Notations:</span>
+              <span>SSAD utilizes Data Flow Diagrams (DFD), Structure Charts, and Data Dictionaries; OOAD utilizes Unified Modeling Language (UML) diagrams (Class, Use Case, Sequence).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Modularity and Coupling:</span>
+              <span>SSAD modularity is based on functional decomposition, which often leads to tight coupling with global data; OOAD achieves high cohesion and loose coupling through encapsulation.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Reusability Mechanism:</span>
+              <span>SSAD offers limited reusability via generic subroutine libraries; OOAD provides powerful reusability through inheritance, composition, and polymorphic interfaces.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Maintenance and Impact of Changes:</span>
+              <span>In SSAD, modifying a central data structure requires rewriting multiple dependent functions; in OOAD, changes are localized within class boundaries without rippling across the system.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Real-World Domain Mapping:</span>
+              <span>OOAD maps directly to human mental models and business domain objects (e.g., Customer, Account), whereas SSAD requires translating entities into artificial data flow processes.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Handling Complex Systems:</span>
+              <span>SSAD becomes unwieldy and fragile for massive enterprise systems; OOAD scales effectively through hierarchical abstractions and design patterns.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Development Lifecycle Alignment:</span>
+              <span>SSAD naturally aligns with the linear Waterfall model; OOAD naturally aligns with iterative, incremental, and Agile lifecycles (Unified Process).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Modern Industry Preference:</span>
+              <span>OOAD dominates modern enterprise software engineering, forming the foundation of Java, C#, C++, Python, and microservice architectures.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain the Software Development Life Cycle (SDLC) models: Waterfall, Spiral, Prototyping, and RAD with life-cycle diagrams and suitability criteria.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">SDLC Models</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Waterfall Model Sequential Phases:</span>
+              <span>Follows rigid linear stages: Requirement Analysis $\rightarrow$ System Design $\rightarrow$ Implementation $\rightarrow$ Testing $\rightarrow$ Deployment $\rightarrow$ Maintenance; each phase must finish before the next begins.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Waterfall Advantages and Limitations:</span>
+              <span>Simple to manage with clear milestone documentation; highly vulnerable to late-stage requirement changes with working software only visible at the very end.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Spiral Model 4-Quadrant Architecture:</span>
+              <span>Structured into cyclical spirals consisting of: 1. Determine Objectives, 2. Identify and Resolve Risks (Risk Analysis), 3. Develop and Test, 4. Plan Next Phase.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Risk-Driven Nature of Spiral Model:</span>
+              <span>Every iteration incorporates explicit risk assessment and prototyping, mitigating catastrophic project failures before major capital investment.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Prototyping Model Mechanism:</span>
+              <span>Involves rapid construction of an interactive mock-up/prototype presented to users for feedback, iteratively refining requirements until fully solidified.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Prototyping Benefits:</span>
+              <span>Eliminates ambiguous requirements, bridges the communication gap between business clients and software developers, and reduces change requests late in development.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Rapid Application Development (RAD) Concept:</span>
+              <span>An adaptive lifecycle emphasizing rapid prototyping and component reusability within tight 60–90 day timeboxes without detailed upfront planning.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">RAD Phases and Automation:</span>
+              <span>Comprises Business Modeling, Data Modeling, Process Modeling, Application Generation (via CASE/low-code tools), and Testing/Turnover.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Suitability Criteria for Process Selection:</span>
+              <span>Waterfall: Static, well-understood specs; Spiral: High-risk, mission-critical systems; Prototyping: Ambiguous UI/UX; RAD: Fast delivery with skilled modular teams.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Lifecycle Model Comparison for University Exams:</span>
+              <span>Highlight differences in risk management, flexibility to change, client involvement, and working software delivery speed.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Describe the Software Requirement Specification (SRS) document according to IEEE 830 standard, detailing Functional vs Non-Functional requirements and Fact-Finding techniques.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">SRS &amp; Requirements Engineering</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Definition and Importance of SRS:</span>
+              <span>An SRS is a formal legal contract between clients and developers specifying exactly what the software system will accomplish without dictating internal implementation details.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">IEEE 830 Standard Section 1: Introduction:</span>
+              <span>Contains Purpose, Document Scope, Definitions/Acronyms, References, and Overview of the document.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">IEEE 830 Section 2: Overall Description:</span>
+              <span>Covers Product Perspective, Product Functions, User Characteristics/Personas, General Constraints (hardware/OS limits), and Assumptions/Dependencies.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">IEEE 830 Section 3: Specific Requirements:</span>
+              <span>The core section detailing functional requirements, external interface requirements (UI, hardware, software, communications), and non-functional quality attributes.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Functional Requirements Definition:</span>
+              <span>Specifies fundamental system services, mathematical algorithms, data processing inputs, outputs, and validation rules (e.g., 'System must calculate EMI').</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Non-Functional Requirements (FURPS+ Model):</span>
+              <span>Specifies operational quality constraints: Performance (response time < 2s), Security (AES-256 encryption), Reliability (99.9% uptime), Usability, and Scalability.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Fact-Finding: Interviews &amp; Questionnaires:</span>
+              <span>Interviews gather deep qualitative domain insights from key stakeholders; questionnaires collect broad quantitative feedback across large user bases.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Fact-Finding: Observation &amp; Document Review:</span>
+              <span>On-site job shadowing observes actual operational workflows; document reviews inspect existing forms, reports, and legacy code to extract business rules.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Fact-Finding: Joint Application Development (JAD):</span>
+              <span>Intensive structured collaborative workshops bringing together users, managers, and system analysts to resolve requirement ambiguities in real time.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Characteristics of a High-Quality SRS:</span>
+              <span>An ideal SRS must be: Correct, Unambiguous, Complete, Consistent, Ranked for importance/stability, Verifiable/Testable, Modifiable, and Traceable.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Waterfall Model vs Spiral Model vs RAD Model</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Waterfall Model</th><th>Spiral Model</th><th>RAD (Rapid Application Development)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Lifecycle Paradigm</td><td>Strict linear-sequential progression.</td><td>Risk-driven cyclical iterative progression.</td><td>Timeboxed iterative & prototyping development.</td></tr><tr><td>Risk Management</td><td>No formal built-in risk assessment.</td><td>Comprehensive risk analysis in every spiral quadrant.</td><td>Moderate risk management focused on timebox constraints.</td></tr><tr><td>Requirement Flexibility</td><td>Extremely rigid; change requests are difficult to accommodate.</td><td>Highly flexible; new requirements accommodated in next spiral loop.</td><td>Highly flexible; adapts continuously via user prototyping.</td></tr><tr><td>Customer Involvement</td><td>Only at the beginning (requirements) and end (acceptance).</td><td>Continuous involvement at the end of each spiral evaluation phase.</td><td>Intense, continuous involvement throughout all prototyping stages.</td></tr><tr><td>Delivery of Working Code</td><td>Working software delivered only at the final deployment stage.</td><td>Early working prototypes produced during early spiral loops.</td><td>Rapid working increments delivered within 60–90 days.</td></tr><tr><td>Cost and Management</td><td>Low management complexity; fixed cost and schedule.</td><td>High cost; requires expert risk assessment specialists.</td><td>Moderate cost; requires highly skilled developers and CASE tools.</td></tr><tr><td>Suitability</td><td>Small projects with frozen, well-understood requirements.</td><td>Large, complex, mission-critical enterprise systems.</td><td>Projects with modular architecture needing rapid time-to-market.</td></tr><tr><td>Documentation Emphasis</td><td>Heavy formal documentation at each sequential phase gate.</td><td>Extensive risk analysis and milestone documentation.</td><td>Lightweight documentation; prioritizes working software artifacts.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Functional Requirements vs Non-Functional Requirements</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Functional Requirements</th><th>Non-Functional Requirements</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Core Definition</td><td>Specifies WHAT the system should do (features and operations).</td><td>Specifies HOW the system should perform (quality constraints).</td></tr><tr><td>Focus Area</td><td>User business tasks, data calculations, workflows, inputs/outputs.</td><td>System properties: performance, security, reliability, availability, usability.</td></tr><tr><td>Measurement & Testing</td><td>Directly tested with boolean pass/fail test cases.</td><td>Quantified using quantitative metrics (latency ms, throughput TPS, MTBF).</td></tr><tr><td>Origin of Requirement</td><td>Defined directly by end-users and business domain experts.</td><td>Defined by software architects, security engineers, and DevOps teams.</td></tr><tr><td>Architectural Impact</td><td>Dictates the business logic classes and module implementations.</td><td>Dictates global system architecture, hardware sizing, and caching strategy.</td></tr><tr><td>Example</td><td>'User can transfer money between bank accounts via OTP.'</td><td>'Transaction response time must be under 500ms under 10,000 concurrent users.'</td></tr><tr><td>Standard Model</td><td>Use Cases, User Stories, Functional Process Lists.</td><td>FURPS+ model (Functionality, Usability, Reliability, Performance, Supportability).</td></tr><tr><td>Failure Consequence</td><td>System fails to provide required business features.</td><td>System may function correctly but crashes under load or is insecure.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>SSAD separates functions from data using DFDs; OOAD encapsulates data and behavior into cohesive objects.</li><li style='margin-bottom:0.6rem;'>Waterfall is linear-sequential; Spiral is risk-driven iterative; RAD uses 60-90 day timeboxed prototyping.</li><li style='margin-bottom:0.6rem;'>Fact-finding techniques: Interviews, Questionnaires, Observation, Document Review, and JAD workshops.</li><li style='margin-bottom:0.6rem;'>Feasibility dimensions: Technical, Economic (ROI), Operational, Legal, and Schedule.</li><li style='margin-bottom:0.6rem;'>SRS (IEEE 830) specifies Functional (behavioral) and Non-Functional (performance/security) requirements.</li><li style='margin-bottom:0.6rem;'>A good SRS must be Correct, Unambiguous, Complete, Consistent, Verifiable, and Traceable.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../main.html" class="unit-nav-btn">&larr; Back to Object Oriented Software Engineering</a></div>
+      <div><a href="../Unit%20II%20-%20Object%20Oriented%20Concepts%2C%20Modeling%20and%20UML/main.html" class="unit-nav-btn">Next: Unit II &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

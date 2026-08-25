@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit V - Test Management, Automation, metrics and measurements | Software Testing</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Software Testing</a> <span class="separator">/</span> <span class="current">Unit V - Test Management, Automation, metrics and measurements</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJET306B &bull; Unit V &bull; 4 Hrs</span>
+      <h1 class="hero-title">Unit V - Test Management, Automation, metrics and measurements</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">4 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>5.1</strong> Test Planning</li><li><strong>5.2</strong> Test Management (Test Process, Test Reporting)</li><li><strong>5.3</strong> What is test Automation?</li><li><strong>5.4</strong> Design and Architecture for Automation</li><li><strong>5.5</strong> Selecting testing tool</li><li><strong>5.6</strong> What are test metrics and measurements? (Types of metrics)</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">5.1 &amp; 5.2 Test Planning, Management &amp; Test Reporting</h3>
+          <div class="topic-body">
+            <p><strong>Test Management:</strong> The managerial discipline of planning, estimating, scheduling, executing, tracking, and reporting software testing activities across the entire development lifecycle.</p>
+                    <p><strong>The Test Management Process:</strong></p>
+                    <ol>
+                      <li><strong>Test Planning & Estimation:</strong> Estimating testing effort using techniques like <em>WBS (Work Breakdown Structure)</em>, <em>Function Point Analysis</em>, or <em>3-Point Estimation</em>.</li>
+                      <li><strong>Test Monitoring & Control:</strong> Continuously tracking test execution progress against planned milestones and applying corrective actions if delays occur.</li>
+                      <li><strong>Test Reporting & Summary:</strong> Authoring the formal <strong>Test Summary Report</strong> containing pass/fail ratios, defect distribution by severity, open defect risks, and release readiness recommendations.</li>
+                    </ol>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">5.3 - 5.5 Test Automation: Architecture, Frameworks, and Tool Selection</h3>
+          <div class="topic-body">
+            <p><strong>Test Automation:</strong> The practice of using specialized software tools to execute pre-scripted test suites automatically, compare actual outcomes with predicted outcomes, and generate execution reports without human intervention.</p>
+                    <p><strong>Test Automation Framework Architectures:</strong></p>
+                    <ul>
+                      <li><strong>Linear / Record-and-Playback:</strong> Simplest scripting; highly fragile to UI changes.</li>
+                      <li><strong>Modular Framework:</strong> Decomposes scripts into reusable independent functional modules.</li>
+                      <li><strong>Data-Driven Framework:</strong> Separates test logic from test data, reading multiple test vectors from external files (Excel, CSV, JSON).</li>
+                      <li><strong>Keyword-Driven Framework:</strong> Associates actions with keywords (e.g., <code>click</code>, <code>typeText</code>, <code>verifyText</code>) enabling non-programmers to write test sheets.</li>
+                      <li><strong>Hybrid Framework:</strong> Combines Data-Driven and Keyword-Driven approaches with Page Object Model (POM).</li>
+                      <li><strong>Behavior-Driven Development (BDD):</strong> Uses Gherkin syntax (<em>Given-When-Then</em>) with tools like Cucumber/SpecFlow.</li>
+                    </ul>
+                    <p><strong>Testing Tool Selection Criteria:</strong> Platform compatibility, programming language support, ease of maintenance, CI/CD integration, licensing cost, community support.</p>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">5.6 Test Metrics and Measurements (Mathematical Formulas)</h3>
+          <div class="topic-body">
+            <p><strong>Key Software Testing Metrics Formulas:</strong></p>
+                    <ul>
+                      <li><strong>Defect Density:</strong> Quantifies software quality per module size:
+                        $$\text{Defect Density} = \frac{\text{Total Defects Found}}{\text{Module Size in KLOC (or Function Points)}}$$
+                      </li>
+                      <li><strong>Defect Removal Efficiency (DRE):</strong> Measures testing quality and filtering capability before release:
+                        $$\text{DRE} = \frac{\text{Defects found during testing (Internal)}}{\text{Internal Defects} + \text{Customer Defects found in production (External)}} \times 100\%$$
+                      </li>
+                      <li><strong>Defect Leakage (Defect Escape Rate):</strong>
+                        $$\text{Defect Leakage} = \frac{\text{Defects found by Customer in UAT/Production}}{\text{Total Defects Found}} \times 100\%$$
+                      </li>
+                      <li><strong>Test Case Execution Rate:</strong>
+                        $$\text{Execution Rate} = \frac{\text{Executed Test Cases}}{\text{Total Planned Test Cases}} \times 100\%$$
+                      </li>
+                      <li><strong>Test Case Pass Percentage:</strong> $\frac{\text{Passed Tests}}{\text{Total Executed Tests}} \times 100\%$.</li>
+                    </ul>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Test Automation Framework</div>
+          <div class="revision-card-body">An integrated set of guidelines, libraries, and coding standards providing a structured environment for building automated tests.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Defect Removal Efficiency (DRE)</div>
+          <div class="revision-card-body">A quality metric measuring the percentage of defects detected by testing before customer release.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Data-Driven Framework</div>
+          <div class="revision-card-body">A test automation framework that drives test execution by reading external data sheets containing input/expected values.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Page Object Model (POM)</div>
+          <div class="revision-card-body">A design pattern in UI automation where web pages are modeled as classes containing element locators and interaction methods.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain Test Automation Frameworks in detail: describe Linear, Modular, Data-Driven, Keyword-Driven, Hybrid, and BDD architectures.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Automation Frameworks</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Definition and Need for Automation Frameworks:</span>
+              <span>A framework provides a standardized set of guidelines, execution engines, reporting utilities, and object repositories for building scalable test suites.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Linear Scripting Framework (Record &amp; Playback):</span>
+              <span>Testers record manual UI interactions; scripts run sequentially. Highly fragile because minor UI changes invalidate the entire script.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Modular Testing Framework:</span>
+              <span>Divides applications into distinct business modules (e.g., LoginModule, CartModule) creating reusable script functions, reducing code duplication.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Data-Driven Testing Framework:</span>
+              <span>Separates test logic from test input datasets; a single test script iterates over hundreds of data rows read from Excel/CSV/JSON files.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Keyword-Driven Testing Framework:</span>
+              <span>Separates test automation logic into tabular keywords (e.g., `openBrowser`, `clickButton`, `verifyText`) allowing manual testers to write automated tests in spreadsheets.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Hybrid Automation Framework:</span>
+              <span>The enterprise standard combining Data-Driven, Keyword-Driven, and Page Object Model patterns for maximum scalability and maintainability.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Behavior-Driven Development (BDD / Cucumber):</span>
+              <span>Uses human-readable Gherkin syntax (`Given [precondition]`, `When [action]`, `Then [expected result]`) bridging communication between developers and business analysts.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Page Object Model (POM) Design Pattern:</span>
+              <span>Creates separate Java/Python classes representing web pages, encapsulating UI locators (`By.id()`) away from test assertion scripts.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Reporting &amp; Continuous Integration (CI/CD):</span>
+              <span>Generates rich HTML execution reports (Allure, ExtentReports) integrated into Jenkins/GitHub Actions pipelines for automated nightly builds.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Return on Investment (ROI) of Automation:</span>
+              <span>Automation requires high initial setup investment but saves thousands of manual testing hours during repetitive regression test cycles.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain the fundamental software testing metrics: Defect Density, Defect Removal Efficiency (DRE), Defect Leakage, and Test Execution metrics with mathematical formulas.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Test Metrics &amp; Measurements</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Importance of Quantitative Metrics:</span>
+              <span>Software metrics provide objective, data-driven visibility into software quality, testing efficiency, team productivity, and release readiness.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">1. Defect Density Formula &amp; Role:</span>
+              <span>Measures the number of defects discovered relative to module size: $\text{Defect Density} = \frac{\text{Total Defects Found}}{\text{Size in KLOC (or Function Points)}}$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Interpreting Defect Density:</span>
+              <span>Identifies high-risk, bug-prone modules in the codebase that require architectural refactoring or intensive code review.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">2. Defect Removal Efficiency (DRE):</span>
+              <span>Formula: $\text{DRE} = \frac{D_{\text{Internal}}}{D_{\text{Internal}} + D_{\text{External}}} \times 100\%$, where $D_{\text{Internal}}$ are defects found by QA and $D_{\text{External}}$ are bugs escaped to production.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Benchmark Standards for DRE:</span>
+              <span>A DRE $> 95\%$ represents high testing quality; a low DRE ($<85\%$) indicates ineffective test case coverage or inadequate test environments.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">3. Defect Leakage (Escape Rate):</span>
+              <span>Formula: $\text{Defect Leakage} = \frac{\text{Defects found in UAT / Production}}{\text{Total Defects Discovered across Project}} \times 100\%$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">4. Test Case Execution Rate:</span>
+              <span>Tracks testing progress: $\text{Execution Rate} = \frac{\text{Executed Test Cases}}{\text{Total Planned Test Cases}} \times 100\%$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">5. Test Case Pass / Failure Ratio:</span>
+              <span>Calculates $\text{Pass Percentage} = \frac{\text{Passed Tests}}{\text{Executed Tests}} \times 100\%$ and $\text{Fail Percentage} = \frac{\text{Failed Tests}}{\text{Executed Tests}} \times 100\%$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">6. Mean Time to Detect (MTTD) &amp; Mean Time to Repair (MTTR):</span>
+              <span>MTTD measures average time taken to identify bugs; MTTR measures average time taken by developers to diagnose, fix, and verify patches.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Test Summary Report Integration:</span>
+              <span>All metrics are consolidated into the final Test Closure Report to support executive release decisions.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Discuss the criteria for selecting test automation tools and compare Manual Testing and Automated Testing in terms of cost, speed, and suitability.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Tool Selection &amp; Manual vs Auto</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">When to Automate (Automation Feasibility):</span>
+              <span>Automate high-volume, repetitive regression suites, performance load tests, and cross-browser matrices; never automate one-time exploratory tests.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Tool Selection Criterion 1: Application Compatibility:</span>
+              <span>The tool must support target technologies (Web: Selenium/Playwright; Mobile: Appium; API: Postman/RestAssured; Desktop: WinAppDriver).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Tool Selection Criterion 2: Language &amp; Skillset:</span>
+              <span>Tool should align with team technical proficiency (Java, Python, JavaScript, C#).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Tool Selection Criterion 3: CI/CD &amp; Cloud Integration:</span>
+              <span>Must support headless execution in Docker containers and integrate with Jenkins, GitHub Actions, and cloud grids (BrowserStack, SauceLabs).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Tool Selection Criterion 4: Licensing &amp; Maintenance Cost:</span>
+              <span>Evaluate open-source tools (Selenium) vs commercial licensed tools (QTP/UFT, TestComplete) including ongoing maintenance overhead.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Tool Selection Criterion 5: Object Identification &amp; Locators:</span>
+              <span>Must provide robust object locator strategies (XPath, CSS, Accessibility IDs) with intelligent auto-wait mechanisms to avoid flakiness.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Manual Testing Strengths:</span>
+              <span>Essential for exploratory testing, usability evaluations, ad-hoc bug hunting, and UI aesthetics where human observation is mandatory.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Automated Testing Strengths:</span>
+              <span>Unmatched speed and repeatability for massive regression suites, eliminating human fatigue during repetitive execution.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Cost Trajectory Comparison:</span>
+              <span>Manual testing has low initial cost but scales linearly with time; Automation has high upfront scripting investment but near-zero marginal cost per subsequent execution.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Balanced QA Testing Strategy:</span>
+              <span>High-performing QA teams utilize a balanced pyramid: 70% Unit tests, 20% Automated API/Integration tests, 10% Automated UI & Manual Exploratory tests.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Manual Testing vs Automated Testing</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Manual Testing</th><th>Automated Testing</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Execution Agent</td><td>Human QA tester manually interacts with UI and verifies results.</td><td>Specialized automation tools and scripts execute test suites.</td></tr><tr><td>Execution Speed</td><td>Slow and time-consuming; limited by human reading and typing speed.</td><td>Ultra-fast execution; executes hundreds of test cases per minute.</td></tr><tr><td>Repetitive Execution Fatigue</td><td>Prone to human error, fatigue, and skipped steps during repetitive runs.</td><td>100% consistent, reliable, and fatigue-free across repeated executions.</td></tr><tr><td>Initial Investment Cost</td><td>Low initial setup cost; requires no automation framework development.</td><td>High initial setup cost; requires framework architecture and scripting.</td></tr><tr><td>Long-Term ROI</td><td>Cost remains constant or increases linearly as project grows.</td><td>High Return on Investment (ROI) over long-term regression cycles.</td></tr><tr><td>Suitability</td><td>Exploratory testing, UI usability, ad-hoc testing, visual layout checks.</td><td>Regression testing, performance load testing, repetitive data entry, smoke tests.</td></tr><tr><td>Programming Skill Required</td><td>Does not strictly require programming or coding knowledge.</td><td>Requires strong programming, framework architecture, and debugging skills.</td></tr><tr><td>CI/CD Pipeline Integration</td><td>Cannot be integrated into automated continuous integration pipelines.</td><td>Seamlessly integrated into CI/CD pipelines for automated build verification.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Data-Driven Framework vs Keyword-Driven Framework</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Data-Driven Framework</th><th>Keyword-Driven Framework</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Driving Principle</td><td>Driven by external test DATASETS (inputs and expected values).</td><td>Driven by action KEYWORDS (e.g., `click`, `type`, `verify`).</td></tr><tr><td>Target User</td><td>Automation engineers with strong programming skills.</td><td>Manual testers and business analysts without deep coding skills.</td></tr><tr><td>Data Separation</td><td>Separates test script logic from external test data files (Excel/CSV).</td><td>Separates test design steps into keyword tables and underlying code libraries.</td></tr><tr><td>Script Complexity</td><td>Single script contains loop logic iterating over data rows.</td><td>Requires building a keyword interpreter/engine that parses table keywords.</td></tr><tr><td>Initial Framework Overhead</td><td>Moderate initial framework development effort.</td><td>High initial framework development effort to build keyword engine.</td></tr><tr><td>Test Case Authoring</td><td>Test cases are authored as programmatic test scripts.</td><td>Test cases are authored as spreadsheets containing keyword step rows.</td></tr><tr><td>Maintenance</td><td>Script changes required when application workflows change.</td><td>Easier maintenance; update keyword spreadsheets without touching code.</td></tr><tr><td>Ideal Application</td><td>Forms with massive input validation combinations (e.g., Loan calculators).</td><td>Large teams with many manual testers transitioning to automation.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>Test management oversees planning, estimation (WBS/3-Point), execution, tracking, and reporting.</li><li style='margin-bottom:0.6rem;'>Automation frameworks: Linear (fragile), Modular (reusable), Data-Driven (Excel data), Keyword-Driven (keywords), Hybrid (POM + Data).</li><li style='margin-bottom:0.6rem;'>Defect Density = Total Defects / Size in KLOC; identifies high-risk modules.</li><li style='margin-bottom:0.6rem;'>Defect Removal Efficiency (DRE) = [Internal Defects / (Internal + External)] * 100%; measures test quality.</li><li style='margin-bottom:0.6rem;'>Defect Leakage = (Escaped Defects to Customer / Total Defects) * 100%.</li><li style='margin-bottom:0.6rem;'>Manual testing is ideal for exploratory/usability; Automation is ideal for repetitive regression/load testing.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20IV%20-%20System%20and%20Acceptance%20testing/main.html" class="unit-nav-btn">&larr; Previous: Unit IV</a></div>
+      <div><a href="../main.html" class="unit-nav-btn">Back to Software Testing &uarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

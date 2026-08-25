@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit V - Content Providers, SQLite Programming and Location Based Services | Mobile Application Development</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Mobile Application Development</a> <span class="separator">/</span> <span class="current">Unit V - Content Providers, SQLite Programming and Location Based Services</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJET306A &bull; Unit V &bull; 6 Hrs</span>
+      <h1 class="hero-title">Unit V - Content Providers, SQLite Programming and Location Based Services</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">6 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>5.1</strong> Content Providers (Role, Accessing data using ContentResolver, Interacting with data sources - contacts, media)</li><li><strong>5.2</strong> SQLite Programming (Introduction to SQLite database, CRUD operations)</li><li><strong>5.3</strong> SQLiteOpenHelper (Database creation and management, onCreate() and onUpgrade() methods)</li><li><strong>5.4</strong> SQLiteDatabase (insert(), query(), update(), delete())</li><li><strong>5.5</strong> Cursor (Accessing results, moveToNext(), getString(), getInt(), close())</li><li><strong>5.6</strong> Searching for Content (Using selection criteria, filtering with selectionArgs and selection)</li><li><strong>5.7</strong> Building and Executing Queries</li><li><strong>5.8</strong> Android JSON Parsing</li><li><strong>5.9</strong> Location Based Services (LBS)</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">5.1 Content Providers &amp; ContentResolver</h3>
+          <div class="topic-body">
+            <p><strong>Content Provider:</strong> A core Android component that encapsulates relational data and provides a secure, standardized interface for sharing data across different applications.</p>
+                    <p><strong>Content URI Architecture:</strong> Formatted as <code>content://authority/path/id</code></p>
+                    <ul>
+                      <li><code>content://</code>: Standard scheme identifying it as a Content URI.</li>
+                      <li><code>authority</code>: Unique package identifier string (e.g., <code>com.example.provider</code>).</li>
+                      <li><code>path</code>: Identifies table or dataset (e.g., <code>/contacts</code>).</li>
+                      <li><code>id</code>: Optional specific record ID (e.g., <code>/contacts/5</code>).</li>
+                    </ul>
+                    <p><strong>ContentResolver Methods:</strong> <code>getContentResolver().query(uri, projection, selection, selectionArgs, sortOrder)</code>, <code>insert()</code>, <code>update()</code>, <code>delete()</code>.</p>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">5.2 - 5.7 SQLite Database Programming in Android</h3>
+          <div class="topic-body">
+            <p><strong>SQLite:</strong> A lightweight, serverless, transactional, zero-configuration embedded SQL database engine built into the Android operating system.</p>
+                    <p><strong>SQLiteOpenHelper Abstract Class:</strong> Manages database creation and version management:</p>
+                    <ul>
+                      <li><code>onCreate(SQLiteDatabase db)</code>: Executed when database is created for the first time. Executes SQL DDL (<code>db.execSQL("CREATE TABLE ...")</code>).</li>
+                      <li><code>onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)</code>: Executed when database version number increases. Drops tables or migrates schemas.</li>
+                    </ul>
+                    <p><strong>SQLiteDatabase CRUD Operations:</strong></p>
+                    <ul>
+                      <li><strong>Create (Insert):</strong> <code>ContentValues values = new ContentValues(); values.put("name", "John"); db.insert("users", null, values);</code></li>
+                      <li><strong>Read (Query):</strong> <code>Cursor cursor = db.query("users", projection, "age > ?", new String[]{"18"}, null, null, "name ASC");</code></li>
+                      <li><strong>Update:</strong> <code>db.update("users", values, "id = ?", new String[]{"1"});</code></li>
+                      <li><strong>Delete:</strong> <code>db.delete("users", "id = ?", new String[]{"1"});</code></li>
+                    </ul>
+                    <p><strong>Cursor Navigation:</strong> Iterating query results:</p>
+                    <pre><code>if (cursor != null &amp;&amp; cursor.moveToFirst()) {
+    do {
+        int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+        String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+    } while (cursor.moveToNext());
+    cursor.close();
+}</code></pre>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">5.8 &amp; 5.9 JSON Parsing and Location-Based Services (LBS)</h3>
+          <div class="topic-body">
+            <p><strong>Android JSON Parsing:</strong></p>
+                    <ul>
+                      <li><code>JSONObject jsonObject = new JSONObject(jsonString);</code></li>
+                      <li><code>String title = jsonObject.getString("title");</code></li>
+                      <li><code>JSONArray jsonArray = jsonObject.getJSONArray("items");</code></li>
+                      <li>Iterate through array indices: <code>JSONObject item = jsonArray.getJSONObject(i);</code></li>
+                    </ul>
+                    <p><strong>Location-Based Services (LBS):</strong></p>
+                    <ul>
+                      <li><strong>Providers:</strong> <code>GPS_PROVIDER</code> (high accuracy, satellite based, outdoors) vs <code>NETWORK_PROVIDER</code> (cellular tower / Wi-Fi triangulation, fast, lower battery).</li>
+                      <li><strong>FusedLocationProviderClient:</strong> Google Play Services unified location API optimizing accuracy and power consumption.</li>
+                      <li><strong>Permissions:</strong> <code>ACCESS_FINE_LOCATION</code> (GPS accurate to meters) and <code>ACCESS_COARSE_LOCATION</code> (city block accuracy).</li>
+                      <li><strong>Geocoder:</strong> Forward Geocoding (Address text $\rightarrow$ Latitude/Longitude) and Reverse Geocoding (Latitude/Longitude $\rightarrow$ Street Address).</li>
+                    </ul>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">SQLiteOpenHelper</div>
+          <div class="revision-card-body">A helper class that manages database creation, connection caching, and version migration.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Cursor</div>
+          <div class="revision-card-body">A pointer object representing a random read-write result set returned by an SQLite database query.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">ContentResolver</div>
+          <div class="revision-card-body">The client-side API class used to query and mutate data exposed by Content Providers.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">FusedLocationProviderClient</div>
+          <div class="revision-card-body">The official Google Play Services API providing intelligent power-optimized device location.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain SQLite database programming in Android: describe SQLiteOpenHelper (onCreate, onUpgrade), SQLiteDatabase CRUD operations, and Cursor navigation.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">SQLite Database</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Embedded SQLite Engine in Android:</span>
+              <span>SQLite is a serverless, self-contained, transactional relational database engine integrated natively into the Android operating system.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Role of SQLiteOpenHelper:</span>
+              <span>An abstract helper class encapsulating database creation, opening, and version migration logic without hardcoding SQL scripts in UI activities.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">onCreate(SQLiteDatabase db) Callback:</span>
+              <span>Fired when the database file is accessed for the very first time; executes table creation DDL scripts via `db.execSQL('CREATE TABLE ...')`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">onUpgrade(SQLiteDatabase db, oldVersion, newVersion):</span>
+              <span>Fired when the database version number increases; drops legacy tables or executes `ALTER TABLE` schema migration scripts.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">INSERT Operation via ContentValues:</span>
+              <span>Inserts key-value pairs using `ContentValues values = new ContentValues(); values.put('name', 'Alice'); long id = db.insert('users', null, values);`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">QUERY Operation via db.query():</span>
+              <span>Queries tables securely: `db.query(table, columns, selection, selectionArgs, groupBy, having, orderBy)` avoiding raw SQL string concatenation.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">UPDATE Operation:</span>
+              <span>Updates rows matching selection criteria: `db.update('users', values, 'id = ?', new String[]{ '1' })` returning number of affected rows.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">DELETE Operation:</span>
+              <span>Deletes specified records: `db.delete('users', 'id = ?', new String[]{ '1' })`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Cursor Navigation and Reading Columns:</span>
+              <span>Uses `cursor.moveToFirst()`, `cursor.moveToNext()`, extracting typed values via `cursor.getString(columnIndex)` and `cursor.getInt(columnIndex)`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Mandatory Cursor and Database Closure:</span>
+              <span>Cursors (`cursor.close()`) and database instances (`db.close()`) must be closed to prevent memory leaks and database locks.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain Content Providers in Android: describe their architectural role, Content URIs structure, ContentResolver methods, and interacting with native Contacts.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Content Providers</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Need for Content Providers:</span>
+              <span>Android security sandboxes prevent apps from reading each other's private SQLite files; Content Providers provide the standard cross-app data sharing gateway.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Content URI Standard Syntax:</span>
+              <span>Uniform addressing string: `content://authority/path/id` (e.g., `content://com.android.contacts/data`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Authority Component:</span>
+              <span>A unique string (usually the provider's package name) that Android OS uses to look up the registered provider in system registry.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Path and ID Components:</span>
+              <span>Path identifies the specific data table; trailing integer ID targets a specific individual record row.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Client Interaction via ContentResolver:</span>
+              <span>Client activities never instantiate the Provider directly; they call `getContentResolver().query(uri, ...)` which routes through Android IPC.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">ContentProvider 6 Abstract Methods:</span>
+              <span>A custom provider extends `ContentProvider` implementing: `onCreate()`, `query()`, `insert()`, `update()`, `delete()`, and `getType()` (MIME type).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">MIME Types (vnd.android.cursor.dir vs .item):</span>
+              <span>Returns directory MIME (`vnd.android.cursor.dir/...`) for multiple rows and item MIME (`vnd.android.cursor.item/...`) for single records.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Interacting with Device Contacts Provider:</span>
+              <span>Queries contacts using URI `ContactsContract.CommonDataKinds.Phone.CONTENT_URI` with runtime permission `READ_CONTACTS`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Preventing SQL Injection via selectionArgs:</span>
+              <span>Parameterized placeholders (`?`) in selection queries paired with `selectionArgs` prevent malicious SQL injection attacks.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">UriMatcher Helper Class:</span>
+              <span>Utility class used inside custom providers to match incoming URI patterns (`URI_ALL_ITEMS = 1`, `URI_SINGLE_ITEM = 2`).</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Describe Location-Based Services (LBS) in Android: compare GPS vs Network providers, FusedLocationProviderClient, and Geocoding APIs.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Location-Based Services</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Foundations of Location-Based Services (LBS):</span>
+              <span>LBS combines mobile hardware sensors, satellite constellations, and cell networks to provide real-time geographic location coordinates (Latitude, Longitude).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">GPS Provider Mechanism:</span>
+              <span>Uses Global Positioning System satellite trilateration; offers highest outdoor accuracy (within meters) but consumes high battery and fails indoors.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Network Provider Mechanism:</span>
+              <span>Uses cellular tower IDs and Wi-Fi access point MAC address triangulation; works indoors with low battery consumption but lower accuracy.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Passive Location Provider:</span>
+              <span>Passively receives location updates requested by other applications without triggering GPS hardware, minimizing battery impact.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">FusedLocationProviderClient (Google Play Services):</span>
+              <span>Intelligent location engine that automatically blends GPS, Wi-Fi, Cellular, and motion sensors to optimize accuracy and battery life.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">LocationRequest Priority Configurations:</span>
+              <span>Configured via `PRIORITY_HIGH_ACCURACY` (GPS), `PRIORITY_BALANCED_POWER_ACCURACY` (Wi-Fi/Cellular), or `PRIORITY_LOW_POWER`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Runtime Location Permissions:</span>
+              <span>Requires declaring `<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />` and requesting runtime approval on Android 6.0+.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Forward Geocoding via Geocoder API:</span>
+              <span>Converts human-readable address strings (e.g., '1600 Amphitheatre Pkwy, Mountain View') into geographic Latitude and Longitude coordinates.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Reverse Geocoding:</span>
+              <span>Converts raw Latitude and Longitude coordinates into human-readable street addresses, city, state, and postal zip codes.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Proximity Alerts &amp; Geofencing:</span>
+              <span>Monitors geographic circular boundaries (geofences), triggering pending intents when a device enters or exits a predefined perimeter.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 SharedPreferences vs SQLite Database vs Content Provider</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>SharedPreferences</th><th>SQLite Database</th><th>Content Provider</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Data Model</td><td>Key-Value pairs stored in an internal XML file.</td><td>Relational tables with rows, columns, and SQL schemas.</td><td>Relational data encapsulated behind Content URIs.</td></tr><tr><td>Data Complexity</td><td>Simple primitive types (int, float, string, boolean).</td><td>Complex structured relational data, foreign keys, indexes.</td><td>Complex structured relational data and binary assets.</td></tr><tr><td>Inter-App Sharing</td><td>Strictly private to the application; cannot be shared.</td><td>Private to the application; inaccessible to other apps.</td><td>Designed specifically for secure cross-application data sharing.</td></tr><tr><td>Query Capability</td><td>Lookup by key name (`getString("key", default)`).</td><td>Rich SQL queries (JOIN, WHERE, GROUP BY, ORDER BY).</td><td>CRUD queries via ContentResolver (`query`, `insert`, etc.).</td></tr><tr><td>Performance & Size</td><td>Ultra-fast for small configuration data (<1MB).</td><td>High-performance database handling large datasets (MBs to GBs).</td><td>High-performance with IPC serialization overhead.</td></tr><tr><td>Typical Use Cases</td><td>User settings, theme toggle, session login tokens.</td><td>Local offline data caching, e-commerce orders, notes.</td><td>Exposing contacts, photo gallery, custom app data.</td></tr><tr><td>Implementation Effort</td><td>Minimal effort; single line getter/setter methods.</td><td>Moderate effort; requires SQLiteOpenHelper and Cursor logic.</td><td>Higher effort; requires subclassing ContentProvider and URI matching.</td></tr><tr><td>Security Model</td><td>Protected by Linux UID file system sandbox.</td><td>Protected by Linux UID file system sandbox.</td><td>Protected by URI permissions and custom Android permissions.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 GPS Provider vs Network Location Provider</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>GPS Location Provider</th><th>Network Location Provider</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Technology Used</td><td>Global Positioning System satellite signals.</td><td>Cellular tower IDs and Wi-Fi access point BSSID lookup.</td></tr><tr><td>Accuracy Level</td><td>High accuracy (within 3 to 10 meters).</td><td>Moderate to low accuracy (within 50 to 500 meters).</td></tr><tr><td>Indoor Performance</td><td>Fails indoors or in urban canyons (requires direct sky view).</td><td>Works well indoors, inside basements, and inside buildings.</td></tr><tr><td>Time to First Fix (TTFF)</td><td>Slow; takes 10 to 60 seconds to acquire satellite locks.</td><td>Ultra-fast; resolves location within 1 to 3 seconds.</td></tr><tr><td>Battery Consumption</td><td>Heavy battery consumption (active GPS radio).</td><td>Low to moderate battery consumption.</td></tr><tr><td>Internet Requirement</td><td>Does not require internet connection to calculate position.</td><td>Requires active internet data connection for tower/Wi-Fi lookup.</td></tr><tr><td>Declared Permission</td><td>Requires `android.permission.ACCESS_FINE_LOCATION`.</td><td>Can function with `android.permission.ACCESS_COARSE_LOCATION`.</td></tr><tr><td>Best Application</td><td>Turn-by-turn driving navigation, fitness running trackers.</td><td>Weather lookup by city, localized news, general location awareness.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>SQLite is a serverless, embedded relational database engine in Android.</li><li style='margin-bottom:0.6rem;'>`SQLiteOpenHelper` provides `onCreate()` (initial schema creation) and `onUpgrade()` (version migrations).</li><li style='margin-bottom:0.6rem;'>`SQLiteDatabase` handles CRUD via `insert()`, `query()`, `update()`, and `delete()` using `ContentValues`.</li><li style='margin-bottom:0.6rem;'>Cursor methods: `moveToFirst()`, `moveToNext()`, `getString()`, `getInt()`, `close()`.</li><li style='margin-bottom:0.6rem;'>Content Providers share data across apps via Content URIs (`content://authority/path`) accessed via `ContentResolver`.</li><li style='margin-bottom:0.6rem;'>LBS utilizes `GPS_PROVIDER` (high accuracy, outdoors) and `NETWORK_PROVIDER` (fast, indoors) via `FusedLocationProviderClient`.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20IV%20-%20Worker%20Threads%20and%20Notification%20Mechanisms/main.html" class="unit-nav-btn">&larr; Previous: Unit IV</a></div>
+      <div><a href="../main.html" class="unit-nav-btn">Back to Mobile Application Development &uarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

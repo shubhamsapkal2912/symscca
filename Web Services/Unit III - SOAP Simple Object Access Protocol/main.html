@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit III - SOAP Simple Object Access Protocol | Web Services</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Web Services</a> <span class="separator">/</span> <span class="current">Unit III - SOAP Simple Object Access Protocol</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJCT302 &bull; Unit III &bull; 12 Hrs</span>
+      <h1 class="hero-title">Unit III - SOAP Simple Object Access Protocol</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">12 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>3.1</strong> Inter-application communication and wire protocols</li><li><strong>3.2</strong> SOAP as a messaging protocol</li><li><strong>3.3</strong> Structure of a SOAP message</li><li><strong>3.4</strong> SOAP communication model</li><li><strong>3.5</strong> Building SOAP Web Services</li><li><strong>3.6</strong> Developing SOAP Web Services using Java</li><li><strong>3.7</strong> Error handling in SOAP</li><li><strong>3.8</strong> Advantages and disadvantages of SOAP</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">3.1 - 3.3 Wire Protocols and the Structure of a SOAP Message</h3>
+          <div class="topic-body">
+            <p><strong>SOAP (Simple Object Access Protocol)</strong> is an XML-based, transport-independent messaging protocol specification defined by the W3C for exchanging structured information in decentralized, distributed environments.</p>
+                    <p><strong>Detailed Anatomy of a SOAP Message:</strong></p>
+                    <pre><code>&lt;?xml version="1.0"?&gt;
+&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+  &lt;soap:Header&gt;
+    &lt;!-- Optional: Routing, WS-Security Tokens, Transactions --&gt;
+    &lt;wsse:Security soap:mustUnderstand="1"&gt;...&lt;/wsse:Security&gt;
+  &lt;/soap:Header&gt;
+  &lt;soap:Body&gt;
+    &lt;!-- Mandatory: Business Payload or SOAP Fault --&gt;
+    &lt;m:GetEmployeeDetailsRequest xmlns:m="http://example.com/emp"&gt;
+      &lt;m:EmployeeID&gt;101&lt;/m:EmployeeID&gt;
+    &lt;/m:GetEmployeeDetailsRequest&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</code></pre>
+                    <ul>
+                      <li><strong>SOAP Envelope (Mandatory):</strong> The root element of every SOAP message that defines the XML document as a SOAP message and declares XML namespaces.</li>
+                      <li><strong>SOAP Header (Optional):</strong> Contains application-specific metadata such as authentication credentials, digital signatures, routing tokens, and transaction contexts. Supports the <code>mustUnderstand="1"</code> attribute.</li>
+                      <li><strong>SOAP Body (Mandatory):</strong> Contains the actual call payload (method name and arguments) or the response payload, or a <strong>SOAP Fault</strong> if an error occurred.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">3.6 Developing SOAP Web Services in Java (JAX-WS)</h3>
+          <div class="topic-body">
+            <p>Java API for XML Web Services (<strong>JAX-WS</strong>) is the standard Java framework for building SOAP services using annotations:</p>
+                    <ul>
+                      <li><code>@WebService</code>: Marks a Java interface or class as a Web Service Endpoint.</li>
+                      <li><code>@WebMethod</code>: Exposes a specific method as an operable web service operation.</li>
+                      <li><code>@WebParam</code> & <code>@WebResult</code>: Customize XML element names of parameters and return values.</li>
+                      <li><code>@SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)</code>: Configures SOAP messaging binding.</li>
+                      <li><strong>Publishing Endpoint:</strong> <code>Endpoint.publish("http://localhost:8080/ws/employee", new EmployeeServiceImpl());</code></li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">3.7 SOAP Error Handling &amp; SOAP Fault Structure</h3>
+          <div class="topic-body">
+            <p>When an error occurs during SOAP message processing, a standardized <strong>SOAP Fault</strong> element is returned inside the <code>&lt;soap:Body&gt;</code>:</p>
+                    <ul>
+                      <li><code>&lt;faultcode&gt;</code>: Standardized machine-readable error code (e.g., <code>soap:VersionMismatch</code>, <code>soap:MustUnderstand</code>, <code>soap:Client</code>, <code>soap:Server</code>).</li>
+                      <li><code>&lt;faultstring&gt;</code>: Human-readable explanation of the error.</li>
+                      <li><code>&lt;faultactor&gt;</code>: URI identifying the intermediary or endpoint node that generated the fault.</li>
+                      <li><code>&lt;detail&gt;</code>: Application-specific error details (e.g., stack traces, custom error codes).</li>
+                    </ul>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">SOAP Envelope</div>
+          <div class="revision-card-body">The mandatory root XML element of every SOAP message defining namespaces and message boundaries.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">mustUnderstand Attribute</div>
+          <div class="revision-card-body">A SOAP Header attribute indicating whether a recipient node is strictly required to process that header or fail with a MustUnderstand fault.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">SOAP Fault</div>
+          <div class="revision-card-body">A standardized XML sub-element within SOAP Body used exclusively for carrying error and exception status information.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">JAX-WS</div>
+          <div class="revision-card-body">Java API for XML Web Services, providing annotations and tools for creating and consuming SOAP services.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the structural anatomy of a SOAP message in detail, describing Envelope, Header (with mustUnderstand), Body, and Fault elements.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">SOAP Structure</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">SOAP XML Specification:</span>
+              <span>A SOAP message is an XML document packaged according to the W3C SOAP envelope schema, providing platform-independent data transmission.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">SOAP Envelope (Root Element):</span>
+              <span>The mandatory root element `<soap:Envelope>` that encapsulates all parts of the message and declares XML namespaces.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">SOAP Header Extensibility:</span>
+              <span>The optional `<soap:Header>` element provides a modular mechanism to pass contextual metadata without altering the core payload.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Role of &#x27;mustUnderstand&#x27; Attribute:</span>
+              <span>When set to `mustUnderstand='1'`, intermediate or destination nodes MUST recognize and process the header; if unrecognized, processing halts with a `MustUnderstand` fault.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Role of &#x27;actor&#x27; / &#x27;role&#x27; Attribute:</span>
+              <span>Specifies which specific intermediary node along a multi-hop routing chain is targeted to process a given header block.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">SOAP Body (Payload Container):</span>
+              <span>The mandatory `<soap:Body>` contains application data (request parameters or response output) or a `<soap:Fault>` element in case of errors.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Standardized SOAP Fault Element:</span>
+              <span>Transports error details using 4 sub-elements: `faultcode`, `faultstring`, `faultactor`, and `detail`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">SOAP Fault Codes Taxonomy:</span>
+              <span>Standard fault codes include: `VersionMismatch` (invalid envelope namespace), `MustUnderstand` (header ignored), `Client` (malformed data), and `Server` (backend failure).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">SOAP with Attachments (SwA / MTOM):</span>
+              <span>Optimized binary data transmission (PDFs, images) using MIME multipart packaging or Message Transmission Optimization Mechanism (MTOM).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Transport Protocol Independence:</span>
+              <span>SOAP envelopes can be carried seamlessly over HTTP, HTTPS, SMTP, JMS, or TCP sockets without altering message structure.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain the step-by-step process of developing and publishing a SOAP Web Service in Java using JAX-WS annotations with complete code examples.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Java JAX-WS Implementation</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Service Endpoint Interface (SEI) Creation:</span>
+              <span>Define a standard Java interface annotated with `@WebService` declaring the abstract business methods exposed to clients.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Annotating Methods with @WebMethod:</span>
+              <span>Use `@WebMethod(operationName = 'calculateSalary')` to expose specific methods and define operation names.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Parameter and Result Customization:</span>
+              <span>Apply `@WebParam(name = 'empId')` and `@WebResult(name = 'salary')` to map Java variables to explicit XML element names in the WSDL.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Service Implementation Bean (SIB):</span>
+              <span>Create a concrete class implementing the SEI, annotated with `@WebService(endpointInterface = 'com.example.EmployeeService')`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">SOAP Binding Configuration:</span>
+              <span>Optionally configure style via `@SOAPBinding(style = Style.DOCUMENT, use = Use.LITERAL)` to ensure WS-I compliance.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Standalone Publishing via javax.xml.ws.Endpoint:</span>
+              <span>Publish using: `Endpoint.publish('http://localhost:8080/ws/employee', new EmployeeServiceImpl());` creating a lightweight embedded HTTP server.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Generating WSDL and Artifacts (wsgen):</span>
+              <span>Execute `wsgen -cp . com.example.EmployeeServiceImpl -wsdl` to produce the corresponding WSDL and XSD schema files.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Generating Client Stubs (wsimport):</span>
+              <span>Clients run `wsimport -keep -p com.client http://localhost:8080/ws/employee?wsdl` to generate client proxy stubs.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Client-Side Invocations:</span>
+              <span>Client instantiates generated `Service` class and retrieves the port proxy to invoke remote methods like local Java calls.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Enterprise Deployment in Application Servers:</span>
+              <span>In production, services are packaged into WAR files with `sun-jaxws.xml` and deployed to Tomcat, WildFly, or WebLogic.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Discuss the advantages and disadvantages of SOAP. Compare SOAP 1.1 and SOAP 1.2 specifications in detail.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">SOAP Analysis &amp; Versions</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Advantage: Strict Contract Standardization:</span>
+              <span>WSDL contracts enforce strict compile-time type safety, automated stub generation, and validation across enterprise vendors.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Advantage: Advanced WS-* Specifications:</span>
+              <span>Built-in enterprise standards for message security (WS-Security), distributed transactions (WS-AtomicTransaction), and guaranteed delivery (WS-ReliableMessaging).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Advantage: Transport Protocol Agnostic:</span>
+              <span>Operates over HTTP, HTTPS, JMS, SMTP, and TCP, whereas REST is bound exclusively to HTTP.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Advantage: Built-In Error Standardization:</span>
+              <span>SOAP Fault provides a uniform, machine-readable error reporting mechanism across all programming languages.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Disadvantage: Heavy XML Serialization Overhead:</span>
+              <span>Verbose XML tags and nested envelopes significantly inflate payload size, consuming high network bandwidth.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Disadvantage: High CPU and Memory Consumption:</span>
+              <span>Parsing complex XML DOM trees and validating schemas imposes substantial processing overhead on client and server nodes.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Disadvantage: Firewall Configuration Challenges:</span>
+              <span>SOAP over HTTP typically tunnels all calls via HTTP POST on a single URL, bypassing traditional firewall content inspections.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">SOAP 1.1 vs 1.2: Namespace Evolution:</span>
+              <span>SOAP 1.1 uses namespace `http://schemas.xmlsoap.org/soap/envelope/` while SOAP 1.2 uses `http://www.w3.org/2003/05/soap-envelope`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">SOAP 1.1 vs 1.2: Content-Type MIME Header:</span>
+              <span>SOAP 1.1 mandates `text/xml; charset=utf-8` and `SOAPAction` HTTP header; SOAP 1.2 uses `application/soap+xml; action=...`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">SOAP 1.1 vs 1.2: Fault Subcode Architecture:</span>
+              <span>SOAP 1.2 introduces a hierarchical Fault structure (`Code`, `Subcode`, `Reason`, `Node`, `Role`, `Detail`) replacing 1.1's flat `faultcode`.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 SOAP 1.1 vs SOAP 1.2 Specifications</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>SOAP 1.1</th><th>SOAP 1.2</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>W3C Standardization</td><td>W3C Note (published May 2000).</td><td>Official W3C Recommendation (published June 2003).</td></tr><tr><td>XML Namespace URI</td><td>`http://schemas.xmlsoap.org/soap/envelope/`</td><td>`http://www.w3.org/2003/05/soap-envelope`</td></tr><tr><td>HTTP MIME Content-Type</td><td>Uses `text/xml; charset=utf-8`.</td><td>Uses `application/soap+xml; charset=utf-8`.</td></tr><tr><td>SOAPAction Header</td><td>Mandatory HTTP header (`SOAPAction: "urn:operation"`).</td><td>Removed HTTP header; integrated as optional parameter in `Content-Type`.</td></tr><tr><td>Fault Element Architecture</td><td>Flat structure: `faultcode`, `faultstring`, `faultactor`, `detail`.</td><td>Hierarchical structure: `Code`, `Subcode`, `Reason`, `Node`, `Role`, `Detail`.</td></tr><tr><td>Fault Code Taxonomy</td><td>`VersionMismatch`, `MustUnderstand`, `Client`, `Server`.</td><td>`env:VersionMismatch`, `env:MustUnderstand`, `env:Sender`, `env:Receiver`.</td></tr><tr><td>Actor / Role Attribute</td><td>Uses `soap:actor` attribute in headers.</td><td>Uses `soap:role` attribute with predefined URI roles.</td></tr><tr><td>Web Method Support</td><td>Tied heavily to HTTP POST method only.</td><td>Formally supports both HTTP POST and HTTP GET (Web Method Feature).</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Document/Literal vs RPC/Encoded SOAP Styles</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Document/Literal</th><th>RPC/Encoded</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Message Content</td><td>Contains a complete, self-contained XML business document.</td><td>Contains remote method name with serialized typed input parameters.</td></tr><tr><td>Schema Validation</td><td>Directly validated against an explicit XML Schema (XSD).</td><td>Cannot be validated directly against standard XSD schemas.</td></tr><tr><td>WS-I Compliance</td><td>Fully compliant with WS-I Basic Profile 1.1.</td><td>Disallowed and deprecated by WS-I Basic Profile due to incompatibilities.</td></tr><tr><td>Type Serialization Rules</td><td>Uses standard XML Schema types defined in XSD.</td><td>Uses custom SOAP encoding rules (`Section 5 encoding`).</td></tr><tr><td>Performance & Parsing</td><td>Faster parsing because XML parser performs direct schema validation.</td><td>Slower; parser must dynamically deserialize typed graph references.</td></tr><tr><td>Decoupling Degree</td><td>High degree of decoupling; changes to implementation code don't alter XML.</td><td>Tight coupling; wire XML mirrors internal method parameter names.</td></tr><tr><td>Tooling Support</td><td>Supported natively by all modern web service frameworks (JAX-WS, .NET, CXF).</td><td>Poorly supported in modern tools; legacy SOAP 1.1 only.</td></tr><tr><td>Industry Standard</td><td>The universal industry standard for enterprise SOAP services.</td><td>Obsolete legacy style; strictly avoided in production.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>SOAP is an XML-based wire protocol comprising Envelope, optional Header, mandatory Body, and Fault elements.</li><li style='margin-bottom:0.6rem;'>SOAP Header supports `mustUnderstand="1"` requiring target nodes to process the header or throw an error.</li><li style='margin-bottom:0.6rem;'>SOAP Fault structure contains `faultcode`, `faultstring`, `faultactor`, and `detail`.</li><li style='margin-bottom:0.6rem;'>JAX-WS annotations: `@WebService`, `@WebMethod`, `@WebParam`, `@WebResult`, and `Endpoint.publish()`.</li><li style='margin-bottom:0.6rem;'>SOAP 1.1 uses `text/xml` with `SOAPAction`; SOAP 1.2 uses `application/soap+xml` with hierarchical Fault codes.</li><li style='margin-bottom:0.6rem;'>Document/Literal style is WS-I compliant and validates directly against XML Schemas.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20II%20-%20Web%20Services%20Architecture/main.html" class="unit-nav-btn">&larr; Previous: Unit II</a></div>
+      <div><a href="../Unit%20IV%20-%20Describing%20and%20Discovering%20Web%20Services/main.html" class="unit-nav-btn">Next: Unit IV &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

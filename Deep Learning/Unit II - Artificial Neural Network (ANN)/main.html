@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit II - Artificial Neural Network (ANN) | Deep Learning</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Deep Learning</a> <span class="separator">/</span> <span class="current">Unit II - Artificial Neural Network (ANN)</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJCT301 &bull; Unit II &bull; 14 Hrs</span>
+      <h1 class="hero-title">Unit II - Artificial Neural Network (ANN)</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">14 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>2.1</strong> Artificial Neural Network (ANN)</li><li><strong>2.1.1</strong> The architecture of an artificial neural network</li><li><strong>2.2.2</strong> Single layer perceptron</li><li><strong>2.1.3</strong> Multilayer perceptron</li><li><strong>2.2</strong> Back Propagation Learning</li><li><strong>2.2.1</strong> Forward pass</li><li><strong>2.2.2</strong> Backward pass</li><li><strong>2.3</strong> Models improvement</li><li><strong>2.4</strong> Training Neural Networks</li><li><strong>2.5</strong> Activation functions (Step, Sigmoid, ReLU, Leaky ReLU)</li><li><strong>2.6</strong> Gradient Descent</li><li><strong>2.7</strong> Common Challenges in Training - Overfitting and underfitting</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">2.1 Single Layer Perceptron (SLP) vs Multilayer Perceptron (MLP)</h3>
+          <div class="topic-body">
+            <p><strong>Single Layer Perceptron (Rosenblatt, 1958):</strong> The simplest feedforward neural network consisting of input nodes directly connected to output threshold units without hidden layers. It can only classify <em>linearly separable</em> patterns (e.g., AND, OR logic gates) and fundamentally fails on non-linear problems like the <strong>XOR problem</strong> (proven by Minsky & Papert, 1969).</p>
+                    <p><strong>Multilayer Perceptron (MLP):</strong> Stacks one or more hidden layers between inputs and outputs with non-linear activations. By learning composite hyperplanes, MLPs can approximate arbitrary continuous non-linear decision boundaries.</p>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">2.2 Backpropagation Algorithm: Forward Pass &amp; Backward Pass</h3>
+          <div class="topic-body">
+            <p><strong>Backpropagation (Rumelhart et al., 1986)</strong> is the foundational learning algorithm for training multi-layer neural networks via the calculus <strong>Chain Rule</strong>:</p>
+                    <ul>
+                      <li><strong>Forward Pass:</strong> Input data vectors propagate through network layers. Each layer calculates $\mathbf{z}^{[l]} = \mathbf{W}^{[l]} \mathbf{a}^{[l-1]} + \mathbf{b}^{[l]}$ and $\mathbf{a}^{[l]} = g^{[l]}(\mathbf{z}^{[l]})$. The final layer produces $\hat{\mathbf{y}}$, and the loss function $\mathcal{L}(\hat{\mathbf{y}}, \mathbf{y})$ evaluates the prediction error.</li>
+                      <li><strong>Backward Pass:</strong> The loss gradient is calculated with respect to output activations, then propagated backward through layers using the chain rule to obtain partial derivatives:
+                        $$\frac{\partial \mathcal{L}}{\partial \mathbf{W}^{[l]}} = \frac{\partial \mathcal{L}}{\partial \mathbf{z}^{[l]}} (\mathbf{a}^{[l-1]})^T \quad \text{and} \quad \frac{\partial \mathcal{L}}{\partial \mathbf{b}^{[l]}} = \frac{\partial \mathcal{L}}{\partial \mathbf{z}^{[l]}}$$
+                      </li>
+                      <li><strong>Parameter Update:</strong> Weights and biases are updated in the opposite direction of the gradient:
+                        $$\mathbf{W}^{[l]} := \mathbf{W}^{[l]} - \alpha \frac{\partial \mathcal{L}}{\partial \mathbf{W}^{[l]}}$$
+                      </li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">2.5 Activation Functions: Mathematical Formulations &amp; Comparison</h3>
+          <div class="topic-body">
+            <p>Activation functions introduce non-linearity, allowing neural networks to model non-linear relationships:</p>
+                    <ul>
+                      <li><strong>Step Function:</strong> $f(z) = 1 \text{ if } z \ge 0 \text{ else } 0$. Derivative is zero everywhere, preventing gradient descent training.</li>
+                      <li><strong>Sigmoid Function:</strong> $\sigma(z) = \frac{1}{1 + e^{-z}}$, range $(0, 1)$. Output derivative is $\sigma(z)(1 - \sigma(z))$. Suffer from <em>vanishing gradient problem</em> when $|z|$ is large.</li>
+                      <li><strong>Rectified Linear Unit (ReLU):</strong> $f(z) = \max(0, z)$. Derivative is $1$ for $z > 0$ and $0$ for $z < 0$. Eliminates vanishing gradients in positive domain and provides fast computation.</li>
+                      <li><strong>Leaky ReLU:</strong> $f(z) = \max(\alpha z, z)$ with small $\alpha \approx 0.01$. Prevents the "Dying ReLU" neuron death problem by maintaining a non-zero gradient for negative inputs.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">2.6 Gradient Descent &amp; 2.7 Training Challenges (Overfitting / Underfitting)</h3>
+          <div class="topic-body">
+            <p><strong>Gradient Descent Variants:</strong></p>
+                    <ul>
+                      <li><strong>Batch Gradient Descent:</strong> Computes gradients over the entire training dataset. Stable convergence but extremely slow for massive datasets.</li>
+                      <li><strong>Stochastic Gradient Descent (SGD):</strong> Computes gradients on one single sample at a time. Fast and memory-efficient but noisy, oscillating convergence.</li>
+                      <li><strong>Mini-Batch Gradient Descent:</strong> Computes gradients over a small batch (e.g., 32, 64, 128 samples). Balances computational vectorization and convergence stability.</li>
+                    </ul>
+                    <p><strong>Mitigating Overfitting & Underfitting:</strong></p>
+                    <ul>
+                      <li><strong>Overfitting:</strong> High variance (high training accuracy, poor validation accuracy). Solutions: L1/L2 Regularization (Weight Decay), Dropout, Data Augmentation, Early Stopping.</li>
+                      <li><strong>Underfitting:</strong> High bias (poor training and validation accuracy). Solutions: Increase model capacity (add layers/neurons), train longer, reduce regularization.</li>
+                    </ul>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Vanishing Gradient</div>
+          <div class="revision-card-body">Problem where backpropagated error gradients shrink exponentially towards zero in early layers due to saturating activations (Sigmoid/Tanh).</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Dying ReLU</div>
+          <div class="revision-card-body">Occurs when neurons get stuck in negative territory where ReLU gradient is 0, permanently deactivating the neuron.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Dropout</div>
+          <div class="revision-card-body">Regularization technique where random neurons are deactivated during training with probability $p$ to prevent co-adaptation.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Learning Rate</div>
+          <div class="revision-card-body">Hyperparameter $\alpha$ governing the step size taken in parameter space along the negative loss gradient vector.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the step-by-step mathematical derivation of the Backpropagation algorithm including Forward Pass, Backward Pass, and Weight Update rules.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Mathematical Derivation</span><span class="qa-tag">Core Algorithm</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Core Objective of Backpropagation:</span>
+              <span>Backpropagation calculates the exact analytical gradient of the global scalar loss function with respect to all internal weight matrices and bias vectors.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Feedforward Signal Flow:</span>
+              <span>In the forward pass, layer $l$ calculates intermediate pre-activation $z^{[l]} = W^{[l]} a^{[l-1]} + b^{[l]}$ and post-activation $a^{[l]} = g^{[l]}(z^{[l]})$. Target loss $L(\hat{y}, y)$ is evaluated at layer $L$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Loss Gradient at Output Layer:</span>
+              <span>The error delta at the final output layer is defined as $\delta^{[L]} = \frac{\partial L}{\partial z^{[L]}} = \nabla_{a^{[L]}} L \odot {g^{[L]}}'(z^{[L]})$, representing the initial sensitivity vector.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Application of Multivariate Chain Rule:</span>
+              <span>Using the chain rule, the error sensitivity of intermediate layer $l$ is propagated backward via: $\delta^{[l]} = ((W^{[l+1]})^T \delta^{[l+1]}) \odot {g^{[l]}}'(z^{[l]})$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Weight Gradient Matrix Formulation:</span>
+              <span>The partial derivative of the loss with respect to weight matrix $W^{[l]}$ is given by the outer product: $\frac{\partial L}{\partial W^{[l]}} = \delta^{[l]} (a^{[l-1]})^T$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Bias Gradient Vector Formulation:</span>
+              <span>The partial derivative with respect to bias vector $b^{[l]}$ equals the accumulated error delta: $\frac{\partial L}{\partial b^{[l]}} = \delta^{[l]}$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Gradient Descent Parameter Update:</span>
+              <span>Parameters are updated iteratively: $W^{[l]} \leftarrow W^{[l]} - \alpha \frac{\partial L}{\partial W^{[l]}}$ and $b^{[l]} \leftarrow b^{[l]} - \alpha \frac{\partial L}{\partial b^{[l]}}$, where $\alpha$ is the learning rate.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Vectorized Batch Backpropagation:</span>
+              <span>For mini-batches of size $m$, gradients are averaged over matrix operations: $\frac{\partial L}{\partial W^{[l]}} = \frac{1}{m} \Delta^{[l]} (A^{[l-1]})^T$ ensuring parallel GPU efficiency.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Computational Complexity:</span>
+              <span>Backpropagation computes all gradients across the entire network in time proportional to a single forward pass ($O(W)$ where $W$ is total weights).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Impact of Activation Choice:</span>
+              <span>The term ${g^{[l]}}'(z^{[l]})$ dictates gradient propagation; activations with vanishing derivatives stifle backward flow in early layers.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Compare Step, Sigmoid, ReLU, and Leaky ReLU activation functions. Explain their mathematical definitions, advantages, limitations, and use cases.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Activation Functions</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Step Function Formulation &amp; Limitations:</span>
+              <span>Defined as $f(z) = 1$ if $z \ge 0$ else $0$. It produces a derivative of 0 almost everywhere, making gradient-based optimization impossible in multi-layer networks.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Sigmoid Activation Formulation:</span>
+              <span>Defined as $\sigma(z) = \frac{1}{1 + e^{-z}}$, mapping real numbers smoothly to $(0, 1)$, historically popular for probabilistic output interpretation.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Vanishing Gradient in Sigmoid:</span>
+              <span>Sigmoid's maximum derivative is $0.25$ at $z=0$. For $|z| > 4$, derivative $\approx 0$, causing gradients to vanish when backpropagating through deep networks.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Sigmoid Non-Zero Centered Issue:</span>
+              <span>Sigmoid outputs are strictly positive, causing zig-zagging gradient updates during backpropagation because all weight updates share the same sign.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">ReLU (Rectified Linear Unit) Formula:</span>
+              <span>Defined as $f(z) = \max(0, z)$. It is computationally efficient as it only requires thresholding at zero without exponential operations.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">ReLU Vanishing Gradient Resolution:</span>
+              <span>For positive inputs ($z > 0$), ReLU maintains a constant gradient of $1.0$, allowing gradients to flow unimpeded through hundreds of hidden layers.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Dying ReLU Problem:</span>
+              <span>If a large gradient updates weights such that a neuron outputs negative values for all dataset inputs, its gradient becomes permanently zero, killing the neuron.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Leaky ReLU Formulation:</span>
+              <span>Defined as $f(z) = \max(\alpha z, z)$ where $\alpha \approx 0.01$. Provides a small positive slope for negative inputs to keep dead neurons active.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Parametric &amp; Exponential Variants (PReLU/ELU):</span>
+              <span>PReLU treats $\alpha$ as a learnable parameter, whereas ELU uses smooth exponential curves for negative values to push mean activations closer to zero.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Practical University Exam Selection Rule:</span>
+              <span>Hidden layers: Use ReLU or Leaky ReLU; Binary Output Layer: Sigmoid; Multi-Class Output Layer: Softmax.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Describe the common challenges in training neural networks (Overfitting, Underfitting, Vanishing Gradients) and explain 6 proven techniques to overcome them.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Optimization &amp; Regularization</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Understanding Overfitting (High Variance):</span>
+              <span>The model memorizes training noise and outliers, resulting in near-zero training error but high validation/test generalization error.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Understanding Underfitting (High Bias):</span>
+              <span>The model is too simplistic to capture underlying patterns, resulting in poor accuracy on both training and validation sets.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">L1 &amp; L2 Weight Regularization:</span>
+              <span>Adds penalty terms to the loss function: $\Omega(\theta) = \lambda \sum |w_i|$ (L1 Lasso, induces sparsity) or $\Omega(\theta) = \frac{1}{2}\lambda \sum w_i^2$ (L2 Ridge / Weight Decay, prevents large weights).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Dropout Regularization:</span>
+              <span>Randomly sets a fraction $p$ of hidden activations to zero during each forward training step, breaking co-adaptation among feature detectors.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Batch Normalization (BatchNorm):</span>
+              <span>Normalizes layer inputs to zero mean and unit variance per mini-batch, stabilizing internal covariate shift and allowing higher learning rates.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Data Augmentation:</span>
+              <span>Synthetically expands training data using domain-preserving transformations (rotations, cropping, flips, color jitter, noise injection) to improve invariance.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Early Stopping:</span>
+              <span>Monitors validation loss during training and halts optimization when validation performance ceases to improve, saving model checkpoints at minimum loss.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Weight Initialization Strategies:</span>
+              <span>Using Xavier/Glorot initialization for Sigmoid/Tanh or He/Kaiming initialization for ReLU prevents activations and gradients from exploding or vanishing at initialization.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Adaptive Optimization Algorithms:</span>
+              <span>Optimizers like RMSprop and Adam adjust per-parameter learning rates dynamically using exponentially decaying moving averages of past gradients and squared gradients.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Addressing Underfitting:</span>
+              <span>Resolved by increasing model complexity (adding layers/neurons), engineering better features, or decreasing regularization constraints.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Single Layer Perceptron vs Multilayer Perceptron (MLP)</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Single Layer Perceptron (SLP)</th><th>Multilayer Perceptron (MLP)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Layer Architecture</td><td>Contains only Input Layer and Output Layer (0 hidden layers).</td><td>Contains Input Layer, one or more Hidden Layers, and Output Layer.</td></tr><tr><td>Decision Boundary</td><td>Can only generate linear decision boundaries (hyperplanes).</td><td>Can generate highly complex non-linear arbitrary decision surfaces.</td></tr><tr><td>XOR Problem</td><td>Fails to solve the non-linear XOR logic function.</td><td>Easily solves XOR and non-linear parity problems.</td></tr><tr><td>Activation Functions</td><td>Typically uses Step / Threshold activation functions.</td><td>Uses continuous non-linear activations (ReLU, Sigmoid, Tanh).</td></tr><tr><td>Training Algorithm</td><td>Trained using simple Perceptron Learning Rule / Delta Rule.</td><td>Trained using Backpropagation with Gradient Descent.</td></tr><tr><td>Computational Complexity</td><td>Very low computational and memory complexity ($O(N)$).</td><td>High computational complexity requiring matrix operations on GPUs.</td></tr><tr><td>Differentiability</td><td>Step function is non-differentiable at $z=0$ and has zero gradient elsewhere.</td><td>Activations are differentiable almost everywhere for calculus chain rule.</td></tr><tr><td>Universal Approximation</td><td>Cannot approximate general non-linear functions.</td><td>Satisfies Universal Approximation Theorem given sufficient hidden units.</td></tr><tr><td>Application Scope</td><td>Simple binary linear classification (e.g., AND, OR gates).</td><td>Complex pattern recognition, speech, vision, and tabular prediction.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Overfitting vs Underfitting in Neural Networks</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Overfitting (High Variance)</th><th>Underfitting (High Bias)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Core Problem</td><td>Model learns training noise and specific sample peculiarities.</td><td>Model is too simple to capture underlying underlying relationships.</td></tr><tr><td>Training Loss</td><td>Extremely low training loss / high training accuracy.</td><td>High training loss / low training accuracy.</td></tr><tr><td>Validation / Test Loss</td><td>Significantly higher than training loss (generalization gap).</td><td>High validation loss, comparable to poor training loss.</td></tr><tr><td>Model Capacity</td><td>Model capacity is excessively high relative to training data size.</td><td>Model capacity is insufficient (too few layers or parameters).</td></tr><tr><td>Decision Boundary</td><td>Overly complex, highly oscillating, and sensitive to noise.</td><td>Overly rigid, simple, or linear, failing to separate data.</td></tr><tr><td>Root Causes</td><td>Lack of regularization, small dataset, excessive training epochs.</td><td>Oversimplified model, excessive regularization, premature stopping.</td></tr><tr><td>Remediation Techniques</td><td>Apply Dropout, L2 weight decay, Data Augmentation, Early Stopping.</td><td>Increase network depth/width, reduce regularization, train longer.</td></tr><tr><td>Visual Characteristic</td><td>Fits every single training outlier perfectly.</td><td>Fails to fit even standard training trendlines.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>Single Layer Perceptron can only classify linearly separable data; MLPs solve non-linear classification (XOR).</li><li style='margin-bottom:0.6rem;'>Backpropagation calculates loss gradients across layers using the multivariate Chain Rule.</li><li style='margin-bottom:0.6rem;'>Forward pass computes layer activations; backward pass propagates error deltas $\delta$ to compute $\frac{\partial L}{\partial W}$.</li><li style='margin-bottom:0.6rem;'>ReLU ($f(z)=\max(0,z)$) prevents vanishing gradients in positive domains; Leaky ReLU prevents the Dying ReLU problem.</li><li style='margin-bottom:0.6rem;'>Overfitting is mitigated by Dropout, L2 regularization, Data Augmentation, and Early Stopping.</li><li style='margin-bottom:0.6rem;'>Batch Normalization stabilizes internal covariate shift and accelerates training convergence.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20I%20-%20Introduction%20to%20Deep%20Learning/main.html" class="unit-nav-btn">&larr; Previous: Unit I</a></div>
+      <div><a href="../Unit%20III%20-%20Convolutional%20Neural%20Networks/main.html" class="unit-nav-btn">Next: Unit III &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

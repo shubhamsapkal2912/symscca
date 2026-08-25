@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit IV - Basic Behavioral and Architectural Modeling | Object Oriented Software Engineering</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Object Oriented Software Engineering</a> <span class="separator">/</span> <span class="current">Unit IV - Basic Behavioral and Architectural Modeling</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJCT303 &bull; Unit IV &bull; 8 Hrs</span>
+      <h1 class="hero-title">Unit IV - Basic Behavioral and Architectural Modeling</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">8 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>4.1</strong> Interactions</li><li><strong>4.2</strong> Use cases, Use Case Diagram</li><li><strong>4.2.1</strong> Identify Actors</li><li><strong>4.2.2</strong> Identify Use cases: describing how the user will use the system</li><li><strong>4.2.3</strong> Develop use-case Model</li><li><strong>4.2.4</strong> Description of Use case Diagram</li><li><strong>4.3</strong> Interaction Diagram</li><li><strong>4.4</strong> Activity Diagram</li><li><strong>4.5</strong> Sequence diagram</li><li><strong>4.6</strong> Collaboration Diagram</li><li><strong>4.7</strong> State Transition Diagram</li><li><strong>4.8</strong> Component, Components Diagram</li><li><strong>4.9</strong> Deployment Diagram</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">4.1 &amp; 4.2 Use Case Modeling &amp; Relationships</h3>
+          <div class="topic-body">
+            <p><strong>Use Case Diagram:</strong> Visualizes system functional requirements from the perspective of external users (Actors).</p>
+                    <p><strong>Core Elements:</strong></p>
+                    <ul>
+                      <li><strong>Actor (Stick Figure):</strong> An external entity (human, hardware device, external software) that interacts with the system.</li>
+                      <li><strong>Use Case (Horizontal Ellipse):</strong> A specific business capability or service provided by the system.</li>
+                      <li><strong>System Boundary (Rectangle):</strong> Encloses use cases, separating internal system features from external actors.</li>
+                      <li><strong>Relationships:</strong>
+                        <ul>
+                          <li><strong>Association (Solid Line):</strong> Links Actor to Use Case.</li>
+                          <li><strong>&laquo;include&raquo; (Dashed Arrow $\dashrightarrow$):</strong> Mandatory dependency where the base use case unconditionally includes the behavior of the included use case (e.g., <em>Withdraw Cash</em> $\dashrightarrow$ <code>&laquo;include&raquo;</code> <em>Validate PIN</em>).</li>
+                          <li><strong>&laquo;extend&raquo; (Dashed Arrow $\dashrightarrow$):</strong> Optional extension executed only under specific extension points / conditions (e.g., <em>Calculate Premium</em> $\leftarrow$ <code>&laquo;extend&raquo;</code> <em>Apply Festive Discount</em>).</li>
+                          <li><strong>Generalization:</strong> Actor-to-Actor or Use Case-to-Use Case inheritance.</li>
+                        </ul>
+                      </li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">4.3 - 4.6 Interaction Diagrams: Sequence &amp; Collaboration (Communication) Diagrams</h3>
+          <div class="topic-body">
+            <p><strong>Interaction Diagrams:</strong> Model dynamic message passing between object instances over time.</p>
+                    <ul>
+                      <li><strong>Sequence Diagram (Time-Ordered):</strong>
+                        <ul>
+                          <li><em>Lifeline (Dashed vertical line):</em> Represents the existence of an object over time.</li>
+                          <li><em>Activation Bar (Vertical thin rectangle):</em> Represents the period when an object is actively executing an operation.</li>
+                          <li><em>Synchronous Message (Solid line with filled arrowhead):</em> Sender blocks waiting for reply.</li>
+                          <li><em>Asynchronous Message (Solid line with open arrowhead):</em> Sender does not block.</li>
+                          <li><em>Reply / Return Message (Dashed line with open arrowhead):</em> Returns control/value.</li>
+                          <li><em>Combined Fragments:</em> <code>alt</code> (if-else), <code>opt</code> (if condition), <code>loop</code> (for/while loops), <code>par</code> (parallel execution).</li>
+                        </ul>
+                      </li>
+                      <li><strong>Collaboration / Communication Diagram (Organization-Ordered):</strong> Emphasizes structural object links with numbered sequential messages (e.g., <code>1.0: authenticate()</code>, <code>1.1: verifyHash()</code>).</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">4.4 &amp; 4.7 Activity Diagrams &amp; State Machine Diagrams</h3>
+          <div class="topic-body">
+            <p><strong>Activity Diagram:</strong> Models operational workflow, business processes, and parallel algorithms.</p>
+                    <ul>
+                      <li><em>Action States (Rounded rectangles), Initial Node (Filled black circle), Final Node (Bullseye circle).</em></li>
+                      <li><em>Decision / Merge Node (Diamond):</em> Branching based on boolean guards <code>[guard]</code>.</li>
+                      <li><em>Fork and Join Bars (Thick solid black bars):</em> Fork splits a single control flow into concurrent parallel paths; Join synchronizes multiple parallel paths into one.</li>
+                      <li><em>Swimlanes (Partitions):</em> Groups actions by responsible organizational roles/departments.</li>
+                    </ul>
+                    <p><strong>State Transition Diagram (Statechart):</strong> Models the dynamic lifecycle of a single reactive object changing states in response to external events. (Initial State $\rightarrow$ States $\rightarrow$ Transitions <code>event[guard]/action</code> $\rightarrow$ Final State).</p>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">4.8 &amp; 4.9 Architectural Diagrams: Component &amp; Deployment Diagrams</h3>
+          <div class="topic-body">
+            <p><strong>Component Diagram:</strong> Models physical software modules, JAR/WAR libraries, APIs, and interfaces (Provided Interface $\circ$ lollipop vs Required Interface $($ socket).</p>
+                    <p><strong>Deployment Diagram:</strong> Models physical hardware nodes (3D cube box), execution environments, devices, and communication networks hosting software artifacts.</p>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">«include» vs «extend»</div>
+          <div class="revision-card-body">«include» is mandatory execution of shared logic; «extend» is optional execution under specific conditions.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Sequence Diagram</div>
+          <div class="revision-card-body">An interaction diagram emphasizing the exact chronological time ordering of message exchanges between object lifelines.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Swimlanes</div>
+          <div class="revision-card-body">Vertical or horizontal columns in Activity Diagrams assigning workflow responsibilities to distinct organizational roles.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Deployment Node</div>
+          <div class="revision-card-body">A 3D cuboid symbol representing a computational hardware server or execution environment.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain Use Case Modeling in detail: identify Actors, Use Cases, System Boundaries, and distinguish between «include» and «extend» relationships.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Use Case Modeling</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Purpose of Use Case Diagrams:</span>
+              <span>Provides a high-level visual contract capturing functional system requirements from the viewpoint of external human users and secondary systems.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Identifying Primary and Secondary Actors:</span>
+              <span>Primary actors initiate use cases to achieve business goals (e.g., Customer); Secondary actors provide supporting services (e.g., SMS Gateway, Payment Provider).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Use Case Ellipse Representation:</span>
+              <span>Represented as a horizontal ellipse containing a short, active verb-noun phrase describing a distinct business goal (e.g., 'Transfer Funds').</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">System Boundary Rectangle:</span>
+              <span>A visual rectangle demarcating system scope; use cases reside inside the box, while actors remain strictly on the outside.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">The «include» Relationship Concept:</span>
+              <span>A mandatory, unconditional dependency where base use case explicitly incorporates behavior of target use case to eliminate redundant logic.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">The «extend» Relationship Concept:</span>
+              <span>An optional, conditional relationship where extending use case inserts behavior into base use case only if specific extension point conditions are met.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Direction of Arrows:</span>
+              <span>«include» points FROM Base Use Case TO Included Use Case; «extend» points FROM Extending Use Case TO Base Use Case.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Actor Generalization:</span>
+              <span>Models hierarchical user roles (e.g., `Admin` inherits all permissions and associations of `Registered User`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Use Case Description Specification:</span>
+              <span>Each diagram is supported by a textual use case document detailing: Preconditions, Main Success Scenario, Alternate Flows, and Postconditions.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Common Pitfalls in Use Case Design:</span>
+              <span>Avoid functional decomposition (making use cases too small, like 'Enter Password') and drawing data-flow arrows between use cases.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain Sequence Diagrams in detail: describe Lifelines, Activation Bars, Synchronous/Asynchronous Messages, and Combined Fragments (alt, opt, loop).</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Sequence Diagrams</span><span class="qa-tag">Interaction Modeling</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Chronological Interaction Modeling:</span>
+              <span>Sequence diagrams model dynamic collaboration between objects arranged chronologically from top to bottom along the vertical time axis.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Object Lifelines Representation:</span>
+              <span>Depicted as a top rectangle containing `instance:Class` with a dashed vertical line running downward representing object existence over time.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Activation Bars (Focus of Control):</span>
+              <span>Thin vertical rectangles superimposed on lifelines indicating when an object instance is actively executing an internal algorithm or method.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Synchronous Call Messages:</span>
+              <span>Solid horizontal arrow with a filled triangular head; sender pauses execution and blocks until receiver finishes processing and returns.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Asynchronous Dispatch Messages:</span>
+              <span>Solid horizontal arrow with an open arrowhead; sender dispatches message (e.g., event publish, thread start) and continues without waiting.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Return / Reply Messages:</span>
+              <span>Dashed horizontal arrow with an open arrowhead returning output data values or void control to caller.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Combined Fragment: alt (Alternative):</span>
+              <span>Models mutually exclusive if-else conditional branches; partitioned by dashed horizontal lines with guard expressions `[condition]`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Combined Fragment: opt (Optional):</span>
+              <span>Models optional behavior executed only if the attached boolean guard evaluates to true (equivalent to a single `if` statement without `else`).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Combined Fragment: loop (Iteration):</span>
+              <span>Models repetitive execution (for/while loops) bounded by loop iteration counts or boolean guard expressions `[i < max]`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Object Creation and Destruction:</span>
+              <span>New objects are created via horizontal «create» arrows pointing directly to the object box; explicit destruction is marked with a bold 'X' at the lifeline termination.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Describe Activity Diagrams (Forks, Joins, Swimlanes) and State Machine Diagrams (States, Transitions, Events, Guards). Compare their roles.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Behavioral Diagrams</span><span class="qa-tag">Activity vs Statechart</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Activity Diagram Workflow Focus:</span>
+              <span>Models sequential and concurrent algorithmic workflows, business logic processes, and data object flows across systems.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Action States &amp; Control Flow:</span>
+              <span>Actions are represented by rounded rectangles connected by solid directional transition arrows showing immediate execution sequence.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Decision &amp; Merge Nodes (Diamonds):</span>
+              <span>Decision node splits flow into alternate paths based on guard conditions `[guard]`; Merge node brings alternate paths back together without synchronization.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Fork &amp; Join Synchronization Bars:</span>
+              <span>A solid black bar: Fork splits single input flow into multiple parallel concurrent paths; Join waits for ALL concurrent paths to finish before proceeding.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Swimlane Responsibility Partitions:</span>
+              <span>Divides diagram into vertical/horizontal columns representing organizational departments or classes responsible for specific action executions.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">State Machine (Statechart) Reactive Focus:</span>
+              <span>Models the dynamic lifecycle of a single event-driven reactive object across its entire operational lifetime.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">State Notation &amp; Internal Activities:</span>
+              <span>Rounded rectangle representing a state with compartments: `entry / action`, `do / ongoing activity`, and `exit / cleanup action`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Transition Syntax (Event [Guard] / Action):</span>
+              <span>A transition arrow fired by an external trigger `Event`, evaluated against boolean `[Guard]`, executing atomic `Action`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Composite &amp; Nested States:</span>
+              <span>A state containing nested sub-states, supporting sequential sub-states or concurrent orthogonal regions.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Role Comparison for University Exam:</span>
+              <span>Activity diagrams model global cross-object multi-user workflows; State machine diagrams model single-object lifecycle state changes.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 «include» vs «extend» in Use Case Diagrams</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>«include» Relationship</th><th>«extend» Relationship</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Execution Nature</td><td>Mandatory and unconditional execution.</td><td>Optional and conditional execution.</td></tr><tr><td>Trigger / Condition</td><td>Executes every single time the base use case runs.</td><td>Executes ONLY when specific extension point conditions are met.</td></tr><tr><td>Arrow Direction</td><td>Points FROM Base Use Case TO Included Use Case.</td><td>Points FROM Extending Use Case TO Base Use Case.</td></tr><tr><td>Base Use Case Completeness</td><td>Base use case is incomplete without the included use case.</td><td>Base use case is complete and functional on its own without extension.</td></tr><tr><td>Primary Objective</td><td>Extracts and reuses common shared sub-routines across multiple use cases.</td><td>Models optional features, exceptional handling, or plug-in behaviors.</td></tr><tr><td>Extension Points</td><td>Does not require defined extension points.</td><td>Requires explicitly defined Extension Points in the base use case.</td></tr><tr><td>Analogy</td><td>Calling a mandatory subroutine / method call.</td><td>An optional conditional hook / interceptor.</td></tr><tr><td>Example</td><td>Withdraw Cash $\dashrightarrow$ «include» Validate PIN.</td><td>Book Flight Ticket $\leftarrow$ «extend» Purchase Travel Insurance.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Sequence Diagram vs Collaboration (Communication) Diagram</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Sequence Diagram</th><th>Collaboration / Communication Diagram</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Primary Emphasis</td><td>Emphasizes the chronological TIME ORDERING of message exchanges.</td><td>Emphasizes the STRUCTURAL ORGANIZATION and links between objects.</td></tr><tr><td>Visual Layout</td><td>Vertical lifelines running top-to-bottom along time axis.</td><td>Graph network of object nodes connected by structural association links.</td></tr><tr><td>Message Sequencing</td><td>Inherent top-to-bottom spatial position represents sequence order.</td><td>Requires explicit decimal sequence numbers (e.g., 1.0, 1.1, 2.0).</td></tr><tr><td>Lifeline Representation</td><td>Explicit vertical dashed lifelines and rectangular activation bars.</td><td>No lifelines; objects depicted as static nodes without time axis.</td></tr><tr><td>Control Logic & Loops</td><td>Clear graphical representation using combined fragments (alt, loop).</td><td>Difficult to represent complex branching, loops, and parallel flows.</td></tr><tr><td>Space Efficiency</td><td>Consumes large horizontal space for many objects over long timeframes.</td><td>More compact; objects placed flexibly across 2D plane.</td></tr><tr><td>Reversibility</td><td>Semantically isomorphic; can be automatically converted into collaboration.</td><td>Can be automatically converted into sequence diagram.</td></tr><tr><td>Best Use Case</td><td>Modeling detailed real-time algorithmic interactions and API call sequences.</td><td>Visualizing object relationships and understanding structural impact of calls.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>Use Case diagrams model system functional requirements. Actors are external; Use Cases are horizontal ellipses.</li><li style='margin-bottom:0.6rem;'>«include» is mandatory subroutine reuse; «extend» is optional conditional extension.</li><li style='margin-bottom:0.6rem;'>Sequence diagrams emphasize time ordering of messages using lifelines, activation bars, and fragments (alt, opt, loop).</li><li style='margin-bottom:0.6rem;'>Collaboration (Communication) diagrams emphasize structural object links with numbered message flows.</li><li style='margin-bottom:0.6rem;'>Activity diagrams model algorithmic workflows using Actions, Decisions, Forks, Joins, and Swimlanes.</li><li style='margin-bottom:0.6rem;'>Component diagrams model physical software modules; Deployment diagrams model hardware servers and network topology.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20III%20-%20Basic%20and%20Advanced%20Structural%20Modeling/main.html" class="unit-nav-btn">&larr; Previous: Unit III</a></div>
+      <div><a href="../Unit%20V%20-%20Object%20Oriented%20Analysis/main.html" class="unit-nav-btn">Next: Unit V &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit II - Activity, Intent, Layout &amp; UI Design | Mobile Application Development</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Mobile Application Development</a> <span class="separator">/</span> <span class="current">Unit II - Activity, Intent, Layout &amp; UI Design</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJET306A &bull; Unit II &bull; 8 Hrs</span>
+      <h1 class="hero-title">Unit II - Activity, Intent, Layout &amp; UI Design</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">8 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>2.1</strong> Introduction to Activity</li><li><strong>2.2</strong> Activity Lifecycle (onCreate, onStart, onResume, onPause, onStop, onRestart, onDestroy)</li><li><strong>2.3</strong> Introduction to Intent and types of Intent</li><li><strong>2.4</strong> Layout Manager (LinearLayout, RelativeLayout, ConstraintLayout)</li><li><strong>2.5</strong> Form Widgets, Text Fields, and Layouts</li><li><strong>2.6</strong> Basic UI Design Components (Button Types, Text Fields, Spinner, List View, Scroll View, ProgressBar View)</li><li><strong>2.7</strong> Dialog Box (Alert Dialog, DatePicker Dialog, TimePicker Dialog, Custom Dialog)</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">2.1 &amp; 2.2 Activity Lifecycle Callbacks &amp; State Transitions</h3>
+          <div class="topic-body">
+            <p>An <strong>Activity</strong> is the fundamental UI component representing a single visual screen in Android. As users navigate, open other apps, receive phone calls, or rotate the screen, the Android OS transitions the Activity through 7 lifecycle callback methods:</p>
+                    <ul>
+                      <li><code>onCreate()</code>: Called when the activity is first instantiated. Initialize UI views (<code>setContentView(R.layout.activity_main)</code>), bind variables, and initialize databases.</li>
+                      <li><code>onStart()</code>: Called when the activity becomes visible to the user, but not yet interactive.</li>
+                      <li><code>onResume()</code>: Called when the activity enters the foreground and starts accepting user touch input. Activity is in <strong>Active / Running</strong> state.</li>
+                      <li><code>onPause()</code>: Called when another activity comes into foreground (e.g., a dialog or split screen) and partially obscures this activity. Stop animations and release light resources.</li>
+                      <li><code>onStop()</code>: Called when the activity is completely hidden from view. Save persistent draft data and release heavy resources.</li>
+                      <li><code>onRestart()</code>: Called when an activity is navigated back to from the stopped state before <code>onStart()</code>.</li>
+                      <li><code>onDestroy()</code>: Called before the activity is permanently destroyed and reclaimed from memory (via <code>finish()</code> or system killing).</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">2.3 Intents &amp; Passing Data via Bundles</h3>
+          <div class="topic-body">
+            <p>An <strong>Intent</strong> is an asynchronous messaging object used to request an action from another app component.</p>
+                    <ul>
+                      <li><strong>Explicit Intent:</strong> Specifies exact component class (<code>new Intent(this, DetailActivity.class)</code>).</li>
+                      <li><strong>Implicit Intent:</strong> Declares an action to perform (e.g., <code>Intent.ACTION_DIAL</code> with <code>Uri.parse("tel:9876543210")</code>).</li>
+                      <li><strong>Passing Data:</strong> Uses <code>intent.putExtra("key", value)</code> and retrieves in target activity via <code>getIntent().getStringExtra("key")</code>.</li>
+                      <li><strong>Returning Results:</strong> <code>startActivityForResult()</code> (legacy) or modern <code>registerForActivityResult()</code>.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">2.4 - 2.7 Layout Managers, UI Widgets, and Dialog Boxes</h3>
+          <div class="topic-body">
+            <p><strong>Android Layout Managers:</strong></p>
+                    <ul>
+                      <li><strong>LinearLayout:</strong> Arranges child views linearly in a single direction (<code>android:orientation="vertical|horizontal"</code>) using <code>android:layout_weight</code> for proportional sizing.</li>
+                      <li><strong>RelativeLayout:</strong> Positions child views relative to each other (<code>layout_toRightOf</code>, <code>layout_below</code>) or relative to parent borders (<code>layout_alignParentTop</code>).</li>
+                      <li><strong>ConstraintLayout:</strong> High-performance modern layout allowing complex flat view hierarchies with flexible horizontal and vertical constraints, eliminating nested view trees.</li>
+                    </ul>
+                    <p><strong>Core UI Widgets:</strong> Button, ImageButton, FloatingActionButton, EditText, TextView, Spinner (dropdown list), ListView, ScrollView, ProgressBar (determinate/indeterminate).</p>
+                    <p><strong>Dialog Boxes:</strong> AlertDialog (with Positive, Negative, Neutral action buttons), DatePickerDialog, TimePickerDialog, and Custom Dialogs inflated via <code>LayoutInflater</code>.</p>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Activity Lifecycle</div>
+          <div class="revision-card-body">The deterministic sequence of 7 callback states an Activity undergoes from creation to destruction.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">ConstraintLayout</div>
+          <div class="revision-card-body">A flexible layout manager that positions widgets using relative geometric constraints, reducing view hierarchy nesting.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">AlertDialog</div>
+          <div class="revision-card-body">A modal dialog box prompting the user with a title, message, and up to three action buttons.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Bundle</div>
+          <div class="revision-card-body">A key-value mapping object used to pass serialized data across activities via Intents.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the complete 7-stage Activity Lifecycle in Android with a state transition diagram and the role of each callback method.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Activity Lifecycle</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Conceptual Definition of Activity:</span>
+              <span>An Activity is a core UI building block providing a visual window for user interaction, managed by the Android OS using a LIFO Back Stack.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">onCreate() Callback:</span>
+              <span>Initializes the activity; calls `super.onCreate()`, sets the XML layout via `setContentView()`, initializes view bindings, and sets up data structures.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">onStart() Callback:</span>
+              <span>Makes the activity visually visible to the user; registers UI-related broadcast receivers and animations.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">onResume() Callback:</span>
+              <span>Enters the active foreground running state; starts interactive animations, acquires camera/sensor locks, and begins responding to user touch input.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">onPause() Callback:</span>
+              <span>Invoked when another activity partially obscures the screen (dialog box, split screen); pauses animations, releases CPU-heavy resources, and commits transient changes.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">onStop() Callback:</span>
+              <span>Invoked when the activity is completely hidden from view; releases network connections, saves draft form data to database, and pauses heavy background tasks.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">onRestart() Callback:</span>
+              <span>Called when a stopped activity is brought back to the foreground before `onStart()` executes (e.g., user presses back button).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">onDestroy() Callback:</span>
+              <span>Final cleanup callback before memory is reclaimed; ensures open database connections, background threads, and file handles are closed.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Activity Kill by System (Memory Pressure):</span>
+              <span>Under low memory conditions, the OS kills activities in `onPause()` or `onStop()` states without invoking `onDestroy()`; state is restored via `onSaveInstanceState()`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Configuration Changes (Screen Rotation):</span>
+              <span>Screen rotation destroys and completely recreates the active Activity (`onDestroy() -> onCreate()`), handled using ViewModels or saved bundles.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Compare LinearLayout, RelativeLayout, and ConstraintLayout. Explain their XML attributes, layout weighting, and performance characteristics.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Layout Managers</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Role of Layout Managers:</span>
+              <span>Layout managers (subclasses of `ViewGroup`) dictate how child `View` elements are measured, arranged, and rendered on the device display.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">LinearLayout Architecture:</span>
+              <span>Arranges child elements sequentially in a single row or single column defined by `android:orientation='horizontal|vertical'`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Proportional Sizing via layout_weight:</span>
+              <span>In LinearLayout, `android:layout_weight` allocates remaining free screen space proportionally among child widgets (e.g., dividing screen into 1:2 ratio).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">RelativeLayout Architecture:</span>
+              <span>Positions child views by establishing spatial relationships relative to sibling view IDs (e.g., `android:layout_toRightOf='@+id/btn1'`) or parent borders.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">ConstraintLayout Architecture:</span>
+              <span>Advanced modern layout engine using geometric constraint anchors (top, bottom, start, end) to define widget positions without nesting.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Overcoming Nested View Hierarchy Pitfalls:</span>
+              <span>Nesting multiple LinearLayouts causes exponential multi-pass layout measurement passes ($O(2^N)$), degrading UI frame rates and causing dropped frames.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Flat View Hierarchy Advantage:</span>
+              <span>ConstraintLayout flattens view hierarchies into a single layout depth, allowing complex responsive layouts with optimal $O(1)$ measurement passes.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Guideline, Barrier, and Chain Helpers:</span>
+              <span>ConstraintLayout provides powerful virtual helper objects: Guidelines (fixed/percentage guides), Barriers (dynamic group boundaries), and Chains (flexbox-like spacing).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">XML Attribute Comparison:</span>
+              <span>LinearLayout: `android:orientation`, `android:gravity`; RelativeLayout: `layout_below`, `layout_centerInParent`; ConstraintLayout: `app:layout_constraintTop_toBottomOf`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Google Best Practice Recommendation:</span>
+              <span>ConstraintLayout is Google's official standard for all complex UI design; LinearLayout is reserved strictly for simple single-row or single-column groups.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Describe the implementation of Dialog Boxes in Android: AlertDialog (Builder pattern), DatePickerDialog, TimePickerDialog, and Custom Dialogs.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Dialog Boxes &amp; UI</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Definition and Purpose of Dialogs:</span>
+              <span>A Dialog is a small modal window that appears in front of the active activity, prompting the user to make a decision, enter data, or view an alert without leaving the screen.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">AlertDialog Architecture:</span>
+              <span>Displays a title, a text message, optional icon, and up to three action buttons (Positive, Negative, and Neutral).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">AlertDialog.Builder Pattern Workflow:</span>
+              <span>Constructed using fluent Builder methods: `new AlertDialog.Builder(context).setTitle('Confirm').setMessage('Delete file?').setPositiveButton('Yes', listener).create().show();`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">DatePickerDialog Implementation:</span>
+              <span>Pre-built system dialog allowing users to pick day, month, and year; initialized using `DatePickerDialog(context, dateSetListener, year, month, day)`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">TimePickerDialog Implementation:</span>
+              <span>Pre-built system dialog allowing users to select hours and minutes in 12-hour AM/PM or 24-hour clock formats.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Custom Dialog Creation:</span>
+              <span>Created by inflating a custom XML layout via `LayoutInflater` and passing the root view to `builder.setView(customView)` or extending `DialogFragment`.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Modal Behavior and setCancelable():</span>
+              <span>Setting `builder.setCancelable(false)` prevents users from dismissing the dialog by tapping outside the dialog window boundary.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">DialogFragment Best Practice:</span>
+              <span>Google recommends encapsulating dialogs inside `DialogFragment` to properly survive activity lifecycle and configuration changes (screen rotations).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Handling User Button Clicks:</span>
+              <span>Listeners (`DialogInterface.OnClickListener`) handle button taps asynchronously, executing business logic or dismissing the dialog.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">UI Accessibility &amp; Styling:</span>
+              <span>Custom themes (`R.style.MyDialogTheme`) enable dark/light styling matching application visual branding.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 LinearLayout vs RelativeLayout vs ConstraintLayout</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>LinearLayout</th><th>RelativeLayout</th><th>ConstraintLayout</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Arrangement Principle</td><td>Strictly linear (single horizontal row or vertical column).</td><td>Relative positioning to sibling view IDs or parent borders.</td><td>Dual-axis geometric constraints relative to other views/parent.</td></tr><tr><td>Hierarchy Depth</td><td>Requires deep nesting for complex multi-column/row layouts.</td><td>Moderate nesting required for complex layouts.</td><td>Completely flat view hierarchy with zero nesting.</td></tr><tr><td>Performance & Rendering</td><td>Slower when nested due to exponential multi-pass measurement.</td><td>Moderate rendering speed; multiple measurement passes.</td><td>Fastest rendering speed; optimized linear constraint solver.</td></tr><tr><td>Proportional Sizing</td><td>Supports proportional space allocation via `layout_weight`.</td><td>No direct weight mechanism; requires custom margins.</td><td>Supports weights via `layout_constraintHorizontal_weight` and chains.</td></tr><tr><td>Visual Design Tooling</td><td>Easy to edit manually in XML code.</td><td>Moderate XML manual editing.</td><td>Rich visual drag-and-drop design editor in Android Studio.</td></tr><tr><td>Virtual Helper Objects</td><td>None (requires nested layouts).</td><td>None.</td><td>Provides Guidelines, Barriers, Chains, and Groups.</td></tr><tr><td>Memory Footprint</td><td>High memory overhead when deeply nested.</td><td>Moderate memory overhead.</td><td>Minimal memory footprint due to flat layout tree.</td></tr><tr><td>Modern Google Recommendation</td><td>Use only for simple 1D linear stacks.</td><td>Legacy; largely superseded by ConstraintLayout.</td><td>Primary official standard for modern Android UI design.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 onPause() vs onStop() Activity Callbacks</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>onPause() Callback</th><th>onStop() Callback</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Visibility State</td><td>Activity is still PARTIALLY visible but loses user focus.</td><td>Activity is COMPLETELY HIDDEN and invisible to the user.</td></tr><tr><td>Typical Cause</td><td>A transparent dialog appears, or entering split-screen mode.</td><td>User presses Home button, opens another full-screen activity.</td></tr><tr><td>Duration / Execution Speed</td><td>Must execute extremely fast; next activity cannot start until this completes.</td><td>Can take longer to execute cleanup tasks.</td></tr><tr><td>Operations to Perform</td><td>Pause video/audio, stop animations, release camera sensor.</td><td>Save persistent drafts to SQLite, release heavy network connections.</td></tr><tr><td>Next Lifecycle Transitions</td><td>`onResume()` (if user returns) OR `onStop()` (if hidden).</td><td>`onRestart() -> onStart()` (if user returns) OR `onDestroy()`.</td></tr><tr><td>Vulnerability to System Kill</td><td>Rarely killed by OS except in extreme memory starvation.</td><td>Highly vulnerable to being terminated by OS under memory pressure.</td></tr><tr><td>UI Rendering</td><td>UI views remain loaded in memory and visible behind overlay.</td><td>UI is completely covered by other applications.</td></tr><tr><td>Resource Management</td><td>Lightweight resource release.</td><td>Comprehensive heavy resource release.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>Activity lifecycle: `onCreate()` $\rightarrow$ `onStart()` $\rightarrow$ `onResume()` $\rightarrow$ `onPause()` $\rightarrow$ `onStop()` $\rightarrow$ `onDestroy()`.</li><li style='margin-bottom:0.6rem;'>`onCreate()` initializes views; `onResume()` handles interactive foreground running; `onPause()` pauses tasks; `onStop()` saves drafts.</li><li style='margin-bottom:0.6rem;'>Explicit Intents navigate within the app; Implicit Intents request external apps (browser, phone, camera).</li><li style='margin-bottom:0.6rem;'>ConstraintLayout provides flat, high-performance UI hierarchies using constraints and eliminates nested layout lag.</li><li style='margin-bottom:0.6rem;'>AlertDialog utilizes the Builder pattern; DatePicker/TimePicker provide native time selection dialogs.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20I%20-%20Introduction%20to%20Android%20Programming/main.html" class="unit-nav-btn">&larr; Previous: Unit I</a></div>
+      <div><a href="../Unit%20III%20-%20Adapters%20and%20Menus/main.html" class="unit-nav-btn">Next: Unit III &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

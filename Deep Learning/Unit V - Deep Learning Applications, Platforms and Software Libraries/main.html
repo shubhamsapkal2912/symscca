@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit V - Deep Learning Applications, Platforms and Software Libraries | Deep Learning</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Deep Learning</a> <span class="separator">/</span> <span class="current">Unit V - Deep Learning Applications, Platforms and Software Libraries</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJCT301 &bull; Unit V &bull; 10 Hrs</span>
+      <h1 class="hero-title">Unit V - Deep Learning Applications, Platforms and Software Libraries</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">10 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>5.1</strong> Deep Learning Applications</li><li><strong>5.1.1</strong> Large-scale deep learning</li><li><strong>5.1.2</strong> Computer vision</li><li><strong>5.1.3</strong> Speech recognition</li><li><strong>5.1.4</strong> Natural language processing</li><li><strong>5.2</strong> Deep Learning Platforms</li><li><strong>5.2.1</strong> H2O.ai</li><li><strong>5.2.2</strong> Dato GraphLab</li><li><strong>5.3</strong> Deep Learning Software Libraries</li><li><strong>5.3.1</strong> Theano</li><li><strong>5.3.2</strong> Caffe</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">5.1 Deep Learning Applications Across Key Domains</h3>
+          <div class="topic-body">
+            <p>Deep Learning operates at global scale across four foundational application pillars:</p>
+                    <ul>
+                      <li><strong>5.1.1 Large-Scale Deep Learning:</strong> Distributed training over multi-node GPU/TPU clusters using <em>Data Parallelism</em> (distributing data batches across devices with AllReduce gradient averaging) and <em>Model Parallelism</em> (partitioning massive model layers across GPUs using Pipeline / Tensor parallelism).</li>
+                      <li><strong>5.1.2 Computer Vision:</strong> Object detection (YOLO, Faster R-CNN), semantic image segmentation (U-Net, Mask R-CNN), generative visual synthesis (Diffusion Models, GANs), and facial recognition.</li>
+                      <li><strong>5.1.3 Speech Recognition:</strong> End-to-end acoustic modeling (Connectionist Temporal Classification - CTC loss, Whisper, Wav2Vec2) converting continuous audio signals into text transcripts with noise robustness.</li>
+                      <li><strong>5.1.4 Natural Language Processing (NLP):</strong> Self-attention Transformer architectures (BERT, GPT, T5) for semantic search, machine translation, sentiment analysis, named entity recognition, and code intelligence.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">5.2 Deep Learning Platforms: H2O.ai and Dato GraphLab</h3>
+          <div class="topic-body">
+            <p><strong>5.2.1 H2O.ai Platform:</strong></p>
+                    <ul>
+                      <li>An open-source, distributed, in-memory machine learning and deep learning platform written in Java with native Python, R, and REST API interfaces.</li>
+                      <li><strong>Key Features:</strong> Automatic Machine Learning (AutoML), distributed multi-layer feedforward deep neural networks, out-of-core data processing, model explainability (SHAP, PDP), and enterprise scalability across Hadoop / Spark clusters.</li>
+                    </ul>
+                    <p><strong>5.2.2 Dato GraphLab (now Apple Turi Create / GraphLab Create):</strong></p>
+                    <ul>
+                      <li>A high-performance graph-based machine learning framework designed for large-scale asynchronous distributed computations on graph topologies.</li>
+                      <li><strong>Key Features:</strong> Graph-parallel computation engine, scalable out-of-core SFrame data structures that exceed physical RAM limits, built-in toolkits for recommender systems, graph analytics, and deep vision models.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">5.3 Deep Learning Software Libraries: Theano and Caffe</h3>
+          <div class="topic-body">
+            <p><strong>5.3.1 Theano (University of Montreal / Yoshua Bengio):</strong></p>
+                    <ul>
+                      <li>One of the earliest foundational Python libraries for defining, optimizing, and evaluating mathematical expressions involving multi-dimensional arrays (tensors).</li>
+                      <li><strong>Key Features:</strong> Symbolic computational graph construction, automatic symbolic differentiation, transparent C/CUDA code generation for GPU execution, and algebraic simplification of graph nodes. (Precursor to modern PyTorch and TensorFlow).</li>
+                    </ul>
+                    <p><strong>5.3.2 Caffe (Convolutional Architecture for Fast Feature Embedding - UC Berkeley / BVLC):</strong></p>
+                    <ul>
+                      <li>A high-speed, modular C++ deep learning framework optimized specifically for computer vision and convolutional network deployment.</li>
+                      <li><strong>Key Features:</strong> Pure declarative model specification using Google Protocol Buffers (<code>prototxt</code>) without writing Python/C++ code; ultra-fast C++ and CUDA execution processing >60 million images/day on a single GPU; extensive Model Zoo of pre-trained models.</li>
+                    </ul>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Data Parallelism</div>
+          <div class="revision-card-body">Distributed training strategy where identical model replicas train on different data shards and synchronize gradients via AllReduce.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Model Parallelism</div>
+          <div class="revision-card-body">Strategy where parameters of a massive model are partitioned across multiple GPUs when the model cannot fit in a single GPU&#x27;s memory.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Symbolic Differentiation</div>
+          <div class="revision-card-body">Mathematical graph compilation technique in Theano that computes exact analytical derivative equations before runtime.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Prototxt (Caffe)</div>
+          <div class="revision-card-body">Declarative text format used by Caffe to define neural network layer configurations and solver hyperparameters without programming code.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Discuss Large-Scale Deep Learning strategies, explaining Data Parallelism, Model Parallelism, Distributed SGD, and GPU Cluster Optimization.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Large-Scale Deep Learning</span><span class="qa-tag">Distributed AI</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">The Need for Large-Scale Distributed DL:</span>
+              <span>Modern deep learning models (billions of parameters) and datasets (terabytes) exceed the memory and compute capacity of individual workstations.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Data Parallelism Architecture:</span>
+              <span>The complete model architecture is duplicated across $N$ GPU worker nodes; each worker receives a distinct mini-batch slice of the dataset.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Synchronous Distributed SGD &amp; AllReduce:</span>
+              <span>Workers calculate local gradients independently, then execute a collective Ring-AllReduce communication step to average gradients before updating weights synchronously.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Asynchronous Parameter Server Approach:</span>
+              <span>Workers communicate with centralized Parameter Servers independently without synchronization locks, though vulnerable to stale gradient updates.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Model Parallelism (Tensor Partitioning):</span>
+              <span>Individual large layer weight matrices are split across multiple GPUs (e.g., Megatron-LM), computing sub-matrix products concurrently.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Pipeline Parallelism (Inter-Layer Split):</span>
+              <span>Sequential network layers are partitioned across sequential GPUs, utilizing micro-batching (e.g., GPipe) to minimize pipeline idle bubbles.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Mixed Precision Training (FP16 / BF16):</span>
+              <span>Combines 16-bit floating point for fast matrix calculations with 32-bit master weights, reducing memory consumption by 50% and doubling throughput.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Zero Redundancy Optimizer (ZeRO / DeepSpeed):</span>
+              <span>Partitions optimizer states, gradients, and model parameters across data-parallel processes to eliminate redundant memory allocations.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Communication Bottlenecks &amp; InfiniBand:</span>
+              <span>Inter-GPU interconnects (NVLink, InfiniBand RDMA) are crucial to prevent communication overhead from eclipsing GPU compute throughput.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Fault Tolerance &amp; Checkpointing:</span>
+              <span>Automated distributed checkpointing saves training state periodically to persistent storage to recover gracefully from node hardware failures.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Explain the architecture, working principles, advantages, and limitations of Deep Learning Platforms: H2O.ai and Dato GraphLab.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Platforms</span><span class="qa-tag">H2O.ai vs GraphLab</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Overview of H2O.ai:</span>
+              <span>H2O is an in-memory, distributed machine learning and deep learning platform built on Java, offering seamless Python and R bindings.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">H2O Distributed In-Memory Architecture:</span>
+              <span>Uses distributed Key-Value stores (H2O Frames) and columnar compression to process datasets exceeding physical memory across server clusters.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">H2O Automated Machine Learning (AutoML):</span>
+              <span>Automates the entire ML pipeline: data preprocessing, hyperparameter grid search, model training, and stacked ensemble creation.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">H2O Model Explainability &amp; Interpretability:</span>
+              <span>Generates automated explainability reports including SHAP values, Partial Dependence Plots (PDP), and variable importances.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">H2O Deployment via MOJO / POJO:</span>
+              <span>Compiles trained deep neural networks into ultra-fast, standalone Java POJO / MOJO bytecode for microsecond production inference.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Overview of Dato GraphLab:</span>
+              <span>GraphLab is a graph-parallel distributed machine learning framework designed for complex, non-linear dependencies structured as graphs.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">GraphLab Computational Abstraction (GAS Model):</span>
+              <span>Employs the Gather-Apply-Scatter (GAS) computation model where nodes gather neighbor states, update vertex values, and scatter results asynchronously.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">SFrame Out-of-Core Data Engine:</span>
+              <span>Dato utilizes disk-backed SFrames allowing tabular and graph operations on datasets orders of magnitude larger than RAM without memory crashes.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">GraphLab Domain-Specific Toolkits:</span>
+              <span>Provides high-level specialized toolkits for recommender systems, text sentiment analysis, nearest neighbors, and graph community detection.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Platform Evolution &amp; Industry Relevance:</span>
+              <span>H2O.ai powers enterprise financial modeling and healthcare analytics; GraphLab evolved into Apple Turi Create for on-device CoreML intelligence.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Compare and contrast early Deep Learning Software Libraries: Theano and Caffe in terms of architecture, execution paradigm, configuration, and performance.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">Software Libraries</span><span class="qa-tag">Theano vs Caffe</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Origin and Design Philosophy of Theano:</span>
+              <span>Developed at LISA lab (Univ. of Montreal) as a Python-based mathematical tensor compiler for general scientific research.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Origin and Design Philosophy of Caffe:</span>
+              <span>Developed at UC Berkeley (BVLC) as a high-speed C++ engine optimized specifically for convolutional vision networks and production speed.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Theano&#x27;s Symbolic Computational Graph:</span>
+              <span>Theano builds a static symbolic expression graph, performs algebraic optimizations (e.g., $\log(1 + e^x)$ simplification), and compiles to C/CUDA.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Caffe&#x27;s Declarative Protobuf Configuration:</span>
+              <span>In Caffe, networks and training parameters are declared in plaintext Protocol Buffer (.prototxt) files without writing imperative code.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Automatic Differentiation in Theano:</span>
+              <span>Theano automatically computes exact symbolic mathematical derivatives for complex custom loss functions using its internal graph engine.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Caffe&#x27;s Layer-Wise C++ Engineering:</span>
+              <span>Every layer type in Caffe is implemented directly in C++ with explicit Forward_cpu / Forward_gpu and Backward_cpu / Backward_gpu functions.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Compilation Overhead in Theano:</span>
+              <span>Theano requires an upfront compilation step (`theano.function`), which can take minutes for large graphs before execution begins.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Caffe&#x27;s Instant Execution and Model Zoo:</span>
+              <span>Caffe executes instantly without compilation overhead and popularized the deep learning 'Model Zoo' sharing pre-trained weights.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Language Bindings and Extensibility:</span>
+              <span>Theano is tightly integrated with Python (NumPy/SciPy ecosystem); Caffe provides C++ core with Python (PyCaffe) and MATLAB interfaces.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Historical Legacy &amp; Impact:</span>
+              <span>Theano laid the symbolic foundation for TensorFlow; Caffe's efficient C++ architecture evolved into Caffe2 and PyTorch's execution backend.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Theano vs Caffe Deep Learning Frameworks</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Theano Library</th><th>Caffe Framework</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Primary Focus</td><td>General-purpose symbolic mathematical tensor computation.</td><td>High-speed computer vision and convolutional network deployment.</td></tr><tr><td>Core Language</td><td>Python with dynamic C/CUDA compilation.</td><td>Core C++ with CUDA and optional Python/MATLAB wrappers.</td></tr><tr><td>Model Definition Style</td><td>Programmatic / imperative Python symbolic graph construction.</td><td>Declarative text configuration using Google Protocol Buffers (prototxt).</td></tr><tr><td>Differentiation Engine</td><td>Automatic symbolic differentiation for arbitrary mathematical graphs.</td><td>Hardcoded analytical forward/backward gradient passes per C++ layer class.</td></tr><tr><td>Compilation Step</td><td>Requires explicit compilation of symbolic graph to machine code.</td><td>No compilation step required; parses config file and runs instantly.</td></tr><tr><td>Computer Vision Optimization</td><td>General tensor engine; requires higher-level wrappers (Lasagne/Keras).</td><td>Highly optimized specialized CUDA kernels for 2D convolution and pooling.</td></tr><tr><td>Pre-trained Model Ecosystem</td><td>Limited shared repository of pre-trained models.</td><td>Pioneered the famous 'Caffe Model Zoo' with pre-trained ImageNet models.</td></tr><tr><td>Primary Use Case</td><td>Academic neural network research and custom loss prototyping.</td><td>Production image classification, object detection, and fast vision inference.</td></tr><tr><td>Current Successor</td><td>Directly influenced modern TensorFlow and PyTorch.</td><td>Merged into Caffe2 and integrated into PyTorch's high-speed core.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 H2O.ai vs Dato GraphLab Platforms</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>H2O.ai Platform</th><th>Dato GraphLab (Turi Create)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Core Architecture</td><td>In-memory distributed Java engine (H2O cluster).</td><td>Graph-parallel distributed C++ engine using GAS model.</td></tr><tr><td>Primary Data Abstraction</td><td>H2O Frame (distributed in-memory columnar dataframe).</td><td>SFrame (disk-backed out-of-core scalable dataframe) & SGraph.</td></tr><tr><td>Automated Machine Learning</td><td>Advanced native AutoML with hyperparameter grid search & ensembles.</td><td>Toolkits for specific automated workflows without comprehensive AutoML.</td></tr><tr><td>Graph Analytics Support</td><td>Limited native graph algorithms; focuses on tabular and deep nets.</td><td>Specialized high-performance graph processing engine.</td></tr><tr><td>Deployment Output</td><td>Generates lightweight Java POJO / MOJO binaries for microsecond APIs.</td><td>Exports directly to Apple CoreML models and Python binaries.</td></tr><tr><td>Cluster Integration</td><td>Seamless integration with Apache Spark (Sparkling Water) & Hadoop.</td><td>Standalone distributed execution engine.</td></tr><tr><td>Target Audience</td><td>Enterprise data science teams, banks, insurance, healthcare.</td><td>Developers building graph-based systems and Apple on-device AI apps.</td></tr><tr><td>Licensing / Openness</td><td>Open-source core with commercial enterprise extensions.</td><td>Originally open source (GraphLab), commercialized (Dato), acquired by Apple.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>Large-scale deep learning uses Data Parallelism (AllReduce gradient sync) and Model Parallelism (tensor partitioning).</li><li style='margin-bottom:0.6rem;'>Deep Learning powers 4 major domains: Vision (CNN/Diffusion), Speech (CTC/Whisper), NLP (Transformers), Large-scale AI.</li><li style='margin-bottom:0.6rem;'>H2O.ai is an in-memory Java-based distributed ML/DL platform featuring automated AutoML and MOJO deployment.</li><li style='margin-bottom:0.6rem;'>Dato GraphLab utilizes Gather-Apply-Scatter (GAS) and out-of-core SFrames for massive graph-parallel machine learning.</li><li style='margin-bottom:0.6rem;'>Theano pioneered symbolic computational graphs and automatic differentiation in Python.</li><li style='margin-bottom:0.6rem;'>Caffe pioneered declarative protobuf model definitions and high-speed C++/CUDA computer vision deployment.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20IV%20-%20Recurrent%20Neural%20Networks%20%28RNNs%29/main.html" class="unit-nav-btn">&larr; Previous: Unit IV</a></div>
+      <div><a href="../main.html" class="unit-nav-btn">Back to Deep Learning &uarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>

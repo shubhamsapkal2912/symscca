@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit III - Convolutional Neural Networks | Deep Learning</title>
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Math rendering support for KaTeX formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
+          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  
+    <div id="reading-progress"></div>
+    <header class="header-nav">
+      <div class="nav-container">
+        <a href="../../main.html" class="nav-brand">
+          <span>🎓 SEM III Exam Prep</span>
+          <span class="badge">Syllabus Portal</span>
+        </a>
+        <div class="nav-controls">
+          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button>
+          <a href="../../main.html" class="nav-btn">🏠 Home</a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="breadcrumb-container" aria-label="Breadcrumb">
+      <div class="breadcrumbs">
+        <a href="../../main.html">SEM III</a> <span class="separator">/</span> <a href="../main.html">Deep Learning</a> <span class="separator">/</span> <span class="current">Unit III - Convolutional Neural Networks</span>
+      </div>
+    </nav>
+    
+
+  <main class="main-wrapper">
+    <!-- Hero Header -->
+    <section class="hero-section" style="padding: 2.5rem 1.5rem 2rem;">
+      <span class="hero-tag">📖 2413MJCT301 &bull; Unit III &bull; 14 Hrs</span>
+      <h1 class="hero-title">Unit III - Convolutional Neural Networks</h1>
+      <p class="hero-subtitle">Comprehensive University Exam Preparation Notes, Model Question Answers & Comparison Matrices</p>
+    </section>
+
+    <!-- Search & Filter within Unit -->
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" class="search-input-box" placeholder="Filter questions, notes, or key concepts in this unit..." aria-label="Search within unit">
+    </div>
+
+    <!-- Quick Navigation / TOC -->
+    <div class="toc-box">
+      <div class="toc-title">📑 Quick Jump Navigation</div>
+      <ul class="toc-list">
+        <li><a href="#syllabus-section">&bull; 1. Official Syllabus Topics</a></li>
+        <li><a href="#notes-section">&bull; 2. Comprehensive Topic Notes</a></li>
+        <li><a href="#concepts-section">&bull; 3. Key Concepts & Keywords</a></li>
+        <li><a href="#questions-section">&bull; 4. Important Exam Questions (8–10 Points)</a></li>
+        <li><a href="#differences-section">&bull; 5. Detailed Difference Tables (8+ Rows)</a></li>
+        <li><a href="#revision-section">&bull; 6. Quick Revision & Exam Tips</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1: Syllabus Topics -->
+    <section id="syllabus-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📌 Syllabus Topics Covered</h2>
+        <span class="section-badge">14 Hrs Weightage</span>
+      </div>
+      <ul style="margin-left: 1.5rem; line-height: 1.8; color: var(--text-secondary);">
+        <li><strong>3.1</strong> Introduction to CNNs</li><li><strong>3.2</strong> Convolution and pooling layers</li><li><strong>3.3</strong> CNN Architectures (LeNet, AlexNet, VGGNet, ResNet)</li><li><strong>3.4</strong> Working of CNN layers</li><li><strong>3.5</strong> Types of layers in CNN</li><li><strong>3.6</strong> Image Classification using CNN</li><li><strong>3.7</strong> Filters and feature maps</li><li><strong>3.8</strong> Applications of CNNs</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Comprehensive Notes -->
+    <section id="notes-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">📖 Comprehensive Theoretical Notes</h2>
+        <span class="section-badge">Exam-Oriented Theory</span>
+      </div>
+      
+        <article class="topic-block">
+          <h3 class="topic-heading">3.1 &amp; 3.2 Introduction to CNNs, Convolution, and Pooling Mechanisms</h3>
+          <div class="topic-body">
+            <p><strong>Convolutional Neural Networks (CNNs / ConvNets)</strong> are specialized deep learning architectures designed to process data with grid-like topology (such as 2D image matrices and 3D video tensors). Traditional fully connected MLPs fail on high-resolution images due to parameter explosion and loss of 2D spatial context.</p>
+                    <p><strong>Key Principles of Convolutional Layers:</strong></p>
+                    <ul>
+                      <li><strong>Local Receptive Fields:</strong> Neurons connect only to localized sub-regions of the input feature map rather than all input pixels.</li>
+                      <li><strong>Shared Weights (Weight Sharing):</strong> The same filter kernel is convolved across the entire spatial domain, reducing parameter count and enforcing <em>translation equivariance</em>.</li>
+                      <li><strong>Convolution Operation Formula:</strong> For input image $I$ and 2D kernel $K$ of size $k_h \times k_w$:
+                        $$S(i, j) = (I * K)(i, j) = \sum_{m} \sum_{n} I(i-m, j-n) K(m, n)$$
+                      </li>
+                      <li><strong>Output Feature Map Spatial Dimension Formula:</strong>
+                        $$O = \left\lfloor \frac{W - K + 2P}{S} \right\rfloor + 1$$
+                        where $W$ = input size, $K$ = kernel size, $P$ = padding (Zero Padding), and $S$ = stride.</li>
+                    </ul>
+                    <p><strong>Pooling Layers:</strong> Non-parametric downsampling operations that reduce spatial dimensions, providing computational efficiency and <em>translation invariance</em>. Common variants are <strong>Max Pooling</strong> (retains maximum value in window) and <strong>Average Pooling</strong> (computes window average).</p>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">3.3 Benchmark CNN Architectures: LeNet-5, AlexNet, VGGNet, and ResNet</h3>
+          <div class="topic-body">
+            <p><strong>Evolution of Classic CNN Architectures:</strong></p>
+                    <ul>
+                      <li><strong>LeNet-5 (LeCun et al., 1998):</strong> 7-layer pioneering CNN developed for handwritten digit recognition (MNIST). Used $5 \times 5$ convolutions and average pooling with Sigmoid/Tanh activations.</li>
+                      <li><strong>AlexNet (Krizhevsky et al., 2012):</strong> Won ImageNet 2012 by a huge margin. Key features: 8 layers (5 Conv + 3 FC), ReLU activations, Dropout (0.5), GPU acceleration, and Data Augmentation.</li>
+                      <li><strong>VGGNet (Simonyan & Zisserman, 2014):</strong> Proved that depth with small $3 \times 3$ convolutional filters stacked together outperforms large filters (e.g., two $3 \times 3$ convs have effective receptive field of $5 \times 5$ with fewer parameters: $2 \cdot (3^2) = 18$ vs $1 \cdot (5^2) = 25$). Famous variants: VGG-16 and VGG-19.</li>
+                      <li><strong>ResNet (He et al., 2015):</strong> Introduced <em>Residual Learning and Skip / Shortcut Connections</em> ($F(x) + x$), enabling training of ultra-deep networks (ResNet-50, ResNet-152) without vanishing gradients.</li>
+                    </ul>
+          </div>
+        </article>
+        
+        <article class="topic-block">
+          <h3 class="topic-heading">3.4 - 3.8 Working of CNN Layers, Feature Maps, and Image Classification Pipeline</h3>
+          <div class="topic-body">
+            <p><strong>Complete End-to-End Image Classification Pipeline:</strong></p>
+                    <ul>
+                      <li><strong>Input Layer:</strong> Ingests raw normalized image tensor $[B, H, W, C]$ (e.g., $224 \times 224 \times 3$).</li>
+                      <li><strong>Convolutional Feature Extraction:</strong> Early layers detect low-level edges and color gradients; middle layers detect textures and motifs; deep layers detect high-level semantic object parts.</li>
+                      <li><strong>Activation (ReLU):</strong> Applies elementwise non-linear thresholding.</li>
+                      <li><strong>Pooling / Downsampling:</strong> Progressively reduces spatial resolution while increasing channel depth.</li>
+                      <li><strong>Flattening / Global Average Pooling (GAP):</strong> Transforms 3D feature tensor into a 1D feature vector.</li>
+                      <li><strong>Dense Fully Connected (FC) Layers:</strong> Performs non-linear classification based on extracted feature representations.</li>
+                      <li><strong>Softmax Output:</strong> Computes probability distribution across target classes: $P(y=k|\mathbf{x}) = \frac{e^{z_k}}{\sum_j e^{z_j}}$.</li>
+                    </ul>
+          </div>
+        </article>
+        
+    </section>
+
+    <!-- Section 3: Key Concepts & Keywords -->
+    <section id="concepts-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🔑 Key Concepts & Examination Keywords</h2>
+        <span class="section-badge">Quick Terminology</span>
+      </div>
+      <div class="revision-grid">
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Convolution Kernel / Filter</div>
+          <div class="revision-card-body">A small learnable matrix of weights that slides across the input tensor computing dot products to detect specific visual features.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Feature Map</div>
+          <div class="revision-card-body">The 2D output matrix generated by convolving a specific filter across the input layer.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Residual Connection (Skip Connection)</div>
+          <div class="revision-card-body">Identity shortcut mapping $H(x) = F(x) + x$ that allows gradients to backpropagate directly across deep layers.</div>
+        </div>
+        
+        <div class="revision-card">
+          <div class="revision-card-title">Translation Equivariance</div>
+          <div class="revision-card-body">Property where shifting an input object produces an equivalent shift in the resulting convolutional feature map.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 4: Important Exam Questions & Detailed Answers -->
+    <section id="questions-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 High-Yield Important Examination Questions</h2>
+        <span class="section-badge">8–10 Descriptive Points Each</span>
+      </div>
+      
+      <div class="qa-controls">
+        <button id="expand-all-qa" class="qa-control-btn">➕ Expand All Answers</button>
+        <button id="collapse-all-qa" class="qa-control-btn">➖ Collapse All</button>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q1. Explain the architectural building blocks, mathematical operations, and working principles of Convolutional Neural Networks (CNNs).</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">CNN Architecture</span><span class="qa-tag">Core</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Fundamental Motivation for CNNs:</span>
+              <span>Fully connected networks fail on high-resolution imagery due to excessive parameter counts ($O(W \times H \times C \times N)$) and destruction of spatial 2D locality.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">2D Discrete Convolution Operation:</span>
+              <span>A learnable kernel matrix $K$ slides over input $I$ with step size (stride $S$), computing element-wise multiplication and accumulation: $S(i,j) = (I * K)(i,j) + b$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Weight Sharing Principle:</span>
+              <span>A single set of kernel weights is reused across all spatial locations of an image, drastically reducing learnable parameters and preventing overfitting.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Local Connectivity &amp; Receptive Field:</span>
+              <span>Neurons only connect to small spatially contiguous receptive fields ($3\times 3$ or $5\times 5$), mimicking the biological visual cortex (Hubel & Wiesel).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Padding (Valid vs Same Padding):</span>
+              <span>Zero padding $P$ preserves boundary pixel information and controls feature map output spatial size according to $O = \lfloor (W - K + 2P)/S \rfloor + 1$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Pooling Layer Operations:</span>
+              <span>Max Pooling downsamples spatial dimensions by selecting the maximum activation per window, providing translation invariance and computational efficiency.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Hierarchical Feature Abstraction:</span>
+              <span>Shallow layers extract primitive edges/lines, intermediate layers capture textures and patterns, while deep layers synthesize complex semantic object geometries.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Global Average Pooling (GAP) vs Flatten:</span>
+              <span>GAP reduces each 2D feature map to a single scalar average, preventing overfitting and replacing heavy fully connected parameter layers.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Fully Connected Decision Layers:</span>
+              <span>Top layers integrate spatial feature representations into non-linear classification scores using Dense layers with Dropout regularization.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Softmax Multi-Class Probability Mapping:</span>
+              <span>The final layer uses the Softmax function to output normalized posterior probabilities summing to 1.0 for multi-class classification.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q2. Compare and contrast LeNet-5, AlexNet, VGGNet, and ResNet architectures in terms of layer depth, design innovations, and performance.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">CNN Architectures</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">LeNet-5 (1998) Foundation:</span>
+              <span>Comprises 7 layers designed for digit recognition, utilizing $5 \times 5$ convolutions, average pooling, and Sigmoid/Tanh activations without modern regularizers.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">AlexNet (2012) Breakthrough:</span>
+              <span>8 layers deep (5 Conv, 3 FC); popularized ReLU activations to solve vanishing gradients, Dropout (0.5), and multi-GPU parallel training.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">AlexNet Engineering Enhancements:</span>
+              <span>Used overlapping max pooling ($3\times 3$ with stride 2), Local Response Normalization (LRN), and intensive data augmentation.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">VGGNet (2014) Simplicity and Homogeneity:</span>
+              <span>Introduced deep architectures (VGG-16, VGG-19) using exclusively small $3\times 3$ convolution kernels with stride 1 and $2\times 2$ max pooling.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">VGG Receptive Field Equivalence:</span>
+              <span>Proved that stacking two $3\times 3$ convolutions yields the receptive field of a $5\times 5$ kernel while reducing parameter count by 28% and introducing double non-linearities.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Limitations of VGGNet:</span>
+              <span>Extremely parameter-heavy (~138 million parameters in VGG-16) dominated by massive Dense fully connected layers ($4096 \times 4096$).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">ResNet (2015) Residual Learning Concept:</span>
+              <span>Solved the degradation problem in ultra-deep networks (50, 101, 152 layers) by reformulating layers to learn residual mappings $F(x) = H(x) - x$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Skip / Identity Shortcut Connections:</span>
+              <span>Direct identity connections $F(x) + x$ allow gradients to backpropagate uninterrupted across hundreds of layers directly to input stages.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Bottleneck Building Blocks in ResNet:</span>
+              <span>Uses $1\times 1$ conv for dimensionality reduction, $3\times 3$ conv for spatial filtering, and $1\times 1$ conv for dimensionality restoration, minimizing computational FLOPs.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Architectural Summary for Exam:</span>
+              <span>LeNet (pioneer) $\rightarrow$ AlexNet (deep + ReLU + GPU) $\rightarrow$ VGG (small $3\times 3$ filters) $\rightarrow$ ResNet (residual skip connections).</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+        <div class="qa-card searchable-card">
+          <div class="qa-header">
+            <div>
+              <h4 class="qa-question-title">Q3. Explain the concepts of Filters, Kernels, Feature Maps, Strides, and Padding with suitable mathematical equations and diagrammatic descriptions.</h4>
+              <div class="qa-tags"><span class="qa-tag">10 Marks</span><span class="qa-tag">CNN Mathematics &amp; Parameters</span></div>
+            </div>
+            <span class="qa-icon">▼</span>
+          </div>
+          <div class="qa-body">
+            <div style="margin-bottom:1rem; font-weight:600; color:var(--primary);">
+              📝 Detailed Examination Answer (10-Point Model):
+            </div>
+            <ol class="qa-points-list">
+              
+            <li class="qa-point-item">
+              <span class="qa-point-title">Distinction Between Kernel and Filter:</span>
+              <span>A kernel is a 2D matrix of weights ($k_h \times k_w$); a filter is a 3D volume consisting of multiple kernels corresponding to all input channels ($k_h \times k_w \times C_{in}$).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Feature Map Generation:</span>
+              <span>Convolving one 3D filter across an input tensor generates exactly one 2D output feature map slice representing the detection intensity of that specific visual pattern.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Stride Parameter ($S$):</span>
+              <span>Stride defines the step size by which the kernel shifts across horizontal and vertical axes; a stride of $S=2$ halves spatial output dimensions.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Valid Padding ($P=0$):</span>
+              <span>No padding added around borders; output dimensions shrink at every layer according to $O = (W - K)/S + 1$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Same Padding ($P = (K-1)/2$):</span>
+              <span>Zeros are appended around borders such that output spatial dimensions exactly match input dimensions when stride $S=1$.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Output Dimension Calculation Formula:</span>
+              <span>Output height/width is calculated analytically via $O = \lfloor \frac{W - K + 2P}{S} \rfloor + 1$ for square inputs.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Receptive Field Expansion:</span>
+              <span>As network depth increases, deep feature map neurons observe progressively larger spatial regions of the original input image.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">1x1 Convolutions (Network-in-Network):</span>
+              <span>Cross-channel parametric pooling that changes channel depth without altering spatial height and width, drastically reducing computation.</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Multi-Channel Convolution Arithmetic:</span>
+              <span>For $C_{in}$ input channels and $C_{out}$ filters, total learnable weights equal $(k_h \times k_w \times C_{in} + 1) \times C_{out}$ (including bias terms).</span>
+            </li>
+            
+            <li class="qa-point-item">
+              <span class="qa-point-title">Exam Numerical Example:</span>
+              <span>Input $32 \times 32 \times 3$, 10 filters of $5 \times 5$, Stride 1, Padding 2: Output = $\lfloor (32 - 5 + 4)/1 \rfloor + 1 = 32 \times 32 \times 10$.</span>
+            </li>
+            
+            </ol>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Section 5: Difference / Comparison Tables -->
+    <section id="differences-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚖️ Comprehensive Comparison & Difference Tables</h2>
+        <span class="section-badge">8+ Comparison Criteria</span>
+      </div>
+      
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Artificial Neural Network (ANN / MLP) vs Convolutional Neural Network (CNN)</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Artificial Neural Network (ANN / MLP)</th><th>Convolutional Neural Network (CNN)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Input Data Structure</td><td>Accepts flattened 1D feature vectors; loses 2D spatial arrangement.</td><td>Accepts raw multi-channel 2D/3D tensors (e.g., Height $\times$ Width $\times$ Channels).</td></tr><tr><td>Connectivity Pattern</td><td>Fully connected (Dense): every neuron connects to all preceding neurons.</td><td>Locally connected: neurons connect only to small local receptive fields.</td></tr><tr><td>Weight Reusability</td><td>Independent weights for every connection; no weight sharing.</td><td>Weights are shared across spatial locations via sliding convolutional kernels.</td></tr><tr><td>Parameter Efficiency</td><td>Suffers from parameter explosion on high-resolution image inputs.</td><td>Highly parameter-efficient due to weight sharing and local kernels.</td></tr><tr><td>Spatial Invariance</td><td>Lacks translation invariance; shifted objects require new learning.</td><td>Inherent translation equivariance (via convolution) and invariance (via pooling).</td></tr><tr><td>Computational Operations</td><td>Matrix-vector multiplications ($z = Wx + b$).</td><td>2D/3D tensor cross-correlation / discrete convolutions and pooling.</td></tr><tr><td>Dominant Application Domain</td><td>Tabular datasets, business intelligence, financial credit scoring.</td><td>Computer vision, image classification, object detection, video analysis.</td></tr><tr><td>Feature Extraction</td><td>Requires pre-extracted 1D numerical feature vectors.</td><td>Learns hierarchical visual features directly from raw image pixels.</td></tr><tr><td>Hardware Utilization</td><td>Moderate memory and CPU/GPU usage.</td><td>Heavy parallel matrix multiplication demanding dedicated GPU VRAM.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 0.75rem; color:var(--text-primary); font-size:1.25rem;">📊 Max Pooling vs Average Pooling</h3>
+          <div class="table-responsive">
+            <table class="comparison-table">
+              <thead>
+                <tr><th>Comparison Parameter</th><th>Max Pooling</th><th>Average Pooling</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Mathematical Operation</td><td>Extracts the maximum pixel intensity value within the pooling window.</td><td>Computes the arithmetic mean of all pixel intensities within the window.</td></tr><tr><td>Feature Selection Priority</td><td>Extracts dominant, prominent features such as bright edges and sharp contours.</td><td>Smoothes out local features, retaining background and generalized context.</td></tr><tr><td>Noise Sensitivity</td><td>Less sensitive to background noise; ignores small low-intensity activations.</td><td>Sensitive to noise because extreme values alter the calculated arithmetic mean.</td></tr><tr><td>Translation Invariance</td><td>Provides strong spatial translation and distortion invariance.</td><td>Provides moderate translation invariance with smoothing behavior.</td></tr><tr><td>Gradient Backpropagation</td><td>Routes gradient only through the single maximal coordinate neuron.</td><td>Distributes error gradient equally divided across all neurons in window ($1/N$).</td></tr><tr><td>Information Retention</td><td>Discards non-maximal contextual information in the window.</td><td>Retains generalized average signal across the entire local receptive window.</td></tr><tr><td>Usage in Modern Architectures</td><td>Standard choice in intermediate convolutional stages (AlexNet, VGG, ResNet).</td><td>Used primarily as Global Average Pooling (GAP) before final classification.</td></tr><tr><td>Image Quality Effect</td><td>Maintains sharp high-contrast feature representations.</td><td>Produces slightly blurred, smoothed intermediate representations.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+    </section>
+
+    <!-- Section 6: Quick Revision Cheat Sheet -->
+    <section id="revision-section" class="study-section">
+      <div class="section-header">
+        <h2 class="section-title">⚡ Quick Pre-Exam Revision Summary</h2>
+        <span class="section-badge">5-Minute Recap</span>
+      </div>
+      <div class="callout callout-tip">
+        <div class="callout-title">💡 Core Takeaways & High-Yield Summary</div>
+        <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary); line-height: 1.7;">
+          <li style='margin-bottom:0.6rem;'>CNNs exploit spatial locality and weight sharing, drastically reducing parameter counts compared to standard MLPs.</li><li style='margin-bottom:0.6rem;'>Output size equation: $O = \lfloor (W - K + 2P)/S \rfloor + 1$.</li><li style='margin-bottom:0.6rem;'>Convolution layers extract feature maps; Pooling layers downsample spatial dimensions.</li><li style='margin-bottom:0.6rem;'>VGGNet established that stacked small $3 \times 3$ filters are superior to large $5 \times 5$ or $7 \times 7$ kernels.</li><li style='margin-bottom:0.6rem;'>ResNet introduced skip/shortcut connections ($F(x) + x$) to train 100+ layer networks without vanishing gradients.</li><li style='margin-bottom:0.6rem;'>Global Average Pooling (GAP) reduces each 2D feature map to a single scalar, eliminating heavy fully connected layer parameters.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer Unit Navigation -->
+    <div class="unit-nav-footer">
+      <div><a href="../Unit%20II%20-%20Artificial%20Neural%20Network%20%28ANN%29/main.html" class="unit-nav-btn">&larr; Previous: Unit II</a></div>
+      <div><a href="../Unit%20IV%20-%20Recurrent%20Neural%20Networks%20%28RNNs%29/main.html" class="unit-nav-btn">Next: Unit IV &rarr;</a></div>
+    </div>
+  </main>
+
+  
+    <footer>
+      <p><strong>Semester III Unit-Wise Examination Preparation Portal</strong></p>
+      <p>Strictly based on University Curriculum Syllabus &bull; Detailed 8–10 Point Answers &bull; 8+ Row Comparison Tables</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-muted);">Built with Pure HTML5, CSS3, & Vanilla JavaScript &bull; Offline Ready</p>
+    </footer>
+    <button id="back-to-top" aria-label="Back to Top">↑</button>
+    
+</body>
+</html>
