@@ -1,0 +1,1798 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Services Slips</title><link rel="stylesheet" href="../css/main.css"><style>
+.sl{max-width:1000px;margin:0 auto;padding:16px}
+.slip{border:1px solid var(--border-color,#8884);border-radius:10px;margin:14px 0;padding:0 14px}
+.slip>summary{cursor:pointer;font-weight:700;padding:12px 0;font-size:1.1rem}
+.q{margin:10px 0 18px}.q h4{margin:6px 0}
+.qt{background:#4f8cff18;border-left:4px solid #4f8cff;padding:8px 12px;border-radius:4px}
+.fl{font:600 .85rem monospace;margin:10px 0 2px;opacity:.8}
+pre.code{overflow:auto;background:#0d1117;color:#e6edf3;padding:12px;border-radius:8px;font-size:.82rem;line-height:1.45;max-height:520px}
+.note{font-size:.85rem;opacity:.8}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.card{display:block;border:1px solid #8884;border-radius:10px;padding:16px;text-decoration:none;color:inherit}
+.card:hover{border-color:#4f8cff}
+</style><script defer src="../js/main.js"></script></head><body>
+<header class="header-nav"><div class="nav-container"><a href="index.html" class="nav-brand"><span>🧪 Practical Slips</span></a>
+<div class="nav-controls"><button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button><a href="../index.html" class="nav-btn">🏠 Home</a></div></div></header>
+<main class="sl"><p><a href="index.html">← All subjects</a></p><h1>Web Services — Practical Slips</h1><p class="note">The Drive folder contains only the solution code, not the question paper, so each question is a description derived from the solution code.</p><p>25 slips. Click a slip to expand.</p><details class="slip" id="slip1"><summary>Slip 1</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: addition, subtraction, multiplication, division. Operations: int add(int a, int b); int subtract(int a, int b); int mulitply(int a, int b); int divide(int a, int b). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s1q1client/S1Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S1Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S1Q1Server/services/S1Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S1Q1ServerSoapBindingStub stub = new S1Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter two positive numbers&quot;);
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		System.out.println(&quot;Add: &quot; + stub.add(a, b));
+		System.out.println(&quot;Subtract: &quot; + stub.subtract(a, b));
+		System.out.println(&quot;Multiply: &quot; + stub.mulitply(a, b));
+		System.out.println(&quot;Divide: &quot; + stub.divide(a, b));
+	}
+}</code></pre>
+<div class="fl">s1q1server/S1Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S1Q1Server {
+
+	public int add(int a, int b){
+		return a + b;
+	}
+
+	public int subtract(int a, int b){
+		return a - b;
+	}
+
+	public int mulitply(int a, int b){
+		return a * b;
+	}
+
+	public int divide(int a, int b){
+		return a / b;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) that accepts an ID, fetches that record from the `student` table in the Oracle database using JDBC, and displays it. Write a client that calls the service. [void findStudent(int sno)]</div><h4>Answer</h4><div class="fl">s1q2client/S1Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S1Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S1Q2Server/services/S1Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S1Q2ServerSoapBindingStub stub = new S1Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter Student Number&quot;);
+		int sno = sc.nextInt();
+		stub.findStudent(sno);
+	}
+}</code></pre>
+<div class="fl">s1q2server/S1Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+import java.sql.*;
+
+public class S1Q2Server {
+
+	public void findStudent(int sno){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;);
+
+			String url = &quot;jdbc:oracle:thin:@localhost:1521:xe&quot;;
+			String user = &quot;system&quot;;
+			String pass = &quot;system&quot;;
+
+			con = DriverManager.getConnection(url, user, pass);
+			System.out.println(&quot;Connected to Database.&quot;);
+
+			String sql = &quot;SELECT * FROM student WHERE sno = ?&quot;;
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, sno);
+
+			rs = pstmt.executeQuery();
+			boolean found = false;
+			while (rs.next()) {
+				found = true;
+				System.out.println(
+					rs.getInt(&quot;sno&quot;) + &quot; &quot; + rs.getString(&quot;sname&quot;) + &quot; &quot; + rs.getString(&quot;sclass&quot;) + &quot; &quot; + rs.getDouble(&quot;sper&quot;)
+				);
+			}
+			if(!found) {
+				System.out.println(&quot;No Student Found&quot;);
+			}
+		} catch (ClassNotFoundException e){
+			System.out.println(&quot;JDBC not found&quot;);
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println(&quot;Database Error&quot;);
+			e.printStackTrace();
+		} finally {
+			try {if (rs != null) rs.close();} catch (SQLException e) {}
+			try {if (pstmt != null) pstmt.close();} catch (SQLException e) {}
+			try {if (con != null) con.close();} catch (SQLException e) {}
+		}
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip2"><summary>Slip 2</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: area. Operations: double area(double base, double height). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s2q1client/S2Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S2Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S2Q1Server/services/S2Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S2Q1ServerSoapBindingStub stub = new S2Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter base and height&quot;);
+		double b = sc.nextDouble();
+		double h = sc.nextDouble();
+		System.out.println(&quot;Area of triangle: &quot; + stub.area(b, h));
+	}
+}</code></pre>
+<div class="fl">s2q1server/S2Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S2Q1Server {
+
+	public double area(double base, double height){
+		return 0.5 * base * height;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) that accepts an ID, fetches that record from the `teacher` table in the Oracle database using JDBC, and displays it. Write a client that calls the service. [void findTeacher(int tno)]</div><h4>Answer</h4><div class="fl">s2q2client/S2Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S2Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S2Q2Server/services/S2Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S2Q2ServerSoapBindingStub stub = new S2Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter Teacher Number&quot;);
+		int tno = sc.nextInt();
+		stub.findTeacher(tno);
+	}
+}</code></pre>
+<div class="fl">s2q2server/S2Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+import java.sql.*;
+
+public class S2Q2Server {
+
+	public void findTeacher(int tno){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;);
+
+			String url = &quot;jdbc:oracle:thin:@localhost:1521:xe&quot;;
+			String user = &quot;system&quot;;
+			String pass = &quot;system&quot;;
+
+			con = DriverManager.getConnection(url, user, pass);
+			System.out.println(&quot;Connected to Database.&quot;);
+
+			String sql = &quot;SELECT * FROM teacher WHERE tno = ?&quot;;
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, tno);
+
+			rs = pstmt.executeQuery();
+			boolean found = false;
+			while (rs.next()) {
+				found = true;
+				System.out.println(
+					rs.getInt(&quot;tno&quot;) + &quot; &quot; + rs.getString(&quot;tname&quot;) + &quot; &quot; + rs.getString(&quot;tqualification&quot;)
+				);
+			}
+			if(!found) {
+				System.out.println(&quot;No Teacher Found&quot;);
+			}
+		} catch (ClassNotFoundException e){
+			System.out.println(&quot;JDBC not found&quot;);
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println(&quot;Database Error&quot;);
+			e.printStackTrace();
+		} finally {
+			try {if (rs != null) rs.close();} catch (SQLException e) {}
+			try {if (pstmt != null) pstmt.close();} catch (SQLException e) {}
+			try {if (con != null) con.close();} catch (SQLException e) {}
+		}
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip3"><summary>Slip 3</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: surface area, volume. Operations: double surfaceArea(double l, double b, double h); double volume(double l, double b, double h). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s3q1client/S3Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S3Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S3Q1Server/services/S3Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S3Q1ServerSoapBindingStub stub = new S3Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter length, breadth and height&quot;);
+		double l = sc.nextDouble();
+		double b = sc.nextDouble();
+		double h = sc.nextDouble();
+		System.out.println(&quot;Surface area: &quot; + stub.surfaceArea(l, b, h));
+		System.out.println(&quot;Volume: &quot; + stub.volume(l, b, h));
+	}
+}</code></pre>
+<div class="fl">s3q1server/S3Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S3Q1Server {
+
+	public double surfaceArea(double l, double b, double h){
+		return 2 * (l * b + l * h + b * h);
+	}
+
+	public double volume(double l, double b, double h){
+		return l * b * h;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) that accepts an ID, fetches that record from the `actor` table in the Oracle database using JDBC, and displays it. Write a client that calls the service. [void findActor(int ano)]</div><h4>Answer</h4><div class="fl">s3q2client/S3Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S3Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S3Q2Server/services/S3Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S3Q2ServerSoapBindingStub stub = new S3Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter Actor Number&quot;);
+		int ano = sc.nextInt();
+		stub.findActor(ano);
+	}
+}</code></pre>
+<div class="fl">s3q2server/S3Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+import java.sql.*;
+
+public class S3Q2Server {
+
+	public void findActor(int ano){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;);
+
+			String url = &quot;jdbc:oracle:thin:@localhost:1521:xe&quot;;
+			String user = &quot;system&quot;;
+			String pass = &quot;system&quot;;
+
+			con = DriverManager.getConnection(url, user, pass);
+			System.out.println(&quot;Connected to Database.&quot;);
+
+			String sql = &quot;SELECT * FROM actor WHERE ano = ?&quot;;
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, ano);
+
+			rs = pstmt.executeQuery();
+			boolean found = false;
+			while (rs.next()) {
+				found = true;
+				System.out.println(
+					rs.getInt(&quot;ano&quot;) + &quot; &quot; + rs.getString(&quot;aname&quot;) + &quot; &quot; + rs.getString(&quot;amovie&quot;)
+				);
+			}
+			if(!found) {
+				System.out.println(&quot;No Actor Found&quot;);
+			}
+		} catch (ClassNotFoundException e){
+			System.out.println(&quot;JDBC not found&quot;);
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println(&quot;Database Error&quot;);
+			e.printStackTrace();
+		} finally {
+			try {if (rs != null) rs.close();} catch (SQLException e) {}
+			try {if (pstmt != null) pstmt.close();} catch (SQLException e) {}
+			try {if (con != null) con.close();} catch (SQLException e) {}
+		}
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip4"><summary>Slip 4</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: distance between two points. Operations: double distance(double x1, double y1, double x2, double y2). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s4q1client/S4Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S4Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S4Q1Server/services/S4Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S4Q1ServerSoapBindingStub stub = new S4Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter x1 y1 x2 y2&quot;);
+		double x1 = sc.nextDouble();
+		double y1 = sc.nextDouble();
+		double x2 = sc.nextDouble();
+		double y2 = sc.nextDouble();
+		System.out.println(&quot;Distance: &quot; + stub.distance(x1, y1, x2, y2));
+	}
+}</code></pre>
+<div class="fl">s4q1server/S4Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S4Q1Server {
+
+	public double distance(double x1, double y1, double x2, double y2){
+		return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) that accepts an ID, fetches that record from the `employee` table in the Oracle database using JDBC, and displays it. Write a client that calls the service. [void findEmployee(int eno)]</div><h4>Answer</h4><div class="fl">s4q2client/S4Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S4Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S4Q2Server/services/S4Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S4Q2ServerSoapBindingStub stub = new S4Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter Employee Number&quot;);
+		int eno = sc.nextInt();
+		stub.findEmployee(eno);
+	}
+}</code></pre>
+<div class="fl">s4q2server/S4Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+import java.sql.*;
+
+public class S4Q2Server {
+
+	public void findEmployee(int eno){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;);
+
+			String url = &quot;jdbc:oracle:thin:@localhost:1521:xe&quot;;
+			String user = &quot;system&quot;;
+			String pass = &quot;system&quot;;
+
+			con = DriverManager.getConnection(url, user, pass);
+			System.out.println(&quot;Connected to Database.&quot;);
+
+			String sql = &quot;SELECT * FROM employee WHERE eno = ?&quot;;
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, eno);
+
+			rs = pstmt.executeQuery();
+			boolean found = false;
+			while (rs.next()) {
+				found = true;
+				System.out.println(
+					rs.getInt(&quot;eno&quot;) + &quot; &quot; + rs.getString(&quot;ename&quot;) + &quot; &quot; + rs.getDouble(&quot;esalary&quot;)
+				);
+			}
+			if(!found) {
+				System.out.println(&quot;No Employee Found&quot;);
+			}
+		} catch (ClassNotFoundException e){
+			System.out.println(&quot;JDBC not found&quot;);
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println(&quot;Database Error&quot;);
+			e.printStackTrace();
+		} finally {
+			try {if (rs != null) rs.close();} catch (SQLException e) {}
+			try {if (pstmt != null) pstmt.close();} catch (SQLException e) {}
+			try {if (con != null) con.close();} catch (SQLException e) {}
+		}
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip5"><summary>Slip 5</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: total marks, percentage. Operations: int totalMarks(int physics, int maths, int chemistry, int biology, int marathi, int english); double percentage(int physics, int maths, int chemistry, int biology, int marathi, int english). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s5q1client/S5Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S5Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S5Q1Server/services/S5Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S5Q1ServerSoapBindingStub stub = new S5Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter marks of physics, maths, chemistry, biology, marathi, english&quot;);
+		int p = sc.nextInt();
+		int m = sc.nextInt();
+		int c = sc.nextInt();
+		int b = sc.nextInt();
+		int ma = sc.nextInt();
+		int e = sc.nextInt();
+		System.out.println(&quot;Total: &quot; + stub.totalMarks(p, m, c, b, ma, e));
+		System.out.println(&quot;Percentage: &quot; + stub.percentage(p, m, c, b, ma, e));
+	}
+}</code></pre>
+<div class="fl">s5q1server/S5Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S5Q1Server {
+
+	public int totalMarks(int physics, int maths, int chemistry, int biology, int marathi, int english){
+		return physics + maths + chemistry + biology + marathi + english;
+	}
+
+	public double percentage(int physics, int maths, int chemistry, int biology, int marathi, int english){
+		return totalMarks(physics, maths, chemistry, biology, marathi, english) / 6.0;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) that accepts an ID, fetches that record from the `course` table in the Oracle database using JDBC, and displays it. Write a client that calls the service. [void findCourse(int cno)]</div><h4>Answer</h4><div class="fl">s5q2client/S5Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S5Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S5Q2Server/services/S5Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S5Q2ServerSoapBindingStub stub = new S5Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter Course Number&quot;);
+		int cno = sc.nextInt();
+		stub.findCourse(cno);
+	}
+}</code></pre>
+<div class="fl">s5q2server/S5Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+import java.sql.*;
+
+public class S5Q2Server {
+
+	public void findCourse(int cno){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;);
+
+			String url = &quot;jdbc:oracle:thin:@localhost:1521:xe&quot;;
+			String user = &quot;system&quot;;
+			String pass = &quot;system&quot;;
+
+			con = DriverManager.getConnection(url, user, pass);
+			System.out.println(&quot;Connected to Database.&quot;);
+
+			String sql = &quot;SELECT * FROM course WHERE cno = ?&quot;;
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, cno);
+
+			rs = pstmt.executeQuery();
+			boolean found = false;
+			while (rs.next()) {
+				found = true;
+				System.out.println(
+					rs.getInt(&quot;cno&quot;) + &quot; &quot; + rs.getString(&quot;cname&quot;) + &quot; &quot; + rs.getString(&quot;cteacher&quot;)
+				);
+			}
+			if(!found) {
+				System.out.println(&quot;No Course Found&quot;);
+			}
+		} catch (ClassNotFoundException e){
+			System.out.println(&quot;JDBC not found&quot;);
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println(&quot;Database Error&quot;);
+			e.printStackTrace();
+		} finally {
+			try {if (rs != null) rs.close();} catch (SQLException e) {}
+			try {if (pstmt != null) pstmt.close();} catch (SQLException e) {}
+			try {if (con != null) con.close();} catch (SQLException e) {}
+		}
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip6"><summary>Slip 6</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: area, volume. Operations: double area(double radius); double volume(double radius). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s6q1client/S6Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S6Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S6Q1Server/services/S6Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S6Q1ServerSoapBindingStub stub = new S6Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter radius&quot;);
+		double r = sc.nextDouble();
+		System.out.println(&quot;Area: &quot; + stub.area(r));
+		System.out.println(&quot;Volume: &quot; + stub.volume(r));
+	}
+}</code></pre>
+<div class="fl">s6q1server/S6Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S6Q1Server {
+
+	public double area(double radius){
+		return Math.PI * radius * radius;
+	}
+
+	// volume of sphere having same radius
+	public double volume(double radius){
+		return (4.0 / 3.0) * Math.PI * radius * radius * radius;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) that accepts an ID, fetches that record from the `book` table in the Oracle database using JDBC, and displays it. Write a client that calls the service. [void findBook(int bno)]</div><h4>Answer</h4><div class="fl">s6q2client/S6Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S6Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S6Q2Server/services/S6Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S6Q2ServerSoapBindingStub stub = new S6Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter Book Number&quot;);
+		int bno = sc.nextInt();
+		stub.findBook(bno);
+	}
+}</code></pre>
+<div class="fl">s6q2server/S6Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+import java.sql.*;
+
+public class S6Q2Server {
+
+	public void findBook(int bno){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;);
+
+			String url = &quot;jdbc:oracle:thin:@localhost:1521:xe&quot;;
+			String user = &quot;system&quot;;
+			String pass = &quot;system&quot;;
+
+			con = DriverManager.getConnection(url, user, pass);
+			System.out.println(&quot;Connected to Database.&quot;);
+
+			String sql = &quot;SELECT * FROM book WHERE bno = ?&quot;;
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+
+			rs = pstmt.executeQuery();
+			boolean found = false;
+			while (rs.next()) {
+				found = true;
+				System.out.println(
+					rs.getInt(&quot;bno&quot;) + &quot; &quot; + rs.getString(&quot;bname&quot;) + &quot; &quot; + rs.getString(&quot;bauthor&quot;)
+				);
+			}
+			if(!found) {
+				System.out.println(&quot;No Book Found&quot;);
+			}
+		} catch (ClassNotFoundException e){
+			System.out.println(&quot;JDBC not found&quot;);
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println(&quot;Database Error&quot;);
+			e.printStackTrace();
+		} finally {
+			try {if (rs != null) rs.close();} catch (SQLException e) {}
+			try {if (pstmt != null) pstmt.close();} catch (SQLException e) {}
+			try {if (con != null) con.close();} catch (SQLException e) {}
+		}
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip7"><summary>Slip 7</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: check whether a number is positive/negative/zero (as implemented). Operations: String checkNumber(int n). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s7q1client/S7Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S7Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S7Q1Server/services/S7Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S7Q1ServerSoapBindingStub stub = new S7Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter integer number&quot;);
+		int n = sc.nextInt();
+		System.out.println(stub.checkNumber(n));
+	}
+}</code></pre>
+<div class="fl">s7q1server/S7Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S7Q1Server {
+
+	public String checkNumber(int n){
+		if(n &gt; 0)
+			return &quot;Positive&quot;;
+		else if(n &lt; 0)
+			return &quot;Negative&quot;;
+		else
+			return &quot;Zero&quot;;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: greet a user by name. Operations: String greet(String name). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s7q2client/S7Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S7Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S7Q2Server/services/S7Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S7Q2ServerSoapBindingStub stub = new S7Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter username&quot;);
+		String name = sc.nextLine();
+		System.out.println(stub.greet(name));
+	}
+}</code></pre>
+<div class="fl">s7q2server/S7Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Calendar;
+
+public class S7Q2Server {
+
+	public String greet(String name){
+		int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+		String msg;
+		if(hour &lt; 12)
+			msg = &quot;Good Morning&quot;;
+		else if(hour &lt; 17)
+			msg = &quot;Good Afternoon&quot;;
+		else if(hour &lt; 21)
+			msg = &quot;Good Evening&quot;;
+		else
+			msg = &quot;Good Night&quot;;
+		return msg + &quot;, &quot; + name;
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip8"><summary>Slip 8</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: check leap year. Operations: String checkLeap(int year). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s8q1client/S8Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S8Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S8Q1Server/services/S8Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S8Q1ServerSoapBindingStub stub = new S8Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter year&quot;);
+		int year = sc.nextInt();
+		System.out.println(stub.checkLeap(year));
+	}
+}</code></pre>
+<div class="fl">s8q1server/S8Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S8Q1Server {
+
+	public String checkLeap(int year){
+		if((year % 4 == 0 &amp;&amp; year % 100 != 0) || year % 400 == 0)
+			return year + &quot; is a Leap year&quot;;
+		else
+			return year + &quot; is not a Leap year&quot;;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: Celsius to Fahrenheit conversion. Operations: double celsiusToFahrenheit(double c). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s8q2client/S8Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S8Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S8Q2Server/services/S8Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S8Q2ServerSoapBindingStub stub = new S8Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter Celsius&quot;);
+		double c = sc.nextDouble();
+		System.out.println(&quot;Fahrenheit: &quot; + stub.celsiusToFahrenheit(c));
+	}
+}</code></pre>
+<div class="fl">s8q2server/S8Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S8Q2Server {
+
+	public double celsiusToFahrenheit(double c){
+		return (c * 9 / 5) + 32;
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip9"><summary>Slip 9</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: decide profit or loss. Operations: String profitOrLoss(double costPrice, double sellingPrice). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s9q1client/S9Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S9Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S9Q1Server/services/S9Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S9Q1ServerSoapBindingStub stub = new S9Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter cost price and selling price&quot;);
+		double cp = sc.nextDouble();
+		double sp = sc.nextDouble();
+		System.out.println(stub.profitOrLoss(cp, sp));
+	}
+}</code></pre>
+<div class="fl">s9q1server/S9Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S9Q1Server {
+
+	public String profitOrLoss(double costPrice, double sellingPrice){
+		if(sellingPrice &gt; costPrice)
+			return &quot;Profit of &quot; + (sellingPrice - costPrice);
+		else if(sellingPrice &lt; costPrice)
+			return &quot;Loss of &quot; + (costPrice - sellingPrice);
+		else
+			return &quot;No profit no loss&quot;;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: validate an email address. Operations: String validateEmail(String email). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s9q2client/S9Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S9Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S9Q2Server/services/S9Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S9Q2ServerSoapBindingStub stub = new S9Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter email id&quot;);
+		String email = sc.nextLine();
+		System.out.println(stub.validateEmail(email));
+	}
+}</code></pre>
+<div class="fl">s9q2server/S9Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.regex.Pattern;
+
+public class S9Q2Server {
+
+	public String validateEmail(String email){
+		String regex = &quot;^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$&quot;;
+		if(Pattern.matches(regex, email))
+			return &quot;Valid email id&quot;;
+		else
+			return &quot;Invalid email id&quot;;
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip10"><summary>Slip 10</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: convert number to words. Operations: String numberToWords(int n). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s10q1client/S10Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S10Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S10Q1Server/services/S10Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S10Q1ServerSoapBindingStub stub = new S10Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter single digit number&quot;);
+		int n = sc.nextInt();
+		System.out.println(stub.numberToWords(n));
+	}
+}</code></pre>
+<div class="fl">s10q1server/S10Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S10Q1Server {
+
+	public String numberToWords(int n){
+		String[] words = {&quot;Zero&quot;, &quot;One&quot;, &quot;Two&quot;, &quot;Three&quot;, &quot;Four&quot;, &quot;Five&quot;, &quot;Six&quot;, &quot;Seven&quot;, &quot;Eight&quot;, &quot;Nine&quot;};
+		if(n &lt; 0 || n &gt; 9)
+			return &quot;Enter single digit number&quot;;
+		return words[n];
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: currency/unit conversion. Operations: double convert(double rupees, String type). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s10q2client/S10Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S10Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S10Q2Server/services/S10Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S10Q2ServerSoapBindingStub stub = new S10Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter amount in Rupees&quot;);
+		double amt = sc.nextDouble();
+		System.out.println(&quot;Enter type of conversion (dollar/pound/euro)&quot;);
+		String type = sc.next();
+		System.out.println(&quot;Converted amount: &quot; + stub.convert(amt, type));
+	}
+}</code></pre>
+<div class="fl">s10q2server/S10Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S10Q2Server {
+
+	public double convert(double rupees, String type){
+		if(type.equalsIgnoreCase(&quot;dollar&quot;))
+			return rupees / 83.0;
+		else if(type.equalsIgnoreCase(&quot;pound&quot;))
+			return rupees / 105.0;
+		else if(type.equalsIgnoreCase(&quot;euro&quot;))
+			return rupees / 90.0;
+		else
+			return -1;
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip11"><summary>Slip 11</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: classify a character. Operations: String checkCharacter(String ch). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s11q1client/S11Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S11Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S11Q1Server/services/S11Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S11Q1ServerSoapBindingStub stub = new S11Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter single character&quot;);
+		String ch = sc.next();
+		System.out.println(stub.checkCharacter(ch));
+	}
+}</code></pre>
+<div class="fl">s11q1server/S11Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S11Q1Server {
+
+	public String checkCharacter(String ch){
+		char c = Character.toLowerCase(ch.charAt(0));
+		if(!Character.isLetter(c))
+			return &quot;Not an alphabet&quot;;
+		if(c == &#x27;a&#x27; || c == &#x27;e&#x27; || c == &#x27;i&#x27; || c == &#x27;o&#x27; || c == &#x27;u&#x27;)
+			return &quot;VOWEL&quot;;
+		else
+			return &quot;CONSONANT&quot;;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: validate a mobile number. Operations: String validateMobile(String mobile). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s11q2client/S11Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S11Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S11Q2Server/services/S11Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S11Q2ServerSoapBindingStub stub = new S11Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter mobile no&quot;);
+		String mobile = sc.next();
+		System.out.println(stub.validateMobile(mobile));
+	}
+}</code></pre>
+<div class="fl">s11q2server/S11Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.regex.Pattern;
+
+public class S11Q2Server {
+
+	public String validateMobile(String mobile){
+		if(Pattern.matches(&quot;[0-9]{10}&quot;, mobile))
+			return &quot;Valid mobile no&quot;;
+		else
+			return &quot;Invalid mobile no&quot;;
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip12"><summary>Slip 12</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: total marks, average, class obtained. Operations: int totalMarks(int m1, int m2, int m3); double average(int m1, int m2, int m3); String classObtained(int m1, int m2, int m3). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s12q1client/S12Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S12Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S12Q1Server/services/S12Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S12Q1ServerSoapBindingStub stub = new S12Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter marks of three subjects&quot;);
+		int m1 = sc.nextInt();
+		int m2 = sc.nextInt();
+		int m3 = sc.nextInt();
+		System.out.println(&quot;Total: &quot; + stub.totalMarks(m1, m2, m3));
+		System.out.println(&quot;Average: &quot; + stub.average(m1, m2, m3));
+		System.out.println(&quot;Class: &quot; + stub.classObtained(m1, m2, m3));
+	}
+}</code></pre>
+<div class="fl">s12q1server/S12Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S12Q1Server {
+
+	public int totalMarks(int m1, int m2, int m3){
+		return m1 + m2 + m3;
+	}
+
+	public double average(int m1, int m2, int m3){
+		return totalMarks(m1, m2, m3) / 3.0;
+	}
+
+	public String classObtained(int m1, int m2, int m3){
+		double avg = average(m1, m2, m3);
+		if(avg &gt;= 70)
+			return &quot;Distinction&quot;;
+		else if(avg &gt;= 60)
+			return &quot;First Class&quot;;
+		else if(avg &gt;= 50)
+			return &quot;Second Class&quot;;
+		else if(avg &gt;= 40)
+			return &quot;Pass Class&quot;;
+		else
+			return &quot;Fail&quot;;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: x raised to y. Operations: double power(double x, double y). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s12q2client/S12Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S12Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S12Q2Server/services/S12Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S12Q2ServerSoapBindingStub stub = new S12Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter x and y&quot;);
+		double x = sc.nextDouble();
+		double y = sc.nextDouble();
+		System.out.println(&quot;x^y = &quot; + stub.power(x, y));
+	}
+}</code></pre>
+<div class="fl">s12q2server/S12Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S12Q2Server {
+
+	public double power(double x, double y){
+		return Math.pow(x, y);
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip13"><summary>Slip 13</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: addition, subtraction, multiplication, division. Operations: int add(int a, int b); int subtract(int a, int b); int mulitply(int a, int b); int divide(int a, int b). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s13q1client/S13Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S13Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S13Q1Server/services/S13Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S13Q1ServerSoapBindingStub stub = new S13Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter two positive numbers&quot;);
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		System.out.println(&quot;Add: &quot; + stub.add(a, b));
+		System.out.println(&quot;Subtract: &quot; + stub.subtract(a, b));
+		System.out.println(&quot;Multiply: &quot; + stub.mulitply(a, b));
+		System.out.println(&quot;Divide: &quot; + stub.divide(a, b));
+	}
+}</code></pre>
+<div class="fl">s13q1server/S13Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S13Q1Server {
+
+	public int add(int a, int b){
+		return a + b;
+	}
+
+	public int subtract(int a, int b){
+		return a - b;
+	}
+
+	public int mulitply(int a, int b){
+		return a * b;
+	}
+
+	public int divide(int a, int b){
+		return a / b;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: check perfect number. Operations: String checkPerfect(int n). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s13q2client/S13Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S13Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S13Q2Server/services/S13Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S13Q2ServerSoapBindingStub stub = new S13Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter positive integer number&quot;);
+		int n = sc.nextInt();
+		System.out.println(stub.checkPerfect(n));
+	}
+}</code></pre>
+<div class="fl">s13q2server/S13Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S13Q2Server {
+
+	public String checkPerfect(int n){
+		int sum = 0;
+		for(int i = 1; i &lt;= n / 2; i++){
+			if(n % i == 0)
+				sum += i;
+		}
+		if(n &gt; 0 &amp;&amp; sum == n)
+			return n + &quot; is a Perfect number&quot;;
+		else
+			return n + &quot; is not a Perfect number&quot;;
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip14"><summary>Slip 14</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: area. Operations: double area(double base, double height). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s14q1client/S14Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S14Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S14Q1Server/services/S14Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S14Q1ServerSoapBindingStub stub = new S14Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter base and height&quot;);
+		double b = sc.nextDouble();
+		double h = sc.nextDouble();
+		System.out.println(&quot;Area of triangle: &quot; + stub.area(b, h));
+	}
+}</code></pre>
+<div class="fl">s14q1server/S14Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S14Q1Server {
+
+	public double area(double base, double height){
+		return 0.5 * base * height;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: factorial. Operations: long factorial(int n). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s14q2client/S14Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S14Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S14Q2Server/services/S14Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S14Q2ServerSoapBindingStub stub = new S14Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter positive integer number&quot;);
+		int n = sc.nextInt();
+		System.out.println(&quot;Factorial: &quot; + stub.factorial(n));
+	}
+}</code></pre>
+<div class="fl">s14q2server/S14Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S14Q2Server {
+
+	public long factorial(int n){
+		long fact = 1;
+		for(int i = 2; i &lt;= n; i++){
+			fact = fact * i;
+		}
+		return fact;
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip15"><summary>Slip 15</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: surface area, volume. Operations: double surfaceArea(double l, double b, double h); double volume(double l, double b, double h). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s15q1client/S15Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S15Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S15Q1Server/services/S15Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S15Q1ServerSoapBindingStub stub = new S15Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter length, breadth and height&quot;);
+		double l = sc.nextDouble();
+		double b = sc.nextDouble();
+		double h = sc.nextDouble();
+		System.out.println(&quot;Surface area: &quot; + stub.surfaceArea(l, b, h));
+		System.out.println(&quot;Volume: &quot; + stub.volume(l, b, h));
+	}
+}</code></pre>
+<div class="fl">s15q1server/S15Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S15Q1Server {
+
+	public double surfaceArea(double l, double b, double h){
+		return 2 * (l * b + l * h + b * h);
+	}
+
+	public double volume(double l, double b, double h){
+		return l * b * h;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: reverse a number. Operations: int reverse(int n). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s15q2client/S15Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S15Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S15Q2Server/services/S15Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S15Q2ServerSoapBindingStub stub = new S15Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter positive integer number&quot;);
+		int n = sc.nextInt();
+		System.out.println(&quot;Reverse: &quot; + stub.reverse(n));
+	}
+}</code></pre>
+<div class="fl">s15q2server/S15Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S15Q2Server {
+
+	public int reverse(int n){
+		int rev = 0;
+		while(n &gt; 0){
+			rev = rev * 10 + n % 10;
+			n = n / 10;
+		}
+		return rev;
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip16"><summary>Slip 16</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: distance between two points. Operations: double distance(double x1, double y1, double x2, double y2). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s16q1client/S16Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S16Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S16Q1Server/services/S16Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S16Q1ServerSoapBindingStub stub = new S16Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter x1 y1 x2 y2&quot;);
+		double x1 = sc.nextDouble();
+		double y1 = sc.nextDouble();
+		double x2 = sc.nextDouble();
+		double y2 = sc.nextDouble();
+		System.out.println(&quot;Distance: &quot; + stub.distance(x1, y1, x2, y2));
+	}
+}</code></pre>
+<div class="fl">s16q1server/S16Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S16Q1Server {
+
+	public double distance(double x1, double y1, double x2, double y2){
+		return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: count vowels in a string. Operations: int countVowels(String str). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s16q2client/S16Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S16Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S16Q2Server/services/S16Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S16Q2ServerSoapBindingStub stub = new S16Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter string&quot;);
+		String str = sc.nextLine();
+		System.out.println(&quot;Number of vowels: &quot; + stub.countVowels(str));
+	}
+}</code></pre>
+<div class="fl">s16q2server/S16Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S16Q2Server {
+
+	public int countVowels(String str){
+		int count = 0;
+		for(int i = 0; i &lt; str.length(); i++){
+			char c = Character.toLowerCase(str.charAt(i));
+			if(c == &#x27;a&#x27; || c == &#x27;e&#x27; || c == &#x27;i&#x27; || c == &#x27;o&#x27; || c == &#x27;u&#x27;)
+				count++;
+		}
+		return count;
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip17"><summary>Slip 17</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: total marks, percentage. Operations: int totalMarks(int physics, int maths, int chemistry, int biology, int marathi, int english); double percentage(int physics, int maths, int chemistry, int biology, int marathi, int english). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s17q1client/S17Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S17Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S17Q1Server/services/S17Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S17Q1ServerSoapBindingStub stub = new S17Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter marks of physics, maths, chemistry, biology, marathi, english&quot;);
+		int p = sc.nextInt();
+		int m = sc.nextInt();
+		int c = sc.nextInt();
+		int b = sc.nextInt();
+		int ma = sc.nextInt();
+		int e = sc.nextInt();
+		System.out.println(&quot;Total: &quot; + stub.totalMarks(p, m, c, b, ma, e));
+		System.out.println(&quot;Percentage: &quot; + stub.percentage(p, m, c, b, ma, e));
+	}
+}</code></pre>
+<div class="fl">s17q1server/S17Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S17Q1Server {
+
+	public int totalMarks(int physics, int maths, int chemistry, int biology, int marathi, int english){
+		return physics + maths + chemistry + biology + marathi + english;
+	}
+
+	public double percentage(int physics, int maths, int chemistry, int biology, int marathi, int english){
+		return totalMarks(physics, maths, chemistry, biology, marathi, english) / 6.0;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: check palindrome. Operations: String checkPalindrome(int n). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s17q2client/S17Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S17Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S17Q2Server/services/S17Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S17Q2ServerSoapBindingStub stub = new S17Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter positive integer number&quot;);
+		int n = sc.nextInt();
+		System.out.println(stub.checkPalindrome(n));
+	}
+}</code></pre>
+<div class="fl">s17q2server/S17Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S17Q2Server {
+
+	public String checkPalindrome(int n){
+		int temp = n, rev = 0;
+		while(temp &gt; 0){
+			rev = rev * 10 + temp % 10;
+			temp = temp / 10;
+		}
+		if(rev == n)
+			return n + &quot; is a Palindrome&quot;;
+		else
+			return n + &quot; is not a Palindrome&quot;;
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip18"><summary>Slip 18</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: area, volume. Operations: double area(double radius); double volume(double radius). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s18q1client/S18Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S18Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S18Q1Server/services/S18Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S18Q1ServerSoapBindingStub stub = new S18Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter radius&quot;);
+		double r = sc.nextDouble();
+		System.out.println(&quot;Area: &quot; + stub.area(r));
+		System.out.println(&quot;Volume: &quot; + stub.volume(r));
+	}
+}</code></pre>
+<div class="fl">s18q1server/S18Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S18Q1Server {
+
+	public double area(double radius){
+		return Math.PI * radius * radius;
+	}
+
+	// volume of sphere having same radius
+	public double volume(double radius){
+		return (4.0 / 3.0) * Math.PI * radius * radius * radius;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: check Armstrong number. Operations: String checkArmstrong(int n). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s18q2client/S18Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S18Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S18Q2Server/services/S18Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S18Q2ServerSoapBindingStub stub = new S18Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter positive integer number&quot;);
+		int n = sc.nextInt();
+		System.out.println(stub.checkArmstrong(n));
+	}
+}</code></pre>
+<div class="fl">s18q2server/S18Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S18Q2Server {
+
+	public String checkArmstrong(int n){
+		int temp = n, sum = 0;
+		int digits = String.valueOf(n).length();
+		while(temp &gt; 0){
+			sum += (int) Math.pow(temp % 10, digits);
+			temp = temp / 10;
+		}
+		if(sum == n)
+			return n + &quot; is an Armstrong number&quot;;
+		else
+			return n + &quot; is not an Armstrong number&quot;;
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip19"><summary>Slip 19</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: check whether a number is positive/negative/zero (as implemented). Operations: String checkNumber(int n). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s19q1client/S19Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S19Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S19Q1Server/services/S19Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S19Q1ServerSoapBindingStub stub = new S19Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter integer number&quot;);
+		int n = sc.nextInt();
+		System.out.println(stub.checkNumber(n));
+	}
+}</code></pre>
+<div class="fl">s19q1server/S19Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S19Q1Server {
+
+	public String checkNumber(int n){
+		if(n &gt; 0)
+			return &quot;Positive&quot;;
+		else if(n &lt; 0)
+			return &quot;Negative&quot;;
+		else
+			return &quot;Zero&quot;;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: currency/unit conversion. Operations: String convert(int n, String type). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s19q2client/S19Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S19Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S19Q2Server/services/S19Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S19Q2ServerSoapBindingStub stub = new S19Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter decimal number&quot;);
+		int n = sc.nextInt();
+		System.out.println(&quot;Enter type of conversion (binary/octal/hexadecimal)&quot;);
+		String type = sc.next();
+		System.out.println(&quot;Result: &quot; + stub.convert(n, type));
+	}
+}</code></pre>
+<div class="fl">s19q2server/S19Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S19Q2Server {
+
+	public String convert(int n, String type){
+		if(type.equalsIgnoreCase(&quot;binary&quot;))
+			return Integer.toBinaryString(n);
+		else if(type.equalsIgnoreCase(&quot;octal&quot;))
+			return Integer.toOctalString(n);
+		else if(type.equalsIgnoreCase(&quot;hexadecimal&quot;))
+			return Integer.toHexString(n).toUpperCase();
+		else
+			return &quot;Invalid type&quot;;
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip20"><summary>Slip 20</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: check leap year. Operations: String checkLeap(int year). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s20q1client/S20Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S20Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S20Q1Server/services/S20Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S20Q1ServerSoapBindingStub stub = new S20Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter year&quot;);
+		int year = sc.nextInt();
+		System.out.println(stub.checkLeap(year));
+	}
+}</code></pre>
+<div class="fl">s20q1server/S20Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S20Q1Server {
+
+	public String checkLeap(int year){
+		if((year % 4 == 0 &amp;&amp; year % 100 != 0) || year % 400 == 0)
+			return year + &quot; is a Leap year&quot;;
+		else
+			return year + &quot; is not a Leap year&quot;;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: x raised to y. Operations: double power(double x, double y). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s20q2client/S20Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S20Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S20Q2Server/services/S20Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S20Q2ServerSoapBindingStub stub = new S20Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter x and y&quot;);
+		double x = sc.nextDouble();
+		double y = sc.nextDouble();
+		System.out.println(&quot;x^y = &quot; + stub.power(x, y));
+	}
+}</code></pre>
+<div class="fl">s20q2server/S20Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S20Q2Server {
+
+	public double power(double x, double y){
+		return Math.pow(x, y);
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip21"><summary>Slip 21</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: decide profit or loss. Operations: String profitOrLoss(double costPrice, double sellingPrice). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s21q1client/S21Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S21Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S21Q1Server/services/S21Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S21Q1ServerSoapBindingStub stub = new S21Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter cost price and selling price&quot;);
+		double cp = sc.nextDouble();
+		double sp = sc.nextDouble();
+		System.out.println(stub.profitOrLoss(cp, sp));
+	}
+}</code></pre>
+<div class="fl">s21q1server/S21Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S21Q1Server {
+
+	public String profitOrLoss(double costPrice, double sellingPrice){
+		if(sellingPrice &gt; costPrice)
+			return &quot;Profit of &quot; + (sellingPrice - costPrice);
+		else if(sellingPrice &lt; costPrice)
+			return &quot;Loss of &quot; + (costPrice - sellingPrice);
+		else
+			return &quot;No profit no loss&quot;;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: check perfect number. Operations: String checkPerfect(int n). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s21q2client/S21Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S21Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S21Q2Server/services/S21Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S21Q2ServerSoapBindingStub stub = new S21Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter positive integer number&quot;);
+		int n = sc.nextInt();
+		System.out.println(stub.checkPerfect(n));
+	}
+}</code></pre>
+<div class="fl">s21q2server/S21Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S21Q2Server {
+
+	public String checkPerfect(int n){
+		int sum = 0;
+		for(int i = 1; i &lt;= n / 2; i++){
+			if(n % i == 0)
+				sum += i;
+		}
+		if(n &gt; 0 &amp;&amp; sum == n)
+			return n + &quot; is a Perfect number&quot;;
+		else
+			return n + &quot; is not a Perfect number&quot;;
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip22"><summary>Slip 22</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: convert number to words. Operations: String numberToWords(int n). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s22q1client/S22Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S22Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S22Q1Server/services/S22Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S22Q1ServerSoapBindingStub stub = new S22Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter single digit number&quot;);
+		int n = sc.nextInt();
+		System.out.println(stub.numberToWords(n));
+	}
+}</code></pre>
+<div class="fl">s22q1server/S22Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S22Q1Server {
+
+	public String numberToWords(int n){
+		String[] words = {&quot;Zero&quot;, &quot;One&quot;, &quot;Two&quot;, &quot;Three&quot;, &quot;Four&quot;, &quot;Five&quot;, &quot;Six&quot;, &quot;Seven&quot;, &quot;Eight&quot;, &quot;Nine&quot;};
+		if(n &lt; 0 || n &gt; 9)
+			return &quot;Enter single digit number&quot;;
+		return words[n];
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: factorial. Operations: long factorial(int n). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s22q2client/S22Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S22Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S22Q2Server/services/S22Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S22Q2ServerSoapBindingStub stub = new S22Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter positive integer number&quot;);
+		int n = sc.nextInt();
+		System.out.println(&quot;Factorial: &quot; + stub.factorial(n));
+	}
+}</code></pre>
+<div class="fl">s22q2server/S22Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S22Q2Server {
+
+	public long factorial(int n){
+		long fact = 1;
+		for(int i = 2; i &lt;= n; i++){
+			fact = fact * i;
+		}
+		return fact;
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip23"><summary>Slip 23</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: classify a character. Operations: String checkCharacter(String ch). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s23q1client/S23Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S23Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S23Q1Server/services/S23Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S23Q1ServerSoapBindingStub stub = new S23Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter single character&quot;);
+		String ch = sc.next();
+		System.out.println(stub.checkCharacter(ch));
+	}
+}</code></pre>
+<div class="fl">s23q1server/S23Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S23Q1Server {
+
+	public String checkCharacter(String ch){
+		char c = Character.toLowerCase(ch.charAt(0));
+		if(!Character.isLetter(c))
+			return &quot;Not an alphabet&quot;;
+		if(c == &#x27;a&#x27; || c == &#x27;e&#x27; || c == &#x27;i&#x27; || c == &#x27;o&#x27; || c == &#x27;u&#x27;)
+			return &quot;VOWEL&quot;;
+		else
+			return &quot;CONSONANT&quot;;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: reverse a number. Operations: int reverse(int n). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s23q2client/S23Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S23Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S23Q2Server/services/S23Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S23Q2ServerSoapBindingStub stub = new S23Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter positive integer number&quot;);
+		int n = sc.nextInt();
+		System.out.println(&quot;Reverse: &quot; + stub.reverse(n));
+	}
+}</code></pre>
+<div class="fl">s23q2server/S23Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S23Q2Server {
+
+	public int reverse(int n){
+		int rev = 0;
+		while(n &gt; 0){
+			rev = rev * 10 + n % 10;
+			n = n / 10;
+		}
+		return rev;
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip24"><summary>Slip 24</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: total marks, average, class obtained. Operations: int totalMarks(int m1, int m2, int m3); double average(int m1, int m2, int m3); String classObtained(int m1, int m2, int m3). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s24q1client/S24Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S24Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S24Q1Server/services/S24Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S24Q1ServerSoapBindingStub stub = new S24Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter marks of three subjects&quot;);
+		int m1 = sc.nextInt();
+		int m2 = sc.nextInt();
+		int m3 = sc.nextInt();
+		System.out.println(&quot;Total: &quot; + stub.totalMarks(m1, m2, m3));
+		System.out.println(&quot;Average: &quot; + stub.average(m1, m2, m3));
+		System.out.println(&quot;Class: &quot; + stub.classObtained(m1, m2, m3));
+	}
+}</code></pre>
+<div class="fl">s24q1server/S24Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S24Q1Server {
+
+	public int totalMarks(int m1, int m2, int m3){
+		return m1 + m2 + m3;
+	}
+
+	public double average(int m1, int m2, int m3){
+		return totalMarks(m1, m2, m3) / 3.0;
+	}
+
+	public String classObtained(int m1, int m2, int m3){
+		double avg = average(m1, m2, m3);
+		if(avg &gt;= 70)
+			return &quot;Distinction&quot;;
+		else if(avg &gt;= 60)
+			return &quot;First Class&quot;;
+		else if(avg &gt;= 50)
+			return &quot;Second Class&quot;;
+		else if(avg &gt;= 40)
+			return &quot;Pass Class&quot;;
+		else
+			return &quot;Fail&quot;;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) that accepts an ID, fetches that record from the `student` table in the Oracle database using JDBC, and displays it. Write a client that calls the service. [void findStudent(int sno)]</div><h4>Answer</h4><div class="fl">s24q2client/S24Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S24Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S24Q2Server/services/S24Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S24Q2ServerSoapBindingStub stub = new S24Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter Student Number&quot;);
+		int sno = sc.nextInt();
+		stub.findStudent(sno);
+	}
+}</code></pre>
+<div class="fl">s24q2server/S24Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+import java.sql.*;
+
+public class S24Q2Server {
+
+	public void findStudent(int sno){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;);
+
+			String url = &quot;jdbc:oracle:thin:@localhost:1521:xe&quot;;
+			String user = &quot;system&quot;;
+			String pass = &quot;system&quot;;
+
+			con = DriverManager.getConnection(url, user, pass);
+			System.out.println(&quot;Connected to Database.&quot;);
+
+			String sql = &quot;SELECT * FROM student WHERE sno = ?&quot;;
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, sno);
+
+			rs = pstmt.executeQuery();
+			boolean found = false;
+			while (rs.next()) {
+				found = true;
+				System.out.println(
+					rs.getInt(&quot;sno&quot;) + &quot; &quot; + rs.getString(&quot;sname&quot;) + &quot; &quot; + rs.getString(&quot;sclass&quot;) + &quot; &quot; + rs.getDouble(&quot;sper&quot;)
+				);
+			}
+			if(!found) {
+				System.out.println(&quot;No Student Found&quot;);
+			}
+		} catch (ClassNotFoundException e){
+			System.out.println(&quot;JDBC not found&quot;);
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println(&quot;Database Error&quot;);
+			e.printStackTrace();
+		} finally {
+			try {if (rs != null) rs.close();} catch (SQLException e) {}
+			try {if (pstmt != null) pstmt.close();} catch (SQLException e) {}
+			try {if (con != null) con.close();} catch (SQLException e) {}
+		}
+	}
+}</code></pre>
+</div></details><details class="slip" id="slip25"><summary>Slip 25</summary><div class="q"><h4>Q1</h4><div class="qt">Create a web service (Apache Axis, Java) providing: total marks, percentage. Operations: int totalMarks(int physics, int maths, int chemistry, int biology, int marathi, int english); double percentage(int physics, int maths, int chemistry, int biology, int marathi, int english). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s25q1client/S25Q1Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S25Q1Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S25Q1Server/services/S25Q1Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S25Q1ServerSoapBindingStub stub = new S25Q1ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter marks of physics, maths, chemistry, biology, marathi, english&quot;);
+		int p = sc.nextInt();
+		int m = sc.nextInt();
+		int c = sc.nextInt();
+		int b = sc.nextInt();
+		int ma = sc.nextInt();
+		int e = sc.nextInt();
+		System.out.println(&quot;Total: &quot; + stub.totalMarks(p, m, c, b, ma, e));
+		System.out.println(&quot;Percentage: &quot; + stub.percentage(p, m, c, b, ma, e));
+	}
+}</code></pre>
+<div class="fl">s25q1server/S25Q1Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S25Q1Server {
+
+	public int totalMarks(int physics, int maths, int chemistry, int biology, int marathi, int english){
+		return physics + maths + chemistry + biology + marathi + english;
+	}
+
+	public double percentage(int physics, int maths, int chemistry, int biology, int marathi, int english){
+		return totalMarks(physics, maths, chemistry, biology, marathi, english) / 6.0;
+	}
+}</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a web service (Apache Axis, Java) providing: currency/unit conversion. Operations: double convert(double rupees, String type). Write a client that invokes the service.</div><h4>Answer</h4><div class="fl">s25q2client/S25Q2Client.java</div><pre class="code"><code>package com.mit.services;
+
+import java.util.Scanner;
+
+public class S25Q2Client {
+	public static void main(String args[]) throws Exception{
+		java.net.URL endpointUrl = new java.net.URL(&quot;http://localhost:8080/S25Q2Server/services/S25Q2Server&quot;);
+		org.apache.axis.client.Service service = new org.apache.axis.client.Service();
+		S25Q2ServerSoapBindingStub stub = new S25Q2ServerSoapBindingStub(endpointUrl, service);
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println(&quot;Enter amount in Rupees&quot;);
+		double amt = sc.nextDouble();
+		System.out.println(&quot;Enter type of conversion (dollar/pound/euro)&quot;);
+		String type = sc.next();
+		System.out.println(&quot;Converted amount: &quot; + stub.convert(amt, type));
+	}
+}</code></pre>
+<div class="fl">s25q2server/S25Q2Server.java</div><pre class="code"><code>package com.mit.services;
+
+public class S25Q2Server {
+
+	public double convert(double rupees, String type){
+		if(type.equalsIgnoreCase(&quot;dollar&quot;))
+			return rupees / 83.0;
+		else if(type.equalsIgnoreCase(&quot;pound&quot;))
+			return rupees / 105.0;
+		else if(type.equalsIgnoreCase(&quot;euro&quot;))
+			return rupees / 90.0;
+		else
+			return -1;
+	}
+}</code></pre>
+</div></details></main></body></html>

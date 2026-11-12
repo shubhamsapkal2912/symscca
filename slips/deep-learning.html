@@ -1,0 +1,1142 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Learning Slips</title><link rel="stylesheet" href="../css/main.css"><style>
+.sl{max-width:1000px;margin:0 auto;padding:16px}
+.slip{border:1px solid var(--border-color,#8884);border-radius:10px;margin:14px 0;padding:0 14px}
+.slip>summary{cursor:pointer;font-weight:700;padding:12px 0;font-size:1.1rem}
+.q{margin:10px 0 18px}.q h4{margin:6px 0}
+.qt{background:#4f8cff18;border-left:4px solid #4f8cff;padding:8px 12px;border-radius:4px}
+.fl{font:600 .85rem monospace;margin:10px 0 2px;opacity:.8}
+pre.code{overflow:auto;background:#0d1117;color:#e6edf3;padding:12px;border-radius:8px;font-size:.82rem;line-height:1.45;max-height:520px}
+.note{font-size:.85rem;opacity:.8}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.card{display:block;border:1px solid #8884;border-radius:10px;padding:16px;text-decoration:none;color:inherit}
+.card:hover{border-color:#4f8cff}
+</style><script defer src="../js/main.js"></script></head><body>
+<header class="header-nav"><div class="nav-container"><a href="index.html" class="nav-brand"><span>🧪 Practical Slips</span></a>
+<div class="nav-controls"><button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button><a href="../index.html" class="nav-btn">🏠 Home</a></div></div></header>
+<main class="sl"><p><a href="index.html">← All subjects</a></p><h1>Deep Learning — Practical Slips</h1><p class="note">Questions are taken from the DL question paper (DL.pdf). Q3 in every slip is Viva (oral).</p><p>25 slips. Click a slip to expand.</p><details class="slip" id="slip1"><summary>Slip 1</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to compute the output of a single neuron for input x = 3, weight w = 2, and bias b = 1.</div><h4>Answer</h4><div class="fl">s1q1.py</div><pre class="code"><code># Single neuron: y = x*w + b
+x = 3
+w = 2
+b = 1
+
+y = x * w + b
+print(&quot;Output&quot;, y)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Implement a CNN model to classify CIFAR-10 dataset images.</div><h4>Answer</h4><div class="fl">s1q2.py</div><pre class="code"><code>import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# Load CIFAR-10 dataset
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar10.load_data()
+
+# Normalize images
+x_train = x_train.astype(&quot;float32&quot;) / 255.0
+x_test = x_test.astype(&quot;float32&quot;) / 255.0
+
+# Build CNN model
+model = models.Sequential([
+    layers.Conv2D(32, (3, 3), activation=&quot;relu&quot;, input_shape=(32, 32, 3)),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Conv2D(64, (3, 3), activation=&quot;relu&quot;),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Flatten(),
+
+    layers.Dense(128, activation=&quot;relu&quot;),
+    layers.Dense(10, activation=&quot;softmax&quot;)
+])
+
+model.compile(
+    optimizer=&quot;adam&quot;,
+    loss=&quot;sparse_categorical_crossentropy&quot;,
+    metrics=[&quot;accuracy&quot;]
+)
+
+model.summary()
+
+model.fit(x_train, y_train, epochs=5, batch_size=128)
+
+loss, accuracy = model.evaluate(x_test, y_test)
+
+print(&quot;Test Accuracy:&quot;, accuracy * 100, &quot;%&quot;)</code></pre>
+</div></details><details class="slip" id="slip2"><summary>Slip 2</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to compute the sigmoid activation for input x = 0.5</div><h4>Answer</h4><div class="fl">s2q1.py</div><pre class="code"><code>import numpy as np
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+result = sigmoid(0.5)
+print(&quot;sigmoid 0.5=&quot;, result)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Write a Python program to visualize feature maps from the first convolutional layer.</div><h4>Answer</h4><div class="fl">s2q2.py</div><pre class="code"><code>import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# Load MNIST dataset
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
+
+# Normalize images
+x_train = x_train.astype(&quot;float32&quot;) / 255.0
+x_test = x_test.astype(&quot;float32&quot;) / 255.0
+
+# Add channel dimension
+x_train = x_train[..., tf.newaxis]
+x_test = x_test[..., tf.newaxis]
+
+# Build CNN model
+model = models.Sequential([
+    layers.Conv2D(32, (3, 3), activation=&quot;relu&quot;, input_shape=(28, 28, 1)),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Conv2D(64, (3, 3), activation=&quot;relu&quot;),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Flatten(),
+
+    layers.Dense(128, activation=&quot;relu&quot;),
+    layers.Dense(10, activation=&quot;softmax&quot;)
+])
+
+# Compile model
+model.compile(
+    optimizer=&quot;adam&quot;,
+    loss=&quot;sparse_categorical_crossentropy&quot;,
+    metrics=[&quot;accuracy&quot;]
+)
+
+import matplotlib.pyplot as plt
+from tensorflow.keras.models import Model
+
+# Train for one epoch
+model.fit(x_train, y_train, epochs=1, batch_size=128)
+
+# Model that outputs the first convolutional layer
+feature_model = Model(inputs=model.inputs, outputs=model.layers[0].output)
+
+# Feature maps for one image
+img = x_test[0:1]
+feature_maps = feature_model.predict(img)
+
+# Plot 32 feature maps
+plt.figure(figsize=(12, 6))
+for i in range(32):
+    plt.subplot(4, 8, i + 1)
+    plt.imshow(feature_maps[0, :, :, i], cmap=&quot;gray&quot;)
+    plt.axis(&quot;off&quot;)
+plt.show()</code></pre>
+</div></details><details class="slip" id="slip3"><summary>Slip 3</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to compute the tanh activation function for input x = 0.5</div><h4>Answer</h4><div class="fl">s3q1.py</div><pre class="code"><code>import numpy as np
+
+x = 0.5
+t = np.tanh(x)
+print(&quot;tanh 0.5 = &quot;, t)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Write a Python function to compute forward propagation in a single-layer network.</div><h4>Answer</h4><div class="fl">s3q2.py</div><pre class="code"><code>import numpy as np
+
+# Forward propagation in a single-layer network
+def forward(x, w, b):
+    z = np.dot(x, w) + b
+    y = 1 / (1 + np.exp(-z))
+    return z, y
+
+x = np.array([[1, 2], [3, 4]])
+w = np.array([[0.5, 0.2], [0.3, 0.8]])
+b = np.array([0.1, 0.2])
+
+z, y = forward(x, w, b)
+
+print(&quot;Weighted Sum&quot;, z)
+print(&quot;output&quot;, y)</code></pre>
+</div></details><details class="slip" id="slip4"><summary>Slip 4</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to compute the output of a single neuron with two inputs x = [1, 2], weights w = [0.5, 0.5], and bias b = 0.</div><h4>Answer</h4><div class="fl">s4q1.py</div><pre class="code"><code>import numpy as np
+
+x = np.array([1, 2])
+w = np.array([0.5, 0.5])
+b = 0
+
+y = np.dot(x, w) + b
+print(&quot;neuron output =&quot;, y)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a Python function to compare the outputs of sigmoid and tanh activations for the same inputs.</div><h4>Answer</h4><div class="fl">s4q2.py</div><pre class="code"><code>import numpy as np
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+def tanh(x):
+    return (np.exp(x) - np.exp(-x)) / (np.exp(x) + np.exp(-x))
+
+# Compare sigmoid and tanh for the same inputs
+def compare(x):
+    print(&quot;x     | sigmoid | tanh&quot;)
+    for i in x:
+        print(i, &quot;|&quot;, round(sigmoid(i), 4), &quot;|&quot;, round(tanh(i), 4))
+
+x = np.array([-2, -1, 0, 1, 2])
+compare(x)</code></pre>
+</div></details><details class="slip" id="slip5"><summary>Slip 5</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to plot the sigmoid activation function for values from -5 to +5.</div><h4>Answer</h4><div class="fl">s5q1.py</div><pre class="code"><code>import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(-5, 5, 100)
+y = 1 / (1 + np.exp(-x))
+
+plt.plot(x, y)
+plt.grid()
+
+plt.title(&quot;Sigmoid function&quot;)
+plt.xlabel(&quot;input&quot;)
+plt.ylabel(&quot;sigmoid(x)&quot;)
+
+plt.show()</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Write a program to compare training accuracy of CNNs with different kernel sizes.</div><h4>Answer</h4><div class="fl">s5q2.py</div><pre class="code"><code>import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# Load MNIST dataset
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
+
+# Normalize images
+x_train = x_train.astype(&quot;float32&quot;) / 255.0
+x_test = x_test.astype(&quot;float32&quot;) / 255.0
+
+# Add channel dimension
+x_train = x_train[..., tf.newaxis]
+x_test = x_test[..., tf.newaxis]
+import matplotlib.pyplot as plt
+
+# Compare CNNs with different kernel sizes
+kernel_sizes = [(3, 3), (5, 5), (7, 7)]
+accuracies = []
+
+for k in kernel_sizes:
+    model = models.Sequential([
+        layers.Conv2D(32, k, activation=&quot;relu&quot;, input_shape=(28, 28, 1)),
+        layers.MaxPooling2D((2, 2)),
+
+        layers.Flatten(),
+
+        layers.Dense(128, activation=&quot;relu&quot;),
+        layers.Dense(10, activation=&quot;softmax&quot;)
+    ])
+
+    model.compile(
+        optimizer=&quot;adam&quot;,
+        loss=&quot;sparse_categorical_crossentropy&quot;,
+        metrics=[&quot;accuracy&quot;]
+    )
+
+    history = model.fit(x_train, y_train, epochs=3, batch_size=128)
+
+    acc = history.history[&quot;accuracy&quot;][-1]
+    accuracies.append(acc)
+    print(&quot;Kernel&quot;, k, &quot;Training Accuracy:&quot;, acc)
+
+plt.bar([str(k) for k in kernel_sizes], accuracies)
+plt.title(&quot;Training Accuracy vs Kernel Size&quot;)
+plt.xlabel(&quot;Kernel size&quot;)
+plt.ylabel(&quot;Accuracy&quot;)
+plt.show()</code></pre>
+</div></details><details class="slip" id="slip6"><summary>Slip 6</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to plot the tanh activation function for values from -5 to +5.</div><h4>Answer</h4><div class="fl">s6q1.py</div><pre class="code"><code>import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(-5, 5, 100)
+y = np.tanh(x)
+
+plt.plot(x, y)
+plt.grid()
+plt.title(&quot;Tanh function&quot;)
+plt.xlabel(&quot;input&quot;)
+plt.ylabel(&quot;tanh(x)&quot;)
+
+plt.show()</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Write a Python program to visualize segmentation results for multiple images in one figure.</div><h4>Answer</h4><div class="fl">s6q2.py</div><pre class="code"><code>import numpy as np
+import matplotlib.pyplot as plt
+import tensorflow as tf
+
+# Load MNIST dataset
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
+
+x_test = x_test.astype(&quot;float32&quot;) / 255.0
+
+# Simple threshold segmentation: pixel &gt; 0.5 is foreground
+images = x_test[:5]
+masks = images &gt; 0.5
+
+# Show original and segmented images in one figure
+plt.figure(figsize=(10, 4))
+for i in range(5):
+    plt.subplot(2, 5, i + 1)
+    plt.imshow(images[i], cmap=&quot;gray&quot;)
+    plt.title(&quot;Original&quot;)
+    plt.axis(&quot;off&quot;)
+
+    plt.subplot(2, 5, i + 6)
+    plt.imshow(masks[i], cmap=&quot;gray&quot;)
+    plt.title(&quot;Segmented&quot;)
+    plt.axis(&quot;off&quot;)
+
+plt.show()</code></pre>
+</div></details><details class="slip" id="slip7"><summary>Slip 7</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to compute the output of the ReLU activation function for the inputs [-2, -1, 0, 1, 2].</div><h4>Answer</h4><div class="fl">s7q1.py</div><pre class="code"><code>import numpy as np
+
+x = np.array([-2, -1, 0, 1, 2])
+
+def relu(x):
+    return np.maximum(0, x)
+
+result = relu(x)
+print(&quot;Activation&quot;, result)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Build a bidirectional LSTM for IMDB sentiment classification.</div><h4>Answer</h4><div class="fl">s7q2.py</div><pre class="code"><code>from tensorflow.keras.datasets import imdb
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, SimpleRNN, LSTM, GRU, Bidirectional, Dropout, Dense
+
+# Load IMDB dataset
+(x_train, y_train), (x_test, y_test) = imdb.load_data(num_words=10000)
+
+# Pad sequences
+x_train = pad_sequences(x_train, maxlen=200)
+x_test = pad_sequences(x_test, maxlen=200)
+
+# Create Bidirectional LSTM model
+model = Sequential()
+model.add(Embedding(10000, 32, input_length=200))
+model.add(Bidirectional(LSTM(32)))
+model.add(Dense(1, activation=&#x27;sigmoid&#x27;))
+
+# Compile model
+model.compile(
+    optimizer=&#x27;adam&#x27;,
+    loss=&#x27;binary_crossentropy&#x27;,
+    metrics=[&#x27;accuracy&#x27;]
+)
+
+# Train model
+model.fit(
+    x_train,
+    y_train,
+    epochs=3,
+    batch_size=64,
+    validation_split=0.2
+)
+
+# Evaluate model
+loss, accuracy = model.evaluate(x_test, y_test)
+print(&quot;Test Accuracy:&quot;, accuracy * 100, &quot;%&quot;)</code></pre>
+</div></details><details class="slip" id="slip8"><summary>Slip 8</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to implement a step activation function for any input value x.</div><h4>Answer</h4><div class="fl">s8q1.py</div><pre class="code"><code>import numpy as np
+
+x = -3
+y = np.where(x &gt;= 0, 1, 0)
+print(y)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a Python program to tokenize custom movie reviews and predict sentiment.</div><h4>Answer</h4><div class="fl">s8q2.py</div><pre class="code"><code>import numpy as np
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, LSTM, Dense
+
+# Custom movie reviews (1 = positive, 0 = negative)
+reviews = [
+    &quot;this movie is great&quot;,
+    &quot;i loved this film&quot;,
+    &quot;amazing acting and story&quot;,
+    &quot;this movie is terrible&quot;,
+    &quot;i hated this film&quot;,
+    &quot;boring and bad story&quot;
+]
+labels = np.array([1, 1, 1, 0, 0, 0])
+
+# Tokenize and pad
+tokenizer = Tokenizer(num_words=1000)
+tokenizer.fit_on_texts(reviews)
+sequences = tokenizer.texts_to_sequences(reviews)
+x = pad_sequences(sequences, maxlen=6)
+
+# Build model
+model = Sequential([
+    Embedding(1000, 8, input_length=6),
+    LSTM(8),
+    Dense(1, activation=&#x27;sigmoid&#x27;)
+])
+
+model.compile(optimizer=&#x27;adam&#x27;, loss=&#x27;binary_crossentropy&#x27;, metrics=[&#x27;accuracy&#x27;])
+model.fit(x, labels, epochs=50, verbose=0)
+
+# Predict sentiment of new custom reviews
+new_reviews = [&quot;what a great film&quot;, &quot;bad and boring movie&quot;]
+new_seq = pad_sequences(tokenizer.texts_to_sequences(new_reviews), maxlen=6)
+pred = model.predict(new_seq)
+
+for r, p in zip(new_reviews, pred):
+    print(r, &quot;-&gt;&quot;, &quot;Positive&quot; if p[0] &gt; 0.5 else &quot;Negative&quot;, p[0])</code></pre>
+</div></details><details class="slip" id="slip9"><summary>Slip 9</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to compute the output of the Leaky ReLU activation function for input x = -3.</div><h4>Answer</h4><div class="fl">s9q1.py</div><pre class="code"><code>x = -3
+a = 0.01
+
+def leaky_relu(x):
+    if x &gt; 0:
+        return x
+    else:
+        return x * a
+
+print(&quot;Leaky ReLU output:&quot;, leaky_relu(x))</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Compare model performance between SimpleRNN, LSTM, and GRU on the same dataset.</div><h4>Answer</h4><div class="fl">s9q2.py</div><pre class="code"><code>from tensorflow.keras.datasets import imdb
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, SimpleRNN, LSTM, GRU, Bidirectional, Dropout, Dense
+
+# Load IMDB dataset
+(x_train, y_train), (x_test, y_test) = imdb.load_data(num_words=10000)
+
+# Pad sequences
+x_train = pad_sequences(x_train, maxlen=200)
+x_test = pad_sequences(x_test, maxlen=200)
+
+# Compare SimpleRNN, LSTM and GRU on the same dataset
+for layer in [SimpleRNN, LSTM, GRU]:
+    model = Sequential([
+        Embedding(10000, 32, input_length=200),
+        layer(32),
+        Dense(1, activation=&#x27;sigmoid&#x27;)
+    ])
+
+    model.compile(
+        optimizer=&#x27;adam&#x27;,
+        loss=&#x27;binary_crossentropy&#x27;,
+        metrics=[&#x27;accuracy&#x27;]
+    )
+
+    model.fit(x_train, y_train, epochs=3, batch_size=64, validation_split=0.2)
+
+    loss, accuracy = model.evaluate(x_test, y_test)
+    print(layer.__name__, &quot;Test Accuracy:&quot;, accuracy * 100, &quot;%&quot;)</code></pre>
+</div></details><details class="slip" id="slip10"><summary>Slip 10</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to build a simple neural network in Keras to solve the XOR problem.</div><h4>Answer</h4><div class="fl">s10q1.py</div><pre class="code"><code>import numpy as np
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+x = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y = np.array([0, 1, 1, 0])
+
+model = Sequential()
+model.add(Dense(4, input_dim=2, activation=&#x27;tanh&#x27;))
+model.add(Dense(1, activation=&#x27;sigmoid&#x27;))
+
+model.compile(
+    optimizer=&#x27;adam&#x27;,
+    loss=&#x27;binary_crossentropy&#x27;,
+    metrics=[&#x27;accuracy&#x27;]
+)
+
+model.fit(x, y, epochs=1000)
+
+pred = (model.predict(x) &gt; 0.5).astype(int)
+
+print(pred)
+
+for i in range(len(x)):
+    print(int(x[i][0]), &#x27;|&#x27;, int(x[i][1]), &#x27;|&#x27;, pred[i][0])</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Write a Python program to visualize training accuracy and loss for LSTM model.</div><h4>Answer</h4><div class="fl">s10q2.py</div><pre class="code"><code>from tensorflow.keras.datasets import imdb
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, SimpleRNN, LSTM, GRU, Bidirectional, Dropout, Dense
+
+# Load IMDB dataset
+(x_train, y_train), (x_test, y_test) = imdb.load_data(num_words=10000)
+
+# Pad sequences
+x_train = pad_sequences(x_train, maxlen=200)
+x_test = pad_sequences(x_test, maxlen=200)
+import matplotlib.pyplot as plt
+
+# Create LSTM model
+model = Sequential()
+model.add(Embedding(10000, 32, input_length=200))
+model.add(LSTM(32))
+model.add(Dense(1, activation=&#x27;sigmoid&#x27;))
+
+model.compile(
+    optimizer=&#x27;adam&#x27;,
+    loss=&#x27;binary_crossentropy&#x27;,
+    metrics=[&#x27;accuracy&#x27;]
+)
+
+# Train model
+history = model.fit(
+    x_train,
+    y_train,
+    epochs=3,
+    batch_size=64,
+    validation_split=0.2
+)
+
+# Plot training accuracy
+plt.plot(history.history[&quot;accuracy&quot;])
+plt.title(&quot;Training Accuracy&quot;)
+plt.xlabel(&quot;Epoch&quot;)
+plt.ylabel(&quot;Accuracy&quot;)
+plt.show()
+
+# Plot training loss
+plt.plot(history.history[&quot;loss&quot;])
+plt.title(&quot;Training Loss&quot;)
+plt.xlabel(&quot;Epoch&quot;)
+plt.ylabel(&quot;Loss&quot;)
+plt.show()</code></pre>
+</div></details><details class="slip" id="slip11"><summary>Slip 11</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to plot the ReLU and Leaky ReLU activation functions.</div><h4>Answer</h4><div class="fl">s11q1.py</div><pre class="code"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+def leakyRELU(x):
+    a = 0.01
+    if x &gt; 0:
+        return x
+    else:
+        return x * a
+
+x = np.linspace(-10, 10, 100)
+y = np.maximum(0, x)
+z = [leakyRELU(i) for i in x]
+
+plt.plot(x, y)
+plt.plot(x, z)
+plt.grid()
+
+plt.show()</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Compare training time between LSTM-based and GRU-based Seq2Seq models.</div><h4>Answer</h4><div class="fl">s11q2.py</div><pre class="code"><code>import time
+import numpy as np
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, LSTM, GRU, Dense
+
+x = np.array([[1, 2, 3], [2, 3, 4]])
+y = np.array([[2, 3, 4], [3, 4, 5]])
+
+for layer in [LSTM, GRU]:
+    model = Sequential([
+        Embedding(10, 8),
+        layer(8, return_sequences=True),
+        Dense(10, activation=&#x27;softmax&#x27;)
+    ])
+    model.compile(optimizer=&#x27;adam&#x27;, loss=&#x27;sparse_categorical_crossentropy&#x27;)
+
+    start = time.time()
+    model.fit(x, np.expand_dims(y, -1), epochs=2, verbose=0)
+
+    print(layer.__name__, &quot;Training Time:&quot;, round(time.time() - start, 2))</code></pre>
+</div></details><details class="slip" id="slip12"><summary>Slip 12</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to compute the softmax of the array [1, 2, 3].</div><h4>Answer</h4><div class="fl">s12q1.py</div><pre class="code"><code>import numpy as np
+
+x = np.array([1, 2, 3])
+softmax = np.exp(x) / np.sum(np.exp(x))
+print(softmax)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a function to display word-level alignment between source and predicted target.</div><h4>Answer</h4><div class="fl">s12q2.py</div><pre class="code"><code># Display word-level alignment between source and predicted target
+def show_alignment(source, predicted):
+    src_words = source.split()
+    tgt_words = predicted.split()
+
+    print(&quot;Source | Predicted&quot;)
+    print(&quot;-----------------&quot;)
+    for s, t in zip(src_words, tgt_words):
+        print(s, &quot; -&gt; &quot;, t)
+
+source = &quot;I love deep learning&quot;
+predicted = &quot;Mi piace apprendimento profondo&quot;
+
+show_alignment(source, predicted)</code></pre>
+</div></details><details class="slip" id="slip13"><summary>Slip 13</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to create a two-layer perceptron using Keras with input dimension 2 and output dimension 1.</div><h4>Answer</h4><div class="fl">s13q1.py</div><pre class="code"><code>import numpy as np
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+x = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y = np.array([0, 0, 0, 1])
+
+model = Sequential()
+model.add(Dense(2, input_dim=2, activation=&#x27;tanh&#x27;))
+model.add(Dense(1, activation=&#x27;sigmoid&#x27;))
+
+model.compile(
+    optimizer=&#x27;adam&#x27;,
+    loss=&#x27;binary_crossentropy&#x27;,
+    metrics=[&#x27;accuracy&#x27;]
+)
+
+model.fit(x, y, epochs=500)
+
+pred = (model.predict(x) &gt; 0.5).astype(int)
+
+print(pred)
+
+for i in range(len(x)):
+    print(int(x[i][0]), &#x27;|&#x27;, int(x[i][1]), &#x27;|&#x27;, pred[i][0])</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Write a Python function to test your trained model on unseen text samples.</div><h4>Answer</h4><div class="fl">s13q2.py</div><pre class="code"><code>from tensorflow.keras.datasets import imdb
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, SimpleRNN, LSTM, GRU, Bidirectional, Dropout, Dense
+
+# Load IMDB dataset
+(x_train, y_train), (x_test, y_test) = imdb.load_data(num_words=10000)
+
+# Pad sequences
+x_train = pad_sequences(x_train, maxlen=200)
+x_test = pad_sequences(x_test, maxlen=200)
+
+# Create and train LSTM model
+model = Sequential()
+model.add(Embedding(10000, 32, input_length=200))
+model.add(LSTM(32))
+model.add(Dense(1, activation=&#x27;sigmoid&#x27;))
+
+model.compile(
+    optimizer=&#x27;adam&#x27;,
+    loss=&#x27;binary_crossentropy&#x27;,
+    metrics=[&#x27;accuracy&#x27;]
+)
+
+model.fit(x_train, y_train, epochs=3, batch_size=64, validation_split=0.2)
+
+# Word index of IMDB dataset (indices are shifted by 3 in the dataset)
+word_index = imdb.get_word_index()
+
+# Test the trained model on unseen text samples
+def predict_text(text):
+    words = text.lower().split()
+    seq = [word_index.get(w, 0) + 3 for w in words]
+    seq = [i if i &lt; 10000 else 2 for i in seq]
+    seq = pad_sequences([seq], maxlen=200)
+    pred = model.predict(seq)[0][0]
+    return &quot;Positive&quot; if pred &gt; 0.5 else &quot;Negative&quot;, pred
+
+samples = [&quot;this movie was great and wonderful&quot;, &quot;this movie was terrible and boring&quot;]
+
+for s in samples:
+    print(s, &quot;-&gt;&quot;, predict_text(s))</code></pre>
+</div></details><details class="slip" id="slip14"><summary>Slip 14</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to implement Depth-Limited Search (DLS) algorithm.</div><h4>Answer</h4><div class="fl">s14q1.py</div><pre class="code"><code># Depth-Limited Search (DLS)
+graph = {
+    &#x27;A&#x27;: [&#x27;B&#x27;, &#x27;C&#x27;],
+    &#x27;B&#x27;: [&#x27;D&#x27;, &#x27;E&#x27;],
+    &#x27;C&#x27;: [&#x27;F&#x27;],
+    &#x27;D&#x27;: [],
+    &#x27;E&#x27;: [],
+    &#x27;F&#x27;: []
+}
+
+def dls(node, goal, limit):
+    print(&quot;Visiting:&quot;, node)
+    if node == goal:
+        return True
+    if limit &lt;= 0:
+        return False
+    for child in graph[node]:
+        if dls(child, goal, limit - 1):
+            return True
+    return False
+
+start = &#x27;A&#x27;
+goal = &#x27;F&#x27;
+limit = 2
+
+if dls(start, goal, limit):
+    print(&quot;Goal found within depth limit&quot;)
+else:
+    print(&quot;Goal not found within depth limit&quot;)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Write a Python program to perform gradient descent to minimize the function f(x) = x²</div><h4>Answer</h4><div class="fl">s14q2.py</div><pre class="code"><code>def gradient_descent(x, learning_rate, epochs):
+    for i in range(epochs):
+        gradient = 2 * x
+        x = x - learning_rate * gradient
+        print(f&quot;Iteration {i+1}:x={x:.6f}, f(x)={x**2:.6f}&quot;)
+
+    return x
+
+x = 4
+learning_rate = 0.1
+epochs = 20
+
+result = gradient_descent(x, learning_rate, epochs)
+
+print(&quot;\nMinimum value occurs at x =&quot;, round(result, 6))
+print(&quot;Minimum function value =&quot;, round(result**2, 6))</code></pre>
+</div></details><details class="slip" id="slip15"><summary>Slip 15</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program for a single neuron with 2 inputs and a bias. Use a sigmoid activation function. Calculate output for given inputs.</div><h4>Answer</h4><div class="fl">s15q1.py</div><pre class="code"><code>import numpy as np
+
+x = np.array([1, 1])
+w = np.array([0.5, 0.5])
+b = 0.1
+
+z = np.dot(x, w) + b
+sig = 1 / (1 + np.exp(-z))
+print(&quot;output of single neuron&quot;, sig)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Create a Python function that trains a multilayer perceptron on a small dataset using forward and backward passes. Output loss after each epoch.</div><h4>Answer</h4><div class="fl">s15q2.py</div><pre class="code"><code>import numpy as np
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+# Train MLP (2-2-1) using forward and backward passes
+def train_mlp(x, y, epochs, lr):
+    np.random.seed(0)
+    w1 = np.random.randn(2, 2)
+    b1 = np.zeros((1, 2))
+    w2 = np.random.randn(2, 1)
+    b2 = np.zeros((1, 1))
+
+    for epoch in range(epochs):
+        # Forward pass
+        h = sigmoid(np.dot(x, w1) + b1)
+        out = sigmoid(np.dot(h, w2) + b2)
+
+        loss = np.mean((y - out) ** 2)
+
+        # Backward pass
+        d_out = (out - y) * out * (1 - out)
+        d_h = np.dot(d_out, w2.T) * h * (1 - h)
+
+        w2 -= lr * np.dot(h.T, d_out)
+        b2 -= lr * np.sum(d_out, axis=0, keepdims=True)
+        w1 -= lr * np.dot(x.T, d_h)
+        b1 -= lr * np.sum(d_h, axis=0, keepdims=True)
+
+        print(&quot;Epoch&quot;, epoch + 1, &quot;Loss:&quot;, loss)
+
+x = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y = np.array([[0], [1], [1], [0]])
+
+train_mlp(x, y, epochs=20, lr=0.5)</code></pre>
+</div></details><details class="slip" id="slip16"><summary>Slip 16</summary><div class="q"><h4>Q1</h4><div class="qt">Implement a multilayer perceptron with one hidden layer (2 neurons) and one output neuron. Use sigmoid activation. Use fixed weights and biases and calculate output for sample input.</div><h4>Answer</h4><div class="fl">s16q1.py</div><pre class="code"><code>import numpy as np
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+x1 = 1
+x2 = 0
+
+w11 = 0.5
+w12 = 0.6
+w21 = -0.2
+w22 = 0.3
+b1 = 0.1
+b2 = 0.5
+
+h1 = sigmoid((x1 * w11) + (x2 * w12) + b1)
+h2 = sigmoid((x1 * w21) + (x2 * w22) + b2)
+
+wo1 = 0.5
+wo2 = 0.2
+bo = 0.1
+
+h3 = sigmoid((h1 * wo1) + (h2 * wo2) + bo)
+print(&quot;Hidden layer&quot;, h1)
+print(&quot;\nHidden layer&quot;, h2)
+print(&quot;\noutput Layer&quot;, h3)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Implement a single layer perceptron to learn the AND logic gate. Use a step activation function. Train the perceptron using the perceptron learning rule.</div><h4>Answer</h4><div class="fl">s16q2.py</div><pre class="code"><code>import numpy as np
+
+# Perceptron learning rule for AND gate with step activation
+def step(x):
+    return 1 if x &gt;= 0 else 0
+
+x = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+t = np.array([0, 0, 0, 1])
+
+w = np.zeros(2)
+b = 0
+lr = 0.1
+
+for epoch in range(10):
+    for i in range(len(x)):
+        z = np.dot(x[i], w) + b
+        y = step(z)
+        error = t[i] - y
+        w = w + lr * error * x[i]
+        b = b + lr * error
+
+print(&quot;x1 | x2 | t&quot;)
+print(&quot;-------------&quot;)
+for x1, x2 in x:
+    z = (x1 * w[0]) + (x2 * w[1]) + b
+    print(x1, &#x27; |&#x27;, x2, &#x27; |&#x27;, step(z))</code></pre>
+</div></details><details class="slip" id="slip17"><summary>Slip 17</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to load the MNIST dataset and display the first image.</div><h4>Answer</h4><div class="fl">s17q1.py</div><pre class="code"><code>import tensorflow as tf
+import matplotlib.pyplot as plt
+
+# Load MNIST dataset
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
+
+# Display first image
+plt.imshow(x_train[0])
+plt.title(&quot;Label: &quot; + str(y_train[0]))
+plt.show()</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Write a Python program to plot a grayscale image using matplotlib from the MNIST dataset.</div><h4>Answer</h4><div class="fl">s17q2.py</div><pre class="code"><code>import tensorflow as tf
+import matplotlib.pyplot as plt
+
+# Load MNIST dataset
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
+
+# Plot grayscale image
+plt.imshow(x_train[0], cmap=&quot;gray&quot;)
+plt.title(&quot;Label: &quot; + str(y_train[0]))
+plt.show()</code></pre>
+</div></details><details class="slip" id="slip18"><summary>Slip 18</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to train the CNN model for one epoch using the MNIST dataset</div><h4>Answer</h4><div class="fl">s18q1.py</div><pre class="code"><code>import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# Load MNIST dataset
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
+
+# Normalize images
+x_train = x_train.astype(&quot;float32&quot;) / 255.0
+x_test = x_test.astype(&quot;float32&quot;) / 255.0
+
+# Add channel dimension
+x_train = x_train[..., tf.newaxis]
+x_test = x_test[..., tf.newaxis]
+
+# Build CNN model
+model = models.Sequential([
+    layers.Conv2D(32, (3, 3), activation=&quot;relu&quot;, input_shape=(28, 28, 1)),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Conv2D(64, (3, 3), activation=&quot;relu&quot;),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Flatten(),
+
+    layers.Dense(128, activation=&quot;relu&quot;),
+    layers.Dense(10, activation=&quot;softmax&quot;)
+])
+
+# Compile model
+model.compile(
+    optimizer=&quot;adam&quot;,
+    loss=&quot;sparse_categorical_crossentropy&quot;,
+    metrics=[&quot;accuracy&quot;]
+)
+
+# Train for one epoch
+model.fit(
+    x_train,
+    y_train,
+    epochs=1,
+    batch_size=128
+)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Write a Python program to a. Print the shape of the MNIST dataset. b. Display the first 5 images in a single row with their labels.</div><h4>Answer</h4><div class="fl">s18q2.py</div><pre class="code"><code>import tensorflow as tf
+import matplotlib.pyplot as plt
+
+# Load MNIST dataset
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
+
+# a. Print the shape of the dataset
+print(&quot;x_train shape:&quot;, x_train.shape)
+print(&quot;y_train shape:&quot;, y_train.shape)
+print(&quot;x_test shape:&quot;, x_test.shape)
+print(&quot;y_test shape:&quot;, y_test.shape)
+
+# b. Display first 5 images in a single row with labels
+plt.figure(figsize=(10, 2))
+for i in range(5):
+    plt.subplot(1, 5, i + 1)
+    plt.imshow(x_train[i], cmap=&quot;gray&quot;)
+    plt.title(&quot;Label: &quot; + str(y_train[i]))
+    plt.axis(&quot;off&quot;)
+plt.show()</code></pre>
+</div></details><details class="slip" id="slip19"><summary>Slip 19</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to build a simple Convolutional Neural Network (CNN) using Keras for MNIST images.</div><h4>Answer</h4><div class="fl">s19q1.py</div><pre class="code"><code>import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# Load MNIST dataset
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
+
+# Normalize images
+x_train = x_train.astype(&quot;float32&quot;) / 255.0
+x_test = x_test.astype(&quot;float32&quot;) / 255.0
+
+# Add channel dimension
+x_train = x_train[..., tf.newaxis]
+x_test = x_test[..., tf.newaxis]
+
+# Build simple CNN model
+model = models.Sequential([
+    layers.Conv2D(32, (3, 3), activation=&quot;relu&quot;, input_shape=(28, 28, 1)),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Flatten(),
+
+    layers.Dense(128, activation=&quot;relu&quot;),
+    layers.Dense(10, activation=&quot;softmax&quot;)
+])
+
+model.compile(
+    optimizer=&quot;adam&quot;,
+    loss=&quot;sparse_categorical_crossentropy&quot;,
+    metrics=[&quot;accuracy&quot;]
+)
+
+model.summary()</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Write a Python program to plot a diagram of the CNN model architecture.</div><h4>Answer</h4><div class="fl">s19q2.py</div><pre class="code"><code>import tensorflow as tf
+from tensorflow.keras import layers, models
+from tensorflow.keras.utils import plot_model
+import matplotlib.pyplot as plt
+
+model = models.Sequential([
+    layers.Input(shape=(28, 28, 1)),
+
+    layers.Conv2D(32, (3, 3), activation=&quot;relu&quot;),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Conv2D(64, (3, 3), activation=&quot;relu&quot;),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Flatten(),
+
+    layers.Dense(128, activation=&quot;relu&quot;),
+    layers.Dense(10, activation=&quot;softmax&quot;)
+])
+
+model.compile(
+    optimizer=&quot;adam&quot;,
+    loss=&quot;sparse_categorical_crossentropy&quot;,
+    metrics=[&quot;accuracy&quot;]
+)
+
+model.summary()
+
+# Needs: pip install pydot (and graphviz)
+plot_model(
+    model,
+    to_file=&quot;cnn_architecture.png&quot;,
+    show_shapes=True,
+    show_layer_names=True
+)
+
+img = plt.imread(&quot;cnn_architecture.png&quot;)
+plt.figure(figsize=(12, 8))
+plt.imshow(img)
+plt.axis(&quot;off&quot;)
+plt.show()</code></pre>
+</div></details><details class="slip" id="slip20"><summary>Slip 20</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to train the CNN model for one epoch using the MNIST dataset.</div><h4>Answer</h4><div class="fl">s20q1.py</div><pre class="code"><code>import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# Load MNIST dataset
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
+
+# Normalize images
+x_train = x_train.astype(&quot;float32&quot;) / 255.0
+x_test = x_test.astype(&quot;float32&quot;) / 255.0
+
+# Add channel dimension
+x_train = x_train[..., tf.newaxis]
+x_test = x_test[..., tf.newaxis]
+
+# Build CNN model
+model = models.Sequential([
+    layers.Conv2D(32, (3, 3), activation=&quot;relu&quot;, input_shape=(28, 28, 1)),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Conv2D(64, (3, 3), activation=&quot;relu&quot;),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Flatten(),
+
+    layers.Dense(128, activation=&quot;relu&quot;),
+    layers.Dense(10, activation=&quot;softmax&quot;)
+])
+
+# Compile model
+model.compile(
+    optimizer=&quot;adam&quot;,
+    loss=&quot;sparse_categorical_crossentropy&quot;,
+    metrics=[&quot;accuracy&quot;]
+)
+
+# Train for one epoch
+model.fit(
+    x_train,
+    y_train,
+    epochs=1,
+    batch_size=128
+)
+
+# Save model
+model.save(&quot;mnist_cnn.keras&quot;)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Write a Python program to load the saved CNN model and evaluate it again on the training data.</div><h4>Answer</h4><div class="fl">s20q2.py</div><pre class="code"><code># Run s20q1.py first so mnist_cnn.keras exists
+import tensorflow as tf
+
+# Load MNIST dataset
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
+
+# Normalize images
+x_train = x_train.astype(&quot;float32&quot;) / 255.0
+
+# Add channel dimension
+x_train = x_train[..., tf.newaxis]
+
+# Load saved CNN model
+model = tf.keras.models.load_model(&quot;mnist_cnn.keras&quot;)
+
+# Evaluate model on training data
+loss, accuracy = model.evaluate(x_train, y_train)
+
+print(&quot;Training Accuracy:&quot;, accuracy * 100, &quot;%&quot;)
+print(&quot;Training Loss:&quot;, loss)</code></pre>
+</div></details><details class="slip" id="slip21"><summary>Slip 21</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to tokenize the text “Deep Learning is amazing” using Keras Tokenizer.</div><h4>Answer</h4><div class="fl">s21q1.py</div><pre class="code"><code>from tensorflow.keras.preprocessing.text import Tokenizer
+
+text = [&quot;Deep Learning is amazing&quot;]
+
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(text)
+
+print(&quot;Word Index&quot;, tokenizer.word_index)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Write a Python program to convert the given text into a sequence of integers using Keras Tokenizer</div><h4>Answer</h4><div class="fl">s21q2.py</div><pre class="code"><code>from tensorflow.keras.preprocessing.text import Tokenizer
+
+text = [&quot;Deep Learning is amazing&quot;]
+
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(text)
+
+sequence = tokenizer.texts_to_sequences(text)
+
+print(sequence)</code></pre>
+</div></details><details class="slip" id="slip22"><summary>Slip 22</summary><div class="q"><h4>Q1</h4><div class="qt">Train a simple RNN-based model to classify IMDB movie reviews as positive or negative. a. Load IMDB dataset from Keras. b. Tokenize and pad sequences. c. Train a model with SimpleRNN layer and evaluate accuracy.</div><h4>Answer</h4><div class="fl">s22q1.py</div><pre class="code"><code>from tensorflow.keras.datasets import imdb
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, SimpleRNN, LSTM, GRU, Bidirectional, Dropout, Dense
+
+# Load IMDB dataset
+(x_train, y_train), (x_test, y_test) = imdb.load_data(num_words=10000)
+
+# Pad sequences
+x_train = pad_sequences(x_train, maxlen=200)
+x_test = pad_sequences(x_test, maxlen=200)
+
+model = Sequential([
+    Embedding(10000, 32, input_length=200),
+    SimpleRNN(32),
+    Dense(1, activation=&quot;sigmoid&quot;)
+])
+
+model.compile(optimizer=&quot;adam&quot;,
+              loss=&quot;binary_crossentropy&quot;,
+              metrics=[&quot;accuracy&quot;])
+
+model.fit(x_train, y_train, epochs=3, batch_size=64,
+          validation_split=0.2)
+
+loss, accuracy = model.evaluate(x_test, y_test)
+print(&quot;Test Accuracy:&quot;, accuracy)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Write a Python program to create a simple RNN model in Keras for text data. a. Print the summary of the RNN model. b. Save the created RNN model to a file</div><h4>Answer</h4><div class="fl">s22q2.py</div><pre class="code"><code>import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, SimpleRNN, Dense
+
+# Create RNN model
+model = Sequential()
+model.add(Embedding(10000, 32, input_length=200))
+model.add(SimpleRNN(32))
+model.add(Dense(1, activation=&#x27;sigmoid&#x27;))
+
+# Compile model
+model.compile(
+    optimizer=&#x27;adam&#x27;,
+    loss=&#x27;binary_crossentropy&#x27;,
+    metrics=[&#x27;accuracy&#x27;]
+)
+
+# Print model summary
+model.summary()
+
+# Save the model
+model.save(&quot;simple_rnn_model.keras&quot;)
+print(&quot;RNN model saved successfully.&quot;)</code></pre>
+</div></details><details class="slip" id="slip23"><summary>Slip 23</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to create an LSTM layer with 10 units using Keras.</div><h4>Answer</h4><div class="fl">s23q1.py</div><pre class="code"><code>from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM
+
+# Create model
+model = Sequential()
+
+# Add LSTM layer with 10 units
+model.add(LSTM(10, input_shape=(20, 5)))
+
+# Print model summary
+model.summary()</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Add dropout to your LSTM layers to prevent overfitting and analyze its effect.</div><h4>Answer</h4><div class="fl">s23q2.py</div><pre class="code"><code>from tensorflow.keras.datasets import imdb
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, SimpleRNN, LSTM, GRU, Bidirectional, Dropout, Dense
+
+# Load IMDB dataset
+(x_train, y_train), (x_test, y_test) = imdb.load_data(num_words=10000)
+
+# Pad sequences
+x_train = pad_sequences(x_train, maxlen=200)
+x_test = pad_sequences(x_test, maxlen=200)
+
+# Create LSTM model with dropout
+model = Sequential()
+model.add(Embedding(10000, 32, input_length=200))
+model.add(LSTM(32))
+model.add(Dropout(0.5))
+model.add(Dense(1, activation=&#x27;sigmoid&#x27;))
+
+# Compile model
+model.compile(
+    optimizer=&#x27;adam&#x27;,
+    loss=&#x27;binary_crossentropy&#x27;,
+    metrics=[&#x27;accuracy&#x27;]
+)
+
+# Train model
+history = model.fit(
+    x_train,
+    y_train,
+    epochs=3,
+    batch_size=64,
+    validation_split=0.2
+)
+
+# Evaluate model
+loss, accuracy = model.evaluate(x_test, y_test)
+print(&quot;Test Accuracy:&quot;, accuracy * 100, &quot;%&quot;)
+
+# Analyze effect: compare train and validation accuracy
+print(&quot;Train Accuracy:&quot;, history.history[&quot;accuracy&quot;][-1])
+print(&quot;Validation Accuracy:&quot;, history.history[&quot;val_accuracy&quot;][-1])</code></pre>
+</div></details><details class="slip" id="slip24"><summary>Slip 24</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to pad text sequences using pad_sequences from Keras.</div><h4>Answer</h4><div class="fl">s24q1.py</div><pre class="code"><code>from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+# Create text sequences
+sequences = [
+    [1, 2, 3],
+    [4, 5],
+    [6, 7, 8, 9]
+]
+
+# Pad sequences to length 4
+padded_sequences = pad_sequences(
+    sequences,
+    maxlen=4,
+    padding=&#x27;post&#x27;
+)
+
+print(&quot;Padded Sequences:&quot;)
+print(padded_sequences)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Write a Python program to compute the vocabulary size of the tokenizer.</div><h4>Answer</h4><div class="fl">s24q2.py</div><pre class="code"><code>from tensorflow.keras.preprocessing.text import Tokenizer
+
+# Create text data
+texts = [
+    &quot;Deep Learning is amazing&quot;,
+    &quot;Deep Learning is useful&quot;
+]
+
+# Create tokenizer
+tokenizer = Tokenizer()
+
+# Fit tokenizer
+tokenizer.fit_on_texts(texts)
+
+# Compute vocabulary size
+vocab_size = len(tokenizer.word_index) + 1
+
+print(&quot;Vocabulary Size:&quot;, vocab_size)
+print(&quot;Word Index:&quot;, tokenizer.word_index)</code></pre>
+</div></details><details class="slip" id="slip25"><summary>Slip 25</summary><div class="q"><h4>Q1</h4><div class="qt">Write a Python program to print a sequence of numbers from 1 to 10 and also print its reversed version.</div><h4>Answer</h4><div class="fl">s25q1.py</div><pre class="code"><code># Create sequence from 1 to 10
+sequence = list(range(1, 11))
+
+# Reverse the sequence
+reversed_sequence = sequence[::-1]
+
+print(&quot;Original Sequence:&quot;, sequence)
+print(&quot;Reversed Sequence:&quot;, reversed_sequence)</code></pre>
+</div><div class="q"><h4>Q2</h4><div class="qt">Write a short explanation of the encoder-decoder concept used in sequence-to-sequence models.</div><h4>Answer</h4><div class="fl">s25q2.py</div><pre class="code"><code># Encoder-decoder concept in sequence-to-sequence models
+explanation = &quot;&quot;&quot;
+Encoder-Decoder (Seq2Seq):
+1. Encoder reads the input sequence one step at a time (LSTM/GRU) and
+   compresses it into a fixed-size context vector (final hidden state h and cell state c).
+2. Decoder takes this context vector as its initial state and generates
+   the output sequence one step at a time.
+3. Used in machine translation, text summarization, chatbots.
+&quot;&quot;&quot;
+print(explanation)
+
+# Simple encoder and decoder using functions
+text = &quot;Hello&quot;
+encoded = text[::-1]
+decoded = encoded[::-1]
+
+print(&quot;Original:&quot;, text)
+print(&quot;Encoded:&quot;, encoded)
+print(&quot;Decoded:&quot;, decoded)</code></pre>
+</div></details></main></body></html>
