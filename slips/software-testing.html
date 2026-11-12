@@ -6,14 +6,14 @@
 .q{margin:10px 0 18px}.q h4{margin:6px 0}
 .qt{background:#4f8cff18;border-left:4px solid #4f8cff;padding:8px 12px;border-radius:4px}
 .fl{font:600 .85rem monospace;margin:10px 0 2px;opacity:.8}
-pre.code{overflow:auto;background:#0d1117;color:#e6edf3;padding:12px;border-radius:8px;font-size:.82rem;line-height:1.45;max-height:520px}
+pre.code{overflow:auto;background:#1e1e1e;color:#d4d4d4;padding:12px;border-radius:8px;font-size:.82rem;line-height:1.45;max-height:520px}
 .note{font-size:.85rem;opacity:.8}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
 .card{display:block;border:1px solid #8884;border-radius:10px;padding:16px;text-decoration:none;color:inherit}
 .card:hover{border-color:#4f8cff}
-</style><script defer src="../js/main.js"></script></head><body>
+</style><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css"><script defer src="../js/main.js"></script></head><body>
 <header class="header-nav"><div class="nav-container"><a href="index.html" class="nav-brand"><span>🧪 Practical Slips</span></a>
 <div class="nav-controls"><button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme">🌙 Dark Mode</button><a href="../index.html" class="nav-btn">🏠 Home</a></div></div></header>
-<main class="sl"><p><a href="index.html">← All subjects</a></p><h1>Software Testing — Practical Slips</h1><p class="note">The Drive folder contains only the solutions (see INDEX.md), not the question paper, so each question is a description derived from the deliverables. Q3 is viva (oral).</p><p>26 slips. Click a slip to expand.</p><details class="slip" id="slip1"><summary>Slip 1</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `even_odd.py`: Loop 1..limit, classify each number as even/odd, return both sums.</div><h4>Answer</h4><div class="fl">even_odd.py</div><pre class="code"><code>def classify_numbers(limit):
+<main class="sl"><p><a href="index.html">← All subjects</a></p><h1>Software Testing — Practical Slips</h1><p class="note">The Drive folder contains only the solutions (see INDEX.md), not the question paper, so each question is a description derived from the deliverables. Q3 is viva (oral).</p><p>26 slips. Click a slip to expand.</p><details class="slip" id="slip1"><summary>Slip 1</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `even_odd.py`: Loop 1..limit, classify each number as even/odd, return both sums.</div><h4>Answer</h4><div class="fl">even_odd.py</div><pre class="code"><code class="language-python">def classify_numbers(limit):
     &quot;&quot;&quot;Loop 1..limit, classify each number as even/odd, return both sums.&quot;&quot;&quot;
     even_sum = 0
     odd_sum = 0
@@ -31,7 +31,7 @@ if __name__ == &quot;__main__&quot;:
     e, o = classify_numbers(10)
     print(&quot;Sum of even numbers:&quot;, e)
     print(&quot;Sum of odd numbers :&quot;, o)</code></pre>
-<div class="fl">output.txt</div><pre class="code"><code>Program : Even/Odd classifier with running sum (for loop + if-else)
+<div class="fl">output.txt</div><pre class="code"><code class="language-plaintext">Program : Even/Odd classifier with running sum (for loop + if-else)
 
 $ python even_odd.py
 1 is odd
@@ -50,7 +50,7 @@ Sum of odd numbers : 25
 $ pytest -q
 ...                                                                      [100%]
 3 passed in 0.01s</code></pre>
-<div class="fl">test_even_odd.py</div><pre class="code"><code>from even_odd import classify_numbers
+<div class="fl">test_even_odd.py</div><pre class="code"><code class="language-python">from even_odd import classify_numbers
 
 def test_limit_10():
     assert classify_numbers(10) == (30, 25)
@@ -60,10 +60,10 @@ def test_limit_zero():
 
 def test_limit_one():
     assert classify_numbers(1) == (0, 1)</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Test Data - Login Functionality. Deliverables: README.md, login_test_data.xlsx</div><h4>Answer</h4><div class="fl">README.md</div><pre class="code"><code>Positive = valid username + valid password -&gt; login succeeds.
+</div><div class="q"><h4>Q2</h4><div class="qt">Test Data - Login Functionality. Deliverables: README.md, login_test_data.xlsx</div><h4>Answer</h4><div class="fl">README.md</div><pre class="code"><code class="language-markdown">Positive = valid username + valid password -&gt; login succeeds.
 Negative = invalid / empty / wrong data -&gt; login rejected with message.
 Rules assumed: username 3+ alphanumeric; password 8+ chars with upper, lower, digit and special character.</code></pre>
-<div class="fl">login_test_data.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Login Test Data]
+<div class="fl">login_test_data.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Login Test Data]
 Test Data - Login Functionality
 Test Case Id | Username | Password | Expected Result (Login Successful / Not) | Type (Positive / Negative)
 TC01 | Ronit | Ronit@123 | Login Successful | Positive
@@ -78,14 +78,14 @@ TC09 | Ronit | ronit | Login Not Successful (password policy: 8+ chars, upper, d
 TC10 | ro | Ronit@123 | Login Not Successful (username shorter than 3 chars) | Negative
 TC11 | Ronit&#x27; OR &#x27;1&#x27;=&#x27;1 | x | Login Not Successful (SQL-injection attempt rejected) | Negative
 TC12 | RONIT | Ronit@123 | Login Not Successful (case-sensitive username) | Negative</code></pre>
-</div></details><details class="slip" id="slip2"><summary>Slip 2</summary><div class="q"><h4>Q1</h4><div class="qt">Practical task covering: README.md, feedback_form.html, feedback_form_defects.xlsx</div><h4>Answer</h4><div class="fl">README.md</div><pre class="code"><code># Defect identification - Course Feedback Form
+</div></details><details class="slip" id="slip2"><summary>Slip 2</summary><div class="q"><h4>Q1</h4><div class="qt">Practical task covering: README.md, feedback_form.html, feedback_form_defects.xlsx</div><h4>Answer</h4><div class="fl">README.md</div><pre class="code"><code class="language-markdown"># Defect identification - Course Feedback Form
 
 1. Open `feedback_form.html` in a browser.
 2. Test each field with invalid / empty / boundary data (see defect list).
 3. Defects are recorded in `feedback_form_defects.xlsx`.
 4. Types: **UI** = look/layout/usability, **Functional** = feature does not work,
    **Validation** = wrong input is accepted or valid input rejected.</code></pre>
-<div class="fl">feedback_form.html</div><pre class="code"><code>&lt;!DOCTYPE html&gt;
+<div class="fl">feedback_form.html</div><pre class="code"><code class="language-xml">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
 &lt;title&gt;Course Feedback Form&lt;/title&gt;&lt;style&gt;body{font-family:Segoe UI,Arial,sans-serif;background:#f4f7f6;display:flex;justify-content:center;padding:24px}
 .box{background:#fff;padding:24px 28px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.12);width:100%;max-width:480px}
@@ -111,7 +111,7 @@ document.getElementById(&#x27;f&#x27;).addEventListener(&#x27;submit&#x27;,funct
   document.getElementById(&#x27;msg&#x27;).innerText=&#x27;Thank you &#x27; + username;   // &#x27;username&#x27; is never defined
 });
 &lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
-<div class="fl">feedback_form_defects.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Defect Report]
+<div class="fl">feedback_form_defects.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Defect Report]
 Defect ID | Defect Description | Expected Result | Actual Result | Type
 D1 | Email field uses type=text, no format check | Invalid emails (abc, abc@) must be rejected | Any text accepted as email | Validation
 D2 | Age accepts letters, negative and unrealistic values | Only numeric age in a sensible range (e.g. 5-100) accepted | &#x27;abc&#x27;, -5, 999 accepted | Validation
@@ -123,7 +123,7 @@ Type | Count
 Validation | 3
 Functional | 1
 UI | 1</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Requirement Traceability Matrix with Test Data. Deliverables: rtm_with_test_data.xlsx</div><h4>Answer</h4><div class="fl">rtm_with_test_data.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: RTM]
+</div><div class="q"><h4>Q2</h4><div class="qt">Requirement Traceability Matrix with Test Data. Deliverables: rtm_with_test_data.xlsx</div><h4>Answer</h4><div class="fl">rtm_with_test_data.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: RTM]
 Requirement Traceability Matrix with Test Data
 Req Id | Requirement | Test Case Id | Test Data (admin/admin123) | Expected Result (Success / Not)
 R01 | User can log in with valid credentials | TC01 | Username: admin, Password: admin123 | Success
@@ -143,12 +143,12 @@ R03 | 2 | Yes
 R04 | 1 | Yes
 R05 | 1 | Yes
 R06 | 1 | Yes</code></pre>
-</div></details><details class="slip" id="slip3"><summary>Slip 3</summary><div class="q"><h4>Q1</h4><div class="qt">Detailed Defect Report - Job Application Form. Deliverables: README.md, job_application.html, job_application_defect_report.xlsx</div><h4>Answer</h4><div class="fl">README.md</div><pre class="code"><code># Job Application form - defect report
+</div></details><details class="slip" id="slip3"><summary>Slip 3</summary><div class="q"><h4>Q1</h4><div class="qt">Detailed Defect Report - Job Application Form. Deliverables: README.md, job_application.html, job_application_defect_report.xlsx</div><h4>Answer</h4><div class="fl">README.md</div><pre class="code"><code class="language-markdown"># Job Application form - defect report
 * Form under test: `job_application.html` (open in browser).
 * Report: `job_application_defect_report.xlsx`
 * **Severity** = technical impact of the defect (Critical/Major/Minor/Trivial).
 * **Priority** = how soon it should be fixed (P1 highest ... P4 lowest), decided with business input.</code></pre>
-<div class="fl">job_application.html</div><pre class="code"><code>&lt;!DOCTYPE html&gt;
+<div class="fl">job_application.html</div><pre class="code"><code class="language-xml">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
 &lt;title&gt;Job Application Form&lt;/title&gt;&lt;style&gt;body{font-family:Segoe UI,Arial,sans-serif;background:#f4f7f6;display:flex;justify-content:center;padding:24px}
 .box{background:#fff;padding:24px 28px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.12);width:100%;max-width:480px}
@@ -171,7 +171,7 @@ button{margin-top:16px;padding:10px 18px;border:0;border-radius:4px;background:#
 &lt;script&gt;
 document.getElementById(&#x27;f&#x27;).addEventListener(&#x27;submit&#x27;,function(e){e.preventDefault();document.getElementById(&#x27;msg&#x27;).innerText=&#x27;Job Application submitted&#x27;;});
 &lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
-<div class="fl">job_application_defect_report.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Defect Report]
+<div class="fl">job_application_defect_report.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Defect Report]
 Detailed Defect Report - Job Application Form
 Defect ID | Module / Field | Defect Description | Steps to Reproduce | Expected Result | Actual Result | Type | Severity | Priority | Status
 DR-01 | Submit | Form submits with all fields empty | 1. Open form 2. Click Submit without entering data | Required-field errors; no submission | &#x27;Application submitted&#x27; displayed | Functional | Critical | P1 | Open
@@ -198,7 +198,7 @@ Critical | Blocks core function / data loss / security hole | P1 - fix immediate
 Major | Important feature wrong, workaround exists | P1-P2 - fix before release
 Minor | Small functional/validation deviation | P3 - fix when time permits
 Trivial | Cosmetic / cosmetic wording | P4 - fix later</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Rule: Password must be between 6 and 12 characters (inclusive).. Deliverables: boundary_testing.xlsx</div><h4>Answer</h4><div class="fl">boundary_testing.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Boundary Testing]
+</div><div class="q"><h4>Q2</h4><div class="qt">Rule: Password must be between 6 and 12 characters (inclusive).. Deliverables: boundary_testing.xlsx</div><h4>Answer</h4><div class="fl">boundary_testing.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Boundary Testing]
 Rule: Password must be between 6 and 12 characters (inclusive).
 Test Case Id | Input &amp; Output | Expected Result (Valid / Invalid) | Type (Positive / Negative)
 BT01 | Password: &#x27;&#x27; (0 chars)  -&gt;  Rejected with error message (blank / empty) | Invalid | Negative
@@ -216,7 +216,7 @@ BT10 | Password: &#x27;Ab1@Ab1@Ab1@Ab1@Ab1@Ab1@Ab1@Ab1@&#x27; (32 chars)  -&gt; 
 Idea | Explanation
 Boundary Value Analysis | Test the minimum, just below and just above minimum, nominal, just below and just above maximum, maximum.
 Edge conditions | Empty input, single character / zero, extremely large input, negative value, wrong type.</code></pre>
-</div></details><details class="slip" id="slip4"><summary>Slip 4</summary><div class="q"><h4>Q1</h4><div class="qt">Redesign changes. Deliverables: login_redesign.html, ux_feedback_session.xlsx, ux_findings_summary.md</div><h4>Answer</h4><div class="fl">login_redesign.html</div><pre class="code"><code>&lt;!DOCTYPE html&gt;
+</div></details><details class="slip" id="slip4"><summary>Slip 4</summary><div class="q"><h4>Q1</h4><div class="qt">Redesign changes. Deliverables: login_redesign.html, ux_feedback_session.xlsx, ux_findings_summary.md</div><h4>Answer</h4><div class="fl">login_redesign.html</div><pre class="code"><code class="language-xml">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
@@ -289,7 +289,7 @@ $(&#x27;loginForm&#x27;).addEventListener(&#x27;submit&#x27;, e =&gt; {
   $(&#x27;status&#x27;).textContent = good ? &#x27;Login successful. Redirecting...&#x27; : &#x27;Incorrect username or password&#x27;;
 });
 &lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
-<div class="fl">ux_feedback_session.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Changes (before -&gt; after)]
+<div class="fl">ux_feedback_session.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Changes (before -&gt; after)]
 Redesign changes
 ID | Problem in old page | Fix in new HTML/CSS
 UX-1 | Password was visible (type=text) | type=password + Show/Hide toggle
@@ -307,7 +307,7 @@ User 3 (teacher, 45) | 2 | 6 | Yes | 4 | 5 | Colours are pleasant; labels are re
 Averages
 Avg time (sec) | Avg ease | Avg satisfaction
 4.3 | 4.3 | 4.7</code></pre>
-<div class="fl">ux_findings_summary.md</div><pre class="code"><code># UX Findings Summary - Redesigned Login Page (Slip 4 Q1)
+<div class="fl">ux_findings_summary.md</div><pre class="code"><code class="language-markdown"># UX Findings Summary - Redesigned Login Page (Slip 4 Q1)
 
 Page: `login_redesign.html` (open in a browser; demo login `Ronit` / `Ronit@123`).
 
@@ -336,7 +336,7 @@ Task given: *log in with wrong data, read the error, then log in correctly; try 
 
 &gt; NOTE: participant data in `ux_feedback_session.xlsx` is sample data to show the format.
 &gt; Run the session with 3 real people and overwrite the table before submitting.</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Test Cases - Contact Form (3 Positive + 3 Negative). Deliverables: contact_form.py, contact_form_test_cases.xlsx, pytest_result.txt, test_contact_form.py</div><h4>Answer</h4><div class="fl">contact_form.py</div><pre class="code"><code>import re
+</div><div class="q"><h4>Q2</h4><div class="qt">Test Cases - Contact Form (3 Positive + 3 Negative). Deliverables: contact_form.py, contact_form_test_cases.xlsx, pytest_result.txt, test_contact_form.py</div><h4>Answer</h4><div class="fl">contact_form.py</div><pre class="code"><code class="language-python">import re
 
 
 def validate_contact(name, email, message, phone=&quot;&quot;):
@@ -357,7 +357,7 @@ def validate_contact(name, email, message, phone=&quot;&quot;):
     if phone and not re.fullmatch(r&quot;[6-9]\d{9}&quot;, phone):
         errors.append(&quot;Invalid phone&quot;)
     return &quot;Form submitted successfully&quot; if not errors else &quot;; &quot;.join(errors)</code></pre>
-<div class="fl">contact_form_test_cases.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Test Cases]
+<div class="fl">contact_form_test_cases.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Test Cases]
 Test Cases - Contact Form (3 Positive + 3 Negative)
 Test Case ID | Test Scenario | Input Data | Expected Result | Actual Result | Status | Type
 TC01 | Submit with all valid data | name: &#x27;Ronit Khupase&#x27;, email: &#x27;ronit@gmail.com&#x27;, message: &#x27;Need more information&#x27; | Form submitted successfully | Form submitted successfully | Pass | Positive
@@ -376,9 +376,9 @@ Expected Result | Behaviour required by the specification
 Actual Result | Behaviour observed on execution (here: output of contact_form.py)
 Status | Pass if Actual = Expected, else Fail
 Type | Positive (valid data) / Negative (invalid data)</code></pre>
-<div class="fl">pytest_result.txt</div><pre class="code"><code>......                                                                   [100%]
+<div class="fl">pytest_result.txt</div><pre class="code"><code class="language-plaintext">......                                                                   [100%]
 6 passed in 0.01s</code></pre>
-<div class="fl">test_contact_form.py</div><pre class="code"><code>from contact_form import validate_contact
+<div class="fl">test_contact_form.py</div><pre class="code"><code class="language-python">from contact_form import validate_contact
 
 def test_tc01():
     assert validate_contact(name=&#x27;Ronit Khupase&#x27;, email=&#x27;ronit@gmail.com&#x27;, message=&#x27;Need more information&#x27;) == &#x27;Form submitted successfully&#x27;
@@ -397,7 +397,7 @@ def test_tc05():
 
 def test_tc06():
     assert validate_contact(name=&#x27;Ronit&#x27;, email=&#x27;ronit@gmail.com&#x27;, message=&#x27;&#x27;) == &#x27;Message is required&#x27;</code></pre>
-</div></details><details class="slip" id="slip5"><summary>Slip 5</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `grade_calc.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">grade_calc.py</div><pre class="code"><code>def get_grade(marks):
+</div></details><details class="slip" id="slip5"><summary>Slip 5</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `grade_calc.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">grade_calc.py</div><pre class="code"><code class="language-python">def get_grade(marks):
     if marks &gt;= 75:
         return &quot;Distinction&quot;
     elif marks &gt;= 60:
@@ -419,7 +419,7 @@ if __name__ == &quot;__main__&quot;:
     data = {&quot;Amit&quot;: 82, &quot;Sneha&quot;: 66, &quot;Rahul&quot;: 45, &quot;Priya&quot;: 30}
     for student, grade in grade_report(data).items():
         print(f&quot;{student:&lt;8} -&gt; {grade}&quot;)</code></pre>
-<div class="fl">output.txt</div><pre class="code"><code>Program : Marks -&gt; grade (for loop over students + if-elif-else)
+<div class="fl">output.txt</div><pre class="code"><code class="language-plaintext">Program : Marks -&gt; grade (for loop over students + if-elif-else)
 
 $ python grade_calc.py
 Amit     -&gt; Distinction
@@ -430,7 +430,7 @@ Priya    -&gt; Fail
 $ pytest -q
 .....                                                                    [100%]
 5 passed in 0.01s</code></pre>
-<div class="fl">test_grade_calc.py</div><pre class="code"><code>from grade_calc import get_grade, grade_report
+<div class="fl">test_grade_calc.py</div><pre class="code"><code class="language-python">from grade_calc import get_grade, grade_report
 
 def test_distinction():
     assert get_grade(75) == &quot;Distinction&quot;
@@ -446,7 +446,7 @@ def test_fail():
 
 def test_report():
     assert grade_report({&quot;A&quot;: 80, &quot;B&quot;: 10}) == {&quot;A&quot;: &quot;Distinction&quot;, &quot;B&quot;: &quot;Fail&quot;}</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Banking Module Testing - valid and invalid transactions. Deliverables: bank.py, banking_test_cases.xlsx, pytest_result.txt, test_bank.py</div><h4>Answer</h4><div class="fl">bank.py</div><pre class="code"><code>class Bank:
+</div><div class="q"><h4>Q2</h4><div class="qt">Banking Module Testing - valid and invalid transactions. Deliverables: bank.py, banking_test_cases.xlsx, pytest_result.txt, test_bank.py</div><h4>Answer</h4><div class="fl">bank.py</div><pre class="code"><code class="language-python">class Bank:
     DEPOSIT_LIMIT = 50000
     WITHDRAW_LIMIT = 20000
 
@@ -483,7 +483,7 @@ def test_report():
         self.withdraw(src, amount)
         self.deposit(dst, amount)
         return True</code></pre>
-<div class="fl">banking_test_cases.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Banking Module Tests]
+<div class="fl">banking_test_cases.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Banking Module Tests]
 Banking Module Testing - valid and invalid transactions
 Test Id | Test Scenario | Input &amp; Expected Output | Type (Positive / Negative)
 BK01 | Deposit valid amount | Input: Acc 1234567890, Rs 5000 Expected: Balance becomes 15000 | Positive
@@ -506,9 +506,9 @@ Opening balances | 1234567890 = Rs 10000, 9876543210 = Rs 500
 Deposit limit | Rs 50000 per transaction
 Withdrawal limit | Rs 20000 per transaction
 Invalid account | Any number not in the account list</code></pre>
-<div class="fl">pytest_result.txt</div><pre class="code"><code>.............                                                            [100%]
+<div class="fl">pytest_result.txt</div><pre class="code"><code class="language-plaintext">.............                                                            [100%]
 13 passed in 0.02s</code></pre>
-<div class="fl">test_bank.py</div><pre class="code"><code>import pytest
+<div class="fl">test_bank.py</div><pre class="code"><code class="language-python">import pytest
 from bank import Bank
 
 
@@ -556,7 +556,7 @@ def test_bk12():
 
 def test_bk13():
     assert run(&#x27;transfer&#x27;, *(&#x27;1234567890&#x27;, &#x27;1111111111&#x27;, 500)) == &#x27;ERR:Invalid account&#x27;</code></pre>
-</div></details><details class="slip" id="slip6"><summary>Slip 6</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `digit_sum.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">digit_sum.py</div><pre class="code"><code>def digit_sum(n):
+</div></details><details class="slip" id="slip6"><summary>Slip 6</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `digit_sum.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">digit_sum.py</div><pre class="code"><code class="language-python">def digit_sum(n):
     n = abs(n)
     total = 0
     while n &gt; 0:
@@ -568,7 +568,7 @@ def test_bk13():
 if __name__ == &quot;__main__&quot;:
     for num in (0, 7, 123, 98765):
         print(f&quot;Sum of digits of {num} = {digit_sum(num)}&quot;)</code></pre>
-<div class="fl">output.txt</div><pre class="code"><code>Program : Sum of digits using while loop
+<div class="fl">output.txt</div><pre class="code"><code class="language-plaintext">Program : Sum of digits using while loop
 
 $ python digit_sum.py
 Sum of digits of 0 = 0
@@ -579,7 +579,7 @@ Sum of digits of 98765 = 35
 $ pytest -q
 ....                                                                     [100%]
 4 passed in 0.01s</code></pre>
-<div class="fl">test_digit_sum.py</div><pre class="code"><code>from digit_sum import digit_sum
+<div class="fl">test_digit_sum.py</div><pre class="code"><code class="language-python">from digit_sum import digit_sum
 
 def test_zero():
     assert digit_sum(0) == 0          # while loop runs 0 times
@@ -592,7 +592,7 @@ def test_multi():
 
 def test_negative():
     assert digit_sum(-45) == 9</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Test cases sorted by priority (risk x impact). Deliverables: bank.py, pytest_result.txt, risk_based_prioritization.xlsx, test_bank.py</div><h4>Answer</h4><div class="fl">bank.py</div><pre class="code"><code>class Bank:
+</div><div class="q"><h4>Q2</h4><div class="qt">Test cases sorted by priority (risk x impact). Deliverables: bank.py, pytest_result.txt, risk_based_prioritization.xlsx, test_bank.py</div><h4>Answer</h4><div class="fl">bank.py</div><pre class="code"><code class="language-python">class Bank:
     DEPOSIT_LIMIT = 50000
     WITHDRAW_LIMIT = 20000
 
@@ -629,9 +629,9 @@ def test_negative():
         self.withdraw(src, amount)
         self.deposit(dst, amount)
         return True</code></pre>
-<div class="fl">pytest_result.txt</div><pre class="code"><code>..........                                                               [100%]
+<div class="fl">pytest_result.txt</div><pre class="code"><code class="language-plaintext">..........                                                               [100%]
 10 passed in 0.02s</code></pre>
-<div class="fl">risk_based_prioritization.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Prioritized Test Cases]
+<div class="fl">risk_based_prioritization.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Prioritized Test Cases]
 Test cases sorted by priority (risk x impact)
 Test Id | Scenario | Risk (High/Medium/Low) | Impact (High/Medium) | Priority (P1-P3) | Result (Pass/Fail)
 TC01 | Withdraw amount greater than balance | High | High | P1 | Pass
@@ -651,7 +651,7 @@ P1 | Critical - High risk / High impact: money or security; execute first
 P2 | High - important validation or core function; execute after P1
 P3 | Medium - low risk; execute when time permits
 Rule | Priority = Risk (likelihood of failure) x Impact (damage if it fails)</code></pre>
-<div class="fl">test_bank.py</div><pre class="code"><code>from bank import Bank
+<div class="fl">test_bank.py</div><pre class="code"><code class="language-python">from bank import Bank
 
 
 def run(fn, *a):
@@ -689,7 +689,7 @@ def test_tc09():
 
 def test_tc10():
     assert run(&#x27;deposit&#x27;, *(&#x27;1234567890&#x27;, 0)) == &#x27;ERR:Invalid amount&#x27;</code></pre>
-</div></details><details class="slip" id="slip7"><summary>Slip 7</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `shipping.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">coverage_report.md</div><pre class="code"><code># Coverage Report - `shipping.py`  (Slip 7 Q1)
+</div></details><details class="slip" id="slip7"><summary>Slip 7</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `shipping.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">coverage_report.md</div><pre class="code"><code class="language-markdown"># Coverage Report - `shipping.py`  (Slip 7 Q1)
 
 ## Tool used
 `coverage.py` with branch measurement + pytest.
@@ -766,12 +766,12 @@ coverage is **low**; branch coverage is the practical target.
 ## Missed code blocks and what test would cover them
 Open `htmlcov/index.html` -&gt; click `shipping.py`; red lines are the missed lines listed above.
 Add tests that drive the missed branches (see Slip 8/18/20/22 for the improvement technique).</code></pre>
-<div class="fl">coverage_report.txt</div><pre class="code"><code>Name          Stmts   Miss Branch BrPart  Cover   Missing
+<div class="fl">coverage_report.txt</div><pre class="code"><code class="language-plaintext">Name          Stmts   Miss Branch BrPart  Cover   Missing
 ---------------------------------------------------------
 shipping.py      13      1     10      1    91%   10
 ---------------------------------------------------------
 TOTAL            13      1     10      1    91%</code></pre>
-<div class="fl">shipping.py</div><pre class="code"><code>def shipping_cost(weight, distance, is_member):
+<div class="fl">shipping.py</div><pre class="code"><code class="language-python">def shipping_cost(weight, distance, is_member):
     if weight &lt;= 0 or distance &lt;= 0:          # decision 1 (compound: 2 conditions)
         return -1
     cost = 50
@@ -784,7 +784,7 @@ TOTAL            13      1     10      1    91%</code></pre>
     if is_member:                             # decision 5
         cost *= 0.9
     return round(cost, 2)</code></pre>
-<div class="fl">test_shipping.py</div><pre class="code"><code>from shipping import shipping_cost
+<div class="fl">test_shipping.py</div><pre class="code"><code class="language-python">from shipping import shipping_cost
 
 def test_light_near_non_member():
     assert shipping_cost(5, 50, False) == 50
@@ -794,7 +794,7 @@ def test_invalid_weight():
 
 def test_heavy_far_member():
     assert shipping_cost(12, 600, True) == 144.0</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Online Shopping - Discount Rules. Deliverables: decision_table_discount.xlsx, discount.py, pytest_result.txt, test_discount.py</div><h4>Answer</h4><div class="fl">decision_table_discount.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Decision Table]
+</div><div class="q"><h4>Q2</h4><div class="qt">Online Shopping - Discount Rules. Deliverables: decision_table_discount.xlsx, discount.py, pytest_result.txt, test_discount.py</div><h4>Answer</h4><div class="fl">decision_table_discount.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Decision Table]
 Online Shopping - Discount Rules
 Conditions (Inputs) | Rule 1 | Rule 2 | Rule 3 | Rule 4
 C1: Customer is a member? | T | T | F | F
@@ -815,7 +815,7 @@ TC03 | No | 1500 | Rule 3 | 5% | Rs 1425
 TC04 | No | 800 | Rule 4 | 0% | Rs 800
 TC05 | Yes | 1000 | Rule 2 | 10% | Rs 900
 TC06 | No | 1001 | Rule 3 | 5% | Rs 950.95</code></pre>
-<div class="fl">discount.py</div><pre class="code"><code>def discount_percent(is_member, order_amount):
+<div class="fl">discount.py</div><pre class="code"><code class="language-python">def discount_percent(is_member, order_amount):
     if is_member:
         return 20 if order_amount &gt; 1000 else 10
     return 5 if order_amount &gt; 1000 else 0
@@ -823,9 +823,9 @@ TC06 | No | 1001 | Rule 3 | 5% | Rs 950.95</code></pre>
 
 def final_amount(is_member, order_amount):
     return order_amount * (100 - discount_percent(is_member, order_amount)) / 100</code></pre>
-<div class="fl">pytest_result.txt</div><pre class="code"><code>......                                                                   [100%]
+<div class="fl">pytest_result.txt</div><pre class="code"><code class="language-plaintext">......                                                                   [100%]
 6 passed in 0.03s</code></pre>
-<div class="fl">test_discount.py</div><pre class="code"><code>from discount import discount_percent, final_amount
+<div class="fl">test_discount.py</div><pre class="code"><code class="language-python">from discount import discount_percent, final_amount
 
 def test_tc01():
     assert discount_percent(True, 1500) == 20
@@ -850,7 +850,7 @@ def test_tc05():
 def test_tc06():
     assert discount_percent(False, 1001) == 5
     assert final_amount(False, 1001) == 950.95</code></pre>
-</div></details><details class="slip" id="slip8"><summary>Slip 8</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `inventory.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">coverage_before_after.md</div><pre class="code"><code># Improve Test Coverage to 50%+  - `inventory.py`  (Slip 8 Q1)
+</div></details><details class="slip" id="slip8"><summary>Slip 8</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `inventory.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">coverage_before_after.md</div><pre class="code"><code class="language-markdown"># Improve Test Coverage to 50%+  - `inventory.py`  (Slip 8 Q1)
 
 ## Method
 1. Write the minimal test(s) and measure: `coverage run --branch -m pytest` then `coverage report -m`.
@@ -974,7 +974,7 @@ pytest result after improvement:
 .......                                                                  [100%]
 7 passed in 0.03s
 ```</code></pre>
-<div class="fl">inventory.py</div><pre class="code"><code>class Inventory:
+<div class="fl">inventory.py</div><pre class="code"><code class="language-python">class Inventory:
     def __init__(self):
         self.stock = {}
 
@@ -997,7 +997,7 @@ pytest result after improvement:
 
     def total_items(self):
         return sum(self.stock.values())</code></pre>
-<div class="fl">test_inventory.py</div><pre class="code"><code>import pytest
+<div class="fl">test_inventory.py</div><pre class="code"><code class="language-python">import pytest
 from inventory import Inventory
 
 def test_add_item():
@@ -1037,13 +1037,13 @@ def test_low_stock_and_total():
     inv.add_item(&quot;book&quot;, 20)
     assert inv.low_stock() == [&quot;pen&quot;]
     assert inv.total_items() == 22</code></pre>
-<div class="fl">test_inventory_before.py.txt</div><pre class="code"><code>from inventory import Inventory
+<div class="fl">test_inventory_before.py.txt</div><pre class="code"><code class="language-plaintext">from inventory import Inventory
 
 def test_add_item():
     inv = Inventory()
     inv.add_item(&quot;pen&quot;, 10)
     assert inv.stock[&quot;pen&quot;] == 10</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">ATM Withdrawal Logic (reduced table, &#x27;-&#x27; = don&#x27;t care). Deliverables: atm_withdrawal_decision_table.xlsx</div><h4>Answer</h4><div class="fl">atm_withdrawal_decision_table.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Decision Table]
+</div><div class="q"><h4>Q2</h4><div class="qt">ATM Withdrawal Logic (reduced table, &#x27;-&#x27; = don&#x27;t care). Deliverables: atm_withdrawal_decision_table.xlsx</div><h4>Answer</h4><div class="fl">atm_withdrawal_decision_table.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Decision Table]
 ATM Withdrawal Logic (reduced table, &#x27;-&#x27; = don&#x27;t care)
 Test Rule | Card Valid? | PIN Correct? | Balance Sufficient? | Action (Approve / Reject)
 Rule 1 | Yes | Yes | Yes | Approve
@@ -1069,7 +1069,7 @@ TC-001 | Yes | Yes | Yes | Dispense cash, Approve
 TC-002 | Yes | Yes | No | Display insufficient balance, Reject
 TC-003 | Yes | No | - | Display incorrect PIN, Reject
 TC-004 | No | - | - | Display invalid card, Reject</code></pre>
-</div></details><details class="slip" id="slip9"><summary>Slip 9</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `ticket_v1.py`: Version 1 - nested if / elif ladder (high complexity).</div><h4>Answer</h4><div class="fl">cc_comparison.md</div><pre class="code"><code># Compare Two Versions - Cyclomatic Complexity  (Slip 9 Q1)
+</div></details><details class="slip" id="slip9"><summary>Slip 9</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `ticket_v1.py`: Version 1 - nested if / elif ladder (high complexity).</div><h4>Answer</h4><div class="fl">cc_comparison.md</div><pre class="code"><code class="language-markdown"># Compare Two Versions - Cyclomatic Complexity  (Slip 9 Q1)
 
 Both versions compute the same ticket price (verified by `test_equivalence.py`, result below).
 
@@ -1117,7 +1117,7 @@ ticket_v2.py
 .                                                                        [100%]
 1 passed in 0.01s
 ```</code></pre>
-<div class="fl">test_equivalence.py</div><pre class="code"><code>import itertools
+<div class="fl">test_equivalence.py</div><pre class="code"><code class="language-python">import itertools
 from ticket_v1 import ticket_price_v1
 from ticket_v2 import ticket_price_v2
 
@@ -1126,7 +1126,7 @@ def test_both_versions_give_same_result():
     for age, stu, wk, cp in itertools.product([0, 4, 5, 11, 12, 30, 59, 60, 80],
                                               [True, False], [True, False], [True, False]):
         assert ticket_price_v1(age, stu, wk, cp) == ticket_price_v2(age, stu, wk, cp)</code></pre>
-<div class="fl">ticket_v1.py</div><pre class="code"><code>def ticket_price_v1(age, is_student, is_weekend, has_coupon):
+<div class="fl">ticket_v1.py</div><pre class="code"><code class="language-python">def ticket_price_v1(age, is_student, is_weekend, has_coupon):
     &quot;&quot;&quot;Version 1 - nested if / elif ladder (high complexity).&quot;&quot;&quot;
     price = 0
     if age &lt; 5:
@@ -1156,7 +1156,7 @@ def test_both_versions_give_same_result():
         if price &gt; 0:
             price = price - 20
     return price</code></pre>
-<div class="fl">ticket_v2.py</div><pre class="code"><code>WEEKDAY_WEEKEND = {            # (weekday, weekend) price tables
+<div class="fl">ticket_v2.py</div><pre class="code"><code class="language-python">WEEKDAY_WEEKEND = {            # (weekday, weekend) price tables
     &quot;child&quot;:   (60, 80),
     &quot;student&quot;: (100, 120),
     &quot;adult&quot;:   (150, 200),
@@ -1179,7 +1179,7 @@ def ticket_price_v2(age, is_student, is_weekend, has_coupon):
     weekday, weekend = WEEKDAY_WEEKEND[_category(age, is_student)]
     price = weekend if is_weekend else weekday
     return price - 20 if has_coupon else price</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Online Course Access - all 8 rules. Deliverables: course_access_decision_table.xlsx</div><h4>Answer</h4><div class="fl">course_access_decision_table.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Full Decision Table]
+</div><div class="q"><h4>Q2</h4><div class="qt">Online Course Access - all 8 rules. Deliverables: course_access_decision_table.xlsx</div><h4>Answer</h4><div class="fl">course_access_decision_table.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Full Decision Table]
 Online Course Access - all 8 rules
 Rule | Payment Done? | Registered? | Email Verified? | Action (Grant / Deny Access)
 Rule 1 | Y | Y | Y | Grant Access
@@ -1209,7 +1209,7 @@ TC-005 | No | Yes | Yes | Deny Access
 TC-006 | No | Yes | No | Deny Access
 TC-007 | No | No | Yes | Deny Access
 TC-008 | No | No | No | Deny Access</code></pre>
-</div></details><details class="slip" id="slip10"><summary>Slip 10</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `shipping_after.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">refactor_report.md</div><pre class="code"><code># Refactor a Program with High Cyclomatic Complexity  (Slip 10 Q1)
+</div></details><details class="slip" id="slip10"><summary>Slip 10</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `shipping_after.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">refactor_report.md</div><pre class="code"><code class="language-markdown"># Refactor a Program with High Cyclomatic Complexity  (Slip 10 Q1)
 
 ## 1. Original (`shipping_before.py`)  - V(G) = **15**
 Decisions: country checks (3) + weight slabs (3 + 2 + 2) + `charge == -1` (1) + `express`, `insured`, `member` (3) = 14 -&gt; V(G) = 14 + 1.
@@ -1247,7 +1247,7 @@ shipping_after.py
 .                                                                        [100%]
 1 passed in 0.01s
 ```</code></pre>
-<div class="fl">shipping_after.py</div><pre class="code"><code># slabs: (max_weight, charge) - last slab catches everything heavier
+<div class="fl">shipping_after.py</div><pre class="code"><code class="language-python"># slabs: (max_weight, charge) - last slab catches everything heavier
 RATES = {
     &quot;IN&quot;: [(1, 40), (5, 90), (10, 160), (float(&quot;inf&quot;), 250)],
     &quot;US&quot;: [(1, 800), (5, 1500), (float(&quot;inf&quot;), 2500)],
@@ -1269,7 +1269,7 @@ def shipping_charge_after(country, weight, express, insured, member):
     charge = charge + 50 if insured else charge
     charge = charge * 0.9 if member else charge
     return round(charge, 2)</code></pre>
-<div class="fl">shipping_before.py</div><pre class="code"><code>def shipping_charge_before(country, weight, express, insured, member):
+<div class="fl">shipping_before.py</div><pre class="code"><code class="language-python">def shipping_charge_before(country, weight, express, insured, member):
     &quot;&quot;&quot;High complexity: long if/elif chains + nested conditions.&quot;&quot;&quot;
     charge = 0
     if country == &quot;IN&quot;:
@@ -1306,7 +1306,7 @@ def shipping_charge_after(country, weight, express, insured, member):
     if member:
         charge = charge * 0.9
     return round(charge, 2)</code></pre>
-<div class="fl">test_refactor.py</div><pre class="code"><code>import itertools
+<div class="fl">test_refactor.py</div><pre class="code"><code class="language-python">import itertools
 from shipping_before import shipping_charge_before as old
 from shipping_after import shipping_charge_after as new
 
@@ -1315,7 +1315,7 @@ def test_refactor_preserves_behaviour():
     for c, w, e, i, m in itertools.product([&quot;IN&quot;, &quot;US&quot;, &quot;UK&quot;, &quot;XX&quot;], [0.5, 1, 3, 5, 7, 10, 20],
                                            [True, False], [True, False], [True, False]):
         assert old(c, w, e, i, m) == new(c, w, e, i, m)</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Age Input (18-60). Deliverables: age_equivalence_classes.xlsx</div><h4>Answer</h4><div class="fl">age_equivalence_classes.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Equivalence Classes]
+</div><div class="q"><h4>Q2</h4><div class="qt">Age Input (18-60). Deliverables: age_equivalence_classes.xlsx</div><h4>Answer</h4><div class="fl">age_equivalence_classes.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Equivalence Classes]
 Age Input (18-60)
 Requirement Class (Valid / Invalid) | Range | Example Input | Expected Result
 Valid | 18 - 60 | 30 | Accepted
@@ -1339,7 +1339,7 @@ TC-006 | -5 | Invalid (negative) | Error: Age cannot be negative
 TC-007 | abc | Invalid (non numeric) | Error: Non numeric not allowed
 TC-008 | 25.5 | Invalid (decimal) | Error: Whole number required
 TC-009 | (blank) | Invalid (blank) | Error: Age is required</code></pre>
-</div></details><details class="slip" id="slip11"><summary>Slip 11</summary><div class="q"><h4>Q1</h4><div class="qt">RTM for Login Module. Deliverables: rtm_login_module.xlsx</div><h4>Answer</h4><div class="fl">rtm_login_module.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: RTM Login]
+</div></details><details class="slip" id="slip11"><summary>Slip 11</summary><div class="q"><h4>Q1</h4><div class="qt">RTM for Login Module. Deliverables: rtm_login_module.xlsx</div><h4>Answer</h4><div class="fl">rtm_login_module.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: RTM Login]
 RTM for Login Module
 Requirement ID | Requirement Description | Design Doc | Code File | Test Case ID | Test Case Description | Input Fields | Test Data | Expected Output | Status
 R01 | User should enter valid username and password to login. | D1 | login.py | TC01 | Verify login with valid username and password. | Username, Password | Ronit, Ronit@123 | Login Successful | Not Executed
@@ -1355,7 +1355,7 @@ R02 | 1 | Yes
 R03 | 1 | Yes
 R04 | 1 | Yes
 R05 | 1 | Yes</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Email -&gt; abc@xyz.com; Phone -&gt; 10 digits only. Deliverables: email_phone_equivalence_classes.xlsx</div><h4>Answer</h4><div class="fl">email_phone_equivalence_classes.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Equivalence Classes]
+</div><div class="q"><h4>Q2</h4><div class="qt">Email -&gt; abc@xyz.com; Phone -&gt; 10 digits only. Deliverables: email_phone_equivalence_classes.xlsx</div><h4>Answer</h4><div class="fl">email_phone_equivalence_classes.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Equivalence Classes]
 Email -&gt; abc@xyz.com; Phone -&gt; 10 digits only
 Field | Valid Class | Invalid Class | Example
 Email | Contains one @, non-empty local part, domain with dot (e.g. abc@xyz.com) | - | abc@xyz.com
@@ -1385,7 +1385,7 @@ TC-009 | Phone | 98765432101 | Invalid | Error: invalid phone
 TC-010 | Phone | 98765abc10 | Invalid | Error: invalid phone
 TC-011 | Phone | 98765-4321 | Invalid | Error: invalid phone
 TC-012 | Phone | (blank) | Invalid | Error: invalid phone</code></pre>
-</div></details><details class="slip" id="slip12"><summary>Slip 12</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `palindrome.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">output.txt</div><pre class="code"><code>Program : Palindrome check &amp; number reversal using while loop
+</div></details><details class="slip" id="slip12"><summary>Slip 12</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `palindrome.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">output.txt</div><pre class="code"><code class="language-plaintext">Program : Palindrome check &amp; number reversal using while loop
 
 $ python palindrome.py
 121 reversed = 121 -&gt; palindrome
@@ -1396,7 +1396,7 @@ $ python palindrome.py
 $ pytest -q
 ....                                                                     [100%]
 4 passed in 0.01s</code></pre>
-<div class="fl">palindrome.py</div><pre class="code"><code>def reverse_number(n):
+<div class="fl">palindrome.py</div><pre class="code"><code class="language-python">def reverse_number(n):
     rev = 0
     while n &gt; 0:
         rev = rev * 10 + n % 10
@@ -1412,7 +1412,7 @@ if __name__ == &quot;__main__&quot;:
     for num in (121, 123, 4554, 10):
         print(num, &quot;reversed =&quot;, reverse_number(num),
               &quot;-&gt; palindrome&quot; if is_palindrome(num) else &quot;-&gt; not palindrome&quot;)</code></pre>
-<div class="fl">test_palindrome.py</div><pre class="code"><code>from palindrome import reverse_number, is_palindrome
+<div class="fl">test_palindrome.py</div><pre class="code"><code class="language-python">from palindrome import reverse_number, is_palindrome
 
 def test_reverse():
     assert reverse_number(1234) == 4321
@@ -1425,7 +1425,7 @@ def test_palindrome_false():
 
 def test_zero():
     assert reverse_number(0) == 0</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Signup Form - V = Valid, I = Invalid, all 2^4 = 16 combinations. Deliverables: signup_combinations.xlsx</div><h4>Answer</h4><div class="fl">signup_combinations.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Combinations]
+</div><div class="q"><h4>Q2</h4><div class="qt">Signup Form - V = Valid, I = Invalid, all 2^4 = 16 combinations. Deliverables: signup_combinations.xlsx</div><h4>Answer</h4><div class="fl">signup_combinations.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Combinations]
 Signup Form - V = Valid, I = Invalid, all 2^4 = 16 combinations
 Test Case Id | Name | Email | Password | Confirm Password | Expected Result (Form Submitted / Not)
 SU01 | Ronit  (V) | ronit@gmail.com  (V) | Ronit@123  (V) | Ronit@123  (V) | Form Submitted
@@ -1451,7 +1451,7 @@ Name | 2-30 letters only | Ronit | Ro1@
 Email | name@domain.tld | ronit@gmail.com | ronit@
 Password | 8+ chars, upper, lower, digit, special | Ronit@123 | ronit
 Confirm Password | Same as password | Ronit@123 | Ronit@124</code></pre>
-</div></details><details class="slip" id="slip13"><summary>Slip 13</summary><div class="q"><h4>Q1</h4><div class="qt">Requirement Traceability Matrix - Mini Hotel Management System. Deliverables: rtm_hotel_system.xlsx</div><h4>Answer</h4><div class="fl">rtm_hotel_system.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: RTM]
+</div></details><details class="slip" id="slip13"><summary>Slip 13</summary><div class="q"><h4>Q1</h4><div class="qt">Requirement Traceability Matrix - Mini Hotel Management System. Deliverables: rtm_hotel_system.xlsx</div><h4>Answer</h4><div class="fl">rtm_hotel_system.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: RTM]
 Requirement Traceability Matrix - Mini Hotel Management System
 Requirement ID | Requirement Description | Design Doc | Code File | Test Case ID | Test Case Description | Input Fields | Test Data | Expected Output | Status
 R01 | Receptionist should be able to log in. | D2 | login.py | TC01 | Verify login with valid credentials. | Username, Password | recep1, Recep@123 | Login Successful | Not Executed
@@ -1479,7 +1479,7 @@ R08 | TC08 | Yes
 R09 | TC09 | Yes
 R10 | TC10 | Yes
 Total | 10/10 | 100% requirement coverage</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">RTM - Food Ordering System (functional + non-functional). Deliverables: rtm_food_ordering_system.xlsx, usecase_food_ordering.xlsx</div><h4>Answer</h4><div class="fl">rtm_food_ordering_system.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: RTM]
+</div><div class="q"><h4>Q2</h4><div class="qt">RTM - Food Ordering System (functional + non-functional). Deliverables: rtm_food_ordering_system.xlsx, usecase_food_ordering.xlsx</div><h4>Answer</h4><div class="fl">rtm_food_ordering_system.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: RTM]
 RTM - Food Ordering System (functional + non-functional)
 Requirement ID | Requirement Description | Requirement Type | Design Doc | Code File | Test Case ID | Test Case Description | Test Data | Expected Output | Status
 R01 | User should register and login. | Functional | D3 | module_r01.py | TC01 | Register with valid details then log in. | Ronit, 9876543210, ronit@gmail.com, Ronit@123 | Registered; login successful | Not Executed
@@ -1500,7 +1500,7 @@ Type | Count
 Functional | 8
 Non-Functional | 4
 Total (all traced to test cases) | 12</code></pre>
-<div class="fl">usecase_food_ordering.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Use Case]
+<div class="fl">usecase_food_ordering.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Use Case]
 Use Case - Food Ordering System
 Element | Description
 Use Case Name | Place Food Order
@@ -1509,7 +1509,7 @@ Pre-condition | Customer is registered and logged in; restaurant is open and has
 Main Flow | 1. Customer selects restaurant and browses menu 2. Customer adds items to cart 3. Customer enters / confirms delivery address 4. System shows order total with taxes and delivery fee 5. Customer selects payment method and pays 6. Payment Gateway confirms payment 7. System sends order to Restaurant and shows order id 8. Restaurant prepares food; Delivery Partner delivers
 Exception Flow | 3a. Address outside delivery area -&gt; System shows &#x27;Not deliverable&#x27; and asks for another address 5a. Payment fails -&gt; System shows error, order not placed, customer retries or changes method 7a. Restaurant rejects / item out of stock -&gt; System notifies customer and refunds
 Post-condition | Order is stored with status &#x27;Placed&#x27;, payment recorded, customer receives confirmation and can track order</code></pre>
-</div></details><details class="slip" id="slip14"><summary>Slip 14</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `prime_check.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">output.txt</div><pre class="code"><code>Program : Prime numbers in a range (for loop + if-else)
+</div></details><details class="slip" id="slip14"><summary>Slip 14</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `prime_check.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">output.txt</div><pre class="code"><code class="language-plaintext">Program : Prime numbers in a range (for loop + if-else)
 
 $ python prime_check.py
 Primes up to 30: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
@@ -1521,7 +1521,7 @@ Primes up to 30: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
 $ pytest -q
 ...                                                                      [100%]
 3 passed in 0.01s</code></pre>
-<div class="fl">prime_check.py</div><pre class="code"><code>def is_prime(n):
+<div class="fl">prime_check.py</div><pre class="code"><code class="language-python">def is_prime(n):
     if n &lt; 2:
         return False
     for i in range(2, int(n ** 0.5) + 1):
@@ -1542,7 +1542,7 @@ if __name__ == &quot;__main__&quot;:
     print(&quot;Primes up to 30:&quot;, primes_upto(30))
     for n in (1, 2, 15, 17):
         print(n, &quot;is prime&quot; if is_prime(n) else &quot;is not prime&quot;)</code></pre>
-<div class="fl">test_prime_check.py</div><pre class="code"><code>from prime_check import is_prime, primes_upto
+<div class="fl">test_prime_check.py</div><pre class="code"><code class="language-python">from prime_check import is_prime, primes_upto
 
 def test_prime_numbers():
     assert is_prime(2) and is_prime(17)
@@ -1552,7 +1552,7 @@ def test_not_prime():
 
 def test_range():
     assert primes_upto(10) == [2, 3, 5, 7]</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Signup Form - field level valid / invalid classes. Deliverables: signup_test_fields.xlsx</div><h4>Answer</h4><div class="fl">signup_test_fields.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Signup Test Fields]
+</div><div class="q"><h4>Q2</h4><div class="qt">Signup Form - field level valid / invalid classes. Deliverables: signup_test_fields.xlsx</div><h4>Answer</h4><div class="fl">signup_test_fields.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Signup Test Fields]
 Signup Form - field level valid / invalid classes
 Class (Valid / Invalid) | Field | Test Input | Field Valid? | Test Case Success? | Expected Result (Form Submitted / Not)
 Valid | Name | Ronit Khupase | Yes | Pass | Form Submitted
@@ -1582,14 +1582,14 @@ Column | Meaning
 Field Valid? | Is the input value valid for that field
 Test Case Success? | Test passes when the form behaves as expected (accepts valid / rejects invalid)
 Expected Result | Form Submitted only if every field is valid</code></pre>
-</div></details><details class="slip" id="slip15"><summary>Slip 15</summary><div class="q"><h4>Q1</h4><div class="qt">Practical task covering: README.md, enquiry_form.html, enquiry_form_defects.xlsx</div><h4>Answer</h4><div class="fl">README.md</div><pre class="code"><code># Defect identification - Course Enquiry Form
+</div></details><details class="slip" id="slip15"><summary>Slip 15</summary><div class="q"><h4>Q1</h4><div class="qt">Practical task covering: README.md, enquiry_form.html, enquiry_form_defects.xlsx</div><h4>Answer</h4><div class="fl">README.md</div><pre class="code"><code class="language-markdown"># Defect identification - Course Enquiry Form
 
 1. Open `enquiry_form.html` in a browser.
 2. Test each field with invalid / empty / boundary data (see defect list).
 3. Defects are recorded in `enquiry_form_defects.xlsx`.
 4. Types: **UI** = look/layout/usability, **Functional** = feature does not work,
    **Validation** = wrong input is accepted or valid input rejected.</code></pre>
-<div class="fl">enquiry_form.html</div><pre class="code"><code>&lt;!DOCTYPE html&gt;
+<div class="fl">enquiry_form.html</div><pre class="code"><code class="language-xml">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
 &lt;title&gt;Course Enquiry Form&lt;/title&gt;&lt;style&gt;body{font-family:Segoe UI,Arial,sans-serif;background:#f4f7f6;display:flex;justify-content:center;padding:24px}
 .box{background:#fff;padding:24px 28px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.12);width:100%;max-width:480px}
@@ -1613,7 +1613,7 @@ document.getElementById(&#x27;f&#x27;).addEventListener(&#x27;submit&#x27;,funct
   document.getElementById(&#x27;msg&#x27;).innerText=&#x27;Enquiry submitted&#x27;;   // always succeeds
 });
 &lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
-<div class="fl">enquiry_form_defects.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Defect Report]
+<div class="fl">enquiry_form_defects.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Defect Report]
 Defect ID | Defect Description | Expected Result | Actual Result | Type (UI / Functional / Validation) | Corrective Measure
 D1 | Mobile number accepts letters and any length | Exactly 10 digits, starting 6-9 | &#x27;abc&#x27;, 123 accepted | Validation | Use pattern=&quot;[6-9][0-9]{9}&quot; and JS check
 D2 | Course typed as free text instead of a list | Course chosen from a drop-down list | Any text accepted | Validation | Replace by &lt;select&gt; with the available courses
@@ -1625,7 +1625,7 @@ Type | Count
 Validation | 3
 Functional | 1
 UI | 1</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Use Case Description - Bus Ticket Booking. Deliverables: usecase_bus_ticket_booking.xlsx</div><h4>Answer</h4><div class="fl">usecase_bus_ticket_booking.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Use Case]
+</div><div class="q"><h4>Q2</h4><div class="qt">Use Case Description - Bus Ticket Booking. Deliverables: usecase_bus_ticket_booking.xlsx</div><h4>Answer</h4><div class="fl">usecase_bus_ticket_booking.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Use Case]
 Use Case Description - Bus Ticket Booking
 Element | Description
 Use Case Name | Book Bus Ticket
@@ -1634,7 +1634,7 @@ Pre-Condition | Passenger has an account and is logged in; buses exist for the c
 Main Flow | 1. Passenger enters source, destination and travel date 2. System lists available buses with fare and seats 3. Passenger selects a bus 4. System displays seat layout; passenger picks seat(s) 5. Passenger enters passenger details (name, age, gender, mobile) 6. System shows fare summary 7. Passenger pays via payment gateway 8. System confirms booking, generates ticket number and sends SMS / e-mail
 Alternate Flow | 2a. No bus available -&gt; System suggests nearby dates 4a. Selected seat already booked -&gt; System asks to pick another seat 7a. Payment fails -&gt; System keeps seats locked for 10 minutes so passenger can retry 7b. Passenger cancels payment -&gt; Booking is abandoned, seats released
 Post-Condition | Ticket is booked and stored; seat count reduced; passenger receives e-ticket; payment recorded</code></pre>
-</div></details><details class="slip" id="slip16"><summary>Slip 16</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `password_check.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">coverage_report.md</div><pre class="code"><code># Coverage Report - `password_check.py`  (Slip 16 Q1)
+</div></details><details class="slip" id="slip16"><summary>Slip 16</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `password_check.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">coverage_report.md</div><pre class="code"><code class="language-markdown"># Coverage Report - `password_check.py`  (Slip 16 Q1)
 
 ## Tool used
 `coverage.py` with branch measurement + pytest.
@@ -1718,12 +1718,12 @@ coverage is **low**; branch coverage is the practical target.
 ## Missed code blocks and what test would cover them
 Open `htmlcov/index.html` -&gt; click `password_check.py`; red lines are the missed lines listed above.
 Add tests that drive the missed branches (see Slip 8/18/20/22 for the improvement technique).</code></pre>
-<div class="fl">coverage_report.txt</div><pre class="code"><code>Name                Stmts   Miss Branch BrPart  Cover   Missing
+<div class="fl">coverage_report.txt</div><pre class="code"><code class="language-plaintext">Name                Stmts   Miss Branch BrPart  Cover   Missing
 ---------------------------------------------------------------
 password_check.py      19      2     16      2    89%   14, 19
 ---------------------------------------------------------------
 TOTAL                  19      2     16      2    89%</code></pre>
-<div class="fl">password_check.py</div><pre class="code"><code>def password_strength(pw):
+<div class="fl">password_check.py</div><pre class="code"><code class="language-python">def password_strength(pw):
     if len(pw) &lt; 8:                           # decision 1
         return &quot;Weak&quot;
     has_upper = has_digit = has_special = False
@@ -1742,7 +1742,7 @@ TOTAL                  19      2     16      2    89%</code></pre>
     elif score &gt;= 1:                          # decision 7
         return &quot;Medium&quot;
     return &quot;Weak&quot;</code></pre>
-<div class="fl">test_password_check.py</div><pre class="code"><code>from password_check import password_strength
+<div class="fl">test_password_check.py</div><pre class="code"><code class="language-python">from password_check import password_strength
 
 def test_short_password():
     assert password_strength(&quot;abc&quot;) == &quot;Weak&quot;
@@ -1752,7 +1752,7 @@ def test_strong_password():
 
 def test_medium_password():
     assert password_strength(&quot;ronit1234&quot;) == &quot;Medium&quot;</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Signup Form - field level valid / invalid classes. Deliverables: signup_test_fields.xlsx</div><h4>Answer</h4><div class="fl">signup_test_fields.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Signup Test Fields]
+</div><div class="q"><h4>Q2</h4><div class="qt">Signup Form - field level valid / invalid classes. Deliverables: signup_test_fields.xlsx</div><h4>Answer</h4><div class="fl">signup_test_fields.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Signup Test Fields]
 Signup Form - field level valid / invalid classes
 Class (Valid / Invalid) | Field | Test Input | Field Valid? | Test Case Success? | Expected Result (Form Submitted / Not)
 Valid | Username | ronit739 | Yes | Pass | Form Submitted
@@ -1778,7 +1778,7 @@ Column | Meaning
 Field Valid? | Is the input value valid for that field
 Test Case Success? | Test passes when the form behaves as expected (accepts valid / rejects invalid)
 Expected Result | Form Submitted only if every field is valid</code></pre>
-</div></details><details class="slip" id="slip17"><summary>Slip 17</summary><div class="q"><h4>Q1</h4><div class="qt">RTM for Login Module. Deliverables: rtm_login_module.xlsx</div><h4>Answer</h4><div class="fl">rtm_login_module.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: RTM Login]
+</div></details><details class="slip" id="slip17"><summary>Slip 17</summary><div class="q"><h4>Q1</h4><div class="qt">RTM for Login Module. Deliverables: rtm_login_module.xlsx</div><h4>Answer</h4><div class="fl">rtm_login_module.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: RTM Login]
 RTM for Login Module
 Requirement ID | Requirement Description | Design Doc | Code File | Test Case ID | Test Case Description | Input Fields | Test Data | Expected Output | Status
 R01 | User can log in with registered e-mail/username and password. | D1 | auth.py | TC01 | Login with valid registered credentials. | Username, Password | shubham, Shubh@123 | Login Successful, dashboard shown | Not Executed
@@ -1794,7 +1794,7 @@ R02 | 1 | Yes
 R03 | 1 | Yes
 R04 | 1 | Yes
 R05 | 1 | Yes</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Email -&gt; abc@xyz.com; Phone -&gt; 10 digits only. Deliverables: email_phone_equivalence_classes.xlsx</div><h4>Answer</h4><div class="fl">email_phone_equivalence_classes.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Equivalence Classes]
+</div><div class="q"><h4>Q2</h4><div class="qt">Email -&gt; abc@xyz.com; Phone -&gt; 10 digits only. Deliverables: email_phone_equivalence_classes.xlsx</div><h4>Answer</h4><div class="fl">email_phone_equivalence_classes.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Equivalence Classes]
 Email -&gt; abc@xyz.com; Phone -&gt; 10 digits only
 Field | Valid Class | Invalid Class | Example
 Email | Contains one @, non-empty local part, domain with dot (e.g. abc@xyz.com) | - | abc@xyz.com
@@ -1824,7 +1824,7 @@ TC-009 | Phone | 98765432101 | Invalid | Error: invalid phone
 TC-010 | Phone | 98765abc10 | Invalid | Error: invalid phone
 TC-011 | Phone | 98765-4321 | Invalid | Error: invalid phone
 TC-012 | Phone | (blank) | Invalid | Error: invalid phone</code></pre>
-</div></details><details class="slip" id="slip18"><summary>Slip 18</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `bank_account.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">bank_account.py</div><pre class="code"><code>class BankAccount:
+</div></details><details class="slip" id="slip18"><summary>Slip 18</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `bank_account.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">bank_account.py</div><pre class="code"><code class="language-python">class BankAccount:
     def __init__(self, owner, balance=0):
         self.owner = owner
         self.balance = balance
@@ -1854,7 +1854,7 @@ TC-012 | Phone | (blank) | Invalid | Error: invalid phone</code></pre>
         elif self.balance &gt;= 10000:
             return &quot;Silver&quot;
         return &quot;Basic&quot;</code></pre>
-<div class="fl">coverage_before_after.md</div><pre class="code"><code># Improve Test Coverage to 60%+  - `bank_account.py`  (Slip 18 Q1)
+<div class="fl">coverage_before_after.md</div><pre class="code"><code class="language-markdown"># Improve Test Coverage to 60%+  - `bank_account.py`  (Slip 18 Q1)
 
 ## Method
 1. Write the minimal test(s) and measure: `coverage run --branch -m pytest` then `coverage report -m`.
@@ -1974,7 +1974,7 @@ pytest result after improvement:
 .......                                                                  [100%]
 7 passed in 0.03s
 ```</code></pre>
-<div class="fl">test_bank_account.py</div><pre class="code"><code>import pytest
+<div class="fl">test_bank_account.py</div><pre class="code"><code class="language-python">import pytest
 from bank_account import BankAccount
 
 def test_deposit():
@@ -2004,12 +2004,12 @@ def test_account_types():
     assert BankAccount(&quot;a&quot;, 150000).account_type() == &quot;Gold&quot;
     assert BankAccount(&quot;a&quot;, 20000).account_type() == &quot;Silver&quot;
     assert BankAccount(&quot;a&quot;, 10).account_type() == &quot;Basic&quot;</code></pre>
-<div class="fl">test_bank_account_before.py.txt</div><pre class="code"><code>from bank_account import BankAccount
+<div class="fl">test_bank_account_before.py.txt</div><pre class="code"><code class="language-plaintext">from bank_account import BankAccount
 
 def test_deposit():
     acc = BankAccount(&quot;Ronit&quot;, 100)
     assert acc.deposit(50) == 150</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Email -&gt; mnc@abc.com; Phone -&gt; 10 digits only. Deliverables: email_phone_equivalence_classes.xlsx</div><h4>Answer</h4><div class="fl">email_phone_equivalence_classes.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Equivalence Classes]
+</div><div class="q"><h4>Q2</h4><div class="qt">Email -&gt; mnc@abc.com; Phone -&gt; 10 digits only. Deliverables: email_phone_equivalence_classes.xlsx</div><h4>Answer</h4><div class="fl">email_phone_equivalence_classes.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Equivalence Classes]
 Email -&gt; mnc@abc.com; Phone -&gt; 10 digits only
 Field | Valid Class | Invalid Class | Example
 Email | Contains one @, non-empty local part, domain with dot (e.g. abc@xyz.com) | - | mnc@abc.com
@@ -2039,12 +2039,12 @@ TC-009 | Phone | 98765432101 | Invalid | Error: invalid phone
 TC-010 | Phone | 98765abc10 | Invalid | Error: invalid phone
 TC-011 | Phone | 98765-4321 | Invalid | Error: invalid phone
 TC-012 | Phone | (blank) | Invalid | Error: invalid phone</code></pre>
-</div></details><details class="slip" id="slip19"><summary>Slip 19</summary><div class="q"><h4>Q1</h4><div class="qt">Detailed Defect Report - Internship Application Form. Deliverables: README.md, internship_application.html, internship_application_defect_report.xlsx</div><h4>Answer</h4><div class="fl">README.md</div><pre class="code"><code># Internship Application form - defect report
+</div></details><details class="slip" id="slip19"><summary>Slip 19</summary><div class="q"><h4>Q1</h4><div class="qt">Detailed Defect Report - Internship Application Form. Deliverables: README.md, internship_application.html, internship_application_defect_report.xlsx</div><h4>Answer</h4><div class="fl">README.md</div><pre class="code"><code class="language-markdown"># Internship Application form - defect report
 * Form under test: `internship_application.html` (open in browser).
 * Report: `internship_application_defect_report.xlsx`
 * **Severity** = technical impact of the defect (Critical/Major/Minor/Trivial).
 * **Priority** = how soon it should be fixed (P1 highest ... P4 lowest), decided with business input.</code></pre>
-<div class="fl">internship_application.html</div><pre class="code"><code>&lt;!DOCTYPE html&gt;
+<div class="fl">internship_application.html</div><pre class="code"><code class="language-xml">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
 &lt;title&gt;Internship Application Form&lt;/title&gt;&lt;style&gt;body{font-family:Segoe UI,Arial,sans-serif;background:#f4f7f6;display:flex;justify-content:center;padding:24px}
 .box{background:#fff;padding:24px 28px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.12);width:100%;max-width:480px}
@@ -2066,7 +2066,7 @@ button{margin-top:16px;padding:10px 18px;border:0;border-radius:4px;background:#
 &lt;script&gt;
 document.getElementById(&#x27;f&#x27;).addEventListener(&#x27;submit&#x27;,function(e){e.preventDefault();document.getElementById(&#x27;msg&#x27;).innerText=&#x27;Internship Application submitted&#x27;;});
 &lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
-<div class="fl">internship_application_defect_report.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Defect Report]
+<div class="fl">internship_application_defect_report.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Defect Report]
 Detailed Defect Report - Internship Application Form
 Defect ID | Module / Field | Defect Description | Steps to Reproduce | Expected Result | Actual Result | Type | Severity | Priority | Status
 DR-01 | Submit | Empty form can be submitted | Click Submit with no data | Mandatory-field errors | &#x27;Submitted&#x27; message | Functional | Critical | P1 | Open
@@ -2091,7 +2091,7 @@ Critical | Blocks core function / data loss / security hole | P1 - fix immediate
 Major | Important feature wrong, workaround exists | P1-P2 - fix before release
 Minor | Small functional/validation deviation | P3 - fix when time permits
 Trivial | Cosmetic / cosmetic wording | P4 - fix later</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Rule: Age must be between 18 and 60 years (inclusive).. Deliverables: boundary_testing.xlsx</div><h4>Answer</h4><div class="fl">boundary_testing.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Boundary Testing]
+</div><div class="q"><h4>Q2</h4><div class="qt">Rule: Age must be between 18 and 60 years (inclusive).. Deliverables: boundary_testing.xlsx</div><h4>Answer</h4><div class="fl">boundary_testing.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Boundary Testing]
 Rule: Age must be between 18 and 60 years (inclusive).
 Test Case Id | Input &amp; Output | Expected Result (Valid / Invalid) | Type (Positive / Negative)
 BT01 | Age: 17 years  -&gt;  Rejected with error message (min - 1) | Invalid | Negative
@@ -2110,7 +2110,7 @@ BT11 | Age: abc  -&gt;  Rejected (non numeric) | Invalid | Negative
 Idea | Explanation
 Boundary Value Analysis | Test the minimum, just below and just above minimum, nominal, just below and just above maximum, maximum.
 Edge conditions | Empty input, single character / zero, extremely large input, negative value, wrong type.</code></pre>
-</div></details><details class="slip" id="slip20"><summary>Slip 20</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `library_fine.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">coverage_before_after.md</div><pre class="code"><code># Improve Test Coverage to 65%+  - `library_fine.py`  (Slip 20 Q1)
+</div></details><details class="slip" id="slip20"><summary>Slip 20</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `library_fine.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">coverage_before_after.md</div><pre class="code"><code class="language-markdown"># Improve Test Coverage to 65%+  - `library_fine.py`  (Slip 20 Q1)
 
 ## Method
 1. Write the minimal test(s) and measure: `coverage run --branch -m pytest` then `coverage report -m`.
@@ -2222,7 +2222,7 @@ pytest result after improvement:
 ......                                                                   [100%]
 6 passed in 0.03s
 ```</code></pre>
-<div class="fl">library_fine.py</div><pre class="code"><code>def calculate_fine(days_late, member_type):
+<div class="fl">library_fine.py</div><pre class="code"><code class="language-python">def calculate_fine(days_late, member_type):
     if days_late &lt;= 0:
         return 0
     if member_type == &quot;student&quot;:
@@ -2251,7 +2251,7 @@ def renewal_days(member_type):
     elif member_type == &quot;staff&quot;:
         return 14
     return 3</code></pre>
-<div class="fl">test_library_fine.py</div><pre class="code"><code>from library_fine import calculate_fine, can_borrow, renewal_days
+<div class="fl">test_library_fine.py</div><pre class="code"><code class="language-python">from library_fine import calculate_fine, can_borrow, renewal_days
 
 def test_no_fine():
     assert calculate_fine(0, &quot;student&quot;) == 0
@@ -2275,11 +2275,11 @@ def test_renewal_days():
     assert renewal_days(&quot;student&quot;) == 7
     assert renewal_days(&quot;staff&quot;) == 14
     assert renewal_days(&quot;guest&quot;) == 3</code></pre>
-<div class="fl">test_library_fine_before.py.txt</div><pre class="code"><code>from library_fine import calculate_fine
+<div class="fl">test_library_fine_before.py.txt</div><pre class="code"><code class="language-plaintext">from library_fine import calculate_fine
 
 def test_no_fine():
     assert calculate_fine(0, &quot;student&quot;) == 0</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Rule: Username must be between 4 and 10 characters (inclusive).. Deliverables: boundary_testing.xlsx</div><h4>Answer</h4><div class="fl">boundary_testing.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Boundary Testing]
+</div><div class="q"><h4>Q2</h4><div class="qt">Rule: Username must be between 4 and 10 characters (inclusive).. Deliverables: boundary_testing.xlsx</div><h4>Answer</h4><div class="fl">boundary_testing.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Boundary Testing]
 Rule: Username must be between 4 and 10 characters (inclusive).
 Test Case Id | Input &amp; Output | Expected Result (Valid / Invalid) | Type (Positive / Negative)
 BT01 | Username: &#x27;&#x27; (0 chars)  -&gt;  Rejected with error message (blank / empty) | Invalid | Negative
@@ -2297,7 +2297,7 @@ BT10 | Username: &#x27;Ab1@Ab1@Ab1@Ab1@Ab1@Ab1@Ab1@Ab&#x27; (30 chars)  -&gt;  R
 Idea | Explanation
 Boundary Value Analysis | Test the minimum, just below and just above minimum, nominal, just below and just above maximum, maximum.
 Edge conditions | Empty input, single character / zero, extremely large input, negative value, wrong type.</code></pre>
-</div></details><details class="slip" id="slip21"><summary>Slip 21</summary><div class="q"><h4>Q1</h4><div class="qt">RTM for Login Module. Deliverables: rtm_login_module.xlsx</div><h4>Answer</h4><div class="fl">rtm_login_module.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: RTM Login]
+</div></details><details class="slip" id="slip21"><summary>Slip 21</summary><div class="q"><h4>Q1</h4><div class="qt">RTM for Login Module. Deliverables: rtm_login_module.xlsx</div><h4>Answer</h4><div class="fl">rtm_login_module.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: RTM Login]
 RTM for Login Module
 Requirement ID | Requirement Description | Design Doc | Code File | Test Case ID | Test Case Description | Input Fields | Test Data | Expected Output | Status
 R01 | User can log in with valid credentials. | D1 | login.js | TC01 | Valid login. | Username, Password | admin, Admin@123 | Login Successful | Not Executed
@@ -2313,7 +2313,7 @@ R02 | 1 | Yes
 R03 | 1 | Yes
 R04 | 1 | Yes
 R05 | 1 | Yes</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">UX review of login page (original_login_page.html). Deliverables: original_login_page.html, ux_issues_and_improvements.xlsx</div><h4>Answer</h4><div class="fl">original_login_page.html</div><pre class="code"><code>&lt;!DOCTYPE html&gt;
+</div><div class="q"><h4>Q2</h4><div class="qt">UX review of login page (original_login_page.html). Deliverables: original_login_page.html, ux_issues_and_improvements.xlsx</div><h4>Answer</h4><div class="fl">original_login_page.html</div><pre class="code"><code class="language-xml">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -2442,14 +2442,14 @@ document.getElementById(&quot;loginForm&quot;).addEventListener(&quot;submit&quo
 
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<div class="fl">ux_issues_and_improvements.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: UX Review]
+<div class="fl">ux_issues_and_improvements.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: UX Review]
 UX review of login page (original_login_page.html)
 No. | UX Issue Found | Where | Recommended Improvement | Impact of Improvement
 1 | Password is visible - the field is type=&#x27;text&#x27; | Password input | Use type=&#x27;password&#x27; and add a show/hide (eye) toggle | Protects credentials from shoulder-surfing; meets security expectations; user still can verify typing via toggle
 2 | &#x27;Forgot Password?&#x27; link is placed below the Login button, away from the password field | Below LOGIN button | Place the link directly under / beside the password field | Users with login trouble find recovery faster; fewer failed attempts and support calls
 3 | Generic error &#x27;Login Failed.&#x27; shown in a pop-up alert without saying what is wrong | JavaScript alert | Show inline messages: &#x27;Username is required&#x27;, &#x27;Password is required&#x27;, &#x27;Incorrect username or password&#x27; | Users correct errors immediately; fewer retries; better accessibility
 4 | (Bonus) Inputs have no placeholders, &#x27;for&#x27; links or required markers | Labels / inputs | Associate labels with inputs (for/id), add required and autofocus | Better accessibility and faster form completion</code></pre>
-</div></details><details class="slip" id="slip22"><summary>Slip 22</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `temperature.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">coverage_before_after.md</div><pre class="code"><code># Improve Test Coverage to 60%+  - `temperature.py`  (Slip 22 Q1)
+</div></details><details class="slip" id="slip22"><summary>Slip 22</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `temperature.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">coverage_before_after.md</div><pre class="code"><code class="language-markdown"># Improve Test Coverage to 60%+  - `temperature.py`  (Slip 22 Q1)
 
 ## Method
 1. Write the minimal test(s) and measure: `coverage run --branch -m pytest` then `coverage report -m`.
@@ -2550,7 +2550,7 @@ pytest result after improvement:
 ....                                                                     [100%]
 4 passed in 0.03s
 ```</code></pre>
-<div class="fl">temperature.py</div><pre class="code"><code>def to_fahrenheit(c):
+<div class="fl">temperature.py</div><pre class="code"><code class="language-python">def to_fahrenheit(c):
     return c * 9 / 5 + 32
 
 
@@ -2575,7 +2575,7 @@ def average(readings):
     for r in readings:
         total += r
     return total / len(readings)</code></pre>
-<div class="fl">test_temperature.py</div><pre class="code"><code>from temperature import to_fahrenheit, to_celsius, describe, average
+<div class="fl">test_temperature.py</div><pre class="code"><code class="language-python">from temperature import to_fahrenheit, to_celsius, describe, average
 
 def test_to_fahrenheit():
     assert to_fahrenheit(100) == 212
@@ -2592,11 +2592,11 @@ def test_describe_all_ranges():
 def test_average():
     assert average([10, 20, 30]) == 20
     assert average([]) is None</code></pre>
-<div class="fl">test_temperature_before.py.txt</div><pre class="code"><code>from temperature import to_fahrenheit
+<div class="fl">test_temperature_before.py.txt</div><pre class="code"><code class="language-plaintext">from temperature import to_fahrenheit
 
 def test_to_fahrenheit():
     assert to_fahrenheit(100) == 212</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Write and test `sample.py` using unit tests and coverage.</div><h4>Answer</h4><p class="note">Image file: <code>cfg_sum_positive.png</code> (in the source folder)</p><div class="fl">manual_coverage.md</div><pre class="code"><code># Manual Statement &amp; Function Coverage + Control Flow Graph  (Slip 22 Q2)
+</div><div class="q"><h4>Q2</h4><div class="qt">Write and test `sample.py` using unit tests and coverage.</div><h4>Answer</h4><p class="note">Image file: <code>cfg_sum_positive.png</code> (in the source folder)</p><div class="fl">manual_coverage.md</div><pre class="code"><code class="language-markdown"># Manual Statement &amp; Function Coverage + Control Flow Graph  (Slip 22 Q2)
 
 ## Program
 ```python
@@ -2663,7 +2663,7 @@ coverage.py counts the `def` lines (executed at import) as statements: 7 of 10 =
 its 69 % figure also includes branch coverage (`--branch`). The manual method above (body statements only) gives 62.5 %.
 Both agree that `classify` (lines 10-12 in the file) is never executed.
 To reach 100 %: add `classify(5)` and `classify(50)` tests.</code></pre>
-<div class="fl">sample.py</div><pre class="code"><code>def sum_positive(nums):          # 1
+<div class="fl">sample.py</div><pre class="code"><code class="language-python">def sum_positive(nums):          # 1
     total = 0                    # 2
     for n in nums:               # 3
         if n &gt; 0:                # 4
@@ -2675,11 +2675,11 @@ def classify(total):             # 7
     if total &gt; 10:               # 8
         return &quot;HIGH&quot;            # 9
     return &quot;LOW&quot;                 # 10</code></pre>
-<div class="fl">test_sample.py</div><pre class="code"><code>from sample import sum_positive
+<div class="fl">test_sample.py</div><pre class="code"><code class="language-python">from sample import sum_positive
 
 def test_sum_positive():
     assert sum_positive([4, -1, 9]) == 13</code></pre>
-</div></details><details class="slip" id="slip23"><summary>Slip 23</summary><div class="q"><h4>Q1</h4><div class="qt">Requirement Traceability Matrix - Mini Library Management System. Deliverables: rtm_library_system.xlsx</div><h4>Answer</h4><div class="fl">rtm_library_system.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: RTM]
+</div></details><details class="slip" id="slip23"><summary>Slip 23</summary><div class="q"><h4>Q1</h4><div class="qt">Requirement Traceability Matrix - Mini Library Management System. Deliverables: rtm_library_system.xlsx</div><h4>Answer</h4><div class="fl">rtm_library_system.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: RTM]
 Requirement Traceability Matrix - Mini Library Management System
 Requirement ID | Requirement Description | Design Doc | Code File | Test Case ID | Test Case Description | Input Fields | Test Data | Expected Output | Status
 R01 | Librarian should be able to log in. | D2 | login.py | TC01 | Login using valid credentials. | Username, Password | librarian, Lib@1234 | Login Successful | Not Executed
@@ -2707,7 +2707,7 @@ R08 | TC08 | Yes
 R09 | TC09 | Yes
 R10 | TC10 | Yes
 Total | 10/10 | 100% requirement coverage</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Online Shopping - Discount Rules. Deliverables: decision_table_discount.xlsx, discount.py, pytest_result.txt, test_discount.py</div><h4>Answer</h4><div class="fl">decision_table_discount.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Decision Table]
+</div><div class="q"><h4>Q2</h4><div class="qt">Online Shopping - Discount Rules. Deliverables: decision_table_discount.xlsx, discount.py, pytest_result.txt, test_discount.py</div><h4>Answer</h4><div class="fl">decision_table_discount.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Decision Table]
 Online Shopping - Discount Rules
 Conditions (Inputs) | Rule 1 | Rule 2 | Rule 3 | Rule 4
 C1: Customer is a member? | T | T | F | F
@@ -2728,7 +2728,7 @@ TC03 | No | 1500 | Rule 3 | 5% | Rs 1425
 TC04 | No | 800 | Rule 4 | 0% | Rs 800
 TC05 | Yes | 1000 | Rule 2 | 10% | Rs 900
 TC06 | No | 1001 | Rule 3 | 5% | Rs 950.95</code></pre>
-<div class="fl">discount.py</div><pre class="code"><code>def discount_percent(is_member, order_amount):
+<div class="fl">discount.py</div><pre class="code"><code class="language-python">def discount_percent(is_member, order_amount):
     if is_member:
         return 15 if order_amount &gt; 1000 else 10
     return 5 if order_amount &gt; 1000 else 0
@@ -2736,9 +2736,9 @@ TC06 | No | 1001 | Rule 3 | 5% | Rs 950.95</code></pre>
 
 def final_amount(is_member, order_amount):
     return order_amount * (100 - discount_percent(is_member, order_amount)) / 100</code></pre>
-<div class="fl">pytest_result.txt</div><pre class="code"><code>......                                                                   [100%]
+<div class="fl">pytest_result.txt</div><pre class="code"><code class="language-plaintext">......                                                                   [100%]
 6 passed in 0.01s</code></pre>
-<div class="fl">test_discount.py</div><pre class="code"><code>from discount import discount_percent, final_amount
+<div class="fl">test_discount.py</div><pre class="code"><code class="language-python">from discount import discount_percent, final_amount
 
 def test_tc01():
     assert discount_percent(True, 1500) == 15
@@ -2763,7 +2763,7 @@ def test_tc05():
 def test_tc06():
     assert discount_percent(False, 1001) == 5
     assert final_amount(False, 1001) == 950.95</code></pre>
-</div></details><details class="slip" id="slip24"><summary>Slip 24</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `leap_year.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">leap_year.py</div><pre class="code"><code>def is_leap(year):
+</div></details><details class="slip" id="slip24"><summary>Slip 24</summary><div class="q"><h4>Q1</h4><div class="qt">Write and test `leap_year.py` using unit tests and coverage.</div><h4>Answer</h4><div class="fl">leap_year.py</div><pre class="code"><code class="language-python">def is_leap(year):
     if year % 400 == 0:
         return True
     elif year % 100 == 0:
@@ -2787,7 +2787,7 @@ if __name__ == &quot;__main__&quot;:
     for y in years:
         print(y, &quot;-&gt; Leap year&quot; if is_leap(y) else &quot;-&gt; Not a leap year&quot;)
     print(&quot;Leap years found:&quot;, check_years(years))</code></pre>
-<div class="fl">output.txt</div><pre class="code"><code>Program : Leap year checker over a list of years (for loop + if-else)
+<div class="fl">output.txt</div><pre class="code"><code class="language-plaintext">Program : Leap year checker over a list of years (for loop + if-else)
 
 $ python leap_year.py
 1900 -&gt; Not a leap year
@@ -2800,7 +2800,7 @@ Leap years found: [2000, 2024]
 $ pytest -q
 .....                                                                    [100%]
 5 passed in 0.01s</code></pre>
-<div class="fl">test_leap_year.py</div><pre class="code"><code>from leap_year import is_leap, check_years
+<div class="fl">test_leap_year.py</div><pre class="code"><code class="language-python">from leap_year import is_leap, check_years
 
 def test_div_400():
     assert is_leap(2000)
@@ -2816,14 +2816,14 @@ def test_normal():
 
 def test_check_years():
     assert check_years([1900, 2000, 2024]) == [2000, 2024]</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Practical task covering: README.md, leave_form.html, leave_form_defects.xlsx</div><h4>Answer</h4><div class="fl">README.md</div><pre class="code"><code># Classification - Employee Leave Application
+</div><div class="q"><h4>Q2</h4><div class="qt">Practical task covering: README.md, leave_form.html, leave_form_defects.xlsx</div><h4>Answer</h4><div class="fl">README.md</div><pre class="code"><code class="language-markdown"># Classification - Employee Leave Application
 
 1. Open `leave_form.html` in a browser.
 2. Test each field with invalid / empty / boundary data (see defect list).
 3. Defects are recorded in `leave_form_defects.xlsx`.
 4. Types: **UI** = look/layout/usability, **Functional** = feature does not work,
    **Validation** = wrong input is accepted or valid input rejected.</code></pre>
-<div class="fl">leave_form.html</div><pre class="code"><code>&lt;!DOCTYPE html&gt;
+<div class="fl">leave_form.html</div><pre class="code"><code class="language-xml">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
 &lt;title&gt;Employee Leave Application&lt;/title&gt;&lt;style&gt;body{font-family:Segoe UI,Arial,sans-serif;background:#f4f7f6;display:flex;justify-content:center;padding:24px}
 .box{background:#fff;padding:24px 28px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.12);width:100%;max-width:480px}
@@ -2848,7 +2848,7 @@ document.getElementById(&#x27;f&#x27;).addEventListener(&#x27;submit&#x27;,funct
   // leave is never saved or sent anywhere
 });
 &lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
-<div class="fl">leave_form_defects.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Defect Report]
+<div class="fl">leave_form_defects.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Defect Report]
 Defect ID | Defect Description | Expected Result | Actual Result | Type (UI / Functional / Validation) | Corrective Measure
 D1 | To Date can be earlier than From Date | To Date &gt;= From Date | Accepted | Validation | Compare both dates in JS; set min of To Date = From Date
 D2 | Employee ID accepts any text / empty | Required, alphanumeric 4-8 chars | Empty and special characters accepted | Validation | Add required + pattern + length check
@@ -2861,12 +2861,12 @@ Type | Count
 Validation | 3
 UI | 2
 Functional | 1</code></pre>
-</div></details><details class="slip" id="slip25"><summary>Slip 25</summary><div class="q"><h4>Q1</h4><div class="qt">Detailed Defect Report - Scholarship Application Form. Deliverables: README.md, scholarship_application.html, scholarship_application_defect_report.xlsx</div><h4>Answer</h4><div class="fl">README.md</div><pre class="code"><code># Scholarship Application form - defect report
+</div></details><details class="slip" id="slip25"><summary>Slip 25</summary><div class="q"><h4>Q1</h4><div class="qt">Detailed Defect Report - Scholarship Application Form. Deliverables: README.md, scholarship_application.html, scholarship_application_defect_report.xlsx</div><h4>Answer</h4><div class="fl">README.md</div><pre class="code"><code class="language-markdown"># Scholarship Application form - defect report
 * Form under test: `scholarship_application.html` (open in browser).
 * Report: `scholarship_application_defect_report.xlsx`
 * **Severity** = technical impact of the defect (Critical/Major/Minor/Trivial).
 * **Priority** = how soon it should be fixed (P1 highest ... P4 lowest), decided with business input.</code></pre>
-<div class="fl">scholarship_application.html</div><pre class="code"><code>&lt;!DOCTYPE html&gt;
+<div class="fl">scholarship_application.html</div><pre class="code"><code class="language-xml">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
 &lt;title&gt;Scholarship Application Form&lt;/title&gt;&lt;style&gt;body{font-family:Segoe UI,Arial,sans-serif;background:#f4f7f6;display:flex;justify-content:center;padding:24px}
 .box{background:#fff;padding:24px 28px;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.12);width:100%;max-width:480px}
@@ -2889,7 +2889,7 @@ button{margin-top:16px;padding:10px 18px;border:0;border-radius:4px;background:#
 &lt;script&gt;
 document.getElementById(&#x27;f&#x27;).addEventListener(&#x27;submit&#x27;,function(e){e.preventDefault();document.getElementById(&#x27;msg&#x27;).innerText=&#x27;Scholarship Application submitted&#x27;;});
 &lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
-<div class="fl">scholarship_application_defect_report.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Defect Report]
+<div class="fl">scholarship_application_defect_report.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Defect Report]
 Detailed Defect Report - Scholarship Application Form
 Defect ID | Module / Field | Defect Description | Steps to Reproduce | Expected Result | Actual Result | Type | Severity | Priority | Status
 DR-01 | Submit | Form submits empty and without declaration ticked | Click Submit | Mandatory-field and declaration errors | &#x27;Application received&#x27; | Functional | Critical | P1 | Open
@@ -2916,7 +2916,7 @@ Critical | Blocks core function / data loss / security hole | P1 - fix immediate
 Major | Important feature wrong, workaround exists | P1-P2 - fix before release
 Minor | Small functional/validation deviation | P3 - fix when time permits
 Trivial | Cosmetic / cosmetic wording | P4 - fix later</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Rule: Order Quantity must be between 1 and 100 units (inclusive).. Deliverables: boundary_testing.xlsx</div><h4>Answer</h4><div class="fl">boundary_testing.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Boundary Testing]
+</div><div class="q"><h4>Q2</h4><div class="qt">Rule: Order Quantity must be between 1 and 100 units (inclusive).. Deliverables: boundary_testing.xlsx</div><h4>Answer</h4><div class="fl">boundary_testing.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Boundary Testing]
 Rule: Order Quantity must be between 1 and 100 units (inclusive).
 Test Case Id | Input &amp; Output | Expected Result (Valid / Invalid) | Type (Positive / Negative)
 BT01 | Order Quantity: 0 units  -&gt;  Rejected with error message (min - 1) | Invalid | Negative
@@ -2935,7 +2935,7 @@ BT11 | Order Quantity: abc  -&gt;  Rejected (non numeric) | Invalid | Negative
 Idea | Explanation
 Boundary Value Analysis | Test the minimum, just below and just above minimum, nominal, just below and just above maximum, maximum.
 Edge conditions | Empty input, single character / zero, extremely large input, negative value, wrong type.</code></pre>
-</div></details><details class="slip" id="slip26"><summary>Slip 26</summary><div class="q"><h4>Q1</h4><div class="qt">Redesign changes. Deliverables: login_redesign.html, ux_feedback_session.xlsx, ux_findings_summary.md</div><h4>Answer</h4><div class="fl">login_redesign.html</div><pre class="code"><code>&lt;!DOCTYPE html&gt;
+</div></details><details class="slip" id="slip26"><summary>Slip 26</summary><div class="q"><h4>Q1</h4><div class="qt">Redesign changes. Deliverables: login_redesign.html, ux_feedback_session.xlsx, ux_findings_summary.md</div><h4>Answer</h4><div class="fl">login_redesign.html</div><pre class="code"><code class="language-xml">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
@@ -3008,7 +3008,7 @@ $(&#x27;loginForm&#x27;).addEventListener(&#x27;submit&#x27;, e =&gt; {
   $(&#x27;status&#x27;).textContent = good ? &#x27;Login successful. Redirecting...&#x27; : &#x27;Incorrect username or password&#x27;;
 });
 &lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
-<div class="fl">ux_feedback_session.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Changes (before -&gt; after)]
+<div class="fl">ux_feedback_session.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Changes (before -&gt; after)]
 Redesign changes
 ID | Problem in old page | Fix in new HTML/CSS
 UX-1 | Password was visible (type=text) | type=password + Show/Hide toggle
@@ -3026,7 +3026,7 @@ User 3 (engineer, 29) | 1 | 3 | Yes | 5 | 5 | Fast and clean. | Add Enter-key hi
 Averages
 Avg time (sec) | Avg ease | Avg satisfaction
 4.7 | 4.7 | 4.7</code></pre>
-<div class="fl">ux_findings_summary.md</div><pre class="code"><code># UX Findings Summary - Redesigned Login Page (Slip 26 Q1)
+<div class="fl">ux_findings_summary.md</div><pre class="code"><code class="language-markdown"># UX Findings Summary - Redesigned Login Page (Slip 26 Q1)
 
 Page: `login_redesign.html` (open in a browser; demo login `Ronit` / `Ronit@123`).
 
@@ -3055,7 +3055,7 @@ Task given: *log in with wrong data, read the error, then log in correctly; try 
 
 &gt; NOTE: participant data in `ux_feedback_session.xlsx` is sample data to show the format.
 &gt; Run the session with 3 real people and overwrite the table before submitting.</code></pre>
-</div><div class="q"><h4>Q2</h4><div class="qt">Test Cases - Contact Form (3 Positive + 3 Negative). Deliverables: contact_form.py, contact_form_test_cases.xlsx, pytest_result.txt, test_contact_form.py</div><h4>Answer</h4><div class="fl">contact_form.py</div><pre class="code"><code>import re
+</div><div class="q"><h4>Q2</h4><div class="qt">Test Cases - Contact Form (3 Positive + 3 Negative). Deliverables: contact_form.py, contact_form_test_cases.xlsx, pytest_result.txt, test_contact_form.py</div><h4>Answer</h4><div class="fl">contact_form.py</div><pre class="code"><code class="language-python">import re
 
 
 def validate_contact(name, email, message, phone=&quot;&quot;):
@@ -3076,7 +3076,7 @@ def validate_contact(name, email, message, phone=&quot;&quot;):
     if phone and not re.fullmatch(r&quot;[6-9]\d{9}&quot;, phone):
         errors.append(&quot;Invalid phone&quot;)
     return &quot;Form submitted successfully&quot; if not errors else &quot;; &quot;.join(errors)</code></pre>
-<div class="fl">contact_form_test_cases.xlsx  (spreadsheet content)</div><pre class="code"><code>[Sheet: Test Cases]
+<div class="fl">contact_form_test_cases.xlsx  (spreadsheet content)</div><pre class="code"><code class="language-plaintext">[Sheet: Test Cases]
 Test Cases - Contact Form (3 Positive + 3 Negative)
 Test Case ID | Test Scenario | Input Data | Expected Result | Actual Result | Status | Type
 TC01 | Submit with all valid data incl. phone | name: &#x27;Priya Deshmukh&#x27;, email: &#x27;priya@gmail.com&#x27;, message: &#x27;Quote needed&#x27;, phone: &#x27;9876543210&#x27; | Form submitted successfully | Form submitted successfully | Pass | Positive
@@ -3095,9 +3095,9 @@ Expected Result | Behaviour required by the specification
 Actual Result | Behaviour observed on execution (here: output of contact_form.py)
 Status | Pass if Actual = Expected, else Fail
 Type | Positive (valid data) / Negative (invalid data)</code></pre>
-<div class="fl">pytest_result.txt</div><pre class="code"><code>......                                                                   [100%]
+<div class="fl">pytest_result.txt</div><pre class="code"><code class="language-plaintext">......                                                                   [100%]
 6 passed in 0.01s</code></pre>
-<div class="fl">test_contact_form.py</div><pre class="code"><code>from contact_form import validate_contact
+<div class="fl">test_contact_form.py</div><pre class="code"><code class="language-python">from contact_form import validate_contact
 
 def test_tc01():
     assert validate_contact(name=&#x27;Priya Deshmukh&#x27;, email=&#x27;priya@gmail.com&#x27;, message=&#x27;Quote needed&#x27;, phone=&#x27;9876543210&#x27;) == &#x27;Form submitted successfully&#x27;
@@ -3116,4 +3116,4 @@ def test_tc05():
 
 def test_tc06():
     assert validate_contact(name=&#x27;Ronit&#x27;, email=&#x27;ronit@gmail.com&#x27;, message=&#x27;m&#x27; * 501, phone=&#x27;9876543210&#x27;) == &#x27;Message too long&#x27;</code></pre>
-</div></details></main></body></html>
+</div></details></main><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script><script>document.querySelectorAll("pre.code code").forEach(function(e){try{hljs.highlightElement(e)}catch(x){}});</script></body></html>
